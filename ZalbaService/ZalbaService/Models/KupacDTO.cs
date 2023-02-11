@@ -1,18 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace ZalbaService.Entity
+namespace ZalbaService.Models
 {
-    public class KupacEntity
+    /// <summary>
+    /// DTO za kupca koji je podneo zalbu.
+    /// </summary>
+    public class KupacDTO
     {
-        public KupacEntity() { }
-
-        /// <summary>
-		/// ID kupca.
-		/// </summary>
-        [Key]
-        public Guid KupacID { get; set; }
-
         /// <summary>
 		/// ID lice.
 		/// </summary>

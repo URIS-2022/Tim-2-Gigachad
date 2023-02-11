@@ -12,9 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Data\" />
     <Folder Include="Profiles\" />
     <Folder Include="Postman\" />
   </ItemGroup>

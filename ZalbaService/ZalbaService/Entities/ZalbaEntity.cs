@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ZalbaService.Entity
+namespace ZalbaService.Entities
 {
     public class ZalbaEntity
     {
@@ -32,21 +32,21 @@ namespace ZalbaService.Entity
         /// <summary>
 		/// Razlog zalbe.
 		/// </summary>
-        public string Razlog { get; set; }
+        public string? Razlog { get; set; }
 
         /// <summary>
 		/// Obrazlozenje zalbe.
 		/// </summary>
-        public string Obrazlozenje { get; set; }
+        public string? Obrazlozenje { get; set; }
 
         /// <summary>
 		/// Status zalbe.
 		/// </summary>
-        public string StatusZalbe { get; set; }
+        public string? StatusZalbe { get; set; }
 
         /// <summary>
 		/// Radnja zalbe.
 		/// </summary>
-        public string RadnjaZalbe { get; set; }
+        public string? RadnjaZalbe { get; set; }
     }
 }
