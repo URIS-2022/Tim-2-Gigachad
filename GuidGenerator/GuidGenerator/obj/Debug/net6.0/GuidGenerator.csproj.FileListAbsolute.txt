@@ -1,0 +1,15 @@
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\bin\Debug\net6.0\GuidGenerator.exe
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\bin\Debug\net6.0\GuidGenerator.deps.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\bin\Debug\net6.0\GuidGenerator.runtimeconfig.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\bin\Debug\net6.0\GuidGenerator.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\bin\Debug\net6.0\GuidGenerator.pdb
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\obj\Debug\net6.0\GuidGenerator.csproj.AssemblyReference.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\obj\Debug\net6.0\GuidGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\obj\Debug\net6.0\GuidGenerator.AssemblyInfoInputs.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\obj\Debug\net6.0\GuidGenerator.AssemblyInfo.cs
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\obj\Debug\net6.0\GuidGenerator.csproj.CoreCompileInputs.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\obj\Debug\net6.0\GuidGenerator.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\obj\Debug\net6.0\refint\GuidGenerator.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\obj\Debug\net6.0\GuidGenerator.pdb
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\obj\Debug\net6.0\GuidGenerator.genruntimeconfig.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\GuidGenerator\GuidGenerator\obj\Debug\net6.0\ref\GuidGenerator.dll

@@ -1,0 +1,7 @@
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.csproj.AssemblyReference.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.AssemblyInfoInputs.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.AssemblyInfo.cs
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.csproj.CoreCompileInputs.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.MvcApplicationPartsAssemblyInfo.cache
