@@ -4,14 +4,16 @@ namespace UplataService.Data
 {
     public interface IUplataRepository
     {
-        List<UplataEntity> GetUplataEntities();
+        List<UplataEntity> GetUplate();
 
-        UplataEntity GetUplataByID(Guid uplataID);
+        UplataEntity GetUplataByID(Guid UplataID);
 
-        UplataEntity CreateUplata(UplataEntity uplata);
+        UplataEntity CreateUplata(UplataEntity Uplata);
 
-        void UpdateUplata(UplataEntity uplata);
+        void UpdateUplata(UplataEntity Uplata);
 
-        void DeleteUplata(Guid uplataID);
+        void DeleteUplata(Guid UplataID);
+
+        bool SaveChanges();
     }
 }

@@ -1,62 +1,46 @@
-﻿using UplataService.Entities;
+﻿using AutoMapper;
+using KorisniciService.Entities;
+using UplataService.Entities;
 
 namespace KorisniciService.Data
 {
     public class KorisnikRepository : IKorisnikRepository
     {
-        public static List<KorisnikEntity> Korisnici { get; set; } = new List<KorisnikEntity>();
+        private readonly KorisnikContext context;
+        private readonly IMapper mapper;
 
-        public KorisnikRepository()
+        public KorisnikRepository(KorisnikContext context, IMapper mapper)
         {
-            FillData();
+            this.context = context;
+            this.mapper = mapper;
         }
 
-        private void FillData()
+        public List<KorisnikEntity> GetKorisnici()
         {
-            Korisnici.AddRange(new List<KorisnikEntity>
-            {
-                new KorisnikEntity
-                {
-                    KorisnikID = Guid.Parse("Dodaj Guid"),
-                    JavnoNadmetanjeID = Guid.Parse("Dodaj Guid"),
-                    TipKorisnika = "Tehnicki sekretar",
-                    Naziv = "Wynn Lagadu",
-                    Sifra = "EjfkRqXrltLI"
-                },
-                new KorisnikEntity
-                {
-                    KorisnikID = Guid.Parse("Dodaj Guid"),
-                    JavnoNadmetanjeID = Guid.Parse("Dodaj Guid"),
-                    TipKorisnika = "Operater Nadmetanja",
-                    Naziv = "Manuel Andriessen",
-                    Sifra = "n4xxvQyQm"
-                }
-            }); ; ;
+            return context.Korisnici.ToList();
         }
 
-        public KorisnikEntity CreateKorisnik(KorisnikEntity korisnik)
+        public KorisnikEntity CreateKorisnik(KorisnikEntity Korisnik)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
-        public void DeleteKorisnik(Guid korisnikID)
+        public void DeleteKorisnik(Guid KorisnikID)
         {
-            throw new NotImplementedException();
         }
 
-        public KorisnikEntity GetKorisnikByID(Guid korisnikID)
+        public KorisnikEntity GetKorisnikByID(Guid KorisnikID)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
-        public List<KorisnikEntity> GetKorisnikEntities()
+        public void UpdateKorisnik(KorisnikEntity Korisnik)
         {
-            throw new NotImplementedException();
         }
 
-        public void UpdateKorisnik(KorisnikEntity korisnik)
+        public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return context.SaveChanges() > 0;
         }
     }
 }

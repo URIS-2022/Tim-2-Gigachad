@@ -8,8 +8,6 @@ namespace UplataService.Entities
     /// </summary>
     public class UplataEntity
     {
-        public UplataEntity() { }
-
         /// <summary>
         /// ID uplate.
         /// </summary>

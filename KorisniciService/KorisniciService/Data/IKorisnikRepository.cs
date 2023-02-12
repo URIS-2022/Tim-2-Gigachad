@@ -4,14 +4,16 @@ namespace KorisniciService.Data
 {
     public interface IKorisnikRepository
     {
-        List<KorisnikEntity> GetKorisnikEntities();
+        List<KorisnikEntity> GetKorisnici();
 
-        KorisnikEntity GetKorisnikByID(Guid korisnikID);
+        KorisnikEntity GetKorisnikByID(Guid KorisnikID);
 
-        KorisnikEntity CreateKorisnik(KorisnikEntity korisnik);
+        KorisnikEntity CreateKorisnik(KorisnikEntity Korisnik);
 
-        void UpdateKorisnik(KorisnikEntity korisnik);
+        void UpdateKorisnik(KorisnikEntity Korisnik);
 
-        void DeleteKorisnik(Guid korisnikID);
+        void DeleteKorisnik(Guid KorisnikID);
+
+        bool SaveChanges();
     }
 }

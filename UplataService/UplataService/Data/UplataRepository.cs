@@ -1,74 +1,45 @@
-﻿using UplataService.Entities;
+﻿using AutoMapper;
+using UplataService.Entities;
 
 namespace UplataService.Data
 {
     public class UplataRepository : IUplataRepository
     {
-        public static List<UplataEntity> Uplate { get; set; } = new List<UplataEntity>();
+        private readonly UplataContext context;
+        private readonly IMapper mapper;
 
-        public UplataRepository()
+        public UplataRepository(UplataContext context, IMapper mapper)
         {
-            FillData();
+            this.context = context;
+            this.mapper = mapper;
         }
 
-        private static void FillData()
+        public List<UplataEntity> GetUplate()
         {
-            Uplate.AddRange(new List<UplataEntity>
-            {
-                new UplataEntity
-                {
-                    UplataID = Guid.Parse("Dodaj guid"),
-                    JavnoNadmetanjeID = Guid.Parse("Dodaj guid"),
-                    KupacID = Guid.Parse("Dodaj guid"),
-                    BrojRacuna = "005-417672-67",
-                    PozivNaBroj = "73609",
-                    Iznos = 45000,
-                    Uplatilac = "Pera Peric",
-                    SvrhaUplate = "Uplata na racun",
-                    //DatumUplate = "6/1/2008 7:47:00 AM"
-                    //Katastrofa je DateTime za rad
-                    KursnaLista = "???????"
-                },
-                new UplataEntity
-                {
-                    UplataID = Guid.Parse("Dodaj guid"),
-                    JavnoNadmetanjeID = Guid.Parse("Dodaj guid"),
-                    KupacID = Guid.Parse("Dodaj guid"),
-                    BrojRacuna = "214-826330-03",
-                    PozivNaBroj = "18096",
-                    Iznos = 1550,
-                    Uplatilac = "Sima Simic",
-                    SvrhaUplate = "Racun za Telenor",
-                    //DatumUplate = "6/1/2008 7:47:00 AM"
-                    //Katastrofa je DateTime za rad
-                    KursnaLista = "???????"
-                }
-            }); ; ;
+            return context.Uplate.ToList();
         }
 
-        public List<UplataEntity> GetUplataEntities()
+        public UplataEntity CreateUplata(UplataEntity Uplata)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
-        public UplataEntity GetUplataByID(Guid uplataID)
+        public void DeleteUplata(Guid UplataID)
         {
-            throw new NotImplementedException();
         }
 
-        public UplataEntity CreateUplata(UplataEntity uplata)
+        public UplataEntity GetUplataByID(Guid UplataID)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
-        public void UpdateUplata(UplataEntity uplata)
+        public void UpdateUplata(UplataEntity Uplata)
         {
-            throw new NotImplementedException();
         }
 
-        public void DeleteUplata(Guid uplataID)
+        public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return context.SaveChanges() > 0;
         }
     }
 }

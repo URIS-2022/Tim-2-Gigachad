@@ -8,8 +8,6 @@ namespace UplataService.Entities
     /// </summary>
     public class KorisnikEntity
     {
-        public KorisnikEntity() { }
-
         /// <summary>
         /// ID korisnika.
         /// </summary>
