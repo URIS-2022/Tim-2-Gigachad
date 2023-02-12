@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "Sp4ZThl2ZYeacfYv3zWV5WoMSierY43O7spdHhhxwM33B8yt2t0UAXU8M7WJXXxNHmoTT3OdEsXQFNUR7RRbuw==",
+  "success": true,
+  "projectFilePath": "C:\\URIS projekat gigachar\\github repo\\UgovorOZakupuService\\UgovorOZakupuService\\UgovorOZakupuService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Milan\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Milan\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Milan\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Milan\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Milan\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Milan\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
