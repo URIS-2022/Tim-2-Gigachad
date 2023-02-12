@@ -14,6 +14,6 @@ namespace ZalbaService.Data
 
         void DeleteZalba(Guid zalbaID);
 
-        //bool SaveChanges();
+        bool SaveChanges();
     }
 }
