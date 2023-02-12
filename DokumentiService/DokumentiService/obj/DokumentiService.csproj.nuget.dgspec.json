@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\URIS projekat gigachar\\github repo\\DokumentiService\\DokumentiService\\DokumentiService.csproj": {}
+    "D:\\URIS projekat gigachad\\github repo\\DokumentiService\\DokumentiService\\DokumentiService.csproj": {}
   },
   "projects": {
-    "C:\\URIS projekat gigachar\\github repo\\DokumentiService\\DokumentiService\\DokumentiService.csproj": {
+    "D:\\URIS projekat gigachad\\github repo\\DokumentiService\\DokumentiService\\DokumentiService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\URIS projekat gigachar\\github repo\\DokumentiService\\DokumentiService\\DokumentiService.csproj",
+        "projectUniqueName": "D:\\URIS projekat gigachad\\github repo\\DokumentiService\\DokumentiService\\DokumentiService.csproj",
         "projectName": "DokumentiService",
-        "projectPath": "C:\\URIS projekat gigachar\\github repo\\DokumentiService\\DokumentiService\\DokumentiService.csproj",
-        "packagesPath": "C:\\Users\\Milan\\.nuget\\packages\\",
-        "outputPath": "C:\\URIS projekat gigachar\\github repo\\DokumentiService\\DokumentiService\\obj\\",
+        "projectPath": "D:\\URIS projekat gigachad\\github repo\\DokumentiService\\DokumentiService\\DokumentiService.csproj",
+        "packagesPath": "C:\\Users\\Milan Maglov\\.nuget\\packages\\",
+        "outputPath": "D:\\URIS projekat gigachad\\github repo\\DokumentiService\\DokumentiService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Milan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Milan Maglov\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
