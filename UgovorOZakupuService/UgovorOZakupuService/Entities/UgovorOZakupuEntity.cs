@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UgovorOZakupuService.Entities
 {
-    public class UgovorOZakupu
+    public class UgovorOZakupuEntity
     {
-        public UgovorOZakupu() { }
+        public UgovorOZakupuEntity() { }
 
         [Key]
-        public Guid UgovorID { get; set; }
+        public Guid UgovorOZakupuID { get; set; }
 
         [ForeignKey("DeoParceleDTO")]
         public Guid DeoParceleID { get; set; }
