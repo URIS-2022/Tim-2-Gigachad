@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LiceService</name>
+    </assembly>
+    <members>
+        <member name="T:LiceService.Entities.FizickoLiceEntity">
+            <summary>
+            Model realnog entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceEntity.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceEntity.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceEntity.Ime">
+            <summary>
+            Ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceEntity.Prezime">
+            <summary>
+            Prezime fizičkog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.Entities.KontaktOsobaEntity">
+            <summary>
+            Model realnog entiteta kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Ime">
+            <summary>
+            Ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Prezime">
+            <summary>
+            Prezime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="M:LiceService.Entities.LiceContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:LiceService.Entities.LiceEntity">
+            <summary>
+            Model realnog entiteta lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.FizickoLiceID">
+            <summary>
+            ID fizičkog lica lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.PravnoLiceID">
+            <summary>
+            ID pravnog lica lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.AdresaID">
+            <summary>
+            ID adrese lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.Tel1">
+            <summary>
+            Telefon 1 lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.Tel2">
+            <summary>
+            Telefon 2 lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.OvlascenoLice">
+            <summary>
+            Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="T:LiceService.Entities.PravnoLiceEntity">
+            <summary>
+            Model realnog entiteta pravno lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.KontaktOsobaID">
+            <summary>
+            ID kontakt osobe pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.Entities.FizickoLiceDTO">
+            <summary>
+            DTO za fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceDTO.Naziv">
+            <summary>
+            Naziv fizičkog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.Models.AdresaLicaDTO">
+            <summary>
+            DTO za adresu lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Models.AdresaLicaDTO.Ulica">
+            <summary>
+            Ulica adrese.
+            </summary>
+        </member>
+        <member name="P:LiceService.Models.AdresaLicaDTO.Broj">
+            <summary>
+            Broj adrese.
+            </summary>
+        </member>
+        <member name="P:LiceService.Models.AdresaLicaDTO.Mesto">
+            <summary>
+            Mesto adrese.
+            </summary>
+        </member>
+        <member name="P:LiceService.Models.AdresaLicaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:LiceService.Models.AdresaLicaDTO.Drzava">
+            <summary>
+            Država broj adrese.
+            </summary>
+        </member>
+    </members>
+</doc>

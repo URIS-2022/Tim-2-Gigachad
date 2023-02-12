@@ -14,7 +14,7 @@ namespace LiceService.Entities
 		/// ID lica.
 		/// </summary>
 		[Key]
-		public Guid LiceID { get; set; }
+		public Guid ID { get; set; }
 
 		/// <summary>
 		/// ID fizičkog lica lica.

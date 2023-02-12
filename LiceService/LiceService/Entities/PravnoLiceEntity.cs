@@ -14,7 +14,7 @@ namespace LiceService.Entities
 		/// ID pravnog lica.
 		/// </summary>
 		[Key]
-		public Guid PravnoLiceID { get; set; }
+		public Guid ID { get; set; }
 
 		/// <summary>
 		/// ID kontakt osobe pravnog lica.

@@ -1,6 +1,6 @@
 ﻿namespace LiceService.Entities
 {
-	public class KontaktOsobaDTO
+	public class KontaktOsobaUpdateDTO
 	{
 	}
 }

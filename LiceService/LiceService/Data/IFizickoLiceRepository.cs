@@ -14,6 +14,6 @@ namespace LiceService.Data
 
 		void DeleteFizickoLice(Guid fizickoLiceID);
 
-		//bool SaveChanges();
+		bool SaveChanges();
 	}
 }

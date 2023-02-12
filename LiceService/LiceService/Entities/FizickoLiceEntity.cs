@@ -7,13 +7,11 @@ namespace LiceService.Entities
 	/// </summary>
 	public class FizickoLiceEntity
 	{
-		public FizickoLiceEntity() { }
-
 		/// <summary>
 		/// ID fizičkog lica.
 		/// </summary>
-		[Key]
-		public Guid FizickoLiceID { get; set; }
+		//[Key]
+		public Guid ID { get; set; }
 
 		/// <summary>
 		/// JMBG fizičkog lica.

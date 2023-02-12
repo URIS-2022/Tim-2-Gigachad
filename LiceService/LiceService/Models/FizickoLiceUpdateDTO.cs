@@ -1,6 +1,6 @@
 ﻿namespace LiceService.Entities
 {
-	public class FizickoLiceDTO
+	public class FizickoLiceUpdateDTO
 	{
 	}
 }

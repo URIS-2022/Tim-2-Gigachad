@@ -13,7 +13,7 @@ namespace LiceService.Entities
 		/// ID kontakt osobe.
 		/// </summary>
 		[Key]
-		public Guid KontaktOsobaID { get; set; }
+		public Guid ID { get; set; }
 
 		/// <summary>
 		/// Ime kontakt osobe.

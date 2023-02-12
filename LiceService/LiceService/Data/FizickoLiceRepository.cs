@@ -1,61 +1,45 @@
-﻿using LiceService.Entities;
+﻿using AutoMapper;
+using LiceService.Entities;
 
 namespace LiceService.Data
 {
 	public class FizickoLiceRepository : IFizickoLiceRepository
 	{
-		public static List<FizickoLiceEntity> FizickaLica { get; set; } = new List<FizickoLiceEntity>();
+		private readonly LiceContext context;
+		private readonly IMapper mapper;
 
-		public FizickoLiceRepository()
+		public FizickoLiceRepository(LiceContext context, IMapper mapper)
 		{
-			FillData();
-		}
-
-		private static void FillData()
-		{
-			FizickaLica.AddRange(new List<FizickoLiceEntity>
-			{
-				new FizickoLiceEntity
-				{
-
-					FizickoLiceID = Guid.Parse("32b7d397-b9d1-472d-bb40-542c68305098"),
-					JMBG = "4058851174218",
-					Ime = "Slavomir",
-					Prezime = "Slavic"
-				},
-				new FizickoLiceEntity
-				{
-					FizickoLiceID = Guid.Parse("3a054c77-1bf4-4853-8937-8e36502a6848"),
-					JMBG = "0786741214886",
-					Ime = "Radomir",
-					Prezime = "Radic"
-				}
-			}); ; ;
-		}
-
-		public FizickoLiceEntity CreateFizickoLice(FizickoLiceEntity fizickoLice)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void DeleteFizickoLice(Guid fizickoLiceID)
-		{
-			throw new NotImplementedException();
+			this.context = context;
+			this.mapper = mapper;
 		}
 
 		public List<FizickoLiceEntity> GetFizickaLica()
 		{
-			throw new NotImplementedException();
+			return context.FizickaLica.ToList();
+		}
+
+		public FizickoLiceEntity CreateFizickoLice(FizickoLiceEntity fizickoLice)
+		{
+			return null;
+		}
+
+		public void DeleteFizickoLice(Guid fizickoLiceID)
+		{
 		}
 
 		public FizickoLiceEntity GetFizickoLiceByID(Guid fizickoLiceID)
 		{
-			throw new NotImplementedException();
+			return null;
 		}
 
 		public void UpdateFizickoLice(FizickoLiceEntity fizickoLice)
 		{
-			throw new NotImplementedException();
+		}
+
+		public bool SaveChanges()
+		{
+			return context.SaveChanges() > 0;
 		}
 	}
 }
