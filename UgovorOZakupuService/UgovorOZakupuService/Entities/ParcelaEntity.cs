@@ -10,7 +10,7 @@ namespace UgovorOZakupuService.Entities
         [Key]
         public Guid ParcelaID { get; set; }
 
-        public string UkupnaPovrsina { get; set; }
+        public string? UkupnaPovrsina { get; set; }
 
 
 

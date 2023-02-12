@@ -27,9 +27,9 @@ namespace UgovorOZakupuService.Entities
 
         public DateOnly DatumUgovora { get; set; }
 
-        public int TrajanjeUgovora { get; set; }
+        public int? TrajanjeUgovora { get; set; }
 
-        public int TipGarancije { get; set; }
+        public int? TipGarancije { get; set; }
 
     }
 }
