@@ -6,9 +6,9 @@ namespace UplataService.Entities
     /// <summary>
     /// Model realnog entiteta korisnici.
     /// </summary>
-    public class KorisniciEntity
+    public class KorisnikEntity
     {
-        public KorisniciEntity() { }
+        public KorisnikEntity() { }
 
         /// <summary>
         /// ID korisnika.
