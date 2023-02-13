@@ -8,8 +8,6 @@ namespace LiceService.Entities
 	/// </summary>
 	public class LiceEntity
 	{
-		public LiceEntity() { }
-
 		/// <summary>
 		/// ID lica.
 		/// </summary>
@@ -17,46 +15,54 @@ namespace LiceService.Entities
 		public Guid ID { get; set; }
 
 		/// <summary>
-		/// ID fizičkog lica lica.
+		/// ID fizičkog lica.
 		/// </summary>
 		[ForeignKey("FizickoLiceEntity")]
 		public Guid FizickoLiceID { get; set; }
 
 		/// <summary>
-		/// ID pravnog lica lica.
+		/// ID pravnog lica.
 		/// </summary>
 		[ForeignKey("PravnoLiceEntity")]
-		public Guid PravnoLiceID { get; set; }
+		public Guid? PravnoLiceID { get; set; }
 
 		/// <summary>
 		/// ID adrese lica.
 		/// </summary>
-		[ForeignKey("AdresaLicaDTO")]
+		[Required]
 		public Guid AdresaID { get; set; }
 
 		/// <summary>
 		/// Telefon 1 lica.
 		/// </summary>
+		[Required]
+		[MaxLength(10)]
 		public string? Tel1 { get; set; }
 
 		/// <summary>
 		/// Telefon 2 lica.
 		/// </summary>
+		[MaxLength(10)]
 		public string? Tel2 { get; set; }
 
 		/// <summary>
 		/// Email lica.
 		/// </summary>
+		[Required]
+		[MaxLength(50)]
 		public string? Email { get; set; }
 
 		/// <summary>
 		/// Broj računa lica.
 		/// </summary>
+		[Required]
+		[MaxLength(20)]
 		public string? BrojRacuna { get; set; }
 
 		/// <summary>
 		/// Da li je lice ovlašćeno lice.
 		/// </summary>
-		public bool? OvlascenoLice { get; set; }
+		[Required]
+		public bool OvlascenoLice { get; set; }
 	}
 }

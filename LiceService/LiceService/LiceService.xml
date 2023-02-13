@@ -11,6 +11,16 @@
             <param name="korisnik">Model sa podacima na osnovu kojih se vrši autentifikacija.</param>
             <returns>Vraća HTTP odgovore.</returns>
         </member>
+        <member name="T:LiceService.Controllers.FizickoLiceController">
+            <summary>
+            Kontroler za entitete fizička lica.
+            </summary>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.#ctor(LiceService.Data.IFizickoLiceRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za kontroler preko konstruktora.
+            </summary>
+        </member>
         <member name="M:LiceService.Data.KorisnikRepository.FillData">
             <summary>
             Metoda koja upisuje testne podatke.
@@ -202,7 +212,7 @@
         </member>
         <member name="M:LiceService.Entities.LiceContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
             <summary>
-            Dependency injection za konfiguraciju konekcije sa bazom.
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
             </summary>
         </member>
         <member name="M:LiceService.Entities.LiceContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
@@ -222,12 +232,12 @@
         </member>
         <member name="P:LiceService.Entities.LiceEntity.FizickoLiceID">
             <summary>
-            ID fizičkog lica lica.
+            ID fizičkog lica.
             </summary>
         </member>
         <member name="P:LiceService.Entities.LiceEntity.PravnoLiceID">
             <summary>
-            ID pravnog lica lica.
+            ID pravnog lica.
             </summary>
         </member>
         <member name="P:LiceService.Entities.LiceEntity.AdresaID">

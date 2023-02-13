@@ -13,57 +13,57 @@ namespace LiceService.Migrations
     [DbContext(typeof(LiceContext))]
     partial class LiceContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
+	   protected override void BuildModel(ModelBuilder modelBuilder)
+	   {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+		  modelBuilder
+			 .HasAnnotation("ProductVersion", "7.0.2")
+			 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+		  SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("LiceService.Entities.FizickoLiceEntity", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+		  modelBuilder.Entity("LiceService.Entities.FizickoLiceEntity", b =>
+			 {
+				b.Property<Guid>("ID")
+				    .ValueGeneratedOnAdd()
+				    .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+				b.Property<string>("Ime")
+				    .IsRequired()
+				    .HasMaxLength(15)
+				    .HasColumnType("nvarchar(15)");
 
-                    b.Property<string>("JMBG")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
+				b.Property<string>("JMBG")
+				    .IsRequired()
+				    .HasMaxLength(13)
+				    .HasColumnType("nvarchar(13)");
 
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+				b.Property<string>("Prezime")
+				    .IsRequired()
+				    .HasMaxLength(15)
+				    .HasColumnType("nvarchar(15)");
 
-                    b.HasKey("ID");
+				b.HasKey("ID");
 
-                    b.ToTable("FizickaLica");
+				b.ToTable("FizickaLica");
 
-                    b.HasData(
-                        new
-                        {
-                            ID = new Guid("32b7d397-b9d1-472d-bb40-542c68305098"),
-                            Ime = "Slavomir",
-                            JMBG = "4058851174218",
-                            Prezime = "Slavic"
-                        },
-                        new
-                        {
-                            ID = new Guid("3a054c77-1bf4-4853-8937-8e36502a6848"),
-                            Ime = "Radomir",
-                            JMBG = "0786741214886",
-                            Prezime = "Radic"
-                        });
-                });
+				b.HasData(
+				    new
+				    {
+					   ID = new Guid("32b7d397-b9d1-472d-bb40-542c68305098"),
+					   Ime = "Slavomir",
+					   JMBG = "4058851174218",
+					   Prezime = "Slavic"
+				    },
+				    new
+				    {
+					   ID = new Guid("3a054c77-1bf4-4853-8937-8e36502a6848"),
+					   Ime = "Radomir",
+					   JMBG = "0786741214886",
+					   Prezime = "Radic"
+				    });
+			 });
 #pragma warning restore 612, 618
-        }
+	   }
     }
 }

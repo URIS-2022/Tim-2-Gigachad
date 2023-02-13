@@ -1,4 +1,6 @@
-﻿namespace LiceService.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LiceService.Entities
 {
 	/// <summary>
 	/// Predstavlja model korisnika za autentifikaciju.
@@ -8,36 +10,48 @@
 		/// <summary>
 		/// ID korisnika.
 		/// </summary>
+		[Key]
 		public Guid ID { get; set; }
 
 		/// <summary>
 		/// Korisničko ime/naziv.
 		/// </summary>
-		public string Naziv { get; set; }
+		[Required]
+		[MaxLength(15)]
+		public string? Naziv { get; set; }
 
 		/// <summary>
 		/// Hašovana lozinka korisnika.
 		/// </summary>
-		public string Lozinka { get; set; }
+		[Required]
+		[MaxLength(25)]
+		public string? Lozinka { get; set; }
 
 		/// <summary>
 		/// Salt = So korisnikove lozinke.
 		/// </summary>
-		public string So { get; set; }
+		[Required]
+		public string? So { get; set; }
 
 		/// <summary>
 		/// Ime korisnika.
 		/// </summary>
-		public string Ime { get; set; }
+		[Required]
+		[MaxLength(15)]
+		public string? Ime { get; set; }
 
 		/// <summary>
 		/// Prezime korisnika.
 		/// </summary>
-		public string Prezime { get; set; }
+		[Required]
+		[MaxLength(15)]
+		public string? Prezime { get; set; }
 
 		/// <summary>
 		/// Email korisnika.
 		/// </summary>
-		public string Email { get; set; }
+		[Required]
+		[MaxLength(50)]
+		public string? Email { get; set; }
 	}
 }

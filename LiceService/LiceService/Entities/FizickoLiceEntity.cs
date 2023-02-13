@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LiceService.Entities
 {
@@ -12,7 +11,6 @@ namespace LiceService.Entities
 		/// ID fizičkog lica.
 		/// </summary>
 		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public Guid ID { get; set; }
 
 		/// <summary>
@@ -21,20 +19,20 @@ namespace LiceService.Entities
 		[Required]
 		[MinLength(13)]
 		[MaxLength(13)]
-		public string JMBG { get; set; }
+		public string? JMBG { get; set; }
 
 		/// <summary>
 		/// Ime fizičkog lica.
 		/// </summary>
 		[Required]
 		[MaxLength(15)]
-		public string Ime { get; set; }
+		public string? Ime { get; set; }
 
 		/// <summary>
 		/// Prezime fizičkog lica.
 		/// </summary>
 		[Required]
 		[MaxLength(15)]
-		public string Prezime { get; set; }
+		public string? Prezime { get; set; }
 	}
 }

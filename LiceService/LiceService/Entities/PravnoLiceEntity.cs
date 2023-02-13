@@ -8,8 +8,6 @@ namespace LiceService.Entities
 	/// </summary>
 	public class PravnoLiceEntity
 	{
-		public PravnoLiceEntity() { }
-
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
@@ -25,11 +23,14 @@ namespace LiceService.Entities
 		/// <summary>
 		/// Naziv pravnog lica.
 		/// </summary>
+		[Required]
+		[MaxLength(25)]
 		public string? Naziv { get; set; }
 
 		/// <summary>
 		/// Matični broj pravnog lica.
 		/// </summary>
+		[MaxLength(8)]
 		public string? MaticniBroj { get; set; }
 	}
 }

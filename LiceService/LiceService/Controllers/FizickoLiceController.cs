@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LiceService.Controllers
 {
+	/// <summary>
+	/// Kontroler za entitete fizička lica.
+	/// </summary>
 	//[Authorize]
 	[ApiController]
 	[Route("api/fizickaLica")]
@@ -15,7 +18,10 @@ namespace LiceService.Controllers
 		private readonly IFizickoLiceRepository fizickoLiceRepository;
 		private readonly LinkGenerator linkGenerator;
 		private readonly IMapper mapper;
-		
+
+		/// <summary>
+		/// Dependency injection za kontroler preko konstruktora.
+		/// </summary>
 		public FizickoLiceController(IFizickoLiceRepository fizickoLiceRepository, LinkGenerator linkGenerator, IMapper mapper)
 		{
 			this.fizickoLiceRepository = fizickoLiceRepository;
@@ -29,13 +35,10 @@ namespace LiceService.Controllers
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		public ActionResult<List<FizickoLiceDTO>> GetFizickaLica()
 		{
-			//List<FizickoLiceDTO>
-			//return Ok("seses");
 			var fizickaLica = fizickoLiceRepository.GetFizickaLica();
 			if (fizickaLica == null || fizickaLica.Count == 0)
 				return NoContent();
 			return Ok(mapper.Map<List<FizickoLiceDTO>>(fizickaLica));
-			//return Ok(fizickaLica);
 		}
 	}
 }

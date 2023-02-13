@@ -5,14 +5,14 @@ namespace LiceService.Entities
 	public class LiceContext : DbContext
 	{
 		/// <summary>
-		/// Dependency injection za konfiguraciju konekcije sa bazom.
+		/// Dependency injection za konfiguraciju konekcije i opcije sa bazom.
 		/// </summary>
 		public LiceContext(DbContextOptions options) : base(options) { }
 		
-		//public DbSet<KontaktOsobaEntity> KontaktOsobe { get; set; }
-		//public DbSet<PravnoLiceEntity> PravnaLica { get; set; }
+		public DbSet<KontaktOsobaEntity> KontaktOsobe { get; set; }
+		public DbSet<PravnoLiceEntity> PravnaLica { get; set; }
 		public DbSet<FizickoLiceEntity> FizickaLica { get; set; }
-		//public DbSet<LiceEntity> Lica { get; set; }
+		public DbSet<LiceEntity> Lica { get; set; }
 
 		/// <summary>
 		/// Popunjava bazu sa nekim inicijalnim podacima.
