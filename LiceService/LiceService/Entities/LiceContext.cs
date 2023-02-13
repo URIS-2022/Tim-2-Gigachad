@@ -4,22 +4,15 @@ namespace LiceService.Entities
 {
 	public class LiceContext : DbContext
 	{
-		private readonly IConfiguration configuration;
-
-		public LiceContext(DbContextOptions options, IConfiguration configuration) : base(options)
-		{
-			this.configuration = configuration;
-		}
+		/// <summary>
+		/// Dependency injection za konfiguraciju konekcije sa bazom.
+		/// </summary>
+		public LiceContext(DbContextOptions options) : base(options) { }
 		
-		public DbSet<KontaktOsobaEntity> KontaktOsobe { get; set; }
-		public DbSet<PravnoLiceEntity> PravnaLica { get; set; }
+		//public DbSet<KontaktOsobaEntity> KontaktOsobe { get; set; }
+		//public DbSet<PravnoLiceEntity> PravnaLica { get; set; }
 		public DbSet<FizickoLiceEntity> FizickaLica { get; set; }
-		public DbSet<LiceEntity> Lica { get; set; }
-
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			optionsBuilder.UseSqlServer(configuration.GetConnectionString("LiceDB"));
-		}
+		//public DbSet<LiceEntity> Lica { get; set; }
 
 		/// <summary>
 		/// Popunjava bazu sa nekim inicijalnim podacima.

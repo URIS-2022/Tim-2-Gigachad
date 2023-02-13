@@ -9,7 +9,7 @@ namespace LiceService.Profiles
 		{
 			CreateMap<FizickoLiceEntity, FizickoLiceDTO>()
 				.ForMember(
-					dest => dest.Naziv,
+					dest => dest.PunoIme,
 					opt => opt.MapFrom(src => $"{src.Ime} {src.Prezime}"));
 		}
 	}

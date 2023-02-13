@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiceService", "LiceService\LiceService.csproj", "{B9DEB880-069F-474C-8675-5891236897E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiceService", "LiceService\LiceService.csproj", "{BA85C261-3677-42B2-99D4-4CD50D11F81E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B9DEB880-069F-474C-8675-5891236897E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9DEB880-069F-474C-8675-5891236897E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9DEB880-069F-474C-8675-5891236897E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9DEB880-069F-474C-8675-5891236897E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA85C261-3677-42B2-99D4-4CD50D11F81E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA85C261-3677-42B2-99D4-4CD50D11F81E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA85C261-3677-42B2-99D4-4CD50D11F81E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA85C261-3677-42B2-99D4-4CD50D11F81E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FDF81487-AAC9-4F85-AB07-C3EA0B93B36F}
+		SolutionGuid = {2E111736-852C-4E1F-A680-0F3A0E7EB125}
 	EndGlobalSection
 EndGlobal

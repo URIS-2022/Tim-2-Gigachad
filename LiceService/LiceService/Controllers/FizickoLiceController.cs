@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using LiceService.Data;
 using LiceService.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LiceService.Controllers
 {
+	//[Authorize]
 	[ApiController]
 	[Route("api/fizickaLica")]
 	[Produces("application/json", "application/xml")]
@@ -25,15 +27,15 @@ namespace LiceService.Controllers
 		[HttpHead]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
-		public ActionResult<List<FizickoLiceEntity>> GetFizickaLica()
+		public ActionResult<List<FizickoLiceDTO>> GetFizickaLica()
 		{
 			//List<FizickoLiceDTO>
 			//return Ok("seses");
 			var fizickaLica = fizickoLiceRepository.GetFizickaLica();
 			if (fizickaLica == null || fizickaLica.Count == 0)
 				return NoContent();
-			//return Ok(mapper.Map<List<FizickoLiceDTO>>(fizickaLica));
-			return Ok(fizickaLica);
+			return Ok(mapper.Map<List<FizickoLiceDTO>>(fizickaLica));
+			//return Ok(fizickaLica);
 		}
 	}
 }
