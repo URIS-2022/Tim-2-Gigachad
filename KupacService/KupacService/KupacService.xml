@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KupacService</name>
+    </assembly>
+    <members>
+        <member name="M:KupacService.Entities.KupacContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:KupacService.Entities.KupacEntity">
+            <summary>
+            Model realnog entiteta lice.
+            </summary>
+        </member>
+        <member name="P:KupacService.Entities.KupacEntity.KupacID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.Entities.KupacEntity.LiceID">
+            <summary>
+            ID adrese lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.Entities.KupacEntity.OvlascenoLiceID">
+            <summary>
+            Telefon 1 lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.Entities.KupacEntity.JavnoNadmetanjeID">
+            <summary>
+            ID fizičkog lica lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.Entities.KupacEntity.Prioritet">
+            <summary>
+            ID pravnog lica lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.Entities.KupacEntity.ImaZabranu">
+            <summary>
+            Telefon 2 lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.Entities.KupacEntity.DatumPocetkaZabrane">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.Entities.KupacEntity.DatumZavrsetkaZabrane">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.Entities.KupacEntity.BrojKupovina">
+            <summary>
+            Da li je lice ovlašćeno lice.
+            </summary>\
+        </member>
+        <member name="T:KupacService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:KupacService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:KupacService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:KupacService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
