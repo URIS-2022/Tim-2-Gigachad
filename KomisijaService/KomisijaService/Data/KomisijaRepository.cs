@@ -19,22 +19,22 @@ namespace KomisijaService.Data
         }
         public KomisijaEntity CreateKomisija(KomisijaEntity komisija)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public void DeleteKomisija(Guid komisijaID)
         {
-            throw new NotImplementedException();
+            
         }
 
         public KomisijaEntity GetKomisijaByID(Guid komisijaID)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public void UpdateKomisija(KomisijaEntity komisija)
         {
-            throw new NotImplementedException();
+            
         }
 
         public bool saveChanges()

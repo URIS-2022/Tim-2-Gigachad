@@ -5,8 +5,6 @@ namespace KomisijaService.Entities
 {
     public class KomisijaEntity
     {
-        public KomisijaEntity() { }
-
         /// <summary>
 		/// ID komisije.
 		/// </summary>
@@ -16,37 +14,35 @@ namespace KomisijaService.Entities
         /// <summary>
 		/// ID 1. clana.
 		/// </summary>
-        [ForeignKey("LiceDTO")]
+        [Required]
         public Guid Clan1ID { get; set; }
 
         /// <summary>
 		/// ID 2. clana.
 		/// </summary>
-        [ForeignKey("LiceDTO")]
+        [Required]
         public Guid Clan2ID { get; set; }
 
         /// <summary>
 		/// ID 3. clana.
 		/// </summary>
-        [ForeignKey("LiceDTO")]
+        [Required]
         public Guid Clan3ID { get; set; }
 
         /// <summary>
 		/// ID 4. clana.
 		/// </summary>
-        [ForeignKey("LiceDTO")]
         public Guid Clan4ID { get; set; }
 
         /// <summary>
 		/// ID 5. clana.
 		/// </summary>
-        [ForeignKey("LiceDTO")]
         public Guid Clan5ID { get; set; }
 
         /// <summary>
 		/// ID predsednika.
 		/// </summary>
-        [ForeignKey("LiceDTO")]
+        [Required]
         public Guid PredsednikID { get; set; }
 
     }

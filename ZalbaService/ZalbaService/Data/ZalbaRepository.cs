@@ -21,22 +21,22 @@ namespace ZalbaService.Data
 
         public ZalbaEntity CreateZalba(ZalbaEntity zalba)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public void DeleteZalba(Guid zalbaID)
         {
-            throw new NotImplementedException();
+
         }
 
         public ZalbaEntity GetZalbaByID(Guid zalbaID)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public void UpdateZalba(ZalbaEntity zalba)
         {
-            throw new NotImplementedException();
+            
         }
 
         public bool SaveChanges()

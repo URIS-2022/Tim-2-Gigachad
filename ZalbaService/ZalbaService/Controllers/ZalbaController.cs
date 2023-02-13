@@ -28,12 +28,12 @@ namespace ZalbaService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<ZalbaEntity>> GetZalbe()
         {
-            return Ok("seses");
-            //var zalbe = zalbaRepository.GetZalbe();
-            //if (zalbe == null || zalbe.Count == 0)
-                //return NoContent();
+            //return Ok("seses");
+            var zalbe = zalbaRepository.GetZalbe();
+            if (zalbe == null || zalbe.Count == 0)
+                return NoContent();
             //return Ok(mapper.Map<List<FizickoLiceDTO>>(fizickaLica));
-            //return Ok(zalbe);
+            return Ok(zalbe);
         }
     }
 }

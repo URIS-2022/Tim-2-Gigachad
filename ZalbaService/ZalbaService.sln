@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZalbaService", "ZalbaService\ZalbaService.csproj", "{DB1EC729-0FFA-461A-BB2D-3A8E70DB81E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZalbaService", "ZalbaService\ZalbaService.csproj", "{F9A7CFF4-22EC-4CC2-9622-135D659DF5B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DB1EC729-0FFA-461A-BB2D-3A8E70DB81E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB1EC729-0FFA-461A-BB2D-3A8E70DB81E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB1EC729-0FFA-461A-BB2D-3A8E70DB81E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB1EC729-0FFA-461A-BB2D-3A8E70DB81E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A7CFF4-22EC-4CC2-9622-135D659DF5B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A7CFF4-22EC-4CC2-9622-135D659DF5B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A7CFF4-22EC-4CC2-9622-135D659DF5B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A7CFF4-22EC-4CC2-9622-135D659DF5B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {23DD25AC-1B62-4687-8610-1B5C691BA8E4}
+		SolutionGuid = {A8B61A53-DC7C-4D76-BA55-87B341BEC675}
 	EndGlobalSection
 EndGlobal

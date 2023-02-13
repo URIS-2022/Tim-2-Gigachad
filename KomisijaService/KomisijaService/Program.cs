@@ -1,5 +1,6 @@
 using KomisijaService.Data;
 using KomisijaService.Entities;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +14,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IKomisijaRepository, KomisijaRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddDbContext<KomisijaContext>();
+builder.Services.AddDbContext<KomisijaContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("KomisijaDB")));
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<KomisijaContext>();
+    context.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
