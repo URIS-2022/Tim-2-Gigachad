@@ -2,13 +2,12 @@
   "profiles": {
     "AdresaService": {
       "commandName": "Project",
-      "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5079"
+      "applicationUrl": "http://localhost:5014"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -23,7 +22,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:54632",
+      "applicationUrl": "http://localhost:41026",
       "sslPort": 0
     }
   }

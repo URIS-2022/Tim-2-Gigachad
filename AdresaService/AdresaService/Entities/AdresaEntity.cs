@@ -1,4 +1,6 @@
-﻿namespace AdresaService.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AdresaService.Entities
 {
     public class AdresaEntity
     {
@@ -11,6 +13,7 @@
         /// <summary>
         /// Ulica.
         /// </summary>
+        [MaxLength(100)]
         public string? Ulica { get; set; }
 
         /// <summary>
@@ -21,6 +24,7 @@
         /// <summary>
         /// Mesto.
         /// </summary>
+        [MaxLength(100)]
         public string? Mesto { get; set; }
 
         /// <summary>
@@ -31,6 +35,7 @@
         /// <summary>
         /// Država broj adrese.
         /// </summary>
-        public int Drzava { get; set; }
+        [MaxLength(100)]
+        public string? Drzava { get; set; }
     }
 }

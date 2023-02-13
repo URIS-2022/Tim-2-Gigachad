@@ -14,7 +14,7 @@ namespace AdresaService.Data
             this.mapper = mapper;
         }
 
-        public List<AdresaEntity> GetAdresa()
+        public List<AdresaEntity> GetAdrese()
         {
             return context.Adresa.ToList();
         }
@@ -41,11 +41,6 @@ namespace AdresaService.Data
         public bool SaveChanges()
         {
             return context.SaveChanges() > 0;
-        }
-
-        public List<AdresaEntity> GetAdrese()
-        {
-            throw new NotImplementedException();
         }
     }
 }

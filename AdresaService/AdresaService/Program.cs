@@ -1,5 +1,6 @@
 using AdresaService.Data;
 using AdresaService.Entities;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +14,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAdresaRepository, AdresaRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddDbContext<AdresaContext>();
+builder.Services.AddDbContext<AdresaContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AdresaDB")));
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AdresaContext>();
+    context.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

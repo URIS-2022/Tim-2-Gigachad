@@ -30,7 +30,7 @@ namespace AdresaService.Entities
                 Broj = 11,
                 Mesto = "Novi Sad",
                 PostanskiBroj = 22000,
-                Drazva = "Srbija"
+                Drzava = "Srbija"
             });
             builder.Entity<AdresaEntity>().HasData(new
             {
@@ -39,7 +39,7 @@ namespace AdresaService.Entities
                 Broj = 23,
                 Mesto = "Novi Sad",
                 PostanskiBroj = 22000,
-                Drazva = "Srbija"
+                Drzava = "Srbija"
             });
         }
     }

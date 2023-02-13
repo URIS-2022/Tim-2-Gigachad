@@ -28,7 +28,7 @@ namespace AdresaService.Controllers
         public ActionResult<List<AdresaEntity>> GetAdrese()
         {
             //List<AdresaDTO>
-            return Ok("aaaaaaaa");
+            
             var adrese = adresaRepository.GetAdrese();
             if (adrese == null || adrese.Count == 0)
                 return NoContent();

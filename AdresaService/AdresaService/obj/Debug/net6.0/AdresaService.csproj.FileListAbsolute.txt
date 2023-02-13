@@ -5,6 +5,7 @@ C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\bin\Debug\ne
 C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\bin\Debug\net6.0\AdresaService.runtimeconfig.json
 C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\bin\Debug\net6.0\AdresaService.dll
 C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\bin\Debug\net6.0\AdresaService.pdb
+C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\bin\Debug\net6.0\AdresaService.xml
 C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\bin\Debug\net6.0\Azure.Core.dll

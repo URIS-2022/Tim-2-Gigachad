@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5iRRYUDPjKl4jF3kHYWlYt49F4J+BB7OLC+fpSAN/i4vcTDRYEEjkGaV1z22vRnkUdXmlywo2aFSCoZp/E9wqA==",
+  "dgSpecHash": "cXBibtPvRyeVVo43cHD6LPYbQVEjl0ytmAtrmjDPUAkHhoQfKJbKE5flKMoGh6Mtep45/UID+5r8sbO1r29hkQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ofidi\\Documents\\Tim-2-Gigachad\\AdresaService\\AdresaService\\AdresaService.csproj",
   "expectedPackageFiles": [
@@ -20,7 +20,7 @@
     "C:\\Users\\ofidi\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.2\\microsoft.entityframeworkcore.design.7.0.2.nupkg.sha512",
     "C:\\Users\\ofidi\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.2\\microsoft.entityframeworkcore.relational.7.0.2.nupkg.sha512",
     "C:\\Users\\ofidi\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.2\\microsoft.entityframeworkcore.sqlserver.7.0.2.nupkg.sha512",
-    "C:\\Users\\ofidi\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.5\\microsoft.entityframeworkcore.tools.6.0.5.nupkg.sha512",
+    "C:\\Users\\ofidi\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.2\\microsoft.entityframeworkcore.tools.7.0.2.nupkg.sha512",
     "C:\\Users\\ofidi\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\ofidi\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\ofidi\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
