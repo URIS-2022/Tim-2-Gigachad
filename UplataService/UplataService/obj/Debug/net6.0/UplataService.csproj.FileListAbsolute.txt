@@ -5,6 +5,7 @@ D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\U
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\UplataService.runtimeconfig.json
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\UplataService.dll
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\UplataService.pdb
+D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\UplataService.xml
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\AutoMapper.dll
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\Azure.Core.dll

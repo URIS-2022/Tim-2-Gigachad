@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using UplataService.Data;
 using UplataService.Entities;
 
@@ -13,9 +14,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUplataRepository, UplataRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddDbContext<UplataContext>();
+builder.Services.AddDbContext<UplataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UplataDB")));
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<UplataContext>();
+    context.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

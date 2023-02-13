@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using KorisniciService.Data;
 using Microsoft.AspNetCore.Mvc;
-using UplataService.Entities;
+using KorisniciService.Entities;
 
 namespace KorisniciService.Controllers
 {
@@ -28,7 +28,6 @@ namespace KorisniciService.Controllers
         public ActionResult<List<KorisnikEntity>> GetKorisnici()
         {
             //List<KorisnikDTO>
-            return Ok("seses");
             var korisnici = KorisnikRepository.GetKorisnici();
             if (korisnici == null || korisnici.Count == 0)
                 return NoContent();

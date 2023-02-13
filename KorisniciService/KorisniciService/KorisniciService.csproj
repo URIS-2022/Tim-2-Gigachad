@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
     <Folder Include="Postman\" />
     <Folder Include="Profiles\" />
   </ItemGroup>

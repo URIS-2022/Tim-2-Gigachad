@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using KorisniciService.Entities;
-using UplataService.Entities;
 
 namespace KorisniciService.Data
 {

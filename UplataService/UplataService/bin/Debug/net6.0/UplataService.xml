@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UplataService</name>
+    </assembly>
+    <members>
+        <member name="M:UplataService.Entities.UplataContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:UplataService.Entities.UplataEntity">
+            <summary>
+            Model realnog entiteta uplata.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataEntity.UplataID">
+            <summary>
+            ID uplate.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataEntity.JavnoNadmetanjeID">
+            <summary>
+            ID javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataEntity.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataEntity.BrojRacuna">
+            <summary>
+            Broj racuna.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataEntity.PozivNaBroj">
+            <summary>
+            Poziv na broj.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataEntity.Iznos">
+            <summary>
+            Iznos.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataEntity.Uplatilac">
+            <summary>
+            Ime uplatioca.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataEntity.SvrhaUplate">
+            <summary>
+            Svrha uplate.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataEntity.DatumUplate">
+            <summary>
+            Datum uplate.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataEntity.KursnaLista">
+            <summary>
+            Kursna lista.
+            </summary>
+        </member>
+        <member name="T:UplataService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:UplataService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:UplataService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:UplataService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:UplataService.Models.JavnoNadmetanjeDTO">
+            <summary>
+            DTO za javno nadmetanje.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.AdresaNadID">
+            <summary>
+            ID adrese javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.DeoParceleID">
+            <summary>
+            ID dela parcele.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.NajbKupacID">
+            <summary>
+            ID najboljeg kupca.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.TipNad">
+            <summary>
+            Tip nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.Opstina">
+            <summary>
+            Opstina.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.DatumNad">
+            <summary>
+            Datum odrzavanja nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.VremePoc">
+            <summary>
+            Vreme pocinjanja.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.VremeKraj">
+            <summary>
+            Vreme zavrsetka.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.PeriodZakupaM">
+            <summary>
+            Period zakupa u mesecima.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.PocetnaCena">
+            <summary>
+            Pocetna cena.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.VisinaCene">
+            <summary>
+            Rast cene.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.IzlicitiranaCena">
+            <summary>
+            Krajnja cena.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.NajboljaPonuda">
+            <summary>
+            Najbolja ponuda.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.BrojUcesnika">
+            <summary>
+            Broj ucesnika.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.PrijavljeniKupci">
+            <summary>
+            Broj prijavljenih kupaca.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.Licitanti">
+            <summary>
+            Broj licitanata.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.Krug">
+            <summary>
+            Krug licitacije.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.StatusNad">
+            <summary>
+            Status nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.JavnoNadmetanjeDTO.Izuzeto">
+            <summary>
+            Da li je izuzeto.
+            </summary>
+        </member>
+        <member name="T:UplataService.Models.KupacDTO">
+            <summary>
+            DTO za kupca.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KupacDTO.LiceID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KupacDTO.OvlascenoLiceID">
+            <summary>
+            ID ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KupacDTO.JavnoNadmetanjeID">
+            <summary>
+            ID javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KupacDTO.Prioritet">
+            <summary>
+            Prioritet.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KupacDTO.ImaZabranu">
+            <summary>
+            Da li ima zabranu.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KupacDTO.DatumPocetkaZabrane">
+            <summary>
+            Datum pocetka zabrane.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KupacDTO.DatumZavrsetkaZabrane">
+            <summary>
+            Datum zavrsetka zabrane.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KupacDTO.BrojKupovina">
+            <summary>
+            Broj kupovina.
+            </summary>
+        </member>
+    </members>
+</doc>

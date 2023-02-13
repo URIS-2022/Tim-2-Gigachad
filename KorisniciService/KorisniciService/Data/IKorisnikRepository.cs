@@ -1,4 +1,4 @@
-﻿using UplataService.Entities;
+﻿using KorisniciService.Entities;
 
 namespace KorisniciService.Data
 {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UplataService.Entities
+namespace KorisniciService.Entities
 {
     /// <summary>
     /// Model realnog entiteta korisnici.

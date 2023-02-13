@@ -33,7 +33,7 @@ namespace UplataService.Entities
                 Iznos = 45000,
                 Uplatilac = "Pera Peric",
                 SvrhaUplate = "Uplata na racun",
-                //DatumUplate = "6/1/2008 7:47:00 AM"
+                DatumUplate = new DateTime(2022, 3, 4),
                 //Katastrofa je DateTime za rad
                 KursnaLista = "???????"
             });
@@ -47,7 +47,7 @@ namespace UplataService.Entities
                 Iznos = 1550,
                 Uplatilac = "Sima Simic",
                 SvrhaUplate = "Racun za Telenor",
-                //DatumUplate = "6/1/2008 7:47:00 AM"
+                DatumUplate = new DateTime(2022, 5, 10),
                 //Katastrofa je DateTime za rad
                 KursnaLista = "???????"
             });

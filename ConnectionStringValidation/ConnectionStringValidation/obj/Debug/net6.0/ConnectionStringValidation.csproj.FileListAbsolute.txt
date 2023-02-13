@@ -1,0 +1,100 @@
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\ConnectionStringValidation.exe
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\ConnectionStringValidation.deps.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\ConnectionStringValidation.runtimeconfig.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\ConnectionStringValidation.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\ConnectionStringValidation.pdb
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Runtime.Caching.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.csproj.AssemblyReference.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.AssemblyInfoInputs.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.AssemblyInfo.cs
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.csproj.CoreCompileInputs.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.csproj.CopyComplete
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\refint\ConnectionStringValidation.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.pdb
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.genruntimeconfig.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ref\ConnectionStringValidation.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\ConnectionStringValidation.exe
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\ConnectionStringValidation.deps.json
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\ConnectionStringValidation.runtimeconfig.json
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\ConnectionStringValidation.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\ConnectionStringValidation.pdb
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Azure.Core.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Azure.Identity.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Memory.Data.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\System.Windows.Extensions.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.csproj.AssemblyReference.cache
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.GeneratedMSBuildEditorConfig.editorconfig
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.AssemblyInfoInputs.cache
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.AssemblyInfo.cs
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.csproj.CoreCompileInputs.cache
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.csproj.CopyComplete
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\refint\ConnectionStringValidation.dll
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.pdb
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ConnectionStringValidation.genruntimeconfig.cache
+D:\Files\Fax\URIS\Timski projekat\ConnectionStringValidation\ConnectionStringValidation\obj\Debug\net6.0\ref\ConnectionStringValidation.dll

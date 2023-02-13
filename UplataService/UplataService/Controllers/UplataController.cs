@@ -25,10 +25,9 @@ namespace UplataService.Controllers
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<List<UplataEntity>> GetUplata()
+        public ActionResult<List<UplataEntity>> GetUplate()
         {
             //List<UplataDTO>
-            return Ok("seses");
             var uplate = UplataRepository.GetUplate();
             if (uplate == null || uplate.Count == 0)
                 return NoContent();

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using UplataService.Entities;
 
 namespace KorisniciService.Entities
 {
@@ -16,7 +15,7 @@ namespace KorisniciService.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("LiceDB"));
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("KorisniciDB"));
         }
 
         /// <summary>
