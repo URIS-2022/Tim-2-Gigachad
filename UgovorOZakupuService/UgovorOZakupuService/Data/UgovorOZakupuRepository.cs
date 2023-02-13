@@ -1,71 +1,42 @@
 ﻿using UgovorOZakupuService.Entities;
+using AutoMapper;
 
 namespace UgovorOZakupuService.Data
 {
     public class UgovorOZakupuRepository : IUgovorOZakupuRepository
     {
-        public static List<UgovorOZakupuEntity> Ugovori { get; set; } = new List<UgovorOZakupuEntity>();
+        private readonly UgovorOZakupuContext context;
+        private readonly IMapper mapper;
 
-        public UgovorOZakupuRepository()
+        public UgovorOZakupuRepository(UgovorOZakupuContext context, IMapper mapper)
         {
-            FillData();
-        }
-
-        private void FillData()
-        {
-            Ugovori.AddRange(new List<UgovorOZakupuEntity>
-            {
-                new UgovorOZakupuEntity
-                {
-                    UgovorOZakupuID = Guid.Parse("Dodajte Guid"),
-                    KupacID = Guid.Parse("Dodajte Guid"),
-                    OvlascenoLiceID = Guid.Parse("Dodajte Guid"),
-                    JavnoNadmetanjeID = Guid.Parse("Dodajte Guid"),
-                    DokumentID = Guid.Parse("Dodajte Guid"),
-                    DatumUgovora = new DateOnly(2007, 01, 05),
-                    TrajanjeUgovora = 8,
-                    TipGarancije = 5
-                },
-
-                new UgovorOZakupuEntity
-                {
-                    UgovorOZakupuID = Guid.Parse("Dodajte Guid"),
-                    KupacID = Guid.Parse("Dodajte Guid"),
-                    OvlascenoLiceID = Guid.Parse("Dodajte Guid"),
-                    JavnoNadmetanjeID = Guid.Parse("Dodajte Guid"),
-                    DokumentID = Guid.Parse("Dodajte Guid"),
-                    DatumUgovora = new DateOnly(2005, 07, 16),
-                    TrajanjeUgovora = 4,
-                    TipGarancije = 2
-                }
-            }); ; ;
-
-
+            this.context = context;
+            this.mapper = mapper;
         }
 
         public List<UgovorOZakupuEntity> GetUgovorOZakupu()
         {
-            throw new NotImplementedException();
+            return context.Ugovori.ToList();
         }
 
         public UgovorOZakupuEntity GetUgovorOZakupuID(Guid UgovorOZakupuID)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public UgovorOZakupuEntity CreateUgovorOZakupu(UgovorOZakupuEntity UgovorOZakupu)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public void DeleteUgovorOZakupu(Guid UgovorOZakupuID)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void UpdateUgovorOZakupu(UgovorOZakupuEntity UgovorOZakupu)
         {
-            throw new NotImplementedException();
+            
         }
 
         public bool SaveChanges()
