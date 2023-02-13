@@ -1,12 +1,12 @@
 ﻿using DokumentiService.Entities;
-namespace DokumentService.Data
+namespace DokumentiService.Data
 {
     public interface IInterniDokumentRepository
     {
         List<InterniDokumentEntity> GetInterniDokument();
 
-        InterniDokumentEntity GetDokumentID(Guid InterniDokumentID);
-        InterniDokumentEntity CreateDokument(DokumentEntity InterniDokument);
+        InterniDokumentEntity GetInterniDokumentID(Guid InterniDokumentID);
+        InterniDokumentEntity CreateInterniDokument(InterniDokumentEntity InterniDokument);
         void DeleteInterniDokument(Guid InterniDokumentID);
         void UpdateInterniDokument(DokumentEntity InterniDokument);
         bool SaveChanges();

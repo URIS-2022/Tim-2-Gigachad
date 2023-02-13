@@ -1,5 +1,5 @@
 ﻿using DokumentiService.Entities;
-namespace DokumentService.Data
+namespace DokumentiService.Data
 {
     public interface IDokumentRepository
     {
