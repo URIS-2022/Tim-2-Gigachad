@@ -1,21 +1,22 @@
-﻿using KomisijaService.Entities;
+﻿using AutoMapper;
+using KomisijaService.Entities;
 
 namespace KomisijaService.Data
 {
     public class KomisijaRepository : IKomisijaRepository
-    {
+    { 
+        private readonly KomisijaContext context;
+        private readonly IMapper mapper;
 
-        List<KomisijaEntity> komisija { get; set; } = new List<KomisijaEntity>();
-
-        public KomisijaRepository() {
-            FillData();
-        }
-
-        private void FillData()
+        public KomisijaRepository(KomisijaContext context, IMapper mapper)
         {
-            throw new NotImplementedException();
+            this.context = context;
+            this.mapper = mapper;
         }
 
+        public List<KomisijaEntity> GetKomisije() {
+            return context.Komisije.ToList();
+        }
         public KomisijaEntity CreateKomisija(KomisijaEntity komisija)
         {
             throw new NotImplementedException();
@@ -31,14 +32,14 @@ namespace KomisijaService.Data
             throw new NotImplementedException();
         }
 
-        public List<KomisijaEntity> GetKomisije()
+        public void UpdateKomisija(KomisijaEntity komisija)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateKomisija(KomisijaEntity komisija)
+        public bool saveChanges()
         {
-            throw new NotImplementedException();
+            return context.SaveChanges() > 0;
         }
     }
 }

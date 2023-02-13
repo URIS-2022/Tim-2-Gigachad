@@ -28,7 +28,7 @@ namespace ZalbaService.Entities
                 ZalbaID = Guid.Parse("08635d18-5f72-4050-8e5e-c520562675b1"),
                 KupacID = "fb046e3b-a95c-4079-9898-9e16d653d9a3",
                 TipZalbe = "Zalba na tok javnog nadmetanaja",
-                DatumPodnosenja = DateTime.Parse("2022-12-12"),
+                DatumPodnosenja = new DateTime(2022, 12, 12),
                 Razlog = "gusenje od k",
                 Obrazlozenje = "previse pusenja k",
                 StatusZalbe = "Usvojena",

@@ -14,6 +14,6 @@ namespace KomisijaService.Data
 
         void DeleteKomisija(Guid komisijaID);
 
-        //bool saveChanges();
+        bool saveChanges();
     }
 }
