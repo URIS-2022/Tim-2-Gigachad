@@ -1,6 +1,15 @@
-﻿namespace DokumentiService.Data
+﻿using DokumentiService.Entities;
+namespace DokumentService.Data
 {
-    public class IEksterniDokumentRepository
+    public interface IEksterniDokumentRepository
     {
+        List<EksterniDokumentEntity> GetEksterniDokument();
+
+        EksterniDokumentEntity GetEksterniDokumentID(Guid EksterniDokumentID);
+        EksterniDokumentEntity CreateEksterniDokument(EksterniDokumentEntity EksterniDokument);
+        void DeleteEksterniDokument(Guid EksterniDokumentID);
+        void UpdateEksterniDokument(EksterniDokumentEntity EksterniDokument);
+        bool SaveChanges();
+
     }
 }
