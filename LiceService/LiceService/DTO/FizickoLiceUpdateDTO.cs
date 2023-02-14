@@ -3,7 +3,7 @@
 namespace LiceService.DTO
 {
 	/// <summary>
-	/// Model DTO-a za kreiranje fizičkog lica.
+	/// Model DTO-a za ažuriranje fizičkog lica.
 	/// </summary>
 	public class FizickoLiceUpdateDTO
 	{

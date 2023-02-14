@@ -114,16 +114,13 @@ namespace LiceService.Controllers
 		{
 			try
 			{
-				/*FizickoLiceDTO fizickoLice = fizickoLiceRepository.CreateFizickoLice(fizickoLiceCreateDTO);
+				FizickoLiceEntity? oldFizickoLice = fizickoLiceRepository.GetFizickoLiceByID(fizickoLiceUpdateDTO.ID);
+				if (oldFizickoLice == null)
+					return NotFound();
+				FizickoLiceEntity fizickoLice = mapper.Map<FizickoLiceEntity>(fizickoLiceUpdateDTO);
+				mapper.Map(fizickoLice, oldFizickoLice);
 				fizickoLiceRepository.SaveChanges();
-
-				string? location = linkGenerator.GetPathByAction("GetFizickoLice", "FizickoLice", new { fizickoLiceID = fizickoLice.ID });
-
-				if (location != null)
-					return Created(location, fizickoLice);
-				else
-					return Created("", fizickoLice);*/
-				return NotFound();
+				return Ok(mapper.Map<FizickoLiceDTO>(oldFizickoLice));
 			}
 			catch (Exception exception)
 			{

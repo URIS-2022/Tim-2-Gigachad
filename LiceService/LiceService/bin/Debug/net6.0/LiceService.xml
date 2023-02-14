@@ -217,7 +217,7 @@
         </member>
         <member name="T:LiceService.DTO.FizickoLiceUpdateDTO">
             <summary>
-            Model DTO-a za kreiranje fizičkog lica.
+            Model DTO-a za ažuriranje fizičkog lica.
             </summary>
         </member>
         <member name="P:LiceService.DTO.FizickoLiceUpdateDTO.ID">

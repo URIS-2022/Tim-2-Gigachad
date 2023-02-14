@@ -13,6 +13,8 @@ namespace LiceService.Profiles
 					dest => dest.PunoIme,
 					opt => opt.MapFrom(src => $"{src.Ime} {src.Prezime}"));
 			CreateMap<FizickoLiceCreateDTO, FizickoLiceEntity>();
+			CreateMap<FizickoLiceUpdateDTO, FizickoLiceEntity>();
+			CreateMap<FizickoLiceEntity, FizickoLiceEntity>();
 		}
 	}
 }
