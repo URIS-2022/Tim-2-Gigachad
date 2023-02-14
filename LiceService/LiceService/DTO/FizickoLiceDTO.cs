@@ -10,7 +10,7 @@ namespace LiceService.DTO
 		/// <summary>
 		/// ID fizičkog lica.
 		/// </summary>
-		[Key]
+		[Required]
 		public Guid ID { get; set; }
 
 		/// <summary>

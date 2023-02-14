@@ -25,18 +25,54 @@
             <summary>
             Vraća sva fizička lica.
             </summary>
-            <returns>Vraća listu fizičkih lica.</returns>
+            <returns>Vraća potvrdu o listi postojećih fizičkih lica.</returns>
             <response code="200">Vraća listu fizičkih lica.</response>
-            <response code="204">Vraća no content odgovor.</response>
+            <response code="204">Ne postoje fizička lica.</response>
         </member>
         <member name="M:LiceService.Controllers.FizickoLiceController.GetFizickoLice(System.Guid)">
             <summary>
             Vraća jedno fizičko lice na osnovu zadatog ID-ja.
             </summary>
             <param name="fizickoLiceID">ID fizičkog lica.</param>
-            <returns>Vraća fizičko lice.</returns>
-            <response code="200">Vraća traženu prijavu ispita</response>
-            <response code="404">Vraća content not found odgovor.</response>
+            <returns>Vraća potvrdu o traženom fizičkom licu.</returns>
+            <response code="200">Vraća specifirano fizičko lice.</response>
+            <response code="404">Specifirano fizičko lice ne postoji.</response>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.CreateFizickoLice(LiceService.DTO.FizickoLiceCreateDTO)">
+            <summary>
+            Kreira novo fizičko lice.
+            </summary>
+            <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
+            <returns>Potvrdu o kreiranom fizičkom licu.</returns>
+            <response code="201">Vraća kreirano fizičko lice.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.UpdateFizickoLice(LiceService.DTO.FizickoLiceUpdateDTO)">
+            <summary>
+            Ažurira jedno fizičko lice.
+            </summary>
+            <param name="fizickoLiceUpdateDTO">DTO za ažuriranje fizičkog lica.</param>
+            <returns>Potvrdu o ažuriranom fizičkom licu.</returns>
+            <response code="200">Vraća ažurirano fizičko lice.</response>
+            <response code="404">Specifirano fizičko lice ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja fizičkog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.DeleteFizickoLice(System.Guid)">
+            <summary>
+            Briše jedno fizičko lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+            <returns>Potvrdu o brisanju fizičkog lica.</returns>
+            <response code="204">Fizičko lice uspešno obrisano.</response>
+            <response code="404">Specifirano fizičko lice ne postoji i nije obrisano.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja fizičkog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.GetFizickaLicaOptions">
+            <summary>
+            Vraća opcije za rad sa fizičkim licima.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
         </member>
         <member name="T:LiceService.Data.FizickoLiceRepository">
             <summary>
@@ -50,23 +86,29 @@
         </member>
         <member name="M:LiceService.Data.FizickoLiceRepository.GetFizickaLica">
             <summary>
-            Iz konteksta uzima fizička lica i pretvara ih u listu.
+            Vraća listu fizičkih lica iz konteksta.
             </summary>
             <returns>Vraća listu fizičkih lica.</returns>
         </member>
         <member name="M:LiceService.Data.FizickoLiceRepository.GetFizickoLiceByID(System.Guid)">
             <summary>
-            Iz konteksta uzima jedno fizičko lice na osnovu zadatog ID-ja.
+            Vraća jedno fizičko lice iz konteksta na osnovu zadatog ID-ja.
             </summary>
             <param name="fizickoLiceID">ID fizičkog lica.</param>
-            <returns>Vraća fizičko lice.</returns>
+            <returns>Vraća specifirano fizičko lice.</returns>
         </member>
         <member name="M:LiceService.Data.FizickoLiceRepository.CreateFizickoLice(LiceService.DTO.FizickoLiceCreateDTO)">
             <summary>
-            U kontekst dodaje novo fizičko lice, koje kasnije vraća kao DTO objekat.
+            Dodaje novo fizičko lice u kontekst, koje kasnije vraća kao DTO objekat.
             </summary>
-            <param name="fizickoLiceCreateDTO">Fizičko lice.</param>
-            <returns>Vraća DTO fizičkog lica.</returns>
+            <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
+            <returns>Vraća DTO kreiranog fizičkog lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.FizickoLiceRepository.DeleteFizickoLice(System.Guid)">
+            <summary>
+            Briše fizičko lice iz konteksta.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
         </member>
         <member name="M:LiceService.Data.FizickoLiceRepository.SaveChanges">
             <summary>
@@ -171,6 +213,31 @@
         <member name="P:LiceService.DTO.FizickoLiceDTO.PunoIme">
             <summary>
             Puno ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.FizickoLiceUpdateDTO">
+            <summary>
+            Model DTO-a za kreiranje fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceUpdateDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceUpdateDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceUpdateDTO.Ime">
+            <summary>
+            Ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceUpdateDTO.Prezime">
+            <summary>
+            Prezime fizičkog lica.
             </summary>
         </member>
         <member name="T:LiceService.DTO.KorisnikDTO">

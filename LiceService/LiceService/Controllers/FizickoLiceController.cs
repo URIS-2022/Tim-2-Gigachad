@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LiceService.Data;
 using LiceService.DTO;
+using LiceService.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -68,10 +69,10 @@ namespace LiceService.Controllers
 		/// <summary>
 		/// Kreira novo fizičko lice.
 		/// </summary>
-		/// <param name="fizickoLiceCreateDTO">Model fizičkog lica.</param>
+		/// <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
 		/// <returns>Potvrdu o kreiranom fizičkom licu.</returns>
-		/// <response code="200">Vraća kreirano fizičko lice.</response>
-		/// <response code="404">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
+		/// <response code="201">Vraća kreirano fizičko lice.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
 		[HttpPost]
 		[Consumes("application/json")]
 		[ProducesResponseType(StatusCodes.Status201Created)]
@@ -94,6 +95,85 @@ namespace LiceService.Controllers
 			{
 				return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
 			}
+		}
+
+		/// <summary>
+		/// Ažurira jedno fizičko lice.
+		/// </summary>
+		/// <param name="fizickoLiceUpdateDTO">DTO za ažuriranje fizičkog lica.</param>
+		/// <returns>Potvrdu o ažuriranom fizičkom licu.</returns>
+		/// <response code="200">Vraća ažurirano fizičko lice.</response>
+		/// <response code="404">Specifirano fizičko lice ne postoji.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja fizičkog lica.</response>
+		[HttpPut]
+		[Consumes("application/json")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
+		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		public ActionResult<FizickoLiceDTO> UpdateFizickoLice(FizickoLiceUpdateDTO fizickoLiceUpdateDTO)
+		{
+			try
+			{
+				/*FizickoLiceDTO fizickoLice = fizickoLiceRepository.CreateFizickoLice(fizickoLiceCreateDTO);
+				fizickoLiceRepository.SaveChanges();
+
+				string? location = linkGenerator.GetPathByAction("GetFizickoLice", "FizickoLice", new { fizickoLiceID = fizickoLice.ID });
+
+				if (location != null)
+					return Created(location, fizickoLice);
+				else
+					return Created("", fizickoLice);*/
+				return NotFound();
+			}
+			catch (Exception exception)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+			}
+		}
+
+		/// <summary>
+		/// Briše jedno fizičko lice na osnovu zadatog ID-ja.
+		/// </summary>
+		/// <param name="fizickoLiceID">ID fizičkog lica.</param>
+		/// <returns>Potvrdu o brisanju fizičkog lica.</returns>
+		/// <response code="204">Fizičko lice uspešno obrisano.</response>
+		/// <response code="404">Specifirano fizičko lice ne postoji i nije obrisano.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom brisanja fizičkog lica.</response>
+		[HttpDelete("{fizickoLiceID}")]
+		[ProducesResponseType(StatusCodes.Status204NoContent)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
+		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		public IActionResult DeleteFizickoLice(Guid fizickoLiceID)
+		{
+			try
+			{
+				FizickoLiceEntity? fizickoLice = fizickoLiceRepository.GetFizickoLiceByID(fizickoLiceID);
+
+				if (fizickoLice == null)
+					return NotFound();
+
+				fizickoLiceRepository.DeleteFizickoLice(fizickoLiceID);
+				fizickoLiceRepository.SaveChanges();
+
+				return NoContent();
+			}
+			catch (Exception exception)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+			}
+		}
+
+		/// <summary>
+		/// Vraća opcije za rad sa fizičkim licima.
+		/// </summary>
+		/// <returns>Vraća prazan 200 HTTP kod.</returns>
+		/// <response code="200">Vraća prazan 200 HTTP kod.</response>
+		[HttpOptions]
+		[AllowAnonymous]
+		public IActionResult GetFizickaLicaOptions()
+		{
+			Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
+			return Ok();
 		}
 	}
 }

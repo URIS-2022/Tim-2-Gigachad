@@ -1,9 +1,10 @@
-using LiceService.Data;
+﻿using LiceService.Data;
 using LiceService.Entities;
 using LiceService.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,32 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 	};
 });
 
+builder.Services.AddSwaggerGen(setup =>
+{
+	setup.SwaggerDoc("LiceServiceOpenApiSpecification", 
+		new Microsoft.OpenApi.Models.OpenApiInfo()
+		{
+			Title = "Lice API",
+			Version = "v1",
+			Description = "Pomoću ovog API-ja može da se vrši dodavanje, modifikacija i brisanje lica, kao i pregled svih kreiranih lica.",
+			Contact = new Microsoft.OpenApi.Models.OpenApiContact
+			{
+				Name = "Petar Rakić",
+				Email = "rakic.it19.2019@uns.ac.rs",
+				Url = new Uri("http://www.ftn.uns.ac.rs/")
+			},
+			License = new Microsoft.OpenApi.Models.OpenApiLicense
+			{
+				Name = "FTN licence",
+				Url = new Uri("http://www.ftn.uns.ac.rs/")
+			},
+			TermsOfService = new Uri("http://www.ftn.uns.ac.rs/")
+		});
+	var xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+	var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
+	setup.IncludeXmlComments(xmlCommentsPath);
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -47,7 +74,11 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
-	app.UseSwaggerUI();
+	app.UseSwaggerUI(setup =>
+	{
+		setup.RoutePrefix = "";
+		setup.SwaggerEndpoint("/swagger/LiceServiceOpenApiSpecification/swagger.json", "Lice API");
+	});
 }
 
 app.UseHttpsRedirection();

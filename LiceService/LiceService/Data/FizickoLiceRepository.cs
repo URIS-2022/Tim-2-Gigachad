@@ -22,7 +22,7 @@ namespace LiceService.Data
 		}
 
 		/// <summary>
-		/// Iz konteksta uzima fizička lica i pretvara ih u listu.
+		/// Vraća listu fizičkih lica iz konteksta.
 		/// </summary>
 		/// <returns>Vraća listu fizičkih lica.</returns>
 		public List<FizickoLiceEntity> GetFizickaLica()
@@ -31,20 +31,20 @@ namespace LiceService.Data
 		}
 
 		/// <summary>
-		/// Iz konteksta uzima jedno fizičko lice na osnovu zadatog ID-ja.
+		/// Vraća jedno fizičko lice iz konteksta na osnovu zadatog ID-ja.
 		/// </summary>
 		/// <param name="fizickoLiceID">ID fizičkog lica.</param>
-		/// <returns>Vraća fizičko lice.</returns>
+		/// <returns>Vraća specifirano fizičko lice.</returns>
 		public FizickoLiceEntity? GetFizickoLiceByID(Guid fizickoLiceID)
 		{
 			return context.FizickaLica.FirstOrDefault(e => e.ID == fizickoLiceID);
 		}
 
 		/// <summary>
-		/// U kontekst dodaje novo fizičko lice, koje kasnije vraća kao DTO objekat.
+		/// Dodaje novo fizičko lice u kontekst, koje kasnije vraća kao DTO objekat.
 		/// </summary>
-		/// <param name="fizickoLiceCreateDTO">Fizičko lice.</param>
-		/// <returns>Vraća DTO fizičkog lica.</returns>
+		/// <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
+		/// <returns>Vraća DTO kreiranog fizičkog lica.</returns>
 		public FizickoLiceDTO CreateFizickoLice(FizickoLiceCreateDTO fizickoLiceCreateDTO)
 		{
 			FizickoLiceEntity fizickoLice = mapper.Map<FizickoLiceEntity>(fizickoLiceCreateDTO);
@@ -53,12 +53,19 @@ namespace LiceService.Data
 			return mapper.Map<FizickoLiceDTO>(fizickoLice);
 		}
 
-		public void DeleteFizickoLice(Guid fizickoLiceID)
+		public void UpdateFizickoLice(FizickoLiceEntity fizickoLice)
 		{
 		}
 
-		public void UpdateFizickoLice(FizickoLiceEntity fizickoLice)
+		/// <summary>
+		/// Briše fizičko lice iz konteksta.
+		/// </summary>
+		/// <param name="fizickoLiceID">ID fizičkog lica.</param>
+		public void DeleteFizickoLice(Guid fizickoLiceID)
 		{
+			FizickoLiceEntity? fizickoLice = GetFizickoLiceByID(fizickoLiceID);
+			if (fizickoLice != null)
+				context.Remove(fizickoLice);
 		}
 
 		/// <summary>
