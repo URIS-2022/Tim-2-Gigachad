@@ -1,38 +1,28 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace KupacService.Entities
+namespace KupacService.DTO
 {
     /// <summary>
-    /// Model realnog entiteta kupac.
+    /// Model DTO-a za kreiranje fizičkog lica.
     /// </summary>
-    public class KupacEntity
-    { 
-        /// <summary>
-        /// ID kupca.
-        /// </summary>
-        [Key]
-        public Guid KupacID { get; set; }
-
+    public class KupacCreateDTO
+    {
         /// <summary>
         /// ID lica.
         /// </summary>
         [Required]
-        [ForeignKey("LiceDTO")]
         public Guid LiceID { get; set; }
 
         /// <summary>
         /// ID ovlascenjog lica.
         /// </summary>
         [Required]
-        [ForeignKey("OvlascenoLiceDTO")]
         public Guid OvlascenoLiceID { get; set; }
 
         /// <summary>
         /// ID javnog nadmetanja.
         /// </summary>
         [Required]
-        [ForeignKey("JavnoNadmetanjeDTO")]
         public Guid JavnoNadmetanjeID { get; set; }
 
         /// <summary>

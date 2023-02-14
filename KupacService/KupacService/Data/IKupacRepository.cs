@@ -1,4 +1,5 @@
-﻿using KupacService.Entities;
+﻿using KupacService.DTO;
+using KupacService.Entities;
 
 namespace KupacService.Data
 {
@@ -8,7 +9,7 @@ namespace KupacService.Data
 
         KupacEntity GetKupacByID(Guid kupacID);
 
-        KupacEntity CreateKupac(KupacEntity kupac);
+        KupacDTO CreateKupac(KupacCreateDTO kupacCreateDTO);
 
         void UpdateKupac(KupacEntity kupac);
 

@@ -1,50 +1,44 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace KupacService.Entities
+namespace KupacService.DTO
 {
     /// <summary>
-    /// Model realnog entiteta kupac.
+    /// DTO za fizičko lice.
     /// </summary>
-    public class KupacEntity
-    { 
+    public class KupacDTO
+    {
         /// <summary>
-        /// ID kupca.
+        /// ID fizičkog lica.
         /// </summary>
-        [Key]
         public Guid KupacID { get; set; }
 
         /// <summary>
-        /// ID lica.
+        /// JMBG fizičkog lica.
         /// </summary>
-        [Required]
-        [ForeignKey("LiceDTO")]
-        public Guid LiceID { get; set; }
+        public Guid LiceID  { get; set; }
 
         /// <summary>
         /// ID ovlascenjog lica.
         /// </summary>
         [Required]
-        [ForeignKey("OvlascenoLiceDTO")]
         public Guid OvlascenoLiceID { get; set; }
 
         /// <summary>
         /// ID javnog nadmetanja.
         /// </summary>
         [Required]
-        [ForeignKey("JavnoNadmetanjeDTO")]
         public Guid JavnoNadmetanjeID { get; set; }
 
         /// <summary>
         /// Prioritet kupca.
         /// </summary>
-
         [Required]
         [MaxLength(30)]
-        public string? Prioritet { get; set; }
+        public string? Prioritet{ get; set; }
 
         /// <summary>
-        /// Lice ima/nema zabranu.
+        /// Kupac ima/nema zabranu.
         /// </summary>
         [Required]
         public bool? ImaZabranu { get; set; }

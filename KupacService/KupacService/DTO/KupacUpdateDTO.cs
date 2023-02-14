@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace KupacService.Entities
 {
     /// <summary>
-    /// Model realnog entiteta kupac.
+    /// Model DTO-a za kreiranje kupca.
     /// </summary>
-    public class KupacEntity
-    { 
+    public class KupacUpdateDTO
+    {
         /// <summary>
         /// ID kupca.
         /// </summary>

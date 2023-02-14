@@ -5,8 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>KupacService.xml</DocumentationFile>
-    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    <DocumentationFile>OvlascenoLiceService.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,8 +24,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Data\" />
+    <Folder Include="DTO\" />
+    <Folder Include="Entities\" />
     <Folder Include="Migrations\" />
     <Folder Include="Postman\" />
+    <Folder Include="Profiles\" />
   </ItemGroup>
 
 </Project>
