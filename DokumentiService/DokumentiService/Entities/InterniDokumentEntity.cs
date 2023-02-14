@@ -6,8 +6,9 @@ namespace DokumentiService.Entities
     public class InterniDokumentEntity
     {
         [Key]
-        public Guid InterniDokumentId { get; set; }
+        public Guid ID { get; set; }
 
+        [Required]
         public string? PutanjaDokumenta  { get; set; }
     }
 }

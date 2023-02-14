@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DokumentiService</name>
+    </assembly>
+    <members>
+        <member name="T:DokumentiService.Controllers.DokumentController">
+            <summary>
+            Kontroler za entitete eksternih dokumenata.
+            </summary>
+        </member>
+        <member name="M:DokumentiService.Controllers.DokumentController.#ctor(DokumentiService.Data.IDokumentRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za kontroler preko konstruktora.
+            </summary>
+        </member>
+        <member name="T:DokumentiService.Controllers.EksterniDokumentController">
+            <summary>
+            Kontroler za entitete eksternih dokumenata.
+            </summary>
+        </member>
+        <member name="M:DokumentiService.Controllers.EksterniDokumentController.#ctor(DokumentiService.Data.IEksterniDokumentRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za kontroler preko konstruktora.
+            </summary>
+        </member>
+        <member name="T:DokumentiService.Controllers.InterniDokumentController">
+            <summary>
+            Kontroler za entitete eksternih dokumenata.
+            </summary>
+        </member>
+        <member name="M:DokumentiService.Controllers.InterniDokumentController.#ctor(DokumentiService.Data.IInterniDokumentRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za kontroler preko konstruktora.
+            </summary>
+        </member>
+        <member name="M:DokumentiService.Entities.DokumentContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="M:DokumentiService.Entities.DokumentContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:DokumentiService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:DokumentiService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DokumentiService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DokumentiService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:DokumentiService.Migrations.InitialMigration2">
+            <inheritdoc />
+        </member>
+        <member name="M:DokumentiService.Migrations.InitialMigration2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DokumentiService.Migrations.InitialMigration2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DokumentiService.Migrations.InitialMigration2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

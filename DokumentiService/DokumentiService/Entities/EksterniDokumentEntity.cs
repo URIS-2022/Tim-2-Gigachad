@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace DokumentiService.Entities
 {
     public class EksterniDokumentEntity
     {
         [Key]
-        public Guid EksterniDokumentId { get; set; }
-
+        public Guid ID{ get; set; }
+        [Required]
         public string? PutanjaDokumenta { get; set; }
     }
 }
