@@ -17,31 +17,38 @@ namespace LiceService.Entities
 		/// <summary>
 		/// ID fizičkog lica.
 		/// </summary>
-		[ForeignKey("FizickoLiceEntity")]
+		[ForeignKey("FizickoLice")]
 		public Guid FizickoLiceID { get; set; }
+
+		/// <summary>
+		/// Fizičko lice.
+		/// </summary>
+		public FizickoLiceEntity? FizickoLice { get; set; }
 
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		[ForeignKey("PravnoLiceEntity")]
-		public Guid? PravnoLiceID { get; set; }
+		//[ForeignKey("PravnoLiceEntity")]
+		//public Guid? PravnoLiceID { get; set; }
 
 		/// <summary>
 		/// ID adrese lica.
 		/// </summary>
-		[Required]
-		public Guid AdresaID { get; set; }
+		//[Required]
+		//public Guid AdresaID { get; set; }
 
 		/// <summary>
 		/// Telefon 1 lica.
 		/// </summary>
 		[Required]
+		[MinLength(9)]
 		[MaxLength(10)]
 		public string? Tel1 { get; set; }
 
 		/// <summary>
 		/// Telefon 2 lica.
 		/// </summary>
+		[MinLength(9)]
 		[MaxLength(10)]
 		public string? Tel2 { get; set; }
 

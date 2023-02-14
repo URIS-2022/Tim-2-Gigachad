@@ -1,44 +1,76 @@
-﻿using LiceService.Entities;
+﻿using AutoMapper;
+using LiceService.DTO;
+using LiceService.Entities;
 
 namespace LiceService.Data
 {
+	/// <summary>
+	/// Repozitorijum za entitet lice.
+	/// </summary>
 	public class LiceRepository : ILiceRepository
 	{
-		public static List<LiceEntity> Lica { get; set; } = new List<LiceEntity>();
+		private readonly LiceContext context;
+		private readonly IMapper mapper;
 
-		public LiceRepository()
+		/// <summary>
+		/// Dependency injection za repozitorijum.
+		/// </summary>
+		public LiceRepository(LiceContext context, IMapper mapper)
 		{
-			FillData();
+			this.context = context;
+			this.mapper = mapper;
 		}
 
-		private static void FillData()
-		{
-
-		}
-
-		public LiceEntity CreateLice(LiceEntity lice)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void DeleteLice(Guid liceID)
-		{
-			throw new NotImplementedException();
-		}
-
+		/// <summary>
+		/// Vraća listu lica iz konteksta.
+		/// </summary>
+		/// <returns>Vraća listu lica.</returns>
 		public List<LiceEntity> GetLica()
 		{
-			throw new NotImplementedException();
+			return context.Lica.ToList();
 		}
 
-		public LiceEntity GetLiceByID(Guid liceID)
+		/// <summary>
+		/// Vraća jedno lice iz konteksta na osnovu zadatog ID-ja.
+		/// </summary>
+		/// <param name="liceID">ID lica.</param>
+		/// <returns>Vraća specifirano lice.</returns>
+		public LiceEntity? GetLiceByID(Guid liceID)
 		{
-			throw new NotImplementedException();
+			return context.Lica.FirstOrDefault(e => e.ID == liceID);
 		}
 
-		public void UpdateLice(LiceEntity lice)
+		/// <summary>
+		/// Dodaje novo lice u kontekst, koje kasnije vraća kao DTO objekat.
+		/// </summary>
+		/// <param name="liceCreateDTO">DTO za kreiranje lica.</param>
+		/// <returns>Vraća DTO kreiranog lica.</returns>
+		public LiceDTO CreateLice(LiceCreateDTO liceCreateDTO)
 		{
-			throw new NotImplementedException();
+			LiceEntity lice = mapper.Map<LiceEntity>(liceCreateDTO);
+			lice.ID = Guid.NewGuid();
+			context.Add(lice);
+			return mapper.Map<LiceDTO>(lice);
+		}
+
+		/// <summary>
+		/// Briše lice iz konteksta.
+		/// </summary>
+		/// <param name="liceID">ID lica.</param>
+		public void DeleteLice(Guid liceID)
+		{
+			LiceEntity? lice = GetLiceByID(liceID);
+			if (lice != null)
+				context.Remove(lice);
+		}
+
+		/// <summary>
+		/// Sačuva sve promene u kontekstu.
+		/// </summary>
+		/// <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+		public bool SaveChanges()
+		{
+			return context.SaveChanges() > 0;
 		}
 	}
 }

@@ -3,11 +3,20 @@ using System.Security.Cryptography;
 
 namespace LiceService.Data
 {
+	/// <summary>
+	/// Repozitorijum za entitet korisnik.
+	/// </summary>
 	public class KorisnikRepository : IKorisnikRepository
 	{
+		/// <summary>
+		/// Lista korisnika.
+		/// </summary>
 		public static List<KorisnikEntity> Korisnici { get; set; } = new List<KorisnikEntity>();
 		private readonly static int iterations = 1000;
 
+		/// <summary>
+		/// Dependency injection za kontroler.
+		/// </summary>
 		public KorisnikRepository()
 		{
 			FillData();
@@ -36,27 +45,11 @@ namespace LiceService.Data
 		}
 
 		/// <summary>
-		/// Proverava da li postoji korisnik sa prosleđenim kredencijalima.
-		/// </summary>
-		/// <param name="naziv">Korisničko ime/naziv.</param>
-		/// <param name="lozinka">Korisnička lozinka.</param>
-		/// <returns>Boolean koji označava da li postoji ili ne.</returns>
-		public bool KorisnikWithCredentialsExists(string naziv, string lozinka)
-		{
-			KorisnikEntity? korisnik = Korisnici.FirstOrDefault(e => e.Naziv == naziv);
-			if (korisnik == null)
-				return false;
-			if (VerifyPassword(lozinka, korisnik.Lozinka, korisnik.So))
-				return true;
-			return false;
-		}
-
-		/// <summary>
-		/// Vrši hašovanje korisničke lozinke.
+		/// Vrši hašovanje lozinke.
 		/// </summary>
 		/// <param name="lozinka">Korisnička lozinka.</param>
-		/// <returns>Generisanje haša i soli.</returns>
-		private Tuple<string, string> HashPassword(string lozinka)
+		/// <returns>Vraća generisani haš i so.</returns>
+		private static Tuple<string, string> HashPassword(string lozinka)
 		{
 			var sBytes = new byte[lozinka.Length];
 			RandomNumberGenerator.Create().GetNonZeroBytes(sBytes);
@@ -72,12 +65,29 @@ namespace LiceService.Data
 		}
 
 		/// <summary>
-		/// Proverava validnost prosleđene lozinke sa prosleđenim hash-om
+		/// Proverava da li postoji korisnik sa prosleđenim kredencijalima.
+		/// </summary>
+		/// <param name="naziv">Korisničko ime/naziv.</param>
+		/// <param name="lozinka">Korisnička lozinka.</param>
+		/// <returns>Vraća boolean o potvrdi autentifikacije korisnika.</returns>
+		public bool KorisnikWithCredentialsExists(string naziv, string lozinka)
+		{
+			KorisnikEntity? korisnik = Korisnici.FirstOrDefault(e => e.Naziv == naziv);
+			if (korisnik == null)
+				return false;
+			if (korisnik != null)
+				if (VerifyPassword(lozinka, korisnik.Lozinka, korisnik.So))
+					return true;
+			return false;
+		}
+
+		/// <summary>
+		/// Proverava validnost prosleđene lozinke sa prosleđenim hašom i soli.
 		/// </summary>
 		/// <param name="lozinka">Korisnička lozinka.</param>
-		/// <param name="hash">Sačuvan hash.</param>
-		/// <param name="so">Sačuvan salt.</param>
-		/// <returns></returns>
+		/// <param name="hash">Sačuvan haš.</param>
+		/// <param name="so">Sačuvana so.</param>
+		/// <returns>Vraća boolean o potvrdi validnosti lozinke.</returns>
 		public bool VerifyPassword(string lozinka, string hash, string so)
 		{
 			var saltBytes = Convert.FromBase64String(so);

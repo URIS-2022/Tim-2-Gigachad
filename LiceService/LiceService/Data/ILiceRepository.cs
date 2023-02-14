@@ -1,19 +1,43 @@
-﻿using LiceService.Entities;
+﻿using LiceService.DTO;
+using LiceService.Entities;
 
 namespace LiceService.Data
 {
+	/// <summary>
+	/// Interfejs od repozitorijuma za entitet lice.
+	/// </summary>
 	public interface ILiceRepository
 	{
+		/// <summary>
+		/// Vraća listu lica iz konteksta.
+		/// </summary>
+		/// <returns>Vraća listu lica.</returns>
 		List<LiceEntity> GetLica();
 
-		LiceEntity GetLiceByID(Guid liceID);
+		/// <summary>
+		/// Vraća jedno lice iz konteksta na osnovu zadatog ID-ja.
+		/// </summary>
+		/// <param name="liceID">ID lica.</param>
+		/// <returns>Vraća specifirano lice.</returns>
+		LiceEntity? GetLiceByID(Guid liceID);
 
-		LiceEntity CreateLice(LiceEntity lice);
+		/// <summary>
+		/// Dodaje novo lice u kontekst, koje kasnije vraća kao DTO objekat.
+		/// </summary>
+		/// <param name="liceCreateDTO">DTO za kreiranje lica.</param>
+		/// <returns>Vraća DTO kreiranog lica.</returns>
+		LiceDTO CreateLice(LiceCreateDTO liceCreateDTO);
 
-		void UpdateLice(LiceEntity lice);
-
+		/// <summary>
+		/// Briše lice iz konteksta.
+		/// </summary>
+		/// <param name="liceID">ID lica.</param>
 		void DeleteLice(Guid liceID);
 
-		//bool SaveChanges();
+		/// <summary>
+		/// Sačuva sve promene u kontekstu.
+		/// </summary>
+		/// <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+		bool SaveChanges();
 	}
 }

@@ -4,6 +4,7 @@ using LiceService.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiceService.Migrations
 {
     [DbContext(typeof(LiceContext))]
-    partial class LiceContextModelSnapshot : ModelSnapshot
+    [Migration("20230214120433_LiceMigration")]
+    partial class LiceMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,8 +131,6 @@ namespace LiceService.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("FizickoLiceID");
-
                     b.ToTable("Lica");
 
                     b.HasData(
@@ -187,22 +188,6 @@ namespace LiceService.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("PravnaLica");
-                });
-
-            modelBuilder.Entity("LiceService.Entities.LiceEntity", b =>
-                {
-                    b.HasOne("LiceService.Entities.FizickoLiceEntity", "FizickoLice")
-                        .WithMany("Lica")
-                        .HasForeignKey("FizickoLiceID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FizickoLice");
-                });
-
-            modelBuilder.Entity("LiceService.Entities.FizickoLiceEntity", b =>
-                {
-                    b.Navigation("Lica");
                 });
 #pragma warning restore 612, 618
         }

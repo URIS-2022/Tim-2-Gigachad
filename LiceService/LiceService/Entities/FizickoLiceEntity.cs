@@ -34,5 +34,10 @@ namespace LiceService.Entities
 		[Required]
 		[MaxLength(15)]
 		public string? Prezime { get; set; }
+
+		/// <summary>
+		/// Lica fizičkih lica.
+		/// </summary>
+		public List<LiceEntity>? Lica { get; set; }
 	}
 }

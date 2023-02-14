@@ -31,7 +31,7 @@ namespace LiceService.Controllers
 		}
 
 		/// <summary>
-		/// Vraća sva fizička lica.
+		/// Vraća listu svih fizičkih lica.
 		/// </summary>
 		/// <returns>Vraća potvrdu o listi postojećih fizičkih lica.</returns>
 		/// <response code="200">Vraća listu fizičkih lica.</response>
@@ -42,7 +42,7 @@ namespace LiceService.Controllers
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		public ActionResult<List<FizickoLiceDTO>> GetFizickaLica()
 		{
-			var fizickaLica = fizickoLiceRepository.GetFizickaLica();
+			List<FizickoLiceEntity> fizickaLica = fizickoLiceRepository.GetFizickaLica();
 			if (fizickaLica == null || fizickaLica.Count == 0)
 				return NoContent();
 			return Ok(mapper.Map<List<FizickoLiceDTO>>(fizickaLica));
@@ -52,7 +52,7 @@ namespace LiceService.Controllers
 		/// Vraća jedno fizičko lice na osnovu zadatog ID-ja.
 		/// </summary>
 		/// <param name="fizickoLiceID">ID fizičkog lica.</param>
-		/// <returns>Vraća potvrdu o traženom fizičkom licu.</returns>
+		/// <returns>Vraća potvrdu o specifiranom fizičkom licu.</returns>
 		/// <response code="200">Vraća specifirano fizičko lice.</response>
 		/// <response code="404">Specifirano fizičko lice ne postoji.</response>
 		[HttpGet("{fizickoLiceID}")]
@@ -133,9 +133,9 @@ namespace LiceService.Controllers
 		/// </summary>
 		/// <param name="fizickoLiceID">ID fizičkog lica.</param>
 		/// <returns>Potvrdu o brisanju fizičkog lica.</returns>
-		/// <response code="204">Fizičko lice uspešno obrisano.</response>
+		/// <response code="204">Specifirano fizičko lice je uspešno obrisano.</response>
 		/// <response code="404">Specifirano fizičko lice ne postoji i nije obrisano.</response>
-		/// <response code="500">Došlo je do greške na serveru prilikom brisanja fizičkog lica.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog fizičkog lica.</response>
 		[HttpDelete("{fizickoLiceID}")]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]

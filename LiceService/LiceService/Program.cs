@@ -15,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IFizickoLiceRepository, FizickoLiceRepository>();
+builder.Services.AddScoped<ILiceRepository, LiceRepository>();
 builder.Services.AddScoped<IKorisnikRepository, KorisnikRepository>();
 builder.Services.AddScoped<IAutentifikacijaHelper, AutentifikacijaHelper>();
 
@@ -76,8 +77,8 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI(setup =>
 	{
-		setup.RoutePrefix = "";
 		setup.SwaggerEndpoint("/swagger/LiceServiceOpenApiSpecification/swagger.json", "Lice API");
+		setup.RoutePrefix = "";
 	});
 }
 

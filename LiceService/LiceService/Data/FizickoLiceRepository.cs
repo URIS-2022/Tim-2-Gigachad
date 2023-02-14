@@ -53,10 +53,6 @@ namespace LiceService.Data
 			return mapper.Map<FizickoLiceDTO>(fizickoLice);
 		}
 
-		public void UpdateFizickoLice(FizickoLiceEntity fizickoLice)
-		{
-		}
-
 		/// <summary>
 		/// Briše fizičko lice iz konteksta.
 		/// </summary>
@@ -69,9 +65,9 @@ namespace LiceService.Data
 		}
 
 		/// <summary>
-		/// U kontekstu sačuva sve promene i onda vraća boolean na osnovu da li je sačuvano ili ne.
+		/// Sačuva sve promene u kontekstu.
 		/// </summary>
-		/// <returns>Vraća boolean.</returns>
+		/// <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
 		public bool SaveChanges()
 		{
 			return context.SaveChanges() > 0;
