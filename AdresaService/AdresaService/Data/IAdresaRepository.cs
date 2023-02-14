@@ -1,19 +1,42 @@
-﻿using AdresaService.Entities;
+﻿using AdresaService.DTO;
+using AdresaService.Entities;
 
 namespace AdresaService.Data
 {
     public interface IAdresaRepository
     {
+        /// <summary>
+		/// Vraća listu adresa iz konteksta.
+		/// </summary>
+		/// <returns>Vraća listu adresa.</returns>
         List<AdresaEntity> GetAdrese();
 
-        AdresaEntity GetAdresaByID(Guid ID);
+        /// <summary>
+		/// Vraća jednu adresu iz konteksta na osnovu zadatog ID-ja.
+		/// </summary>
+		/// <param name="adresaID">ID adresa.</param>
+		/// <returns>Vraća specifirano adresa.</returns>
+        AdresaEntity? GetAdresaByID(Guid ID);
 
-        AdresaEntity CreateAdresa(AdresaEntity adresa);
+        /// <summary>
+		/// Dodaje novu adresu u kontekst, koje kasnije vraća kao DTO objekat.
+		/// </summary>
+		/// <param name="adresaCreateDTO">DTO za kreiranje adrese.</param>
+		/// <returns>Vraća DTO kreirane adrese.</returns>
+        AdresaDTO CreateAdresa(AdresaCreateDTO adresaCreateDTO);
 
-        void UpdateAdresa(AdresaEntity adresa);
+        //void UpdateAdresa(AdresaEntity adresa);
 
+        /// <summary>
+		/// Briše adresu iz konteksta.
+		/// </summary>
+		/// <param name="adresaID">ID adrese.</param>
         void DeleteAdresa(Guid adresaID);
 
-        bool SaveChanges();
+        /// <summary>
+		/// Sačuva sve promene u kontekstu.
+		/// </summary>
+		/// <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+		bool SaveChanges();
     }
 }

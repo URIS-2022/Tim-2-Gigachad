@@ -1,30 +1,24 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AdresaService.Entities
+namespace AdresaService.DTO
 {
     /// <summary>
-	/// Model realnog entiteta fizičko lice.
+	/// DTO model za adresu.
 	/// </summary>
-    public class AdresaEntity
+    public class AdresaDTO
     {
         /// <summary>
-        /// ID adrese.
-        /// </summary>
-        [Key]
+		/// ID adrese.
+		/// </summary>
+		[Required]
         public Guid ID { get; set; }
 
         /// <summary>
-        /// Ulica.
+        /// Ulica i broj adrese.
         /// </summary>
         [Required]
         [MaxLength(100)]
-        public string? Ulica { get; set; }
-
-        /// <summary>
-        /// Broj ulice.
-        /// </summary>
-        [Required]
-        public int Broj { get; set; }
+        public string? UlicaBroj { get; set; }
 
         /// <summary>
         /// Mesto.
@@ -40,7 +34,7 @@ namespace AdresaService.Entities
         public int PostanskiBroj { get; set; }
 
         /// <summary>
-        /// Država broj adrese.
+        /// Država(E).
         /// </summary>
         [Required]
         [MaxLength(100)]

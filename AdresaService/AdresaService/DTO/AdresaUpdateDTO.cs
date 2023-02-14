@@ -1,16 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AdresaService.Entities
+namespace AdresaService.DTO
 {
     /// <summary>
-	/// Model realnog entiteta fizičko lice.
+	/// DTO model za adresu.
 	/// </summary>
-    public class AdresaEntity
+    public class AdresaUpdateDTO
     {
         /// <summary>
-        /// ID adrese.
-        /// </summary>
-        [Key]
+		/// ID adrese.
+		/// </summary>
+		[Required]
         public Guid ID { get; set; }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace AdresaService.Entities
         public int PostanskiBroj { get; set; }
 
         /// <summary>
-        /// Država broj adrese.
+        /// Država(E).
         /// </summary>
         [Required]
         [MaxLength(100)]

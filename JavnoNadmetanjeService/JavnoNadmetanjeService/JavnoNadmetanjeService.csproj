@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>4745df70-41bd-4379-ab59-4bfaf15c611e</UserSecretsId>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>JavnoNadmetanjeService</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

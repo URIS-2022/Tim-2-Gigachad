@@ -62,7 +62,7 @@ namespace JavnoNadmetanjeService.Entities
         /// <summary>
 		/// Pocetna cena javnog nadmetanja.
 		/// </summary>
-		public float PocetnaCena { get; set; }
+		public float PocetnaCena { get; set; } //ovo mozda nije float
 
         /// <summary>
 		/// Visina cene javnog nadmetanja.

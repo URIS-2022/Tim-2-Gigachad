@@ -4,9 +4,251 @@
         <name>AdresaService</name>
     </assembly>
     <members>
+        <member name="T:AdresaService.Controllers.AdresaController">
+            <summary>
+            Kontroler za entitet adresa.
+            </summary>
+        </member>
+        <member name="M:AdresaService.Controllers.AdresaController.#ctor(AdresaService.Data.IAdresaRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za Adresa kontroler.
+            </summary>
+        </member>
+        <member name="M:AdresaService.Controllers.AdresaController.GetAdrese">
+            <summary>
+            Vraća listu svih adresa.
+            </summary>
+            <returns>Vraća potvrdu o listi postojećih adresa.</returns>
+            <response code="200">Vraća listu adresa.</response>
+            <response code="204">Ne postoje adresa.</response>
+        </member>
+        <member name="M:AdresaService.Controllers.AdresaController.GetAdresa(System.Guid)">
+            <summary>
+            Vraća adresu na osnovu zadatog ID-ja.
+            </summary>
+            <param name="adresaID">ID adrese.</param>
+            <returns>Vraća potvrdu o specifiranoj adresi.</returns>
+            <response code="200">Vraća specifiranu adresu.</response>
+            <response code="404">Specifirana adresa ne postoji.</response>
+        </member>
+        <member name="M:AdresaService.Controllers.AdresaController.CreateAdresa(AdresaService.DTO.AdresaCreateDTO)">
+            <summary>
+            Kreira novu adresu.
+            </summary>
+            <param name="adresaCreateDTO">DTO za kreiranje adrese.</param>
+            <returns>Potvrdu o kreiranoj adresi.</returns>
+            <response code="201">Vraća kreiranu adresu.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja adrese.</response>
+        </member>
+        <member name="M:AdresaService.Controllers.AdresaController.UpdateAdresa(AdresaService.DTO.AdresaUpdateDTO)">
+            <summary>
+            Ažurira jednu adresu.
+            </summary>
+            <param name="AdresaUpdateDTO">DTO za ažuriranje adrese.</param>
+            <returns>Potvrdu o ažuriranoj adresi.</returns>
+            <response code="200">Vraća ažuriranu adresu.</response>
+            <response code="404">Specifirana adresa ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja adrese.</response>
+        </member>
+        <member name="M:AdresaService.Controllers.AdresaController.DeleteAdresa(System.Guid)">
+            <summary>
+            Briše jednu adresu na osnovu zadatog ID-ja.
+            </summary>
+            <param name="adresaID">ID adrese.</param>
+            <returns>Potvrdu o brisanju adrese.</returns>
+            <response code="204">Specifirana adresa je uspešno obrisana.</response>
+            <response code="404">Specifirana adresa ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranoe adrese.</response>
+        </member>
+        <member name="M:AdresaService.Controllers.AdresaController.GetAdreseOptions">
+            <summary>
+            Vraća opcije za rad sa adresama.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:AdresaService.Data.AdresaRepository">
+            <summary>
+            Repozitorijum za entitet adresa.
+            </summary>
+        </member>
+        <member name="M:AdresaService.Data.AdresaRepository.#ctor(AdresaService.Entities.AdresaContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:AdresaService.Data.AdresaRepository.GetAdrese">
+            <summary>
+            Vraća listu adresa iz konteksta.
+            </summary>
+            <returns>Vraća listu adresa.</returns>
+        </member>
+        <member name="M:AdresaService.Data.AdresaRepository.GetAdresaByID(System.Guid)">
+            <summary>
+            Vraća jedno fizičko lice iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="adresaID">ID fizičkog lica.</param>
+            <returns>Vraća specifirano fizičko lice.</returns>
+        </member>
+        <member name="M:AdresaService.Data.AdresaRepository.CreateAdresa(AdresaService.DTO.AdresaCreateDTO)">
+            <summary>
+            Dodaje novo fizičko lice u kontekst, koje kasnije vraća kao DTO objekat.
+            </summary>
+            <param name="adresaCreateDTO">DTO za kreiranje fizičkog lica.</param>
+            <returns>Vraća DTO kreiranog fizičkog lica.</returns>
+        </member>
+        <member name="M:AdresaService.Data.AdresaRepository.DeleteAdresa(System.Guid)">
+            <summary>
+            Briše fizičko lice iz konteksta.
+            </summary>
+            <param name="adresaID">ID fizičkog lica.</param>
+        </member>
+        <member name="M:AdresaService.Data.AdresaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="M:AdresaService.Data.IAdresaRepository.GetAdrese">
+            <summary>
+            Vraća listu adresa iz konteksta.
+            </summary>
+            <returns>Vraća listu adresa.</returns>
+        </member>
+        <member name="M:AdresaService.Data.IAdresaRepository.GetAdresaByID(System.Guid)">
+            <summary>
+            Vraća jednu adresu iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="adresaID">ID adresa.</param>
+            <returns>Vraća specifirano adresa.</returns>
+        </member>
+        <member name="M:AdresaService.Data.IAdresaRepository.CreateAdresa(AdresaService.DTO.AdresaCreateDTO)">
+            <summary>
+            Dodaje novu adresu u kontekst, koje kasnije vraća kao DTO objekat.
+            </summary>
+            <param name="adresaCreateDTO">DTO za kreiranje adrese.</param>
+            <returns>Vraća DTO kreirane adrese.</returns>
+        </member>
+        <member name="M:AdresaService.Data.IAdresaRepository.DeleteAdresa(System.Guid)">
+            <summary>
+            Briše adresu iz konteksta.
+            </summary>
+            <param name="adresaID">ID adrese.</param>
+        </member>
+        <member name="M:AdresaService.Data.IAdresaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:AdresaService.DTO.AdresaCreateDTO">
+            <summary>
+            DTO model za adresu.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaCreateDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaCreateDTO.Ulica">
+            <summary>
+            Ulica.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaCreateDTO.Broj">
+            <summary>
+            Broj ulice.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaCreateDTO.Mesto">
+            <summary>
+            Mesto.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaCreateDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaCreateDTO.Drzava">
+            <summary>
+            Država(E).
+            </summary>
+        </member>
+        <member name="T:AdresaService.DTO.AdresaDTO">
+            <summary>
+            DTO model za adresu.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaDTO.Mesto">
+            <summary>
+            Mesto.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaDTO.Drzava">
+            <summary>
+            Država(E).
+            </summary>
+        </member>
+        <member name="T:AdresaService.DTO.AdresaUpdateDTO">
+            <summary>
+            DTO model za adresu.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaUpdateDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaUpdateDTO.Ulica">
+            <summary>
+            Ulica.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaUpdateDTO.Broj">
+            <summary>
+            Broj ulice.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaUpdateDTO.Mesto">
+            <summary>
+            Mesto.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaUpdateDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:AdresaService.DTO.AdresaUpdateDTO.Drzava">
+            <summary>
+            Država(E).
+            </summary>
+        </member>
         <member name="M:AdresaService.Entities.AdresaContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:AdresaService.Entities.AdresaEntity">
+            <summary>
+            Model realnog entiteta fizičko lice.
             </summary>
         </member>
         <member name="P:AdresaService.Entities.AdresaEntity.ID">

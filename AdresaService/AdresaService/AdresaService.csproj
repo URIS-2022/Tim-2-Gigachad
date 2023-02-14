@@ -24,9 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Postman\" />
-    <Folder Include="Profiles\" />
   </ItemGroup>
 
 </Project>
