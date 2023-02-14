@@ -30,6 +30,7 @@ namespace LiceService.Entities
 		/// <summary>
 		/// Matični broj pravnog lica.
 		/// </summary>
+		[Required]
 		[MaxLength(8)]
 		public string? MaticniBroj { get; set; }
 	}

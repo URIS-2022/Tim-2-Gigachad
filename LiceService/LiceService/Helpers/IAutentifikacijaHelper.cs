@@ -1,4 +1,4 @@
-﻿using LiceService.Models;
+﻿using LiceService.DTO;
 
 namespace LiceService.Helpers
 {

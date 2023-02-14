@@ -29,4 +29,12 @@
     <Folder Include="Postman\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\.editorconfig" />
+  </ItemGroup>
+
 </Project>

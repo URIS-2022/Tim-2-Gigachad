@@ -3,7 +3,7 @@
 namespace LiceService.Entities
 {
 	/// <summary>
-	/// Predstavlja model korisnika za autentifikaciju.
+	/// Model korisnika za autentifikaciju.
 	/// </summary>
 	public class KorisnikEntity
 	{

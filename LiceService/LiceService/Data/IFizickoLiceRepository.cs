@@ -1,4 +1,5 @@
-﻿using LiceService.Entities;
+﻿using LiceService.DTO;
+using LiceService.Entities;
 
 namespace LiceService.Data
 {
@@ -6,9 +7,9 @@ namespace LiceService.Data
 	{
 		List<FizickoLiceEntity> GetFizickaLica();
 
-		FizickoLiceEntity GetFizickoLiceByID(Guid fizickoLiceID);
+		FizickoLiceEntity? GetFizickoLiceByID(Guid fizickoLiceID);
 
-		FizickoLiceEntity CreateFizickoLice(FizickoLiceEntity fizickoLice);
+		FizickoLiceDTO CreateFizickoLice(FizickoLiceCreateDTO fizickoLiceCreateDTO);
 
 		void UpdateFizickoLice(FizickoLiceEntity fizickoLice);
 

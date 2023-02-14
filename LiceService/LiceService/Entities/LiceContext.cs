@@ -2,20 +2,38 @@
 
 namespace LiceService.Entities
 {
+	/// <summary>
+	/// DbContext za LiceService mikroservis.
+	/// </summary>
 	public class LiceContext : DbContext
 	{
 		/// <summary>
 		/// Dependency injection za konfiguraciju konekcije i opcije sa bazom.
 		/// </summary>
 		public LiceContext(DbContextOptions options) : base(options) { }
-		
+
+		/// <summary>
+		/// DbSet za entitet kontakt osoba.
+		/// </summary>
 		public DbSet<KontaktOsobaEntity> KontaktOsobe { get; set; }
+
+		/// <summary>
+		/// DbSet za entitet pravno lice.
+		/// </summary>
 		public DbSet<PravnoLiceEntity> PravnaLica { get; set; }
+
+		/// <summary>
+		/// DbSet za entitet fizičko lice.
+		/// </summary>
 		public DbSet<FizickoLiceEntity> FizickaLica { get; set; }
+
+		/// <summary>
+		/// DbSet za entitet lice.
+		/// </summary>
 		public DbSet<LiceEntity> Lica { get; set; }
 
 		/// <summary>
-		/// Popunjava bazu sa nekim inicijalnim podacima.
+		/// Popunjava bazu sa inicijalnim podacima.
 		/// </summary>
 		protected override void OnModelCreating(ModelBuilder builder)
 		{

@@ -1,4 +1,4 @@
-﻿namespace LiceService.Entities
+﻿namespace LiceService.DTO
 {
 	public class KontaktOsobaDTO
 	{

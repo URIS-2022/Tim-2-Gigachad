@@ -1,4 +1,4 @@
-﻿namespace LiceService.Models
+﻿namespace LiceService.DTO
 {
 	public class LiceCreateDTO
 	{

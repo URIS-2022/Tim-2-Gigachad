@@ -1,4 +1,4 @@
-﻿namespace LiceService.Models
+﻿namespace LiceService.DTO
 {
 	/// <summary>
 	/// DTO za autentifikaciju korisnika.

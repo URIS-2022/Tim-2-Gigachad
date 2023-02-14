@@ -1,23 +1,31 @@
-﻿namespace LiceService.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LiceService.DTO
 {
 	/// <summary>
-	/// DTO za fizičko lice.
+	/// Model DTO-a za fizičko lice.
 	/// </summary>
 	public class FizickoLiceDTO
 	{
 		/// <summary>
 		/// ID fizičkog lica.
 		/// </summary>
+		[Key]
 		public Guid ID { get; set; }
 
 		/// <summary>
 		/// JMBG fizičkog lica.
 		/// </summary>
+		[Required]
+		[MinLength(13)]
+		[MaxLength(13)]
 		public string? JMBG { get; set; }
 
 		/// <summary>
 		/// Puno ime fizičkog lica.
 		/// </summary>
+		[Required]
+		[MaxLength(30)]
 		public string? PunoIme { get; set; }
 	}
 }

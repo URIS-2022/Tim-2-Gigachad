@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LiceService.Entities;
+using LiceService.DTO;
 
 namespace LiceService.Profiles
 {
@@ -11,6 +12,7 @@ namespace LiceService.Profiles
 				.ForMember(
 					dest => dest.PunoIme,
 					opt => opt.MapFrom(src => $"{src.Ime} {src.Prezime}"));
+			CreateMap<FizickoLiceCreateDTO, FizickoLiceEntity>();
 		}
 	}
 }
