@@ -29,12 +29,16 @@ namespace UplataService.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("BrojRacuna")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("DatumUplate")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("Iznos")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<Guid>("JavnoNadmetanjeID")
@@ -44,16 +48,24 @@ namespace UplataService.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("KursnaLista")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PozivNaBroj")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("SvrhaUplate")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Uplatilac")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("UplataID");
 

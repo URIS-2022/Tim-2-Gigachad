@@ -1,4 +1,5 @@
 ﻿using UplataService.Entities;
+using UplataService.Models;
 
 namespace UplataService.Data
 {
@@ -8,7 +9,7 @@ namespace UplataService.Data
 
         UplataEntity GetUplataByID(Guid UplataID);
 
-        UplataEntity CreateUplata(UplataEntity Uplata);
+        UplataDTO CreateUplata(UplataCreateDTO UplataCreateDTO);
 
         void UpdateUplata(UplataEntity Uplata);
 
