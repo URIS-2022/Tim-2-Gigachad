@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ZalbaService.Entities;
+using ZalbaService.Models;
 
 namespace ZalbaService.Data
 {
@@ -19,19 +20,24 @@ namespace ZalbaService.Data
             return context.Zalbe.ToList();
         }
 
-        public ZalbaEntity CreateZalba(ZalbaEntity zalba)
+        public ZalbaDTO CreateZalba(ZalbaCreateDTO zalbaCreateDTO)
         {
-            return null;
+            ZalbaEntity zalba = mapper.Map<ZalbaEntity>(zalbaCreateDTO);
+            zalba.ZalbaID = Guid.NewGuid();
+            context.Add(zalba);
+            return mapper.Map<ZalbaDTO>(zalba);
         }
 
         public void DeleteZalba(Guid zalbaID)
         {
-
+            ZalbaEntity? zalba = GetZalbaByID(zalbaID);
+            if (zalba != null)
+                context.Remove(zalba);
         }
 
-        public ZalbaEntity GetZalbaByID(Guid zalbaID)
+        public ZalbaEntity? GetZalbaByID(Guid zalbaID)
         {
-            return null;
+            return context.Zalbe.FirstOrDefault(e => e.ZalbaID == zalbaID);
         }
 
         public void UpdateZalba(ZalbaEntity zalba)

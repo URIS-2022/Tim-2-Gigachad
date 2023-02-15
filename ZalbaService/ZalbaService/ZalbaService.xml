@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZalbaService</name>
+    </assembly>
+    <members>
+        <member name="M:ZalbaService.Entities.ZalbaContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.ZalbaID">
+            <summary>
+            ID zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.TipZalbe">
+            <summary>
+            Tip zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.DatumPodnosenja">
+            <summary>
+            Datum podnosenja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.Razlog">
+            <summary>
+            Razlog zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.Obrazlozenje">
+            <summary>
+            Obrazlozenje zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.StatusZalbe">
+            <summary>
+            Status zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.RadnjaZalbe">
+            <summary>
+            Radnja zalbe.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:ZalbaService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ZalbaService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ZalbaService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ZalbaService.Models.KupacDTO">
+            <summary>
+            DTO za kupca koji je podneo zalbu.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.LiceID">
+            <summary>
+            ID lice.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.OvlascenoLiceID">
+            <summary>
+            ID ovlasceno lice.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.JavnoNadmetanjeID">
+            <summary>
+            ID javno nadmetanje.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.Prioritet">
+            <summary>
+            Prioritet javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.ImaZabranu">
+            <summary>
+            Zabrana javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.DatumPocetkaZabrane">
+            <summary>
+            Datum pocetka zabrane javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.DatumZavrsetkaZabrane">
+            <summary>
+            Datum kraja zabrane javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.BrojKupovina">
+            <summary>
+            Broj kupovina na javnom nadmetanju.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.TipZalbe">
+            <summary>
+            Tip zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.DatumPodnosenja">
+            <summary>
+            Datum podnosenja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.Razlog">
+            <summary>
+            Razlog zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.Obrazlozenje">
+            <summary>
+            Obrazlozenje zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.StatusZalbe">
+            <summary>
+            Status zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.RadnjaZalbe">
+            <summary>
+            Radnja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.ZalbaID">
+            <summary>
+            ID zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.TipZalbe">
+            <summary>
+            Tip zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.DatumPodnosenja">
+            <summary>
+            Datum podnosenja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.ZalbaID">
+            <summary>
+            ID zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.TipZalbe">
+            <summary>
+            Tip zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.DatumPodnosenja">
+            <summary>
+            Datum podnosenja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.Razlog">
+            <summary>
+            Razlog zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.Obrazlozenje">
+            <summary>
+            Obrazlozenje zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.StatusZalbe">
+            <summary>
+            Status zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.RadnjaZalbe">
+            <summary>
+            Radnja zalbe.
+            </summary>
+        </member>
+    </members>
+</doc>

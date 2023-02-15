@@ -1,4 +1,5 @@
 ﻿using ZalbaService.Entities;
+using ZalbaService.Models;
 
 namespace ZalbaService.Data
 {
@@ -6,9 +7,9 @@ namespace ZalbaService.Data
     {
         List<ZalbaEntity> GetZalbe();
 
-        ZalbaEntity GetZalbaByID(Guid zalbaID);
+        ZalbaEntity? GetZalbaByID(Guid zalbaID);
 
-        ZalbaEntity CreateZalba(ZalbaEntity zalba);
+        ZalbaDTO CreateZalba(ZalbaCreateDTO zalba);
 
         void UpdateZalba(ZalbaEntity zalba);
 
