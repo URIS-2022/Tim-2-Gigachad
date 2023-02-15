@@ -10,7 +10,6 @@ namespace AdresaService.DTO
         /// <summary>
 		/// ID adrese.
 		/// </summary>
-		[Required]
         public Guid ID { get; set; }
 
         /// <summary>

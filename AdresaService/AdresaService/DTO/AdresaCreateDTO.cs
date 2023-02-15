@@ -8,12 +8,6 @@ namespace AdresaService.DTO
     public class AdresaCreateDTO
     {
         /// <summary>
-		/// ID adrese.
-		/// </summary>
-		[Required]
-        public Guid ID { get; set; }
-
-        /// <summary>
         /// Ulica.
         /// </summary>
         [Required]

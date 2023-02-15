@@ -2,21 +2,42 @@
 
 namespace AdresaService.Entities
 {
+    /// <summary>
+	/// DbContext za AdresaService mikroservis.
+	/// </summary>
     public class AdresaContext : DbContext
     {
+        /*
         private readonly IConfiguration configuration;
 
+        /// <summary>
+		/// Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+		/// </summary>
         public AdresaContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             this.configuration = configuration;
         }
 
+        /// <summary>
+		/// DbSet za entitet adresa.
+		/// </summary>
         public DbSet<AdresaEntity> Adresa { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("AdresaDB"));
         }
+        */
+
+        /// <summary>
+		/// Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+		/// </summary>
+		public AdresaContext(DbContextOptions options) : base(options) { }
+
+        /// <summary>
+        /// DbSet za entitet adresa.
+        /// </summary>
+        public DbSet<AdresaEntity> Adresa { get; set; }
 
         /// <summary>
         /// Popunjava bazu sa nekim inicijalnim podacima.

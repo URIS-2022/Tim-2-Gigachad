@@ -146,11 +146,6 @@
             DTO model za adresu.
             </summary>
         </member>
-        <member name="P:AdresaService.DTO.AdresaCreateDTO.ID">
-            <summary>
-            ID adrese.
-            </summary>
-        </member>
         <member name="P:AdresaService.DTO.AdresaCreateDTO.Ulica">
             <summary>
             Ulica.
@@ -239,6 +234,21 @@
         <member name="P:AdresaService.DTO.AdresaUpdateDTO.Drzava">
             <summary>
             Država(E).
+            </summary>
+        </member>
+        <member name="T:AdresaService.Entities.AdresaContext">
+            <summary>
+            DbContext za AdresaService mikroservis.
+            </summary>
+        </member>
+        <member name="M:AdresaService.Entities.AdresaContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="P:AdresaService.Entities.AdresaContext.Adresa">
+            <summary>
+            DbSet za entitet adresa.
             </summary>
         </member>
         <member name="M:AdresaService.Entities.AdresaContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
