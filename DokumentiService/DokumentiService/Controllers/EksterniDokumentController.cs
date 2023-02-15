@@ -79,6 +79,38 @@ namespace DokumentiService.Controllers
             }
         }
 
+        /// <summary>
+		/// Kreira novo fizičko lice.
+		/// </summary>
+		/// <param name="eksterniDokumentCreateDTO">DTO za kreiranje fizičkog lica.</param>
+		/// <returns>Potvrdu o kreiranom fizičkom licu.</returns>
+		/// <response code="201">Vraća kreirano fizičko lice.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
+		[HttpPost]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<EksterniDokumentCreateDTO> CreateEksterniDokument([FromBody] EksterniDokumentCreateDTO eksterniDokumentCreateDTO)
+        {
+            try
+            {
+                EksterniDokumentDTO eksterniDokument = eksterniDokumentRepository.CreateEksterniDokument(eksterniDokumentCreateDTO);
+                eksterniDokumentRepository.SaveChanges();
+
+                string? location = linkGenerator.GetPathByAction("GetEksterniDokument", "EksterniDokument", new { eksterniDokumentID = eksterniDokument.EksterniDokumentID });
+
+                if (location != null)
+                    return Created(location, eksterniDokument);
+                else
+                    return Created("", eksterniDokument);
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+            }
+        }
+
+
 
     }
 }

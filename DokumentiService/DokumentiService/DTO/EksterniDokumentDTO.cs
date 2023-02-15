@@ -3,8 +3,8 @@ namespace DokumentiService.DTO
 {
     public class EksterniDokumentDTO
     {
-        
-        public string IDPutanja { get; set; }
+        public Guid EksterniDokumentID { get; set; }
+        public string PutanjaDokumenta { get; set; }
 
     }
 }

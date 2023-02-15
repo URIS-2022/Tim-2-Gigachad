@@ -1,4 +1,5 @@
 ﻿using DokumentiService.Entities;
+using DokumentiService.DTO;
 namespace DokumentiService.Data
 {
     public interface IEksterniDokumentRepository
@@ -6,7 +7,7 @@ namespace DokumentiService.Data
         List<EksterniDokumentEntity> GetEksterniDokument();
 
         EksterniDokumentEntity GetEksterniDokumentID(Guid EksterniDokumentID);
-        EksterniDokumentEntity CreateEksterniDokument(EksterniDokumentEntity EksterniDokument);
+        EksterniDokumentDTO CreateEksterniDokument(EksterniDokumentCreateDTO EksterniDokumentDTO);
         void DeleteEksterniDokument(Guid EksterniDokumentID);
         void UpdateEksterniDokument(EksterniDokumentEntity EksterniDokument);
         bool SaveChanges();

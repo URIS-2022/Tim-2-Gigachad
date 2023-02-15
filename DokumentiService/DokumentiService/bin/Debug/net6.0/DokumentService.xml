@@ -24,6 +24,15 @@
             Dependency injection za kontroler preko konstruktora.
             </summary>
         </member>
+        <member name="M:DokumentiService.Controllers.EksterniDokumentController.CreateEksterniDokument(DokumentiService.DTO.EksterniDokumentCreateDTO)">
+            <summary>
+            Kreira novo fizičko lice.
+            </summary>
+            <param name="eksterniDokumentCreateDTO">DTO za kreiranje fizičkog lica.</param>
+            <returns>Potvrdu o kreiranom fizičkom licu.</returns>
+            <response code="201">Vraća kreirano fizičko lice.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
+        </member>
         <member name="T:DokumentiService.Controllers.InterniDokumentController">
             <summary>
             Kontroler za entitete eksternih dokumenata.

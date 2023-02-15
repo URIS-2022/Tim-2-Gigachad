@@ -76,6 +76,30 @@ namespace DokumentiService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
         }
+
+        [HttpPost]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<InterniDokumentCreateDTO> CreateInterniiDokument([FromBody] InterniDokumentCreateDTO interniDokumentCreateDTO)
+        {
+            try
+            {
+                InterniDokumentDTO interniDokument = interniDokumentRepository.CreateInterniDokument(interniDokumentCreateDTO);
+                interniDokumentRepository.SaveChanges();
+
+                string? location = linkGenerator.GetPathByAction("GetInterniDokument", "InterniDokument", new { interniDokumentID = interniDokument.InterniDokumentID });
+
+                if (location != null)
+                    return Created(location, interniDokument);
+                else
+                    return Created("", interniDokument);
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+            }
+        }
     }
 }
 

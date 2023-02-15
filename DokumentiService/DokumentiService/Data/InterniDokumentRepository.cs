@@ -1,5 +1,6 @@
 ﻿using DokumentiService.Entities;
 using AutoMapper;
+using DokumentiService.DTO;
 
 namespace DokumentiService.Data
 {
@@ -14,11 +15,13 @@ namespace DokumentiService.Data
             this.mapper = mapper;
         }
 
-        public InterniDokumentEntity CreateInterniDokument(InterniDokumentEntity InterniDokument)
+        public InterniDokumentDTO CreateInterniDokument(InterniDokumentCreateDTO interniDokumentCreateDTO)
         {
-            return null;
+            InterniDokumentEntity intdok = mapper.Map<InterniDokumentEntity>(interniDokumentCreateDTO);
+            intdok.InterniDokumentID = Guid.NewGuid();
+            context.Add(intdok);
+            return mapper.Map<InterniDokumentDTO>(intdok);
         }
-
         public void DeleteInterniDokument(Guid InterniDokumentID)
         {
             InterniDokumentEntity? interniDokument = GetInterniDokumentID(InterniDokumentID);
