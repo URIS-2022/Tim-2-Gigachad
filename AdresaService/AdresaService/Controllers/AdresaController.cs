@@ -10,6 +10,7 @@ namespace AdresaService.Controllers
     /// <summary>
 	/// Kontroler za entitet adresa.
 	/// </summary>
+    /// [Authorize]
     [ApiController]
     [Route("api/adrese")]
     [Produces("application/json", "application/xml")]
@@ -54,7 +55,8 @@ namespace AdresaService.Controllers
 		/// <returns>Vraća potvrdu o specifiranoj adresi.</returns>
 		/// <response code="200">Vraća specifiranu adresu.</response>
 		/// <response code="404">Specifirana adresa ne postoji.</response>
-		[HttpGet("{adresaID}")]
+		[HttpHead]
+        [HttpGet("{adresaID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<AdresaDTO> GetAdresa(Guid adresaID)
@@ -72,6 +74,7 @@ namespace AdresaService.Controllers
         /// <returns>Potvrdu o kreiranoj adresi.</returns>
         /// <response code="201">Vraća kreiranu adresu.</response>
         /// <response code="500">Došlo je do greške na serveru prilikom kreiranja adrese.</response>
+        [HttpHead]
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -104,6 +107,7 @@ namespace AdresaService.Controllers
         /// <response code="200">Vraća ažuriranu adresu.</response>
         /// <response code="404">Specifirana adresa ne postoji.</response>
         /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja adrese.</response>
+        [HttpHead]
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -135,6 +139,7 @@ namespace AdresaService.Controllers
         /// <response code="204">Specifirana adresa je uspešno obrisana.</response>
         /// <response code="404">Specifirana adresa ne postoji.</response>
         /// <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranoe adrese.</response>
+        [HttpHead]
         [HttpDelete("{adresaID}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -303,5 +303,15 @@
         <member name="M:AdresaService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:AdresaService.Profiles.AdresaProfile">
+            <summary>
+            Profil mapera za model entiteta adresa.
+            </summary>
+        </member>
+        <member name="M:AdresaService.Profiles.AdresaProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta adresa.
+            </summary>
+        </member>
     </members>
 </doc>

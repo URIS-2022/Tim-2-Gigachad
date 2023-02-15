@@ -4,8 +4,14 @@ using AutoMapper;
 
 namespace AdresaService.Profiles
 {
+    /// <summary>
+	/// Profil mapera za model entiteta adresa.
+	/// </summary>
     public class AdresaProfile : Profile
     {
+        /// <summary>
+		/// Profil mapera za model entiteta adresa.
+		/// </summary>
         public AdresaProfile() 
         {
             CreateMap<AdresaEntity, AdresaDTO>()
