@@ -17,54 +17,46 @@ namespace KupacService.Entities
         /// <summary>
         /// ID lica.
         /// </summary>
-        [Required]
-        [ForeignKey("LiceDTO")]
         public Guid LiceID { get; set; }
 
         /// <summary>
         /// ID ovlascenjog lica.
         /// </summary>
-        [Required]
-        [ForeignKey("OvlascenoLiceDTO")]
         public Guid OvlascenoLiceID { get; set; }
 
         /// <summary>
         /// ID javnog nadmetanja.
         /// </summary>
-        [Required]
-        [ForeignKey("JavnoNadmetanjeDTO")]
         public Guid JavnoNadmetanjeID { get; set; }
 
         /// <summary>
         /// Prioritet kupca.
         /// </summary>
 
-        [Required]
-        [MaxLength(30)]
+        [Required(ErrorMessage = "Kupac mora da ima validan prioritet.")]
+        [MaxLength(50, ErrorMessage = "Prioritet ne sme da bude preko 50 karaktera.")]
         public string? Prioritet { get; set; }
 
         /// <summary>
         /// Lice ima/nema zabranu.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Kupac mora da ima podatke podatke o zabrani.")]
         public bool? ImaZabranu { get; set; }
 
         /// <summary>
         /// Datum pocetka zabrane.
         /// </summary>
-        [Required]
         public DateTime? DatumPocetkaZabrane { get; set; }
 
         /// <summary>
         /// Datum zavrsetka zabrane.
         /// </summary>
-        [Required]
         public DateTime? DatumZavrsetkaZabrane { get; set; }
 
         /// <summary>
         /// Broj kupovina kupca.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Kupac mora da ima podatke podatke o broju kupovina.")]
         public int? BrojKupovina { get; set; }
     }
 }

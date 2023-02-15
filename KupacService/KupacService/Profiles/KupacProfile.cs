@@ -14,7 +14,10 @@ namespace KupacService.Profiles
             //                   opt => opt.MapFrom(src => $"{src.ImaZabranu} {src.Prioritet}"));
 
             CreateMap<KupacCreateDTO, KupacEntity>();
-            CreateMap<KupacUpdateDTO, KupacEntity>();
+            CreateMap<KupacUpdateDTO, KupacEntity>()           
+                              .ForMember(
+                              dest => dest.KupacID,
+                              opt => opt.MapFrom(src => Guid.Parse(src.KupacID)));
             CreateMap<KupacEntity, KupacEntity>();
         }
     }

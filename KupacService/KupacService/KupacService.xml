@@ -91,6 +91,36 @@
             </summary>
             <returns>Vraća boolean.</returns>
         </member>
+        <member name="T:KupacService.DTO.AdresaDTO">
+            <summary>
+            DTO model za adresu.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.AdresaDTO.Mesto">
+            <summary>
+            Mesto.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.AdresaDTO.Drzava">
+            <summary>
+            Država(E).
+            </summary>
+        </member>
         <member name="T:KupacService.DTO.KupacCreateDTO">
             <summary>
             Model DTO-a za kreiranje fizičkog lica.
@@ -134,6 +164,11 @@
         <member name="P:KupacService.DTO.KupacCreateDTO.BrojKupovina">
             <summary>
             Broj kupovina kupca.
+            </summary>
+        </member>
+        <member name="M:KupacService.DTO.KupacCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje kupca.
             </summary>
         </member>
         <member name="T:KupacService.DTO.KupacDTO">
@@ -186,6 +221,102 @@
             Broj kupovina kupca.
             </summary>
         </member>
+        <member name="T:KupacService.DTO.LiceDTO">
+            <summary>
+            Model DTO-a za lice.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.LiceDTO.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.LiceDTO.FizickoLiceID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.LiceDTO.Tel1">
+            <summary>
+            Telefon 1 lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.LiceDTO.Tel2">
+            <summary>
+            Telefon 2 lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.LiceDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.LiceDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.LiceDTO.OvlascenoLice">
+            <summary>
+            Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="T:KupacService.DTO.UplataDTO">
+            <summary>
+            Model DTO-a za uplatu.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.UplataDTO.UplataID">
+            <summary>
+            ID uplate.
+            </summary>
+            [Required]
+        </member>
+        <member name="P:KupacService.DTO.UplataDTO.JavnoNadmetanjeID">
+            <summary>
+            ID javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.UplataDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.UplataDTO.BrojRacuna">
+            <summary>
+            Broj racuna.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.UplataDTO.PozivNaBroj">
+            <summary>
+            Poziv na broj.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.UplataDTO.Iznos">
+            <summary>
+            Iznos.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.UplataDTO.Uplatilac">
+            <summary>
+            Ime uplatioca.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.UplataDTO.SvrhaUplate">
+            <summary>
+            Svrha uplate.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.UplataDTO.DatumUplate">
+            <summary>
+            Datum uplate.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.UplataDTO.KursnaLista">
+            <summary>
+            Kursna lista.
+            </summary>
+        </member>
         <member name="T:KupacService.Entities.KupacUpdateDTO">
             <summary>
             Model DTO-a za kreiranje kupca.
@@ -234,6 +365,41 @@
         <member name="P:KupacService.Entities.KupacUpdateDTO.BrojKupovina">
             <summary>
             Broj kupovina kupca.
+            </summary>
+        </member>
+        <member name="M:KupacService.Entities.KupacUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje kupca.
+            </summary>
+        </member>
+        <member name="T:KupacService.Entities.EntitiesEnums">
+            <summary>
+            Enumeratori za modele entiteta.
+            </summary>
+        </member>
+        <member name="T:KupacService.Entities.EntitiesEnums.Prioritet">
+            <summary>
+            Enumerator za tipa korisnika.
+            </summary>
+        </member>
+        <member name="F:KupacService.Entities.EntitiesEnums.Prioritet.VLASNIKSISTEMAZANAVODNJAVANJE">
+            <summary>
+            Administrator.
+            </summary>
+        </member>
+        <member name="F:KupacService.Entities.EntitiesEnums.Prioritet.VLASNIKZEMLJISTAKOJESEGRANICISAZEMLJISTEMKOJESEDAJEUZAKUP">
+            <summary>
+            Komisija.
+            </summary>
+        </member>
+        <member name="F:KupacService.Entities.EntitiesEnums.Prioritet.POLJOPRIVREDNIKKOJIJEUPISANUREGISTAR">
+            <summary>
+            Operater.
+            </summary>
+        </member>
+        <member name="F:KupacService.Entities.EntitiesEnums.Prioritet.VLASNIKZEMLJISTAKOJEJENAJBLIZEZEMLJISTUKOJESEDAJEUZAKUP">
+            <summary>
+            Licitant.
             </summary>
         </member>
         <member name="M:KupacService.Entities.KupacContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">

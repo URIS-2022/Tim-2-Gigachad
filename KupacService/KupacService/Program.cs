@@ -1,11 +1,17 @@
 using KupacService.Data;
 using KupacService.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
+builder.Services.AddMvc();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -17,6 +23,47 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<KupacContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("KupacDB")));
 
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["JWT:Issuer"],
+        ValidAudience = builder.Configuration["JWT:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
+    };
+});
+
+
+builder.Services.AddSwaggerGen(setup =>
+{
+    setup.SwaggerDoc("LiceServiceOpenApiSpecification",
+        new Microsoft.OpenApi.Models.OpenApiInfo()
+        {
+            Title = "Kupac API",
+            Version = "v1",
+            Description = "Pomocu ovog API-ja moze da se vrsi dodavanje, modifikacija i brisanje lica, kao i pregled svih kreiranih lica.",
+            Contact = new Microsoft.OpenApi.Models.OpenApiContact
+            {
+                Name = "Vasilije Mucibabic",
+                Email = "mucibabic.it23.2019@uns.ac.rs",
+                Url = new Uri("http://www.ftn.uns.ac.rs/")
+            },
+            License = new Microsoft.OpenApi.Models.OpenApiLicense
+            {
+                Name = "FTN licence",
+                Url = new Uri("http://www.ftn.uns.ac.rs/")
+            },
+            TermsOfService = new Uri("http://www.ftn.uns.ac.rs/")
+        });
+    var xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
+    setup.IncludeXmlComments(xmlCommentsPath);
+});
 
 
 var app = builder.Build();
@@ -32,10 +79,16 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(setup =>
+    {
+        setup.SwaggerEndpoint("/swagger/KupacServiceOpenApiSpecification/swagger.json", "Kupac API");
+        setup.RoutePrefix = "";
+    });
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

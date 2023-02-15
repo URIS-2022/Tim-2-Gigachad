@@ -3,12 +3,14 @@ using KupacService.Data;
 using KupacService.Entities;
 using Microsoft.AspNetCore.Mvc;
 using KupacService.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KupacService.Controllers
 {
     /// <summary>
     /// Kontroler za entitet kupac.
     /// </summary>
+    [Authorize]
     [ApiController]
     [Route("api/kupci")]
     [Produces("application/json", "application/xml")]
@@ -141,7 +143,7 @@ namespace KupacService.Controllers
         {
             try
             {
-                KupacEntity? oldKupac = kupacRepository.GetKupacByID(kupacUpdateDTO.KupacID);
+                KupacEntity? oldKupac = kupacRepository.GetKupacByID(Guid.Parse(kupacUpdateDTO.KupacID));
                 if (oldKupac == null)
                     return NotFound();
                 KupacEntity kupac = mapper.Map<KupacEntity>(kupacUpdateDTO);
