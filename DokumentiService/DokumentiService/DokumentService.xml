@@ -68,5 +68,17 @@
         <member name="M:DokumentiService.Migrations.InitialMigration2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:DokumentiService.Migrations.InitialMigration3">
+            <inheritdoc />
+        </member>
+        <member name="M:DokumentiService.Migrations.InitialMigration3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DokumentiService.Migrations.InitialMigration3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DokumentiService.Migrations.InitialMigration3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

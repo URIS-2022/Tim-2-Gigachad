@@ -6,7 +6,7 @@ namespace DokumentiService.Entities
     public class EksterniDokumentEntity
     {
         [Key]
-        public Guid ID{ get; set; }
+        public Guid EksterniDokumentID{ get; set; }
         [Required]
         public string? PutanjaDokumenta { get; set; }
     }

@@ -8,8 +8,11 @@ namespace DokumentiService.Profiles
     {
         public EksterniDokumentProfile()
         {
-            CreateMap<EksterniDokumentEntity, EksterniDokumentDTO>();
-                
+            CreateMap<EksterniDokumentEntity, EksterniDokumentDTO>()
+                .ForMember(
+                    dest => dest.IDPutanja,
+                    opt => opt.MapFrom(src => $"{src.EksterniDokumentID} {src.PutanjaDokumenta}"));
+            
         }
     }
 }

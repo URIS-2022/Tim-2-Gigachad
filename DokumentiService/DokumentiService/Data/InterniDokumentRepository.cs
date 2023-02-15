@@ -21,7 +21,10 @@ namespace DokumentiService.Data
 
         public void DeleteInterniDokument(Guid InterniDokumentID)
         {
-            
+            InterniDokumentEntity? interniDokument = GetInterniDokumentID(InterniDokumentID);
+            if (interniDokument != null)
+                context.Remove(interniDokument);
+
         }
 
         public List<InterniDokumentEntity> GetInterniDokument()
@@ -31,12 +34,12 @@ namespace DokumentiService.Data
 
         public InterniDokumentEntity GetInterniDokumentID(Guid InterniDokumentID)
         {
-            return null;
+            return context.InterniDokumenti.FirstOrDefault(e => e.InterniDokumentID == InterniDokumentID);
         }
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return context.SaveChanges() > 0;
         }
 
         public void UpdateInterniDokument(DokumentEntity InterniDokument)

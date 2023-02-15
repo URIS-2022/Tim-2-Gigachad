@@ -1,6 +1,11 @@
-﻿namespace DokumentiService.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DokumentiService.DTO
 {
     public class EksterniDokumentCreateDTO
     {
+        [Required]
+        [MaxLength(25)]
+        public string? PutanjaDokumenta { get; set; }
     }
 }

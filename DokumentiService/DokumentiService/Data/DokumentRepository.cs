@@ -21,7 +21,9 @@ namespace DokumentiService.Data
 
         public void DeleteDokument(Guid DokumentID)
         {
-            
+            DokumentEntity? Dokument = GetDokumentID(DokumentID);
+            if (Dokument != null)
+                context.Remove(Dokument);
         }
 
         public List<DokumentEntity> GetDokument()
@@ -31,12 +33,12 @@ namespace DokumentiService.Data
 
         public DokumentEntity GetDokumentID(Guid DokumentID)
         {
-            return null;
+            return context.Dokumenti.FirstOrDefault(e => e.DokumentID == DokumentID);
         }
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return context.SaveChanges() > 0;
         }
 
         public void UpdateDokument(DokumentEntity Dokument)

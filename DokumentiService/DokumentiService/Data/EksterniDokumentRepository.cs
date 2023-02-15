@@ -21,7 +21,9 @@ namespace DokumentiService.Data
 
         public void DeleteEksterniDokument(Guid EksterniDokumentID)
         {
-
+            EksterniDokumentEntity? eksterniDokument = GetEksterniDokumentID(EksterniDokumentID);
+            if (eksterniDokument != null)
+                context.Remove(eksterniDokument);
         }
 
         public List<EksterniDokumentEntity> GetEksterniDokument()
@@ -31,12 +33,12 @@ namespace DokumentiService.Data
 
         public EksterniDokumentEntity GetEksterniDokumentID(Guid EksterniDokumentID)
         {
-            return null;
+            return context.EksterniDokumenti.FirstOrDefault(e => e.EksterniDokumentID == EksterniDokumentID);
         }
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return context.SaveChanges() > 0;
         }
 
         public void UpdateEksterniDokument(EksterniDokumentEntity EksterniDokument)

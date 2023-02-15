@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DokumentiService.Data;
+using DokumentiService.DTO;
 using DokumentiService.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -40,5 +41,44 @@ namespace DokumentiService.Controllers
                 return NoContent();
             return Ok(mapper.Map<List<EksterniDokumentEntity>>(eksdok));
         }
+
+        [HttpGet("{eksterniDokumentID}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
+        public ActionResult<EksterniDokumentDTO> GetEksterniDokument(Guid eksterniDokumentID)
+        {
+            var eksterniDokument = eksterniDokumentRepository.GetEksterniDokumentID(eksterniDokumentID);
+            if (eksterniDokument == null)
+                return NotFound();
+            return Ok(mapper.Map<EksterniDokumentEntity>(eksterniDokument));
+        }
+
+        [HttpDelete("{eksterniDokumentID}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
+        public IActionResult DeleteEksterniDokument(Guid eksterniDokumentID)
+        {
+            try
+            {
+                EksterniDokumentEntity? eksterniDokument = eksterniDokumentRepository.GetEksterniDokumentID(eksterniDokumentID);
+
+                if (eksterniDokument == null)
+                    return NotFound();
+
+                eksterniDokumentRepository.DeleteEksterniDokument(eksterniDokumentID);
+                eksterniDokumentRepository.SaveChanges();
+
+                return NoContent();
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+            }
+        }
+
+
     }
 }

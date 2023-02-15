@@ -20,24 +20,24 @@ namespace DokumentiService.Entities
         {
             builder.Entity<EksterniDokumentEntity>().HasData(new
             {
-                ID = Guid.Parse("475b61f1-dccd-404a-a657-43fb9ec729ce"),
+                EksterniDokumentID = Guid.Parse("475b61f1-dccd-404a-a657-43fb9ec729ce"),
                 PutanjaDokumenta = "Ovo je samo da vidimo sta ce da pise"
             });
             builder.Entity<EksterniDokumentEntity>().HasData(new
             {
-                ID = Guid.Parse("72922197-afd8-49ad-877b-6573b7d50714"),
+                EksterniDokumentID = Guid.Parse("72922197-afd8-49ad-877b-6573b7d50714"),
                 PutanjaDokumenta = "Ovo je nesto nesto da vidimo sta ce da pise drugi deo brapoooo"
                 
             });
             builder.Entity<InterniDokumentEntity>().HasData(new
             {
-                ID = Guid.Parse("858930f0-92ec-4975-b697-0c7afb2842de"),
+                InterniDokumentID = Guid.Parse("858930f0-92ec-4975-b697-0c7afb2842de"),
                 PutanjaDokumenta = "Internal man"
 
             });
             builder.Entity<InterniDokumentEntity>().HasData(new
             {
-                ID = Guid.Parse("9813acc5-35f5-4d3b-886c-42a6aaf162b9"),
+                InterniDokumentID = Guid.Parse("9813acc5-35f5-4d3b-886c-42a6aaf162b9"),
                 PutanjaDokumenta = "Internal bratskciiii"
 
             });
