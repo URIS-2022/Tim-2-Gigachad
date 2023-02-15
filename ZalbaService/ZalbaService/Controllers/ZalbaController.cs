@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ZalbaService.Data;
 using ZalbaService.Entities;
@@ -111,8 +112,8 @@ namespace ZalbaService.Controllers
                 ZalbaEntity? oldZalba = zalbaRepository.GetZalbaByID(zalbaUpdateDTO.ZalbaID);
                 if (oldZalba == null)
                     return NotFound();
-                ZalbaEntity fizickoLice = mapper.Map<ZalbaEntity>(zalbaUpdateDTO);
-                mapper.Map(fizickoLice, oldZalba);
+                ZalbaEntity zalba = mapper.Map<ZalbaEntity>(zalbaUpdateDTO);
+                mapper.Map(zalba, oldZalba);
                 zalbaRepository.SaveChanges();
                 return Ok(mapper.Map<ZalbaDTO>(oldZalba));
             }

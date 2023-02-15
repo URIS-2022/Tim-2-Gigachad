@@ -16,6 +16,7 @@ namespace ZalbaService.Profiles
             CreateMap<ZalbaCreateDTO, ZalbaEntity>();
             CreateMap<ZalbaUpdateDTO, ZalbaEntity>();
             CreateMap<ZalbaDTO, ZalbaEntity>();
+            CreateMap<ZalbaEntity, ZalbaEntity>();
         }
     }
 }

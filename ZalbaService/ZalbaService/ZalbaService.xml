@@ -146,6 +146,11 @@
             ID zalbe.
             </summary>
         </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
         <member name="P:ZalbaService.Models.ZalbaDTO.TipZalbe">
             <summary>
             Tip zalbe.
@@ -154,6 +159,16 @@
         <member name="P:ZalbaService.Models.ZalbaDTO.DatumPodnosenja">
             <summary>
             Datum podnosenja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.StatusZalbe">
+            <summary>
+            Status zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.RadnjaZalbe">
+            <summary>
+            Radnja zalbe.
             </summary>
         </member>
         <member name="P:ZalbaService.Models.ZalbaUpdateDTO.ZalbaID">

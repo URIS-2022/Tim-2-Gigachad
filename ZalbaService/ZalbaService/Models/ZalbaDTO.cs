@@ -11,6 +11,12 @@ namespace ZalbaService.Models
         public Guid ZalbaID { get; set; }
 
         /// <summary>
+		/// ID kupca.
+		/// </summary>
+        [Required]
+        public Guid KupacID { get; set; }
+
+        /// <summary>
 		/// Tip zalbe.
 		/// </summary>
         [Required]
@@ -25,5 +31,19 @@ namespace ZalbaService.Models
 
         [Required]
         public string? Objasnjenje { get; set; }
+
+        /// <summary>
+		/// Status zalbe.
+		/// </summary>
+        [Required]
+        [MaxLength(10)]
+        public string? StatusZalbe { get; set; }
+
+        /// <summary>
+		/// Radnja zalbe.
+		/// </summary>
+        [Required]
+        [MaxLength(50)]
+        public string? RadnjaZalbe { get; set; }
     }
 }

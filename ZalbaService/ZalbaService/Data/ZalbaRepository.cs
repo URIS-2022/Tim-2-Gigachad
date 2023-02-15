@@ -40,11 +40,6 @@ namespace ZalbaService.Data
             return context.Zalbe.FirstOrDefault(e => e.ZalbaID == zalbaID);
         }
 
-        public void UpdateZalba(ZalbaEntity zalba)
-        {
-            
-        }
-
         public bool SaveChanges()
         {
             return context.SaveChanges() > 0;

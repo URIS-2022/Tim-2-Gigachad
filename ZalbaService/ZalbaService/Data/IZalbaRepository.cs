@@ -11,7 +11,6 @@ namespace ZalbaService.Data
 
         ZalbaDTO CreateZalba(ZalbaCreateDTO zalba);
 
-        void UpdateZalba(ZalbaEntity zalba);
 
         void DeleteZalba(Guid zalbaID);
 

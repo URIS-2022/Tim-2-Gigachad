@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KomisijaService</name>
+    </assembly>
+    <members>
+        <member name="M:KomisijaService.Entities.KomisijaContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.KomisijaID">
+            <summary>
+            ID komisije.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.Clan1ID">
+            <summary>
+            ID 1. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.Clan2ID">
+            <summary>
+            ID 2. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.Clan3ID">
+            <summary>
+            ID 3. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.Clan4ID">
+            <summary>
+            ID 4. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.Clan5ID">
+            <summary>
+            ID 5. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.PredsednikID">
+            <summary>
+            ID predsednika.
+            </summary>
+        </member>
+        <member name="T:KomisijaService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:KomisijaService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:KomisijaService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:KomisijaService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:KomisijaService.Migrations.InitialInsert">
+            <inheritdoc />
+        </member>
+        <member name="M:KomisijaService.Migrations.InitialInsert.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:KomisijaService.Migrations.InitialInsert.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:KomisijaService.Migrations.InitialInsert.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.Clan1ID">
+            <summary>
+            ID 1. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.Clan2ID">
+            <summary>
+            ID 2. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.Clan3ID">
+            <summary>
+            ID 3. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.Clan4ID">
+            <summary>
+            ID 4. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.Clan5ID">
+            <summary>
+            ID 5. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.PredsednikID">
+            <summary>
+            ID predsednika.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.KomisijaID">
+            <summary>
+            ID komisije.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Clan1ID">
+            <summary>
+            ID 1. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Clan2ID">
+            <summary>
+            ID 2. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Clan3ID">
+            <summary>
+            ID 3. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Clan4ID">
+            <summary>
+            ID 4. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Clan5ID">
+            <summary>
+            ID 5. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.PredsednikID">
+            <summary>
+            ID predsednika.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.KomisijaID">
+            <summary>
+            ID komisije.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.Clan1ID">
+            <summary>
+            ID 1. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.Clan2ID">
+            <summary>
+            ID 2. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.Clan3ID">
+            <summary>
+            ID 3. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.Clan4ID">
+            <summary>
+            ID 4. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.Clan5ID">
+            <summary>
+            ID 5. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.PredsednikID">
+            <summary>
+            ID predsednika.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.FizickoLiceID">
+            <summary>
+            ID fizičkog lica lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.PravnoLiceID">
+            <summary>
+            ID pravnog lica lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.AdresaID">
+            <summary>
+            ID adrese lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.Tel1">
+            <summary>
+            Telefon 1 lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.Tel2">
+            <summary>
+            Telefon 2 lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.OvlascenoLice">
+            <summary>
+            Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+    </members>
+</doc>

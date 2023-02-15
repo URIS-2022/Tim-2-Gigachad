@@ -32,8 +32,8 @@ namespace KomisijaService.Controllers
             var komisije = komisijaRepository.GetKomisije();
             if (komisije == null || komisije.Count == 0)
                 return NoContent();
-            //return Ok(mapper.Map<List<KomisijaDTO>>(komisije));
-            return Ok(komisije);
+            return Ok(mapper.Map<List<KomisijaDTO>>(komisije));
+            //return Ok(komisije);
         }
     }
 }
