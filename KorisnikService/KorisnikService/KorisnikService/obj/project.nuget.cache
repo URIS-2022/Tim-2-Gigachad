@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4oCexevM//fEeSavk4p6PEOCiF5GrNXZwOPzlybgnfRFnIb/x/zhlaJXFTkVYCH8b0BnihRyuLQmeUYHQpQNZA==",
+  "dgSpecHash": "pkwkCzaQF7W5FAs0EJp5D24pwvlHRBRZBWaIEOmJfk9wM+i5LB4cpoYOrjOVYTQGfZzrVDBVbWlFDB9L1XRQ6g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aleks\\Downloads\\KorisnikService\\KorisnikService\\KorisnikService\\KorisnikService.csproj",
+  "projectFilePath": "D:\\Files\\Fax\\URIS\\Timski projekat\\KorisnikService\\KorisnikService\\KorisnikService\\KorisnikService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aleks\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\aleks\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UplataService.Data;
 using UplataService.Entities;
@@ -6,6 +7,7 @@ using UplataService.Models;
 
 namespace UplataService.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/uplate")]
     [Produces("application/json", "application/xml")]
@@ -26,10 +28,9 @@ namespace UplataService.Controllers
 		/// Vraća sve uplate.
 		/// </summary>
 		/// <returns>Vraća potvrdu o listi postojećih uplata.</returns>
-		/// <response code="200">Vraća listu fizičkih lica.</response>
-		/// <response code="204">Ne postoje fizička lica.</response>
+		/// <response code="200">Vraća listu uplata.</response>
+		/// <response code="204">Ne postoje uplata.</response>
 		[HttpGet]
-        [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<UplataEntity>> GetUplate()

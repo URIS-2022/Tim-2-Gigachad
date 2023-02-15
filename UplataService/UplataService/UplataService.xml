@@ -9,8 +9,8 @@
             Vraća sve uplate.
             </summary>
             <returns>Vraća potvrdu o listi postojećih uplata.</returns>
-            <response code="200">Vraća listu fizičkih lica.</response>
-            <response code="204">Ne postoje fizička lica.</response>
+            <response code="200">Vraća listu uplata.</response>
+            <response code="204">Ne postoje uplata.</response>
         </member>
         <member name="M:UplataService.Controllers.UplataController.GetUplata(System.Guid)">
             <summary>
