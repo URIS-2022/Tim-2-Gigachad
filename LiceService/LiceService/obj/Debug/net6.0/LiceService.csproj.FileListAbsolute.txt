@@ -1,10 +1,3 @@
-C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.csproj.AssemblyReference.cache
-C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.AssemblyInfoInputs.cache
-C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.AssemblyInfo.cs
-C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.csproj.CoreCompileInputs.cache
-C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\bin\Debug\net6.0\appsettings.json
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\bin\Debug\net6.0\LiceService.exe
@@ -76,6 +69,13 @@ C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\bin\Debug
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.csproj.AssemblyReference.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.AssemblyInfoInputs.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.AssemblyInfo.cs
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.csproj.CoreCompileInputs.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\LiceService.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\staticwebassets\msbuild.LiceService.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\staticwebassets\msbuild.build.LiceService.props
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\LiceService\LiceService\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.LiceService.props

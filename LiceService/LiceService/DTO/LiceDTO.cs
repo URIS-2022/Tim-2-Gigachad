@@ -18,7 +18,7 @@
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		public Guid PravnoLiceID { get; set; }
+		public Guid? PravnoLiceID { get; set; }
 
 		/// <summary>
 		/// Adresa lica.

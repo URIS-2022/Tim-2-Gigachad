@@ -251,6 +251,43 @@
             </summary>
             <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>
+        <member name="T:LiceService.Data.IPravnoLiceRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.IPravnoLiceRepository.GetPravnaLica">
+            <summary>
+            Vraća listu pravnih lica iz konteksta.
+            </summary>
+            <returns>Vraća listu pravnih lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.IPravnoLiceRepository.GetPravnoLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno pravno lice iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="pravnoLiceID">ID pravnog lica.</param>
+            <returns>Vraća specifirano pravno lice.</returns>
+        </member>
+        <member name="M:LiceService.Data.IPravnoLiceRepository.CreatePravnoLice(LiceService.DTO.PravnoLiceCreateDTO)">
+            <summary>
+            Dodaje novo pravno lice u kontekst.
+            </summary>
+            <param name="pravnoLiceCreateDTO">DTO za kreiranje pravnog lica.</param>
+            <returns>Vraća DTO kreiranog pravnog lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.IPravnoLiceRepository.DeletePravnoLice(System.Guid)">
+            <summary>
+            Briše pravno lice iz konteksta.
+            </summary>
+            <param name="pravnoLiceID">ID pravnog lica.</param>
+        </member>
+        <member name="M:LiceService.Data.IPravnoLiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
         <member name="T:LiceService.Data.LiceRepository">
             <summary>
             Repozitorijum za entitet lice.
@@ -498,6 +535,11 @@
             ID fizičkog lica.
             </summary>
         </member>
+        <member name="P:LiceService.DTO.LiceCreateDTO.PravnoLiceID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
         <member name="P:LiceService.DTO.LiceCreateDTO.AdresaLicaID">
             <summary>
             ID adrese lica.
@@ -548,6 +590,11 @@
             ID fizičkog lica.
             </summary>
         </member>
+        <member name="P:LiceService.DTO.LiceDTO.PravnoLiceID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
         <member name="P:LiceService.DTO.LiceDTO.AdresaLica">
             <summary>
             Adresa lica.
@@ -593,6 +640,11 @@
             ID fizičkog lica.
             </summary>
         </member>
+        <member name="P:LiceService.DTO.LiceUpdateDTO.PravnoLiceID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
         <member name="P:LiceService.DTO.LiceUpdateDTO.AdresaLicaID">
             <summary>
             ID adrese lica.
@@ -626,6 +678,76 @@
         <member name="M:LiceService.DTO.LiceUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
             Validacija za model DTO-a za ažuriranje entiteta lice.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.PravnoLiceCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje entiteta pravno lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceCreateDTO.KontaktOsobaID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceCreateDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceCreateDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.PravnoLiceDTO">
+            <summary>
+            Model DTO-a za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceDTO.KontaktOsobaID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.PravnoLiceUpdateDTO">
+            <summary>
+            Model DTO-a za ažuriranje entiteta pravno lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceUpdateDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceUpdateDTO.KontaktOsobaID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceUpdateDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceUpdateDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
             </summary>
         </member>
         <member name="T:LiceService.Entities.FizickoLiceEntity">
@@ -688,7 +810,7 @@
             Funkcija kontakt osobe.
             </summary>
         </member>
-        <member name="P:LiceService.Entities.KontaktOsobaEntity.Lica">
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.PravnaLica">
             <summary>
             Lica fizičkih lica.
             </summary>
@@ -706,6 +828,16 @@
         <member name="P:LiceService.Entities.LiceContext.FizickaLica">
             <summary>
             DbSet za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceContext.KontaktOsobe">
+            <summary>
+            DbSet za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceContext.PravnaLica">
+            <summary>
+            DbSet za entitet pravno lice.
             </summary>
         </member>
         <member name="P:LiceService.Entities.LiceContext.Lica">
@@ -738,6 +870,11 @@
             Fizičko lice.
             </summary>
         </member>
+        <member name="P:LiceService.Entities.LiceEntity.PravnoLiceID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
         <member name="P:LiceService.Entities.LiceEntity.AdresaLicaID">
             <summary>
             ID adrese lica.
@@ -768,16 +905,46 @@
             Da li je lice ovlašćeno lice.
             </summary>
         </member>
-        <member name="T:LiceService.Migrations.InitialMigration">
+        <member name="T:LiceService.Entities.PravnoLiceEntity">
+            <summary>
+            Model realnog entiteta pravno lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.KontaktOsobaID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.KontaktOsoba">
+            <summary>
+            Kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.Migrations.InitialMigration3">
             <inheritdoc />
         </member>
-        <member name="M:LiceService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:LiceService.Migrations.InitialMigration3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:LiceService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:LiceService.Migrations.InitialMigration3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:LiceService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:LiceService.Migrations.InitialMigration3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:LiceService.Profiles.FizickoLiceProfile">
@@ -808,6 +975,16 @@
         <member name="M:LiceService.Profiles.LiceProfile.#ctor">
             <summary>
             Profil mapera za model entiteta lice.
+            </summary>
+        </member>
+        <member name="T:LiceService.Profiles.PravnoLiceProfile">
+            <summary>
+            Profil mapera za model entiteta pravno lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Profiles.PravnoLiceProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta pravno lice.
             </summary>
         </member>
         <member name="T:LiceService.ServiceCalls.AdresaService">

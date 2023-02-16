@@ -23,7 +23,7 @@ namespace LiceService.Entities
 		/// <summary>
 		/// Kontakt osoba.
 		/// </summary>
-		[Required]
+		[Required(ErrorMessage = "Pravno lice mora da ima kontakt osobu.")]
 		public KontaktOsobaEntity KontaktOsoba { get; set; } = null!;
 
 		/// <summary>
@@ -40,10 +40,5 @@ namespace LiceService.Entities
 		[MinLength(8, ErrorMessage = "Matični broj pravnog lica mora da ima 8 karaktera.")]
 		[MaxLength(8, ErrorMessage = "Matični broj pravnog lica mora da ima 8 karaktera.")]
 		public string MaticniBroj { get; set; } = null!;
-
-		/// <summary>
-		/// Lica pravnog lica.
-		/// </summary>
-		public List<LiceEntity>? Lica { get; set; }
 	}
 }

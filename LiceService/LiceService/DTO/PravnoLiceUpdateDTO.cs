@@ -18,7 +18,7 @@ namespace LiceService.DTO
 		/// <summary>
 		/// ID kontakt osobe.
 		/// </summary>
-		[Required(ErrorMessage = "Pravno lice mora da ima ID.")]
+		[Required(ErrorMessage = "Pravno lice mora da ima ID kontakt osobe.")]
 		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
 		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
 		public string KontaktOsobaID { get; set; } = null!;

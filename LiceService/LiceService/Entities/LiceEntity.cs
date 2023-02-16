@@ -29,13 +29,7 @@ namespace LiceService.Entities
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		[ForeignKey("PravnoLiceEntity")]
-		public Guid PravnoLiceID { get; set; }
-
-		/// <summary>
-		/// Pravno lice.
-		/// </summary>
-		public PravnoLiceEntity? PravnoLice { get; set; }
+		public Guid? PravnoLiceID { get; set; }
 
 		/// <summary>
 		/// ID adrese lica.

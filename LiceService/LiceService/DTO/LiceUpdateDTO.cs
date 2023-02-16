@@ -26,10 +26,9 @@ namespace LiceService.DTO
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		[Required(ErrorMessage = "Lice mora da ima ID pravnog lica.")]
 		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
 		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-		public string PravnoLiceID { get; set; } = null!;
+		public string? PravnoLiceID { get; set; }
 
 		/// <summary>
 		/// ID adrese lica.
@@ -42,7 +41,7 @@ namespace LiceService.DTO
 		/// <summary>
 		/// Prvi telefon lica.
 		/// </summary>
-		[Required(ErrorMessage = "Lice mora da ima telefon jedan.")]
+		[Required(ErrorMessage = "Lice mora da ima prvi telefon.")]
 		[MinLength(9, ErrorMessage = "Prvi telefon lica mora da bude manji od 9 karaktera.")]
 		[MaxLength(10, ErrorMessage = "Prvi telefon lica ne sme da bude preko 10 karaktera.")]
 		public string Telefon1 { get; set; } = null!;
@@ -79,6 +78,9 @@ namespace LiceService.DTO
 		/// </summary>
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
 		{
+			if (PravnoLiceID == null || PravnoLiceID.Equals(string.Empty))
+				PravnoLiceID = Guid.Empty.ToString();
+
 			if (Telefon2 != null && Telefon1.Equals(Telefon2))
 				yield return new ValidationResult("Lice ne može da ima isti prvi i drugi telefon.", new[] { "LiceCreateDTO" });
 		}

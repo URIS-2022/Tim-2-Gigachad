@@ -1,7 +1,7 @@
 ﻿using LiceService.DTO;
 using LiceService.Entities;
 
-namespace KontaktOsobaService.Data
+namespace LiceService.Data
 {
 	/// <summary>
 	/// Interfejs od repozitorijuma za entitet kontakt osoba.
