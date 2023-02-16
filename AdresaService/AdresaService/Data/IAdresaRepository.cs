@@ -3,7 +3,10 @@ using AdresaService.Entities;
 
 namespace AdresaService.Data
 {
-    public interface IAdresaRepository
+    /// <summary>
+	/// Interfejs od repozitorijuma za entitet adresa.
+	/// </summary>
+	public interface IAdresaRepository
     {
         /// <summary>
 		/// Vraća listu adresa iz konteksta.
