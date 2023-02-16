@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KomisijaService.Controllers
 {
+    /// <summary>
+    /// Kontroler za entitet komisija.
+    /// </summary>
     [Authorize]
     [ApiController]
     [Route("api/komisije")]
@@ -17,6 +20,9 @@ namespace KomisijaService.Controllers
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
+        /// <summary>
+        /// Dependency injection za kontroler.
+        /// </summary>
         public KomisijaController(IKomisijaRepository komisijaRepository, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.komisijaRepository = komisijaRepository;
@@ -24,6 +30,12 @@ namespace KomisijaService.Controllers
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Vraća listu svih komisija.
+        /// </summary>
+        /// <returns>Vraća potvrdu o listi postojećih komisija.</returns>
+		/// <response code="200">Vraća listu komisija.</response>
+		/// <response code="204">Ne postoje komisija.</response>
         [HttpGet]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -38,6 +50,13 @@ namespace KomisijaService.Controllers
             //return Ok(komisije);
         }
 
+        /// <summary>
+        /// Vraća jednu komisiju na osnovu prosleđenog ID-ja.
+        /// </summary>
+        /// <param name="komisijaID">ID žalbe</param>
+        /// <returns>Vraća potvrdu o specifiranoj komisiji.</returns>
+        /// /// <response code="200">Vraća specifiranu komisiju.</response>
+        /// <response code="404">Specifirana komisija ne postoji.</response>
         [HttpGet("{komisijaID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -49,6 +68,13 @@ namespace KomisijaService.Controllers
             return Ok(mapper.Map<KomisijaDTO>(komisija));
         }
 
+        /// <summary>
+        /// Kreira novu komisiju.
+        /// </summary>
+        /// <param name="komisijaCreateDTO"> DTO za kreiranje komisije</param>
+        /// <returns>Potvrdu o kreiranoj komisiji.</returns>
+        /// /// <response code="201">Vraća kreiranu komisiju.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja komisije.</response>
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -73,6 +99,14 @@ namespace KomisijaService.Controllers
             }
         }
 
+        /// <summary>
+        /// Ažurira jednu komisiju.
+        /// </summary>
+        /// <param name="komisijaUpdateDTO">DTO za ažuriranje komisije.</param>
+        /// <returns>Potvrdu o ažuriranoj komisiji.</returns>
+		/// <response code="200">Vraća ažuriranu komisiju.</response>
+		/// <response code="404">Specifirana komisija ne postoji.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja komisije.</response>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -119,6 +153,19 @@ namespace KomisijaService.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
+        }
+
+        /// <summary>
+		/// Vraća opcije za rad sa komisijama.
+		/// </summary>
+		/// <returns>Vraća prazan 200 HTTP kod.</returns>
+		/// <response code="200">Vraća prazan 200 HTTP kod.</response>
+		[HttpOptions]
+        [AllowAnonymous]
+        public IActionResult GetKomisijeOptions()
+        {
+            Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
+            return Ok();
         }
     }
 }

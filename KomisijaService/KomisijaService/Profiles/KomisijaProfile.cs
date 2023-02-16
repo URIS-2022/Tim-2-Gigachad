@@ -4,8 +4,14 @@ using KomisijaService.Models;
 
 namespace KomisijaService.Profiles
 {
+    /// <summary>
+    /// Profil mapera za model entiteta komisija.
+    /// </summary>
     public class KomisijaProfile : Profile
     {
+        /// <summary>
+        /// Profil mapera za model entiteta komisija.
+        /// </summary>
         public KomisijaProfile()
         {
             CreateMap<KomisijaEntity, KomisijaDTO>();

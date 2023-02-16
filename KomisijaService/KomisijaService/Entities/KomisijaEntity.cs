@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KomisijaService.Entities
 {
+    /// <summary>
+    /// Model realnog entiteta komisija.
+    /// </summary>
     public class KomisijaEntity
     {
         /// <summary>

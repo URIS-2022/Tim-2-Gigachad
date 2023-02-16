@@ -2,9 +2,19 @@
 
 namespace KomisijaService.Entities
 {
+    /// <summary>
+    /// DbContext za KomisijaService mikroservis.
+    /// </summary>
     public class KomisijaContext : DbContext
     {
+        /// <summary>
+        /// Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+        /// </summary>
         public KomisijaContext(DbContextOptions options) : base(options) { }
+        
+        /// <summary>
+        /// DbSet za entitet komisija.
+        /// </summary>
         public DbSet<KomisijaEntity> Komisije { get; set; }
 
         /// <summary>

@@ -22,7 +22,7 @@ namespace ZalbaService.Data
         ZalbaEntity? GetZalbaByID(Guid zalbaID);
 
         /// <summary>
-        /// Dodaje novo fizičko lice u kontekst, koje kasnije vraća kao DTO objekat.
+        /// Dodaje novu žalbu u kontekst, koje kasnije vraća kao DTO objekat.
         /// </summary>
         /// <param name="zalba">DTO za kreiranje žalbe.</param>
         /// <returns>Vraća DTO kreirane žalbe.</returns>
