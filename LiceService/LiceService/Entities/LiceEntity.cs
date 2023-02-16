@@ -29,13 +29,13 @@ namespace LiceService.Entities
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		//[ForeignKey("PravnoLiceEntity")]
-		//public Guid PravnoLiceID { get; set; }
+		[ForeignKey("PravnoLiceEntity")]
+		public Guid PravnoLiceID { get; set; }
 
 		/// <summary>
 		/// Pravno lice.
 		/// </summary>
-		//public PravnoLiceEntity? PravnoLiceID { get; set; }
+		public PravnoLiceEntity? PravnoLice { get; set; }
 
 		/// <summary>
 		/// ID adrese lica.
@@ -47,15 +47,15 @@ namespace LiceService.Entities
 		/// Prvi telefon lica.
 		/// </summary>
 		[Required(ErrorMessage = "Lice mora da ima telefon jedan.")]
-		[MinLength(9, ErrorMessage = "Telefon 1 lica mora da bude preko 9 karaktera.")]
-		[MaxLength(10, ErrorMessage = "Telefon 1 lica ne sme da bude preko 10 karaktera.")]
+		[MinLength(9, ErrorMessage = "Prvi telefon lica mora da bude manji od 9 karaktera.")]
+		[MaxLength(10, ErrorMessage = "Prvi telefon lica ne sme da bude preko 10 karaktera.")]
 		public string Telefon1 { get; set; } = null!;
 
 		/// <summary>
 		/// Drugi telefon lica.
 		/// </summary>
-		[MinLength(9, ErrorMessage = "Telefon 2 lica mora da bude preko 9 karaktera.")]
-		[MaxLength(10, ErrorMessage = "Telefon 2 lica ne sme da bude preko 10 karaktera.")]
+		[MinLength(9, ErrorMessage = "Drugi telefon lica mora da bude manji od 9 karaktera.")]
+		[MaxLength(10, ErrorMessage = "Drugi telefon lica ne sme da bude preko 10 karaktera.")]
 		public string? Telefon2 { get; set; }
 
 		/// <summary>
@@ -75,7 +75,7 @@ namespace LiceService.Entities
 		/// <summary>
 		/// Da li je lice ovlašćeno lice.
 		/// </summary>
-		[Required(ErrorMessage = "Da li je lice ovlašćeno lice mora biti definisano.")]
+		[Required(ErrorMessage = "Da li je lice ovlašćeno, mora biti definisano.")]
 		public bool OvlascenoLice { get; set; }
 	}
 }

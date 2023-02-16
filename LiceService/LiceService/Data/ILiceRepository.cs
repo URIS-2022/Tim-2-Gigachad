@@ -22,7 +22,7 @@ namespace LiceService.Data
 		LiceEntity? GetLiceByID(Guid liceID);
 
 		/// <summary>
-		/// Dodaje novo lice u kontekst, koje kasnije vraća kao DTO objekat.
+		/// Dodaje novo lice u kontekst.
 		/// </summary>
 		/// <param name="liceCreateDTO">DTO za kreiranje lica.</param>
 		/// <returns>Vraća DTO kreiranog lica.</returns>

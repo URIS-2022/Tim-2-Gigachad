@@ -11,8 +11,8 @@ namespace LiceService.DTO
 		/// ID fizičkog lica.
 		/// </summary>
 		[Required(ErrorMessage = "Fizičko lice mora da ima ID.")]
-		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
 		public string ID { get; set; } = null!;
 
 		/// <summary>

@@ -3,7 +3,7 @@
 namespace LiceService.DTO
 {
 	/// <summary>
-	/// Model DTO-a za ažuriranje lica.
+	/// Model DTO-a za kreiranje entiteta lice.
 	/// </summary>
 	public class LiceCreateDTO : IValidatableObject
 	{
@@ -11,37 +11,39 @@ namespace LiceService.DTO
 		/// ID fizičkog lica.
 		/// </summary>
 		[Required(ErrorMessage = "Lice mora da ima ID fizičkog lica.")]
-		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
 		public string FizickoLiceID { get; set; } = null!;
 
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		//[ForeignKey("PravnoLiceEntity")]
-		//public Guid? PravnoLiceID { get; set; }
+		[Required(ErrorMessage = "Lice mora da ima ID pravnog lica.")]
+		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		public string PravnoLiceID { get; set; } = null!;
 
 		/// <summary>
 		/// ID adrese lica.
 		/// </summary>
 		[Required(ErrorMessage = "Lice mora da ima ID adrese lica.")]
-		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
 		public string AdresaLicaID { get; set; } = null!;
 
 		/// <summary>
-		/// Telefon 1 lica.
+		/// Prvi telefon lica.
 		/// </summary>
 		[Required(ErrorMessage = "Lice mora da ima telefon jedan.")]
-		[MinLength(9, ErrorMessage = "Telefon 1 lica mora da bude preko 9 karaktera.")]
-		[MaxLength(10, ErrorMessage = "Telefon 1 lica ne sme da bude preko 10 karaktera.")]
+		[MinLength(9, ErrorMessage = "Prvi telefon lica mora da bude manji od 9 karaktera.")]
+		[MaxLength(10, ErrorMessage = "Prvi telefon lica ne sme da bude preko 10 karaktera.")]
 		public string Telefon1 { get; set; } = null!;
 
 		/// <summary>
-		/// Telefon 2 lica.
+		/// Drugi telefon lica.
 		/// </summary>
-		[MinLength(9, ErrorMessage = "Telefon 2 lica mora da bude preko 9 karaktera.")]
-		[MaxLength(10, ErrorMessage = "Telefon 2 lica ne sme da bude preko 10 karaktera.")]
+		[MinLength(9, ErrorMessage = "Drugi telefon lica mora da bude manji od 9 karaktera.")]
+		[MaxLength(10, ErrorMessage = "Drugi telefon lica ne sme da bude preko 10 karaktera.")]
 		public string? Telefon2 { get; set; }
 
 		/// <summary>
@@ -61,16 +63,16 @@ namespace LiceService.DTO
 		/// <summary>
 		/// Da li je lice ovlašćeno lice.
 		/// </summary>
-		[Required(ErrorMessage = "Da li je lice ovlašćeno lice mora biti definisano.")]
+		[Required(ErrorMessage = "Da li je lice ovlašćeno, mora biti definisano.")]
 		public bool OvlascenoLice { get; set; }
 
 		/// <summary>
-		/// Validacija za model DTO-a za ažuriranje entiteta fizičko lice.
+		/// Validacija za model DTO-a za kreiranje entiteta lice.
 		/// </summary>
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
 		{
 			if (Telefon2 != null && Telefon1.Equals(Telefon2))
-				yield return new ValidationResult("Lice ne može da ima isti telefon jedan i telefon dva.", new[] { "LiceCreateDTO" });
+				yield return new ValidationResult("Lice ne može da ima isti prvi i drugi telefon.", new[] { "LiceCreateDTO" });
 		}
 	}
 }

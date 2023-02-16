@@ -1,9 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace LiceService.DTO
+﻿namespace LiceService.DTO
 {
 	/// <summary>
-	/// Model DTO-a za fizičko lice.
+	/// Model DTO-a za entitet fizičko lice.
 	/// </summary>
 	public class FizickoLiceDTO
 	{

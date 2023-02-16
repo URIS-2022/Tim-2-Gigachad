@@ -22,7 +22,7 @@ namespace LiceService.Data
 		FizickoLiceEntity? GetFizickoLiceByID(Guid fizickoLiceID);
 
 		/// <summary>
-		/// Dodaje novo fizičko lice u kontekst, koje kasnije vraća kao DTO objekat.
+		/// Dodaje novo fizičko lice u kontekst.
 		/// </summary>
 		/// <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
 		/// <returns>Vraća DTO kreiranog fizičkog lica.</returns>

@@ -1,9 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace LiceService.DTO
+﻿namespace LiceService.DTO
 {
 	/// <summary>
-	/// Model DTO-a za lice.
+	/// Model DTO-a za entitet lice.
 	/// </summary>
 	public class LiceDTO
 	{
@@ -20,8 +18,7 @@ namespace LiceService.DTO
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		//[ForeignKey("PravnoLiceEntity")]
-		//public Guid? PravnoLiceID { get; set; }
+		public Guid PravnoLiceID { get; set; }
 
 		/// <summary>
 		/// Adresa lica.

@@ -1,7 +1,7 @@
 ﻿namespace LiceService.DTO
 {
 	/// <summary>
-	/// DTO za adresu lica.
+	/// Model DTO-a za entitet adresa lica.
 	/// </summary>
 	public class AdresaLicaDTO
 	{

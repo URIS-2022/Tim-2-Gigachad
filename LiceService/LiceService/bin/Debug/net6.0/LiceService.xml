@@ -197,7 +197,7 @@
         </member>
         <member name="M:LiceService.Data.IFizickoLiceRepository.CreateFizickoLice(LiceService.DTO.FizickoLiceCreateDTO)">
             <summary>
-            Dodaje novo fizičko lice u kontekst, koje kasnije vraća kao DTO objekat.
+            Dodaje novo fizičko lice u kontekst.
             </summary>
             <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
             <returns>Vraća DTO kreiranog fizičkog lica.</returns>
@@ -234,7 +234,7 @@
         </member>
         <member name="M:LiceService.Data.ILiceRepository.CreateLice(LiceService.DTO.LiceCreateDTO)">
             <summary>
-            Dodaje novo lice u kontekst, koje kasnije vraća kao DTO objekat.
+            Dodaje novo lice u kontekst.
             </summary>
             <param name="liceCreateDTO">DTO za kreiranje lica.</param>
             <returns>Vraća DTO kreiranog lica.</returns>
@@ -276,7 +276,7 @@
         </member>
         <member name="M:LiceService.Data.LiceRepository.CreateLice(LiceService.DTO.LiceCreateDTO)">
             <summary>
-            Dodaje novo lice u kontekst, koje kasnije vraća kao DTO objekat.
+            Dodaje novo lice u kontekst.
             </summary>
             <param name="liceCreateDTO">DTO za kreiranje lica.</param>
             <returns>Vraća DTO kreiranog lica.</returns>
@@ -295,7 +295,7 @@
         </member>
         <member name="T:LiceService.DTO.AdresaLicaDTO">
             <summary>
-            DTO za adresu lica.
+            Model DTO-a za entitet adresa lica.
             </summary>
         </member>
         <member name="P:LiceService.DTO.AdresaLicaDTO.ID">
@@ -350,7 +350,7 @@
         </member>
         <member name="T:LiceService.DTO.FizickoLiceDTO">
             <summary>
-            Model DTO-a za fizičko lice.
+            Model DTO-a za entitet fizičko lice.
             </summary>
         </member>
         <member name="P:LiceService.DTO.FizickoLiceDTO.ID">
@@ -398,9 +398,99 @@
             Validacija za model DTO-a za ažuriranje entiteta fizičko lice.
             </summary>
         </member>
+        <member name="T:LiceService.DTO.KontaktOsobaCreateDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaCreateDTO.Ime">
+            <summary>
+            Ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaCreateDTO.Prezime">
+            <summary>
+            Prezime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaCreateDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaCreateDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="M:LiceService.DTO.KontaktOsobaCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje entiteta kontakt osoba.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.KontaktOsobaDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaDTO.PunoIme">
+            <summary>
+            Puno ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.KontaktOsobaUpdateDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaUpdateDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaUpdateDTO.Ime">
+            <summary>
+            Ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaUpdateDTO.Prezime">
+            <summary>
+            Prezime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaUpdateDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaUpdateDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="M:LiceService.DTO.KontaktOsobaUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta kontakt osoba.
+            </summary>
+        </member>
         <member name="T:LiceService.DTO.LiceCreateDTO">
             <summary>
-            Model DTO-a za ažuriranje lica.
+            Model DTO-a za kreiranje entiteta lice.
             </summary>
         </member>
         <member name="P:LiceService.DTO.LiceCreateDTO.FizickoLiceID">
@@ -415,12 +505,12 @@
         </member>
         <member name="P:LiceService.DTO.LiceCreateDTO.Telefon1">
             <summary>
-            Telefon 1 lica.
+            Prvi telefon lica.
             </summary>
         </member>
         <member name="P:LiceService.DTO.LiceCreateDTO.Telefon2">
             <summary>
-            Telefon 2 lica.
+            Drugi telefon lica.
             </summary>
         </member>
         <member name="P:LiceService.DTO.LiceCreateDTO.Email">
@@ -440,12 +530,12 @@
         </member>
         <member name="M:LiceService.DTO.LiceCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
-            Validacija za model DTO-a za ažuriranje entiteta fizičko lice.
+            Validacija za model DTO-a za kreiranje entiteta lice.
             </summary>
         </member>
         <member name="T:LiceService.DTO.LiceDTO">
             <summary>
-            Model DTO-a za lice.
+            Model DTO-a za entitet lice.
             </summary>
         </member>
         <member name="P:LiceService.DTO.LiceDTO.ID">
@@ -490,7 +580,7 @@
         </member>
         <member name="T:LiceService.DTO.LiceUpdateDTO">
             <summary>
-            Model DTO-a za ažuriranje lica.
+            Model DTO-a za ažuriranje entiteta lice.
             </summary>
         </member>
         <member name="P:LiceService.DTO.LiceUpdateDTO.ID">
@@ -510,12 +600,12 @@
         </member>
         <member name="P:LiceService.DTO.LiceUpdateDTO.Telefon1">
             <summary>
-            Telefon 1 lica.
+            Prvi telefon lica.
             </summary>
         </member>
         <member name="P:LiceService.DTO.LiceUpdateDTO.Telefon2">
             <summary>
-            Telefon 2 lica.
+            Drugi telefon lica.
             </summary>
         </member>
         <member name="P:LiceService.DTO.LiceUpdateDTO.Email">
@@ -535,7 +625,7 @@
         </member>
         <member name="M:LiceService.DTO.LiceUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
-            Validacija za model DTO-a za ažuriranje entiteta fizičko lice.
+            Validacija za model DTO-a za ažuriranje entiteta lice.
             </summary>
         </member>
         <member name="T:LiceService.Entities.FizickoLiceEntity">
@@ -564,6 +654,41 @@
             </summary>
         </member>
         <member name="P:LiceService.Entities.FizickoLiceEntity.Lica">
+            <summary>
+            Lica fizičkih lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.Entities.KontaktOsobaEntity">
+            <summary>
+            Model realnog entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Ime">
+            <summary>
+            Ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Prezime">
+            <summary>
+            Prezime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Lica">
             <summary>
             Lica fizičkih lica.
             </summary>
@@ -665,6 +790,16 @@
             Profil mapera za model entiteta fizičko lice.
             </summary>
         </member>
+        <member name="T:LiceService.Profiles.KontaktOsobaProfile">
+            <summary>
+            Profil mapera za model entiteta kontakt osoba.
+            </summary>
+        </member>
+        <member name="M:LiceService.Profiles.KontaktOsobaProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta kontakt osoba.
+            </summary>
+        </member>
         <member name="T:LiceService.Profiles.LiceProfile">
             <summary>
             Profil mapera za model entiteta lice.
@@ -705,6 +840,43 @@
             <param name="adresaID">ID adrese lica.</param>
             <param name="token">Token za adresu lica mikroservis.</param>
             <returns>Vraća model DTO-a adrese lica.</returns>
+        </member>
+        <member name="T:KontaktOsobaService.Data.IKontaktOsobaRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="M:KontaktOsobaService.Data.IKontaktOsobaRepository.GetKontaktOsobe">
+            <summary>
+            Vraća listu kontakt osoba iz konteksta.
+            </summary>
+            <returns>Vraća listu kontakt osoba.</returns>
+        </member>
+        <member name="M:KontaktOsobaService.Data.IKontaktOsobaRepository.GetKontaktOsobaByID(System.Guid)">
+            <summary>
+            Vraća jednu kontakt osobu iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="kontaktOsobaID">ID kontakt osobe.</param>
+            <returns>Vraća specifiranu kontakt osobu.</returns>
+        </member>
+        <member name="M:KontaktOsobaService.Data.IKontaktOsobaRepository.CreateKontaktOsoba(LiceService.DTO.KontaktOsobaCreateDTO)">
+            <summary>
+            Dodaje novu kontakt osobu u kontekst.
+            </summary>
+            <param name="kontaktOsobaCreateDTO">DTO za kreiranje lica.</param>
+            <returns>Vraća DTO kreiranog lica.</returns>
+        </member>
+        <member name="M:KontaktOsobaService.Data.IKontaktOsobaRepository.DeleteKontaktOsoba(System.Guid)">
+            <summary>
+            Briše kontakt osobu iz konteksta.
+            </summary>
+            <param name="kontaktOsobaID">ID kontakt osobe.</param>
+        </member>
+        <member name="M:KontaktOsobaService.Data.IKontaktOsobaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>
     </members>
 </doc>
