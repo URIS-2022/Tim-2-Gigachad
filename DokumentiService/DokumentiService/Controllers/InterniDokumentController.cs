@@ -37,12 +37,12 @@ namespace DokumentiService.Controllers
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<List<EksterniDokumentEntity>> GetInterniDokumenti()
+        public ActionResult<List<EksterniDokumentDTO>> GetInterniDokumenti()
         {
             var intdok = interniDokumentRepository.GetInterniDokument();
             if (intdok == null || intdok.Count == 0)
                 return NoContent();
-            return Ok(mapper.Map<List<InterniDokumentEntity>>(intdok));
+            return Ok(mapper.Map<List<InterniDokumentDTO>>(intdok));
         }
         /// <summary>
         /// GET za interni dokumetn sa zadatim ID

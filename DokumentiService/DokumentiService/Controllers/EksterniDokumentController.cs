@@ -37,12 +37,12 @@ namespace DokumentiService.Controllers
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<List<EksterniDokumentEntity>> GetEksterniDokumenti()
+        public ActionResult<List<EksterniDokumentDTO>> GetEksterniDokumenti()
         {
             var eksdok = eksterniDokumentRepository.GetEksterniDokument();
             if (eksdok == null || eksdok.Count == 0)
                 return NoContent();
-            return Ok(mapper.Map<List<EksterniDokumentEntity>>(eksdok));
+            return Ok(mapper.Map<List<EksterniDokumentDTO>>(eksdok));
         }
         /// <summary>
         /// Get za eksterni Dokument sa zadatim ID

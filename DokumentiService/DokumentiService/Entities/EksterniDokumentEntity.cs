@@ -10,5 +10,7 @@ namespace DokumentiService.Entities
         [Required]
         [MaxLength(100)]
         public string? PutanjaDokumenta { get; set; }
+        
+        public List<DokumentEntity>? Dokument { get; set; }
     }
 }

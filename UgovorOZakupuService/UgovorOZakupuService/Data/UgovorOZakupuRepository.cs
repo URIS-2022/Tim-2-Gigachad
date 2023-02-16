@@ -34,14 +34,9 @@ namespace UgovorOZakupuService.Data
             
         }
 
-        public void UpdateUgovorOZakupu(UgovorOZakupuEntity UgovorOZakupu)
-        {
-            
-        }
-
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return context.SaveChanges() > 0;
         }
     }
 

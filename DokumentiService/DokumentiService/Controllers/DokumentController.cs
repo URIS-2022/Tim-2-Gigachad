@@ -37,12 +37,12 @@ namespace DokumentiService.Controllers
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<List<DokumentEntity>> GetDokumenti()
+        public ActionResult<List<DokumentDTO>> GetDokumenti()
         {
             var dok = DokumentRepository.GetDokument();
             if (dok == null || dok.Count == 0)
                 return NoContent();
-            return Ok(mapper.Map<List<DokumentEntity>>(dok));
+            return Ok(mapper.Map<List<DokumentDTO>>(dok));
         }
 
         /// <summary>

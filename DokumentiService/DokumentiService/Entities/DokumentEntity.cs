@@ -8,11 +8,17 @@ namespace DokumentiService.Entities
         [Key]
         public Guid DokumentID { get; set; }
 
-        [ForeignKey("EksterniDokumentDTO")]
+        [ForeignKey("EksterniDokument")]
         public Guid EksterniDokumentID { get; set; }
+        [Required(ErrorMessage = "Dokument mora da bude eksterni")]
+        public EksterniDokumentEntity EksterniDokument { get; set; } = null!;
 
-        [ForeignKey("InterniDokumentDTO")]
+        [ForeignKey("InterniDokument")]
         public Guid InterniDokumentID { get; set; }
+        [Required(ErrorMessage = "Dokument mora da bude interni")]
+        public InterniDokumentEntity InterniDokument { get; set; } = null!;
+
+
         [Required]
         public DateTime? DatumDonosenja { get; set; }
         [Required]
@@ -20,8 +26,6 @@ namespace DokumentiService.Entities
 
         [Required]
         public int StatusDokumenta { get; set; }
-
-        
 
 
     }

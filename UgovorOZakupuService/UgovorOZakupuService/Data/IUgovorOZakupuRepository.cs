@@ -8,7 +8,6 @@ namespace UgovorOZakupuService.Data
         UgovorOZakupuEntity GetUgovorOZakupuID(Guid UgovorOZakupuID);
         UgovorOZakupuEntity CreateUgovorOZakupu(UgovorOZakupuEntity UgovorOZakupu);
         void DeleteUgovorOZakupu(Guid UgovorOZakupuID);
-        void UpdateUgovorOZakupu(UgovorOZakupuEntity UgovorOZakupu);
         bool SaveChanges();
 
     }
