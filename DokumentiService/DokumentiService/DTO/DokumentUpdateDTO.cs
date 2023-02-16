@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace DokumentiService.Entities
+namespace DokumentiService.DTO
 {
-    public class DokumentEntity
+    public class DokumentUpdateDTO
     {
-        [Key]
         public Guid DokumentID { get; set; }
 
         [ForeignKey("EksterniDokumentDTO")]
@@ -17,12 +16,7 @@ namespace DokumentiService.Entities
         public DateTime? DatumDonosenja { get; set; }
         [Required]
         public int? Sablon { get; set; }
-
         [Required]
         public int StatusDokumenta { get; set; }
-
-        
-
-
     }
 }

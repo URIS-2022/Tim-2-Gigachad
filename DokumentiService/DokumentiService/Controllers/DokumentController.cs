@@ -78,5 +78,59 @@ namespace DokumentiService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
         }
+        /// <summary>
+        /// Kreira novi  doument.
+        /// </summary>
+        /// <param name="DokumentCreateDTO">DTO za kreiranje dokumenta.</param>
+        /// <returns>Potvrdu o kreiranom dokumentu.</returns>
+        /// <response code="201">Vraća kreiran dokument.</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom kreiranja dokumenta.</response>
+        [HttpPost]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<DokumentCreateDTO> CreateDokument([FromBody] DokumentCreateDTO DokumentCreateDTO)
+        {
+            try
+            {
+                DokumentDTO Dokument = DokumentRepository.CreateDokument(DokumentCreateDTO);
+                DokumentRepository.SaveChanges();
+
+                string? location = linkGenerator.GetPathByAction("GetDokument", "Dokument", new { DokumentID = Dokument.DokumentID });
+
+                if (location != null)
+                    return Created(location, Dokument);
+                else
+                    return Created("", Dokument);
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+            }
+        }
+
+        [HttpPut]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<DokumentDTO> UpdateDokument(DokumentUpdateDTO DokumentUpdateDTO)
+        {
+            try
+            {
+                DokumentEntity? Dokument = DokumentRepository.GetDokumentID(DokumentUpdateDTO.DokumentID);
+                if (Dokument == null)
+                    return NotFound();
+                DokumentEntity dok = mapper.Map<DokumentEntity>(DokumentUpdateDTO);
+                mapper.Map(dok, Dokument);
+                DokumentRepository.SaveChanges();
+                return Ok(mapper.Map<DokumentDTO>(Dokument));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+            }
+        }
+
     }
 }

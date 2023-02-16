@@ -1,4 +1,5 @@
 ﻿using DokumentiService.Entities;
+using DokumentiService.DTO;
 namespace DokumentiService.Data
 {
     public interface IDokumentRepository
@@ -6,9 +7,8 @@ namespace DokumentiService.Data
         List<DokumentEntity> GetDokument();
 
         DokumentEntity GetDokumentID(Guid DokumentID);
-        DokumentEntity CreateDokument(DokumentEntity Dokument);
+        DokumentDTO CreateDokument(DokumentCreateDTO DokumentCreateDTO);
         void DeleteDokument(Guid DokumentID);
-        void UpdateDokument(DokumentEntity Dokument);
         bool SaveChanges();
 
     }

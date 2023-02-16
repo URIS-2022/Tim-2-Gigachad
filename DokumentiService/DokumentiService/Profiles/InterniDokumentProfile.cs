@@ -9,10 +9,10 @@ namespace DokumentiService.Profiles
         public InterniDokumentProfile()
         {
             CreateMap<InterniDokumentEntity, InterniDokumentDTO>();
-            //CreateMap<InterniDokumentEntity, InterniDokumentCreateDTO>();
             CreateMap<InterniDokumentCreateDTO, InterniDokumentEntity>();
             CreateMap<InterniDokumentUpdateDTO, InterniDokumentEntity>();
             CreateMap<InterniDokumentEntity, InterniDokumentEntity>();
+            //CreateMap<InterniDokumentEntity, InterniDokumentCreateDTO>();
         }
     }
 

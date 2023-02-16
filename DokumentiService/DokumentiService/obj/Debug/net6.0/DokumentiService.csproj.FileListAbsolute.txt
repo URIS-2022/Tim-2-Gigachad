@@ -84,3 +84,5 @@ D:\URIS projekat gigachad\github repo\DokumentiService\DokumentiService\obj\Debu
 D:\URIS projekat gigachad\github repo\DokumentiService\DokumentiService\obj\Debug\net6.0\DokumentiService.genruntimeconfig.cache
 D:\URIS projekat gigachad\github repo\DokumentiService\DokumentiService\obj\Debug\net6.0\ref\DokumentiService.dll
 D:\URIS projekat gigachad\github repo\DokumentiService\DokumentiService\bin\Debug\net6.0\DokumentService.xml
+D:\URIS projekat gigachad\github repo\DokumentiService\DokumentiService\obj\Debug\net6.0\DokumentiService.Properties.Resources.resources
+D:\URIS projekat gigachad\github repo\DokumentiService\DokumentiService\obj\Debug\net6.0\DokumentiService.csproj.GenerateResource.cache

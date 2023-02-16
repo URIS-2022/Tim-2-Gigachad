@@ -9,6 +9,7 @@ namespace DokumentiService.Entities
         public Guid InterniDokumentID { get; set; }
 
         [Required]
+        [MaxLength(100)]
         public string? PutanjaDokumenta  { get; set; }
     }
 }

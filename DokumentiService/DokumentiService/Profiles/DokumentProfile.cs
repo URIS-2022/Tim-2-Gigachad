@@ -8,10 +8,13 @@ namespace DokumentiService.Profiles
     {
         public DokumentProfile()
         {
-        CreateMap<DokumentEntity, DokumentDTO>()
-                .ForMember(
-                    dest => dest.SablonStatus,
-                    opt => opt.MapFrom(src => $"{src.Sablon} {src.StatusDokumenta}"));
+            CreateMap<DokumentEntity, DokumentDTO>();
+            CreateMap<DokumentCreateDTO, DokumentEntity>();
+            CreateMap<DokumentUpdateDTO, DokumentEntity>();
+            CreateMap<DokumentEntity, DokumentEntity>();
+            
+
+
         }
     }
 
