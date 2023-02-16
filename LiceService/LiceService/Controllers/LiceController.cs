@@ -2,8 +2,12 @@
 using LiceService.Data;
 using LiceService.DTO;
 using LiceService.Entities;
+using LiceService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using System;
+using System.Net.NetworkInformation;
 
 namespace LiceService.Controllers
 {
@@ -20,14 +24,17 @@ namespace LiceService.Controllers
 		private readonly LinkGenerator linkGenerator;
 		private readonly IMapper mapper;
 
+		private readonly IAdresaService adresaService;
+
 		/// <summary>
 		/// Dependency injection za kontroler.
 		/// </summary>
-		public LiceController(ILiceRepository liceRepository, LinkGenerator linkGenerator, IMapper mapper)
+		public LiceController(ILiceRepository liceRepository, LinkGenerator linkGenerator, IMapper mapper, IAdresaService adresaService)
 		{
 			this.liceRepository = liceRepository;
 			this.linkGenerator = linkGenerator;
 			this.mapper = mapper;
+			this.adresaService = adresaService;
 		}
 
 		/// <summary>
@@ -36,16 +43,30 @@ namespace LiceService.Controllers
 		/// <returns>Vraća potvrdu o listi postojećih lica.</returns>
 		/// <response code="200">Vraća listu lica.</response>
 		/// <response code="204">Ne postoje lica.</response>
+		/// <response code="500">Adresa lica nije pronađena.</response>
 		[HttpGet]
-		[HttpHead]
+		//[HttpHead]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
-		public ActionResult<List<LiceDTO>> GetLica()
+		public ActionResult<List<LiceDTO>> GetLica([FromHeader] string authorization)
 		{
 			List<LiceEntity> lica = liceRepository.GetLica();
 			if (lica == null || lica.Count == 0)
 				return NoContent();
-			return Ok(mapper.Map<List<LiceDTO>>(lica));
+			List<LiceDTO> licaDTO = new List<LiceDTO>();
+			foreach (LiceEntity lice in lica)
+			{
+				LiceDTO liceDTO = mapper.Map<LiceDTO>(lice);
+				AdresaLicaDTO? adresaLica = adresaService.GetAdresaByIDAsync(lice.AdresaLicaID, authorization).Result;
+				if (adresaLica != null)
+				{
+					liceDTO.AdresaLica = adresaLica;
+					licaDTO.Add(liceDTO);
+				}
+				else
+					return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena.");
+			}
+			return Ok(licaDTO);
 		}
 
 		/// <summary>
@@ -89,7 +110,7 @@ namespace LiceService.Controllers
 				if (location != null)
 					return Created(location, lice);
 				else
-					return Created("", lice);
+					return Created(string.Empty, lice);
 			}
 			catch (Exception exception)
 			{
@@ -114,7 +135,7 @@ namespace LiceService.Controllers
 		{
 			try
 			{
-				LiceEntity? oldLice = liceRepository.GetLiceByID(liceUpdateDTO.ID);
+				LiceEntity? oldLice = liceRepository.GetLiceByID(Guid.Parse(liceUpdateDTO.ID));
 				if (oldLice == null)
 					return NotFound();
 				LiceEntity lice = mapper.Map<LiceEntity>(liceUpdateDTO);

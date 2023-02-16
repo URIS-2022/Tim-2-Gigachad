@@ -23,53 +23,59 @@ namespace LiceService.Entities
 		/// <summary>
 		/// Fizičko lice.
 		/// </summary>
-		public FizickoLiceEntity? FizickoLice { get; set; }
+		[Required(ErrorMessage = "Lice mora da ima fizičko lice.")]
+		public FizickoLiceEntity FizickoLice { get; set; } = null!;
 
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
 		//[ForeignKey("PravnoLiceEntity")]
-		//public Guid? PravnoLiceID { get; set; }
+		//public Guid PravnoLiceID { get; set; }
+
+		/// <summary>
+		/// Pravno lice.
+		/// </summary>
+		//public PravnoLiceEntity? PravnoLiceID { get; set; }
 
 		/// <summary>
 		/// ID adrese lica.
 		/// </summary>
-		//[Required]
-		//public Guid AdresaID { get; set; }
+		[Required(ErrorMessage = "Lice mora da ima adresu lica.")]
+		public Guid AdresaLicaID { get; set; }
 
 		/// <summary>
-		/// Telefon 1 lica.
+		/// Prvi telefon lica.
 		/// </summary>
-		[Required]
-		[MinLength(9)]
-		[MaxLength(10)]
-		public string? Tel1 { get; set; }
+		[Required(ErrorMessage = "Lice mora da ima telefon jedan.")]
+		[MinLength(9, ErrorMessage = "Telefon 1 lica mora da bude preko 9 karaktera.")]
+		[MaxLength(10, ErrorMessage = "Telefon 1 lica ne sme da bude preko 10 karaktera.")]
+		public string Telefon1 { get; set; } = null!;
 
 		/// <summary>
-		/// Telefon 2 lica.
+		/// Drugi telefon lica.
 		/// </summary>
-		[MinLength(9)]
-		[MaxLength(10)]
-		public string? Tel2 { get; set; }
+		[MinLength(9, ErrorMessage = "Telefon 2 lica mora da bude preko 9 karaktera.")]
+		[MaxLength(10, ErrorMessage = "Telefon 2 lica ne sme da bude preko 10 karaktera.")]
+		public string? Telefon2 { get; set; }
 
 		/// <summary>
 		/// Email lica.
 		/// </summary>
-		[Required]
-		[MaxLength(50)]
-		public string? Email { get; set; }
+		[Required(ErrorMessage = "Lice mora da ima email.")]
+		[MaxLength(50, ErrorMessage = "Email lica ne sme da bude preko 50 karaktera.")]
+		public string Email { get; set; } = null!;
 
 		/// <summary>
 		/// Broj računa lica.
 		/// </summary>
-		[Required]
-		[MaxLength(20)]
-		public string? BrojRacuna { get; set; }
+		[Required(ErrorMessage = "Lice mora da ima broj računa.")]
+		[MaxLength(20, ErrorMessage = "Email lica ne sme da bude preko 20 karaktera.")]
+		public string BrojRacuna { get; set; } = null!;
 
 		/// <summary>
 		/// Da li je lice ovlašćeno lice.
 		/// </summary>
-		[Required]
+		[Required(ErrorMessage = "Da li je lice ovlašćeno lice mora biti definisano.")]
 		public bool OvlascenoLice { get; set; }
 	}
 }

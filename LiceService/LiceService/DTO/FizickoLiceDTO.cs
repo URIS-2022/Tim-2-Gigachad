@@ -10,22 +10,16 @@ namespace LiceService.DTO
 		/// <summary>
 		/// ID fizičkog lica.
 		/// </summary>
-		[Required]
 		public Guid ID { get; set; }
 
 		/// <summary>
 		/// JMBG fizičkog lica.
 		/// </summary>
-		[Required]
-		[MinLength(13)]
-		[MaxLength(13)]
-		public string? JMBG { get; set; }
+		public string JMBG { get; set; } = null!;
 
 		/// <summary>
 		/// Puno ime fizičkog lica.
 		/// </summary>
-		[Required]
-		[MaxLength(30)]
-		public string? PunoIme { get; set; }
+		public string PunoIme { get; set; } = null!;
 	}
 }

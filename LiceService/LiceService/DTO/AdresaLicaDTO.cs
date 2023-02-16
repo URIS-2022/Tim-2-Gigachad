@@ -6,28 +6,28 @@
 	public class AdresaLicaDTO
 	{
 		/// <summary>
-		/// Ulica adrese.
+		/// ID adrese.
 		/// </summary>
-		public string Ulica { get; set; }
+		public Guid ID { get; set; }
 
 		/// <summary>
-		/// Broj adrese.
+		/// Ulica i broj adrese.
 		/// </summary>
-		public int Broj { get; set; }
+		public string UlicaBroj { get; set; } = null!;
 
 		/// <summary>
 		/// Mesto adrese.
 		/// </summary>
-		public string Mesto { get; set; }
+		public string Mesto { get; set; } = null!;
 
 		/// <summary>
 		/// Poštanski broj adrese.
 		/// </summary>
-		public int PostanskiBroj { get; set; }
+		public int PostanskiBroj { get; set; } = 0!;
 
 		/// <summary>
-		/// Država broj adrese.
+		/// Država adrese.
 		/// </summary>
-		public int Drzava { get; set; }
+		public string Drzava { get; set; } = null!;
 	}
 }

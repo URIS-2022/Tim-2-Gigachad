@@ -1,6 +1,6 @@
 ﻿using LiceService.Data;
 using LiceService.Entities;
-using LiceService.Helpers;
+using LiceService.ServiceCalls;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -14,10 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IAdresaService, AdresaService>();
 builder.Services.AddScoped<IFizickoLiceRepository, FizickoLiceRepository>();
 builder.Services.AddScoped<ILiceRepository, LiceRepository>();
-builder.Services.AddScoped<IKorisnikRepository, KorisnikRepository>();
-builder.Services.AddScoped<IAutentifikacijaHelper, AutentifikacijaHelper>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<LiceContext>(options =>
@@ -39,7 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 builder.Services.AddSwaggerGen(setup =>
 {
-	setup.SwaggerDoc("LiceServiceOpenApiSpecification", 
+	setup.SwaggerDoc("LiceServiceOpenApiSpecification",
 		new Microsoft.OpenApi.Models.OpenApiInfo()
 		{
 			Title = "Lice API",

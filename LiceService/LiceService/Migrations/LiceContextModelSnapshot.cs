@@ -17,7 +17,7 @@ namespace LiceService.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -64,41 +64,13 @@ namespace LiceService.Migrations
                         });
                 });
 
-            modelBuilder.Entity("LiceService.Entities.KontaktOsobaEntity", b =>
+            modelBuilder.Entity("LiceService.Entities.LiceEntity", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Funkcija")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<string>("Telefon")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("KontaktOsobe");
-                });
-
-            modelBuilder.Entity("LiceService.Entities.LiceEntity", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("AdresaLicaID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("BrojRacuna")
@@ -117,12 +89,12 @@ namespace LiceService.Migrations
                     b.Property<bool>("OvlascenoLice")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Tel1")
+                    b.Property<string>("Telefon1")
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("Tel2")
+                    b.Property<string>("Telefon2")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
@@ -136,57 +108,36 @@ namespace LiceService.Migrations
                         new
                         {
                             ID = new Guid("334f5277-a71c-4be8-b5da-5c9148b228f7"),
+                            AdresaLicaID = new Guid("6f79d49c-1c14-49b7-94c3-19a81c7f97a0"),
                             BrojRacuna = "123134132",
                             Email = "email1@net.org",
                             FizickoLiceID = new Guid("3a054c77-1bf4-4853-8937-8e36502a6848"),
                             OvlascenoLice = true,
-                            Tel1 = "4211218533",
-                            Tel2 = "399461094"
+                            Telefon1 = "4211218533",
+                            Telefon2 = "399461094"
                         },
                         new
                         {
                             ID = new Guid("92e0d8e9-b221-42a6-9bb8-a80974aee937"),
+                            AdresaLicaID = new Guid("3aa0344b-57b5-450a-b83a-18c4555be65c"),
                             BrojRacuna = "132423425",
                             Email = "email2@net.org",
                             FizickoLiceID = new Guid("3a054c77-1bf4-4853-8937-8e36502a6848"),
                             OvlascenoLice = false,
-                            Tel1 = "377172253",
-                            Tel2 = "8048668952"
+                            Telefon1 = "377172253",
+                            Telefon2 = "8048668952"
                         },
                         new
                         {
                             ID = new Guid("f127642e-4d73-42f1-979d-6a506aea9bdc"),
+                            AdresaLicaID = new Guid("3aa0344b-57b5-450a-b83a-18c4555be65c"),
                             BrojRacuna = "123235243123",
                             Email = "email3@net.org",
                             FizickoLiceID = new Guid("32b7d397-b9d1-472d-bb40-542c68305098"),
                             OvlascenoLice = false,
-                            Tel1 = "4461663339",
-                            Tel2 = "4815540720"
+                            Telefon1 = "4461663339",
+                            Telefon2 = "4815540720"
                         });
-                });
-
-            modelBuilder.Entity("LiceService.Entities.PravnoLiceEntity", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("KontaktOsobaID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("MaticniBroj")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
-
-                    b.Property<string>("Naziv")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("PravnaLica");
                 });
 
             modelBuilder.Entity("LiceService.Entities.LiceEntity", b =>

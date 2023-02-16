@@ -4,13 +4,14 @@ using LiceService.DTO;
 using LiceService.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace LiceService.Controllers
 {
 	/// <summary>
 	/// Kontroler za entitet fizičko lice.
 	/// </summary>
-	//[Authorize]
+	[Authorize]
 	[ApiController]
 	[Route("api/fizickaLica")]
 	[Produces("application/json", "application/xml")]
@@ -37,7 +38,7 @@ namespace LiceService.Controllers
 		/// <response code="200">Vraća listu fizičkih lica.</response>
 		/// <response code="204">Ne postoje fizička lica.</response>
 		[HttpGet]
-		[HttpHead]
+		//[HttpHead]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		public ActionResult<List<FizickoLiceDTO>> GetFizickaLica()
@@ -72,6 +73,7 @@ namespace LiceService.Controllers
 		/// <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
 		/// <returns>Potvrdu o kreiranom fizičkom licu.</returns>
 		/// <response code="201">Vraća kreirano fizičko lice.</response>
+		/// <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
 		[HttpPost]
 		[Consumes("application/json")]
@@ -81,15 +83,21 @@ namespace LiceService.Controllers
 		{
 			try
 			{
-				FizickoLiceDTO fizickoLice = fizickoLiceRepository.CreateFizickoLice(fizickoLiceCreateDTO);
-				fizickoLiceRepository.SaveChanges();
-				
-				string? location = linkGenerator.GetPathByAction("GetFizickoLice", "FizickoLice", new { fizickoLiceID = fizickoLice.ID });
+				List<FizickoLiceEntity> lica = fizickoLiceRepository.GetFizickaLica();
+				if (lica.Find(e => e.JMBG == fizickoLiceCreateDTO.JMBG) == null)
+				{
+					FizickoLiceDTO fizickoLice = fizickoLiceRepository.CreateFizickoLice(fizickoLiceCreateDTO);
+					fizickoLiceRepository.SaveChanges();
 
-				if (location != null)
-					return Created(location, fizickoLice);
+					string? location = linkGenerator.GetPathByAction("GetFizickoLice", "FizickoLice", new { fizickoLiceID = fizickoLice.ID });
+
+					if (location != null)
+						return Created(location, fizickoLice);
+					else
+						return Created(string.Empty, fizickoLice);
+				}
 				else
-					return Created("", fizickoLice);
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG fizičkog lica.");
 			}
 			catch (Exception exception)
 			{
@@ -104,6 +112,7 @@ namespace LiceService.Controllers
 		/// <returns>Potvrdu o ažuriranom fizičkom licu.</returns>
 		/// <response code="200">Vraća ažurirano fizičko lice.</response>
 		/// <response code="404">Specifirano fizičko lice ne postoji.</response>
+		/// <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja fizičkog lica.</response>
 		[HttpPut]
 		[Consumes("application/json")]
@@ -114,13 +123,22 @@ namespace LiceService.Controllers
 		{
 			try
 			{
-				FizickoLiceEntity? oldFizickoLice = fizickoLiceRepository.GetFizickoLiceByID(fizickoLiceUpdateDTO.ID);
+				FizickoLiceEntity? oldFizickoLice = fizickoLiceRepository.GetFizickoLiceByID(Guid.Parse(fizickoLiceUpdateDTO.ID));
 				if (oldFizickoLice == null)
 					return NotFound();
-				FizickoLiceEntity fizickoLice = mapper.Map<FizickoLiceEntity>(fizickoLiceUpdateDTO);
-				mapper.Map(fizickoLice, oldFizickoLice);
-				fizickoLiceRepository.SaveChanges();
-				return Ok(mapper.Map<FizickoLiceDTO>(oldFizickoLice));
+				List<FizickoLiceEntity> lica = fizickoLiceRepository.GetFizickaLica();
+				FizickoLiceEntity? lice = lica.Find(e => e.ID == Guid.Parse(fizickoLiceUpdateDTO.ID));
+				if (lice != null)
+					lica.Remove(lice);
+				if (lica.Find(e => e.JMBG == fizickoLiceUpdateDTO.JMBG) == null)
+				{
+					FizickoLiceEntity fizickoLice = mapper.Map<FizickoLiceEntity>(fizickoLiceUpdateDTO);
+					mapper.Map(fizickoLice, oldFizickoLice);
+					fizickoLiceRepository.SaveChanges();
+					return Ok(mapper.Map<FizickoLiceDTO>(oldFizickoLice));
+				}
+				else
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG fizičkog lica.");
 			}
 			catch (Exception exception)
 			{
