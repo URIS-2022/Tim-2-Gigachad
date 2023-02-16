@@ -17,7 +17,7 @@ namespace AdresaService.Data
         /// <summary>
 		/// Vraća jednu adresu iz konteksta na osnovu zadatog ID-ja.
 		/// </summary>
-		/// <param name="adresaID">ID adresa.</param>
+		/// <param name="ID">ID adresa.</param>
 		/// <returns>Vraća specifirano adresa.</returns>
         AdresaEntity? GetAdresaByID(Guid ID);
 

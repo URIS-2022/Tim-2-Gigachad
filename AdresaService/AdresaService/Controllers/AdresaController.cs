@@ -10,7 +10,7 @@ namespace AdresaService.Controllers
     /// <summary>
 	/// Kontroler za entitet adresa.
 	/// </summary>
-    /// [Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/adrese")]
     [Produces("application/json", "application/xml")]

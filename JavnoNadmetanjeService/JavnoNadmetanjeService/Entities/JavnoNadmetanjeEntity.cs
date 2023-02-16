@@ -16,24 +16,37 @@ namespace JavnoNadmetanjeService.Entities
 
 
 
+        /// <summary>
+		/// strani kljuc - ID licitacije.
+		/// </summary>
+		[ForeignKey("Licitacija")]
+        public Guid LicitacijaID { get; set; }
+
+        /// <summary>
+		/// Licitacija.
+		/// </summary>
+		[Required(ErrorMessage = "Javno nadmetanje mora da ima licitaciju.")]
+        public LicitacijaEntity Licitacija { get; set; } = null!;
+
+
 
 
         /// <summary>
 		/// strani kljuc - ID adrese nadmetanja.
 		/// </summary>
-		[ForeignKey("AdresaEntity")]
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima adresu javnog nadmetanja.")]
         public Guid AdresaID { get; set; }
 
         /// <summary>
 		/// strani kljuc - ID dela parcele.
 		/// </summary>
-		[ForeignKey("DeoParceleEntity")]
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima deo parcele.")]
         public Guid DeoParceleID { get; set; }
 
         /// <summary>
 		/// strani kljuc - ID najboljeg kupca.
 		/// </summary>
-		[ForeignKey("KupacEntity")]
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima najboljeg kupca.")]
         public Guid NajbKupacID { get; set; }
 
 
@@ -64,13 +77,13 @@ namespace JavnoNadmetanjeService.Entities
         /// Vreme pocetka javnog nadmetanja.
         /// </summary>
         [Required(ErrorMessage = "Javno nadmetanje mora da ima vreme pocetka.")]
-        public DateTime? VremePoc { get; set; } = null!;
+        public TimeSpan? VremePoc { get; set; } = null!;
 
         /// <summary>
         /// Vreme kraja javnog nadmetanja.
         /// </summary>
         [Required(ErrorMessage = "Javno nadmetanje mora da ima vreme kraja.")]
-        public DateTime? VremeKraj { get; set; } = null!;
+        public TimeSpan? VremeKraj { get; set; } = null!;
 
         /// <summary>
 		/// Period zakupa M javnog nadmetanja.

@@ -109,6 +109,11 @@
             </summary>
             <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>
+        <member name="T:AdresaService.Data.IAdresaRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet adresa.
+            </summary>
+        </member>
         <member name="M:AdresaService.Data.IAdresaRepository.GetAdrese">
             <summary>
             Vraća listu adresa iz konteksta.
@@ -119,7 +124,7 @@
             <summary>
             Vraća jednu adresu iz konteksta na osnovu zadatog ID-ja.
             </summary>
-            <param name="adresaID">ID adresa.</param>
+            <param name="ID">ID adresa.</param>
             <returns>Vraća specifirano adresa.</returns>
         </member>
         <member name="M:AdresaService.Data.IAdresaRepository.CreateAdresa(AdresaService.DTO.AdresaCreateDTO)">

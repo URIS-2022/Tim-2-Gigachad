@@ -15,12 +15,6 @@ namespace JavnoNadmetanjeService.Entities
         public Guid ID { get; set; }
 
         /// <summary>
-		/// ID javnog nadmetanja.
-		/// </summary>
-		[ForeignKey("JavnoNadmetanjeEntity")]
-        public Guid JavnoNadmetanjeID { get; set; }
-
-        /// <summary>
         /// Datum licitacije.
         /// </summary>
         [Required(ErrorMessage = "Licitacija mora da ima datum.")]
@@ -43,5 +37,10 @@ namespace JavnoNadmetanjeService.Entities
         /// </summary>
         [Required(ErrorMessage = "Licitacija mora da ima korak cene.")]
         public int KorakCene { get; set; }
+
+        /// <summary>
+		/// Javna nadmetanja licitacije.
+		/// </summary>
+		public List<JavnoNadmetanjeEntity>? JavnaNadmetanja { get; set; }
     }
 }

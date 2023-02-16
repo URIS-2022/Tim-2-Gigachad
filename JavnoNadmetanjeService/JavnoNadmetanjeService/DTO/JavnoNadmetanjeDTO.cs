@@ -12,6 +12,9 @@ namespace JavnoNadmetanjeService.DTO
 		/// </summary>
 		public Guid ID { get; set; }
 
+
+        //starni kljucevi
+
         /// <summary>
 		/// Tip nadmetanja.
 		/// </summary>
