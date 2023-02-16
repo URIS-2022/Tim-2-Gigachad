@@ -2,22 +2,24 @@
 
 namespace JavnoNadmetanjeService.Entities
 {
+    /// <summary>
+	/// DbContext za JavnoNadmetanjeService mikroservis.
+	/// </summary>
     public class JavnoNadmetanjeContext : DbContext
     {
-        private readonly IConfiguration configuration;
+        /// <summary>
+		/// Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+		/// </summary>
+        public JavnoNadmetanjeContext(DbContextOptions options) : base(options) { }
 
-        public JavnoNadmetanjeContext(DbContextOptions options, IConfiguration configuration) : base(options)
-        {
-            this.configuration = configuration;
-        }
-
+        /// <summary>
+		/// DbSet za entitet javno nadmetanje.
+		/// </summary>
         public DbSet<JavnoNadmetanjeEntity> JavnoNadmetanje { get; set; }
+        /// <summary>
+		/// DbSet za entitet licitacija.
+		/// </summary>
         public DbSet<LicitacijaEntity> Licitacija { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("JavnoNadmetanjeDB"));
-        }
 
         /// <summary>
         /// Popunjava bazu sa nekim inicijalnim podacima.
@@ -27,7 +29,7 @@ namespace JavnoNadmetanjeService.Entities
             builder.Entity<LicitacijaEntity>().HasData(new
             {
                 LicictacijaID = Guid.Parse("1ecaca89-af8e-47d5-8a33-5f4ec2fcb04e"),
-                //JavnoNadID = "55d525cd-f780-4e0d-a27a-56721c086bd3",
+                //JavnoNadID = Guid.Parse("55d525cd-f780-4e0d-a27a-56721c086bd3"),
                 DatumLicitacije = new DateTime(2022, 02, 02),
                 Rok = new DateTime(2022, 07, 22),
                 OgrnMaxPovrs = 13,

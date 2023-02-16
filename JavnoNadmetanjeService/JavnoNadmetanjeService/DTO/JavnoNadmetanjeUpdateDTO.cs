@@ -1,0 +1,139 @@
+﻿using System.ComponentModel.DataAnnotations;
+using static JavnoNadmetanjeService.Entities.EntitiesEnums;
+
+namespace JavnoNadmetanjeService.DTO
+{
+    /// <summary>
+	/// Model DTO-a za azuriranje javno nadmetanje entiteta.
+	/// </summary>
+    public class JavnoNadmetanjeUpdateDTO
+    {
+        /// <summary>
+		/// ID javnog nadmetanja.
+		/// </summary>
+		[Required(ErrorMessage = "Javno nadmetanje mora da ima ID.")]
+        public Guid ID { get; set; }
+
+        /// <summary>
+		/// Tip javnog nadmetanja. Enumerator.
+		/// </summary>
+		[Required(ErrorMessage = "Javno nadmetanje mora da ima tip.")]
+        [MaxLength(25, ErrorMessage = "Tip javno nadmetanje ne sme da bude preko 25 karaktera.")]
+        public string TipNadmetanja { get; set; } = null!;
+
+        /// <summary>
+        /// Opstina javnog nadmetanja. Enumerator.
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima opstinu.")]
+        [MaxLength(25, ErrorMessage = "Opstina ne sme da bude preko 25 karaktera.")]
+        public string Opstina { get; set; } = null!;
+
+        /// <summary>
+        /// Datum javnog nadmetanja.
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima datum.")]
+        public DateTime DatumNad { get; set; }
+
+        /// <summary>
+        /// Vreme pocetka javnog nadmetanja.
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima vreme pocetka.")]
+        public DateTime VremePoc { get; set; }
+
+        /// <summary>
+        /// Vreme zavrsetka javnog nadmetanja.
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima vreme kraja.")]
+        public DateTime VremeKraj { get; set; }
+
+        /// <summary>
+        /// Period zakupa M javnog nadmetanja.
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima period zakupa M.")]
+        public int PeriodZakupaM { get; set; }
+
+        /// <summary>
+        /// Pocetna cena javnog nadmetanja.
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima pocetnu cenu.")]
+        public float PocetnaCena { get; set; }
+
+        /// <summary>
+        /// Visina cene javnog nadmetanja.
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima visinu cene.")]
+        public int VisinaCene { get; set; }
+
+        /// <summary>
+		/// Izlicitirana cena javnog nadmetanja.
+		/// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima izlicitiranu cenu.")]
+        public float IzlicitiranaCena { get; set; }
+
+        /// <summary>
+		/// Najbolja ponuda javnog nadmetanja.
+		/// </summary>
+		[Required(ErrorMessage = "Javno nadmetanje mora da ima najbolju ponudu.")]
+        public float NajboljaPonuda { get; set; }
+
+        /// <summary>
+		/// Broj ucesnika javnog nadmetanja.
+		/// </summary>
+		[Required(ErrorMessage = "Javno nadmetanje mora da ima broj ucesnika.")]
+        public int BrojUcesnika { get; set; }
+
+        /// <summary>
+		/// Prijavljeni kupci javnog nadmetanja.
+		/// </summary>
+		[Required(ErrorMessage = "Javno nadmetanje mora da ima prijavljene kupce.")]
+        public int PrijavljeniKupci { get; set; }
+
+        /// <summary>
+		/// Licitanti javnog nadmetanja.
+		/// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima broj licitanata.")]
+        public int Licitanti { get; set; }
+
+        /// <summary>
+		/// Krug koji je po redu javnog nadmetanja.
+		/// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima krug.")]
+        public int Krug { get; set; }
+
+        /// <summary>
+        /// Status javnog nadmetanja. Enumerator
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima definisan status.")]
+        [MaxLength(17, ErrorMessage = "Status javnog nadmetanja mora da bude: PRVI_KRUG, DRUGI_KRUG_STARI i DRUGI_KRUG_NOVI.")]
+        public string StatusNadmetanja { get; set; } = null!;
+
+        /// <summary>
+        /// Izuzeto.
+        /// </summary>
+        public bool? Izuzeto { get; set; }
+
+        /// <summary>
+        /// Validacija za model DTO-a za kreiranje javnog nadmetanja.
+        /// </summary>
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (VremePoc >= VremeKraj)
+                yield return new ValidationResult("Vreme kraja nadmetanja ne sme da bude pre vremena pocetka.", new[] { "JavnoNadmetanjeCreateDTO" });
+
+            if (Enum.TryParse(TipNadmetanja.ToUpper(), out TipNadmetanja tempTip))
+                TipNadmetanja = tempTip.ToString();
+            else
+                yield return new ValidationResult("Tip javnog nadmetanja mora da bude: JAVNA_LICITACIJA ili OTVARANJE_ZATVORENIH_PONUDA.", new[] { "JavnoNadmetanjeCreateDTO" });
+
+            if (Enum.TryParse(Opstina.ToUpper(), out Opstina tempOpstina))
+                Opstina = tempOpstina.ToString();
+            else
+                yield return new ValidationResult("Opstina mora da bude: CANTAVIR, BACKI_VINOGRADI, BIKOVO, DJUDJIN, ZEDNIK, TAVANKUT, BAJMOK, DONJI_GRAD, STARI_GRAD, NOVI_GRAD i PALIC.", new[] { "JavnoNadmetanjeCreateDTO" });
+
+            if (Enum.TryParse(StatusNadmetanja.ToUpper(), out StatusNadmetanja tempStatus))
+                StatusNadmetanja = tempStatus.ToString();
+            else
+                yield return new ValidationResult("Status javnog nadmetanja mora da bude: PRVI_KRUG, DRUGI_KRUG_STARI i DRUGI_KRUG_NOVI.", new[] { "JavnoNadmetanjeCreateDTO" });
+        }
+    }
+}
