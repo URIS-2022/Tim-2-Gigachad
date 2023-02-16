@@ -1,4 +1,5 @@
 ﻿using KomisijaService.Entities;
+using KomisijaService.Models;
 
 namespace KomisijaService.Data
 {
@@ -6,14 +7,12 @@ namespace KomisijaService.Data
     {
         List<KomisijaEntity> GetKomisije();
 
-        KomisijaEntity GetKomisijaByID(Guid komisijaID);
+        KomisijaEntity? GetKomisijaByID(Guid komisijaID);
 
-        KomisijaEntity CreateKomisija(KomisijaEntity komisija);
-
-        void UpdateKomisija(KomisijaEntity komisija);
+        KomisijaDTO CreateKomisija(KomisijaCreateDTO komisija);
 
         void DeleteKomisija(Guid komisijaID);
 
-        bool saveChanges();
+        bool SaveChanges();
     }
 }
