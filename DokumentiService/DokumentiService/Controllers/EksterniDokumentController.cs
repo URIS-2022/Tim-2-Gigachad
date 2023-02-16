@@ -10,7 +10,7 @@ namespace DokumentiService.Controllers
     /// <summary>
     /// Kontroler za entitete eksternih dokumenata.
     /// </summary>
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/eksterniDokumenti")]
     [Produces("application/json", "application/xml")]
@@ -29,7 +29,10 @@ namespace DokumentiService.Controllers
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
         }
-
+        /// <summary>
+        /// GET za sva eksterna dokumenta
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -41,11 +44,15 @@ namespace DokumentiService.Controllers
                 return NoContent();
             return Ok(mapper.Map<List<EksterniDokumentEntity>>(eksdok));
         }
-
+        /// <summary>
+        /// Get za eksterni Dokument sa zadatim ID
+        /// </summary>
+        /// <param name="eksterniDokumentID"></param>
+        /// <returns></returns>
         [HttpGet("{eksterniDokumentID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-
+        
         public ActionResult<EksterniDokumentDTO> GetEksterniDokument(Guid eksterniDokumentID)
         {
             var eksterniDokument = eksterniDokumentRepository.GetEksterniDokumentID(eksterniDokumentID);
@@ -53,7 +60,11 @@ namespace DokumentiService.Controllers
                 return NotFound();
             return Ok(mapper.Map<EksterniDokumentEntity>(eksterniDokument));
         }
-
+        /// <summary>
+        /// Delete za ekterni Dokument sa zadatim ID
+        /// </summary>
+        /// <param name="eksterniDokumentID"></param>
+        /// <returns></returns>
         [HttpDelete("{eksterniDokumentID}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -109,7 +120,11 @@ namespace DokumentiService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
         }
-
+        /// <summary>
+        /// Promena eksternog dokumenta
+        /// </summary>
+        /// <param name="eksterniDokumentUpdateDTO"></param>
+        /// <returns></returns>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]

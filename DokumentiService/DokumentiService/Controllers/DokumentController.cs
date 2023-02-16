@@ -10,7 +10,7 @@ namespace DokumentiService.Controllers
     /// <summary>
     /// Kontroler za entitete eksternih dokumenata.
     /// </summary>
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/Dokumenti")]
     [Produces("application/json", "application/xml")]
@@ -29,7 +29,10 @@ namespace DokumentiService.Controllers
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
         }
-
+        /// <summary>
+        /// GET za sva dokumenta
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -42,7 +45,11 @@ namespace DokumentiService.Controllers
             return Ok(mapper.Map<List<DokumentEntity>>(dok));
         }
 
-
+        /// <summary>
+        /// Get za dokument sa zadatim ID
+        /// </summary>
+        /// <param name="DokumentID"></param>
+        /// <returns></returns>
         [HttpGet("{DokumentID}")]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -54,7 +61,11 @@ namespace DokumentiService.Controllers
                 return NotFound();
             return Ok(mapper.Map<DokumentDTO>(Dokument));
         }
-
+        /// <summary>
+        /// Delete za dokument sa zadatim ID
+        /// </summary>
+        /// <param name="DokumentID"></param>
+        /// <returns></returns>
         [HttpDelete("{DokumentID}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -108,7 +119,11 @@ namespace DokumentiService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
         }
-
+        /// <summary>
+        /// Proeman dokumenta
+        /// </summary>
+        /// <param name="DokumentUpdateDTO"></param>
+        /// <returns></returns>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]

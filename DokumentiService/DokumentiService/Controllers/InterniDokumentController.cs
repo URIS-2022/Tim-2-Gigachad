@@ -10,7 +10,7 @@ namespace DokumentiService.Controllers
     /// <summary>
     /// Kontroler za entitete eksternih dokumenata.
     /// </summary>
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/interniDokumenti")]
     [Produces("application/json", "application/xml")]
@@ -29,7 +29,10 @@ namespace DokumentiService.Controllers
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
         }
-
+        /// <summary>
+        /// GET za sva interna dokumenta
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -41,7 +44,11 @@ namespace DokumentiService.Controllers
                 return NoContent();
             return Ok(mapper.Map<List<InterniDokumentEntity>>(intdok));
         }
-
+        /// <summary>
+        /// GET za interni dokumetn sa zadatim ID
+        /// </summary>
+        /// <param name="interniDokumentID"></param>
+        /// <returns></returns>
         [HttpGet("{interniDokumentID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -52,7 +59,11 @@ namespace DokumentiService.Controllers
                 return NotFound();
             return Ok(mapper.Map<InterniDokumentEntity>(interniDokument));
         }
-
+        /// <summary>
+        /// Delete za interni Dokument sa zadatim ID
+        /// </summary>
+        /// <param name="interniDokumentID"></param>
+        /// <returns></returns>
         [HttpDelete("{interniDokumentID}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -76,7 +87,11 @@ namespace DokumentiService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
         }
-
+        /// <summary>
+        /// Dodavanje novog internog dokumenta
+        /// </summary>
+        /// <param name="interniDokumentCreateDTO"></param>
+        /// <returns></returns>
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -100,7 +115,11 @@ namespace DokumentiService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
         }
-
+        /// <summary>
+        /// Promena internog Dokumenta
+        /// </summary>
+        /// <param name="interniDokumentUpdateDTO"></param>
+        /// <returns></returns>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
