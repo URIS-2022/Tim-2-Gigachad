@@ -2,10 +2,12 @@
 using KomisijaService.Data;
 using KomisijaService.Entities;
 using KomisijaService.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KomisijaService.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/komisije")]
     [Produces("application/json", "application/xml")]
