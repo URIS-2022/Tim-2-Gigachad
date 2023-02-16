@@ -83,8 +83,8 @@ namespace LiceService.Controllers
 		{
 			try
 			{
-				List<FizickoLiceEntity> lica = fizickoLiceRepository.GetFizickaLica();
-				if (lica.Find(e => e.JMBG == fizickoLiceCreateDTO.JMBG) == null)
+				List<FizickoLiceEntity> fizickaLica = fizickoLiceRepository.GetFizickaLica();
+				if (fizickaLica.Find(e => e.JMBG == fizickoLiceCreateDTO.JMBG) == null)
 				{
 					FizickoLiceDTO fizickoLice = fizickoLiceRepository.CreateFizickoLice(fizickoLiceCreateDTO);
 					fizickoLiceRepository.SaveChanges();
@@ -126,11 +126,11 @@ namespace LiceService.Controllers
 				FizickoLiceEntity? oldFizickoLice = fizickoLiceRepository.GetFizickoLiceByID(Guid.Parse(fizickoLiceUpdateDTO.ID));
 				if (oldFizickoLice == null)
 					return NotFound();
-				List<FizickoLiceEntity> lica = fizickoLiceRepository.GetFizickaLica();
-				FizickoLiceEntity? lice = lica.Find(e => e.ID == Guid.Parse(fizickoLiceUpdateDTO.ID));
-				if (lice != null)
-					lica.Remove(lice);
-				if (lica.Find(e => e.JMBG == fizickoLiceUpdateDTO.JMBG) == null)
+				List<FizickoLiceEntity> fizickaLica = fizickoLiceRepository.GetFizickaLica();
+				FizickoLiceEntity? tempFizickoLice = fizickaLica.Find(e => e.ID == Guid.Parse(fizickoLiceUpdateDTO.ID));
+				if (tempFizickoLice != null)
+					fizickaLica.Remove(tempFizickoLice);
+				if (fizickaLica.Find(e => e.JMBG == fizickoLiceUpdateDTO.JMBG) == null)
 				{
 					FizickoLiceEntity fizickoLice = mapper.Map<FizickoLiceEntity>(fizickoLiceUpdateDTO);
 					mapper.Map(fizickoLice, oldFizickoLice);

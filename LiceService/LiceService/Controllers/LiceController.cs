@@ -5,9 +5,6 @@ using LiceService.Entities;
 using LiceService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
-using System;
-using System.Net.NetworkInformation;
 
 namespace LiceService.Controllers
 {
@@ -93,6 +90,7 @@ namespace LiceService.Controllers
 		/// <param name="liceCreateDTO">DTO za kreiranje lica.</param>
 		/// <returns>Potvrdu o kreiranom licu.</returns>
 		/// <response code="201">Vraća kreirano lice.</response>
+		/// <response code="422">Došlo je do greške, već postoji telefon jedan ili telefon dva ili broj računa na serveru sa istim vrednostima.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja lica.</response>
 		[HttpPost]
 		[Consumes("application/json")]
@@ -102,15 +100,50 @@ namespace LiceService.Controllers
 		{
 			try
 			{
-				LiceDTO lice = liceRepository.CreateLice(liceCreateDTO);
-				liceRepository.SaveChanges();
-				
-				string? location = linkGenerator.GetPathByAction("GetLice", "Lice", new { liceID = lice.ID });
+				List<LiceEntity> lica = liceRepository.GetLica();
+				if (lica.Find(e => e.Telefon1 == liceCreateDTO.Telefon1) == null && 
+					lica.Find(e => e.Telefon2 == liceCreateDTO.Telefon1) == null)
+				{
+					if (liceCreateDTO.Telefon2 == null)
+					{
+						if (lica.Find(e => e.BrojRacuna == liceCreateDTO.BrojRacuna) == null)
+						{
+							LiceDTO lice = liceRepository.CreateLice(liceCreateDTO);
+							liceRepository.SaveChanges();
 
-				if (location != null)
-					return Created(location, lice);
+							string? location = linkGenerator.GetPathByAction("GetLice", "Lice", new { liceID = lice.ID });
+
+							if (location != null)
+								return Created(location, lice);
+							else
+								return Created(string.Empty, lice);
+						}
+						else
+							return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati broj računa lica.");
+					}
+					else if (lica.Find(e => e.Telefon1 == liceCreateDTO.Telefon2) == null && 
+						lica.Find(e => e.Telefon2 == liceCreateDTO.Telefon2) == null)
+					{
+						if (lica.Find(e => e.BrojRacuna == liceCreateDTO.BrojRacuna) == null)
+						{
+							LiceDTO lice = liceRepository.CreateLice(liceCreateDTO);
+							liceRepository.SaveChanges();
+
+							string? location = linkGenerator.GetPathByAction("GetLice", "Lice", new { liceID = lice.ID });
+
+							if (location != null)
+								return Created(location, lice);
+							else
+								return Created(string.Empty, lice);
+						}
+						else
+							return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati broj računa lica.");
+					}
+					else
+						return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati telefon dva lica.");
+				}
 				else
-					return Created(string.Empty, lice);
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati telefon jedan lica.");
 			}
 			catch (Exception exception)
 			{
@@ -125,6 +158,7 @@ namespace LiceService.Controllers
 		/// <returns>Potvrdu o ažuriranom licu.</returns>
 		/// <response code="200">Vraća ažurirano lice.</response>
 		/// <response code="404">Specifirano lice ne postoji.</response>
+		/// <response code="422">Došlo je do greške, već postoji telefon jedan ili telefon dva ili broj računa na serveru sa istim vrednostima.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja lica.</response>
 		[HttpPut]
 		[Consumes("application/json")]
@@ -138,10 +172,45 @@ namespace LiceService.Controllers
 				LiceEntity? oldLice = liceRepository.GetLiceByID(Guid.Parse(liceUpdateDTO.ID));
 				if (oldLice == null)
 					return NotFound();
-				LiceEntity lice = mapper.Map<LiceEntity>(liceUpdateDTO);
-				mapper.Map(lice, oldLice);
-				liceRepository.SaveChanges();
-				return Ok(mapper.Map<LiceDTO>(oldLice));
+
+				List<LiceEntity> lica = liceRepository.GetLica();
+				LiceEntity? tempLice = lica.Find(e => e.ID == Guid.Parse(liceUpdateDTO.ID));
+				if (tempLice != null)
+					lica.Remove(tempLice);
+
+				if (lica.Find(e => e.Telefon1 == liceUpdateDTO.Telefon1) == null &&
+					lica.Find(e => e.Telefon2 == liceUpdateDTO.Telefon1) == null)
+				{
+					if (liceUpdateDTO.Telefon2 == null)
+					{
+						if (lica.Find(e => e.BrojRacuna == liceUpdateDTO.BrojRacuna) == null)
+						{
+							LiceEntity lice = mapper.Map<LiceEntity>(liceUpdateDTO);
+							mapper.Map(lice, oldLice);
+							liceRepository.SaveChanges();
+							return Ok(mapper.Map<LiceDTO>(oldLice));
+						}
+						else
+							return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati broj računa lica.");
+					}
+					else if (lica.Find(e => e.Telefon1 == liceUpdateDTO.Telefon2) == null &&
+						lica.Find(e => e.Telefon2 == liceUpdateDTO.Telefon2) == null)
+					{
+						if (lica.Find(e => e.BrojRacuna == liceUpdateDTO.BrojRacuna) == null)
+						{
+							LiceEntity lice = mapper.Map<LiceEntity>(liceUpdateDTO);
+							mapper.Map(lice, oldLice);
+							liceRepository.SaveChanges();
+							return Ok(mapper.Map<LiceDTO>(oldLice));
+						}
+						else
+							return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati broj računa lica.");
+					}
+					else
+						return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati telefon dva lica.");
+				}
+				else
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati telefon jedan lica.");
 			}
 			catch (Exception exception)
 			{

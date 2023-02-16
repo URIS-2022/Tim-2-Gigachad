@@ -104,6 +104,7 @@
             <param name="liceCreateDTO">DTO za kreiranje lica.</param>
             <returns>Potvrdu o kreiranom licu.</returns>
             <response code="201">Vraća kreirano lice.</response>
+            <response code="422">Došlo je do greške, već postoji telefon jedan ili telefon dva ili broj računa na serveru sa istim vrednostima.</response>
             <response code="500">Došlo je do greške na serveru prilikom kreiranja lica.</response>
         </member>
         <member name="M:LiceService.Controllers.LiceController.UpdateLice(LiceService.DTO.LiceUpdateDTO)">
@@ -114,6 +115,7 @@
             <returns>Potvrdu o ažuriranom licu.</returns>
             <response code="200">Vraća ažurirano lice.</response>
             <response code="404">Specifirano lice ne postoji.</response>
+            <response code="422">Došlo je do greške, već postoji telefon jedan ili telefon dva ili broj računa na serveru sa istim vrednostima.</response>
             <response code="500">Došlo je do greške na serveru prilikom ažuriranja lica.</response>
         </member>
         <member name="M:LiceService.Controllers.LiceController.DeleteLice(System.Guid)">
