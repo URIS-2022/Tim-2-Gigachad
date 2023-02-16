@@ -7,6 +7,7 @@ using ZalbaService.Models;
 
 namespace ZalbaService.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/zalbe")]
     [Produces("application/json", "application/xml")]
