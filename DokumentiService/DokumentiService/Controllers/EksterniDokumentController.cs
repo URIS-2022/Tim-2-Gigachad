@@ -52,7 +52,7 @@ namespace DokumentiService.Controllers
         [HttpGet("{eksterniDokumentID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        
+
         public ActionResult<EksterniDokumentDTO> GetEksterniDokument(Guid eksterniDokumentID)
         {
             var eksterniDokument = eksterniDokumentRepository.GetEksterniDokumentID(eksterniDokumentID);

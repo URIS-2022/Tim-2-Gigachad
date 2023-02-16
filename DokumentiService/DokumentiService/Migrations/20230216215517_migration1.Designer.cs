@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DokumentiService.Migrations
 {
     [DbContext(typeof(DokumentContext))]
-    [Migration("20230214001303_InitialMigration2")]
-    partial class InitialMigration2
+    [Migration("20230216215517_migration1")]
+    partial class migration1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -32,6 +32,7 @@ namespace DokumentiService.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DatumDonosenja")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("EksterniDokumentID")
@@ -41,12 +42,17 @@ namespace DokumentiService.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("Sablon")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int>("StatusDokumenta")
                         .HasColumnType("int");
 
                     b.HasKey("DokumentID");
+
+                    b.HasIndex("EksterniDokumentID");
+
+                    b.HasIndex("InterniDokumentID");
 
                     b.ToTable("Dokumenti");
 
@@ -55,8 +61,8 @@ namespace DokumentiService.Migrations
                         {
                             DokumentID = new Guid("c9c1ccd3-e953-490e-b69c-cf903d8758f9"),
                             DatumDonosenja = new DateTime(2000, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EksterniDokumentID = new Guid("d9157fc9-0fde-42db-b44f-98bdc39c8997"),
-                            InterniDokumentID = new Guid("393dd1ca-ee17-42c7-aaac-6e560a45dfdd"),
+                            EksterniDokumentID = new Guid("475b61f1-dccd-404a-a657-43fb9ec729ce"),
+                            InterniDokumentID = new Guid("858930f0-92ec-4975-b697-0c7afb2842de"),
                             Sablon = 5,
                             StatusDokumenta = 4
                         },
@@ -64,8 +70,8 @@ namespace DokumentiService.Migrations
                         {
                             DokumentID = new Guid("378ffff9-f997-4b7f-8c6e-c674918ef2e9"),
                             DatumDonosenja = new DateTime(2000, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EksterniDokumentID = new Guid("3d0478c3-6220-4f6b-9438-b5e7fde84b02"),
-                            InterniDokumentID = new Guid("7a8ef4cd-94f1-4dc8-bf89-9eb17374662b"),
+                            EksterniDokumentID = new Guid("72922197-afd8-49ad-877b-6573b7d50714"),
+                            InterniDokumentID = new Guid("9813acc5-35f5-4d3b-886c-42a6aaf162b9"),
                             Sablon = 5,
                             StatusDokumenta = 4
                         });
@@ -73,56 +79,87 @@ namespace DokumentiService.Migrations
 
             modelBuilder.Entity("DokumentiService.Entities.EksterniDokumentEntity", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("EksterniDokumentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PutanjaDokumenta")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("ID");
+                    b.HasKey("EksterniDokumentID");
 
                     b.ToTable("EksterniDokumenti");
 
                     b.HasData(
                         new
                         {
-                            ID = new Guid("475b61f1-dccd-404a-a657-43fb9ec729ce"),
+                            EksterniDokumentID = new Guid("475b61f1-dccd-404a-a657-43fb9ec729ce"),
                             PutanjaDokumenta = "Ovo je samo da vidimo sta ce da pise"
                         },
                         new
                         {
-                            ID = new Guid("72922197-afd8-49ad-877b-6573b7d50714"),
+                            EksterniDokumentID = new Guid("72922197-afd8-49ad-877b-6573b7d50714"),
                             PutanjaDokumenta = "Ovo je nesto nesto da vidimo sta ce da pise drugi deo brapoooo"
                         });
                 });
 
             modelBuilder.Entity("DokumentiService.Entities.InterniDokumentEntity", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("InterniDokumentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PutanjaDokumenta")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("ID");
+                    b.HasKey("InterniDokumentID");
 
                     b.ToTable("InterniDokumenti");
 
                     b.HasData(
                         new
                         {
-                            ID = new Guid("858930f0-92ec-4975-b697-0c7afb2842de"),
+                            InterniDokumentID = new Guid("858930f0-92ec-4975-b697-0c7afb2842de"),
                             PutanjaDokumenta = "Internal man"
                         },
                         new
                         {
-                            ID = new Guid("9813acc5-35f5-4d3b-886c-42a6aaf162b9"),
+                            InterniDokumentID = new Guid("9813acc5-35f5-4d3b-886c-42a6aaf162b9"),
                             PutanjaDokumenta = "Internal bratskciiii"
                         });
+                });
+
+            modelBuilder.Entity("DokumentiService.Entities.DokumentEntity", b =>
+                {
+                    b.HasOne("DokumentiService.Entities.EksterniDokumentEntity", "EksterniDokument")
+                        .WithMany("Dokument")
+                        .HasForeignKey("EksterniDokumentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DokumentiService.Entities.InterniDokumentEntity", "InterniDokument")
+                        .WithMany("Dokument")
+                        .HasForeignKey("InterniDokumentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EksterniDokument");
+
+                    b.Navigation("InterniDokument");
+                });
+
+            modelBuilder.Entity("DokumentiService.Entities.EksterniDokumentEntity", b =>
+                {
+                    b.Navigation("Dokument");
+                });
+
+            modelBuilder.Entity("DokumentiService.Entities.InterniDokumentEntity", b =>
+                {
+                    b.Navigation("Dokument");
                 });
 #pragma warning restore 612, 618
         }
