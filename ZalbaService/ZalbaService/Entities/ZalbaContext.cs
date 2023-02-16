@@ -2,11 +2,19 @@
 
 namespace ZalbaService.Entities
 {
+    /// <summary>
+    /// DbContext za ZalbaService mikroservis.
+    /// </summary>
     public class ZalbaContext : DbContext
     {
-
+        /// <summary>
+        /// Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+        /// </summary>
         public ZalbaContext(DbContextOptions options) : base(options) { }
 
+        /// <summary>
+        /// DbSet za entitet žalba.
+        /// </summary>
         public DbSet<ZalbaEntity> Zalbe { get; set; }
 
         /// <summary>

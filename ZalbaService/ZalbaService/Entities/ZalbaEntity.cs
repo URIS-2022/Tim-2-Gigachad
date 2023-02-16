@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ZalbaService.Entities
 {
+    /// <summary>
+    /// Model realnog entiteta žalba.
+    /// </summary>
     public class ZalbaEntity
     {
         public ZalbaEntity() { }

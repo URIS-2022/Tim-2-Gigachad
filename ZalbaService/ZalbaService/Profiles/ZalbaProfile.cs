@@ -4,8 +4,14 @@ using ZalbaService.Models;
 
 namespace ZalbaService.Profiles
 {
+    /// <summary>
+    /// Profil mapera za model entiteta žalba.
+    /// </summary>
     public class ZalbaProfile : Profile
     {
+        /// <summary>
+        /// Profil mapera za model entiteta žalba.
+        /// </summary>
         public ZalbaProfile()
         {
             CreateMap<ZalbaEntity, ZalbaDTO>()

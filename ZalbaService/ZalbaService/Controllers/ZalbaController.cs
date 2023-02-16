@@ -7,6 +7,9 @@ using ZalbaService.Models;
 
 namespace ZalbaService.Controllers
 {
+    /// <summary>
+    /// Kontroler za entitet žalba.
+    /// </summary>
     [Authorize]
     [ApiController]
     [Route("api/zalbe")]
@@ -17,6 +20,9 @@ namespace ZalbaService.Controllers
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
+        /// <summary>
+        /// Dependency injection za kontroler.
+        /// </summary>
         public ZalbaController(IZalbaRepository zalbaRepository, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.zalbaRepository = zalbaRepository;
@@ -24,6 +30,12 @@ namespace ZalbaService.Controllers
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Vraća listu svih žalbi
+        /// </summary>
+        /// <returns>Vraća potvrdu o listi postojećih žalbi.</returns>
+		/// <response code="200">Vraća listu žalbi.</response>
+		/// <response code="204">Ne postoje žalbi.</response>
         [HttpGet]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -38,6 +50,13 @@ namespace ZalbaService.Controllers
             //return Ok(zalbe);
         }
 
+        /// <summary>
+        /// Vraća jednu žalbu na osnovu prosleđenog ID-ja.
+        /// </summary>
+        /// <param name="zalbaID">ID žalbe</param>
+        /// <returns>Vraća potvrdu o specifiranoj žalbi.</returns>
+        /// /// <response code="200">Vraća specifiranu žalbu.</response>
+		/// <response code="404">Specifirana žalba ne postoji.</response>
         [HttpGet("{zalbaID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -49,7 +68,13 @@ namespace ZalbaService.Controllers
             return Ok(mapper.Map<ZalbaDTO>(zalba));
         }
 
-
+        /// <summary>
+        /// Kreira novu žalbu.
+        /// </summary>
+        /// <param name="zalbaCreateDTO"> DTO za kreiranje žalbe</param>
+        /// <returns>Potvrdu o kreiranoj žalbi.</returns>
+        /// /// <response code="201">Vraća kreiranu žalbu.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja žalbe.</response>
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -74,7 +99,14 @@ namespace ZalbaService.Controllers
             }
         }
 
-
+        /// <summary>
+		/// Briše jednu žalbu na osnovu zadatog ID-ja.
+		/// </summary>
+		/// <param name="zalbaID">ID žalbe.</param>
+		/// <returns>Potvrdu o brisanju žalbe.</returns>
+		/// <response code="204">Specifirana žalba je uspešno obrisano.</response>
+		/// <response code="404">Specifirana žalba ne postoji i nije obrisano.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom brisanja specifirane žalbe.</response>
         [HttpDelete("{zalbaID}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -100,7 +132,14 @@ namespace ZalbaService.Controllers
         }
 
 
-
+        /// <summary>
+        /// Ažurira jednu žalbu.
+        /// </summary>
+        /// <param name="zalbaUpdateDTO">DTO za ažuriranje žalbe.</param>
+        /// <returns>Potvrdu o ažuriranoj žalbi.</returns>
+		/// <response code="200">Vraća ažuriranu žalbu.</response>
+		/// <response code="404">Specifirana žalba ne postoji.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja žalbe.</response>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -122,6 +161,19 @@ namespace ZalbaService.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
+        }
+
+        /// <summary>
+		/// Vraća opcije za rad sa žalbama.
+		/// </summary>
+		/// <returns>Vraća prazan 200 HTTP kod.</returns>
+		/// <response code="200">Vraća prazan 200 HTTP kod.</response>
+		[HttpOptions]
+        [AllowAnonymous]
+        public IActionResult GetZalbeOptions()
+        {
+            Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
+            return Ok();
         }
     }
 }

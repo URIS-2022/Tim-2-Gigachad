@@ -3,55 +3,61 @@ using static ZalbaService.Entities.EntitiesEnums;
 
 namespace ZalbaService.Models
 {
+    /// <summary>
+    /// Model DTO-a za kreiranje entiteta žalba.
+    /// </summary>
     public class ZalbaCreateDTO : IValidatableObject
     {
         /// <summary>
 		/// ID kupca.
 		/// </summary>
-        [Required]
+        [Required(ErrorMessage = "Žalba mora da ima kupca koji je podneo.")]
         public Guid KupacID { get; set; }
 
         /// <summary>
 		/// Tip zalbe.
 		/// </summary>
-        [Required]
+        [Required(ErrorMessage = "Žalba mora da ima tip žalbe.")]
         [MaxLength(50)]
         public string? TipZalbe { get; set; }
 
         /// <summary>
 		/// Datum podnosenja zalbe.
 		/// </summary>
-        [Required]
+        [Required(ErrorMessage = "Žalba mora da ima datum podnošenja.")]
         public DateTime? DatumPodnosenja { get; set; }
 
         /// <summary>
 		/// Razlog zalbe.
 		/// </summary>
-        [Required]
+        [Required(ErrorMessage = "Žalba mora da ima razlog.")]
         [MaxLength(50)]
         public string? Razlog { get; set; }
 
         /// <summary>
 		/// Obrazlozenje zalbe.
 		/// </summary>
-        [Required]
+        [Required(ErrorMessage = "Žalba mora da ima obrazloženje.")]
         [MaxLength(200)]
         public string? Obrazlozenje { get; set; }
 
         /// <summary>
 		/// Status zalbe.
 		/// </summary>
-        [Required]
+        [Required(ErrorMessage = "Žalba mora da ima status.")]
         [MaxLength(10)]
         public string? StatusZalbe { get; set; }
 
         /// <summary>
 		/// Radnja zalbe.
 		/// </summary>
-        [Required]
+        [Required(ErrorMessage = "Žalba mora da ima radnju.")]
         [MaxLength(50)]
         public string? RadnjaZalbe { get; set; }
 
+        /// <summary>
+        /// Validacija za model DTO-a za kreiranje entiteta žalba.
+        /// </summary>
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (DateTime.Compare(DatumPodnosenja.Value, DateTime.Now) > 0)
