@@ -80,12 +80,12 @@ namespace DokumentiService.Controllers
         }
 
         /// <summary>
-		/// Kreira novo fizičko lice.
+		/// Kreira novi eksterni doument.
 		/// </summary>
-		/// <param name="eksterniDokumentCreateDTO">DTO za kreiranje fizičkog lica.</param>
-		/// <returns>Potvrdu o kreiranom fizičkom licu.</returns>
-		/// <response code="201">Vraća kreirano fizičko lice.</response>
-		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
+		/// <param name="eksterniDokumentCreateDTO">DTO za kreiranje eksternog dokumenta.</param>
+		/// <returns>Potvrdu o kreiranom eksternom dokumentu.</returns>
+		/// <response code="201">Vraća kreiran eksterni dokument.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja eksternog dokumenta.</response>
 		[HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -103,6 +103,29 @@ namespace DokumentiService.Controllers
                     return Created(location, eksterniDokument);
                 else
                     return Created("", eksterniDokument);
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+            }
+        }
+
+        [HttpPut]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<EksterniDokumentDTO> UpdateEksterniDokument(EksterniDokumentUpdateDTO eksterniDokumentUpdateDTO)
+        {
+            try
+            {
+                EksterniDokumentEntity? eksterniDokument = eksterniDokumentRepository.GetEksterniDokumentID(eksterniDokumentUpdateDTO.EksterniDokumentID);
+                if (eksterniDokument == null)
+                    return NotFound();
+                EksterniDokumentEntity eksdok = mapper.Map<EksterniDokumentEntity>(eksterniDokumentUpdateDTO);
+                mapper.Map(eksdok, eksterniDokument);
+                eksterniDokumentRepository.SaveChanges();
+                return Ok(mapper.Map<EksterniDokumentDTO>(eksterniDokument));
             }
             catch (Exception exception)
             {

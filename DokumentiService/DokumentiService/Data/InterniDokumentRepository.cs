@@ -45,10 +45,6 @@ namespace DokumentiService.Data
             return context.SaveChanges() > 0;
         }
 
-        public void UpdateInterniDokument(DokumentEntity InterniDokument)
-        {
-            
-        }
     }
        
 }

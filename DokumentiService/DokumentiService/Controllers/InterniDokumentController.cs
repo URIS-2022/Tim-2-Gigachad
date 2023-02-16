@@ -100,6 +100,29 @@ namespace DokumentiService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
         }
+
+        [HttpPut]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<InterniDokumentDTO> UpdateInterniDokument(InterniDokumentUpdateDTO interniDokumentUpdateDTO)
+        {
+            try
+            {
+                InterniDokumentEntity? interniDokument = interniDokumentRepository.GetInterniDokumentID(interniDokumentUpdateDTO.InterniDokumentID);
+                if (interniDokument == null)
+                    return NotFound();
+                InterniDokumentEntity intdok = mapper.Map<InterniDokumentEntity>(interniDokumentUpdateDTO);
+                mapper.Map(intdok, interniDokument);
+                interniDokumentRepository.SaveChanges();
+                return Ok(mapper.Map<InterniDokumentDTO>(interniDokument));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+            }
+        }
     }
 }
 

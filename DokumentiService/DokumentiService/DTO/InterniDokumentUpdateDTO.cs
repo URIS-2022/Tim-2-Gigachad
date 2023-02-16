@@ -2,10 +2,10 @@
 
 namespace DokumentiService.DTO
 {
-    public class EksterniDokumentUpdateDTO
+    public class InterniDokumentUpdateDTO
     {
+        public Guid InterniDokumentID { get; set; }
         [Required]
-        public Guid EksterniDokumentID { get; set; }
         [MaxLength(100)]
         public string PutanjaDokumenta { get; set; }
     }

@@ -8,6 +8,7 @@ namespace DokumentiService.Entities
         [Key]
         public Guid EksterniDokumentID{ get; set; }
         [Required]
+        [MaxLength(100)]
         public string? PutanjaDokumenta { get; set; }
     }
 }

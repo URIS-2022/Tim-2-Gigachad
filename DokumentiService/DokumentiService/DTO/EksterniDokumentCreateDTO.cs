@@ -5,7 +5,7 @@ namespace DokumentiService.DTO
     public class EksterniDokumentCreateDTO
     {
         [Required]
-        [MaxLength(25)]
+        [MaxLength(100)]
         public string? PutanjaDokumenta { get; set; }
     }
 }

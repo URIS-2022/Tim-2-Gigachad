@@ -9,7 +9,6 @@ namespace DokumentiService.Data
         InterniDokumentEntity GetInterniDokumentID(Guid InterniDokumentID);
         InterniDokumentDTO CreateInterniDokument(InterniDokumentCreateDTO InterniDokumentDTO);
         void DeleteInterniDokument(Guid InterniDokumentID);
-        void UpdateInterniDokument(DokumentEntity InterniDokument);
         bool SaveChanges();
 
     }
