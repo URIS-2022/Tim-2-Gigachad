@@ -12,9 +12,6 @@ namespace JavnoNadmetanjeService.DTO
 		/// </summary>
 		public Guid ID { get; set; }
 
-
-        //starni kljucevi
-
         /// <summary>
 		/// Tip nadmetanja.
 		/// </summary>
@@ -48,7 +45,7 @@ namespace JavnoNadmetanjeService.DTO
         /// <summary>
         /// Pocetna cena javnog nadmetanja.
         /// </summary>
-        public float PocetnaCena { get; set; }
+        public double PocetnaCena { get; set; }
 
         /// <summary>
         /// Visina cene javnog nadmetanja.
@@ -58,12 +55,12 @@ namespace JavnoNadmetanjeService.DTO
         /// <summary>
 		/// Izlicitirana cena javnog nadmetanja.
 		/// </summary>
-        public float IzlicitiranaCena { get; set; }
+        public double IzlicitiranaCena { get; set; }
 
         /// <summary>
 		/// Najbolja ponuda javnog nadmetanja.
 		/// </summary>
-		public float NajboljaPonuda { get; set; }
+		public double NajboljaPonuda { get; set; }
 
         /// <summary>
 		/// Broj ucesnika javnog nadmetanja.

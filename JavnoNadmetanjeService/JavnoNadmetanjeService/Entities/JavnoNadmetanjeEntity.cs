@@ -107,13 +107,13 @@ namespace JavnoNadmetanjeService.Entities
 		/// Izlicitirana cena javnog nadmetanja.
 		/// </summary>
 		[Required(ErrorMessage = "Javno nadmetanje mora da ima izlicitiranu cenu.")]
-        public float? IzlicitiranaCena { get; set; } = null!;
+        public double? IzlicitiranaCena { get; set; } = null!;
 
         /// <summary>
 		/// Najbolja ponuda javnog nadmetanja.
 		/// </summary>
 		[Required(ErrorMessage = "Javno nadmetanje mora da ima najbolju ponudu.")]
-        public float? NajboljaPonuda { get; set; } = null!;
+        public double? NajboljaPonuda { get; set; } = null!;
 
         /// <summary>
 		/// Broj ucesnika javnog nadmetanja.

@@ -50,7 +50,7 @@ namespace JavnoNadmetanjeService.DTO
         /// Pocetna cena javnog nadmetanja.
         /// </summary>
         [Required(ErrorMessage = "Javno nadmetanje mora da ima pocetnu cenu.")]
-        public float PocetnaCena { get; set; }
+        public double PocetnaCena { get; set; }
 
         /// <summary>
         /// Visina cene javnog nadmetanja.
@@ -62,13 +62,13 @@ namespace JavnoNadmetanjeService.DTO
 		/// Izlicitirana cena javnog nadmetanja.
 		/// </summary>
         [Required(ErrorMessage = "Javno nadmetanje mora da ima izlicitiranu cenu.")]
-        public float IzlicitiranaCena { get; set; }
+        public double IzlicitiranaCena { get; set; }
 
         /// <summary>
 		/// Najbolja ponuda javnog nadmetanja.
 		/// </summary>
 		[Required(ErrorMessage = "Javno nadmetanje mora da ima najbolju ponudu.")]
-        public float NajboljaPonuda { get; set; }
+        public double NajboljaPonuda { get; set; }
 
         /// <summary>
 		/// Broj ucesnika javnog nadmetanja.
