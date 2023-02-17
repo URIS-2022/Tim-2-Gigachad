@@ -88,7 +88,7 @@ namespace LiceService.Controllers
 					FizickoLiceDTO fizickoLiceDTO = fizickoLiceRepository.CreateFizickoLice(fizickoLiceCreateDTO);
 					fizickoLiceRepository.SaveChanges();
 
-					string? location = linkGenerator.GetPathByAction("GetFizickoLice", "FizickoLice", new { fizickoLiceID = fizickoLice.ID });
+					string? location = linkGenerator.GetPathByAction("GetFizickoLice", "FizickoLice", new { fizickoLiceID = fizickoLiceDTO.ID });
 
 					if (location != null)
 						return Created(location, fizickoLiceDTO);

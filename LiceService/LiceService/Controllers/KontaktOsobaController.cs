@@ -88,7 +88,7 @@ namespace LiceService.Controllers
 					KontaktOsobaDTO kontaktOsobaDTO = kontaktOsobaRepository.CreateKontaktOsoba(kontaktOsobaCreateDTO);
 					kontaktOsobaRepository.SaveChanges();
 
-					string? location = linkGenerator.GetPathByAction("GetKontaktOsoba", "KontaktOsoba", new { kontaktOsobaID = kontaktOsoba.ID });
+					string? location = linkGenerator.GetPathByAction("GetKontaktOsoba", "KontaktOsoba", new { kontaktOsobaID = kontaktOsobaDTO.ID });
 
 					if (location != null)
 						return Created(location, kontaktOsobaDTO);

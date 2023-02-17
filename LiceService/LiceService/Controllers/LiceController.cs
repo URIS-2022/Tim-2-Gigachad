@@ -5,6 +5,7 @@ using LiceService.Entities;
 using LiceService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace LiceService.Controllers
 {
@@ -46,7 +47,6 @@ namespace LiceService.Controllers
 		/// <param name="authorization">Autorizovan token.</param>
 		/// <response code="200">Vraća listu lica.</response>
 		/// <response code="204">Ne postoje lica.</response>
-		/// <response code="500">Adresa lica nije pronađena.</response>
 		//[HttpHead]
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
@@ -74,13 +74,11 @@ namespace LiceService.Controllers
 							liceDTO.PravnoLice = mapper.Map<PravnoLiceDTO>(pravnoLice);
 							KontaktOsobaDTO kontaktOsobaDTO = mapper.Map<KontaktOsobaDTO>(kontaktOsobaRepository.GetKontaktOsobaByID(pravnoLice.KontaktOsobaID));
 							liceDTO.PravnoLice.KontaktOsoba = kontaktOsobaDTO;
-						}	
+						}
 					}
 					liceDTO.Adresa = adresaDTO;
 					licaDTO.Add(liceDTO);
 				}
-				else
-					return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena. ID adrese lica: " + adresaID.ToString() + ".");
 			}
 
 			return Ok(licaDTO);

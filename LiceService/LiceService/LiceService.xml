@@ -152,7 +152,6 @@
             <param name="authorization">Autorizovan token.</param>
             <response code="200">Vraća listu lica.</response>
             <response code="204">Ne postoje lica.</response>
-            <response code="500">Adresa lica nije pronađena.</response>
         </member>
         <member name="M:LiceService.Controllers.LiceController.GetLice(System.Guid,System.String)">
             <summary>

@@ -32,10 +32,14 @@ namespace LiceService.ServiceCalls
 				httpClient.DefaultRequestHeaders.Add("Authorization", token);
 
 			HttpResponseMessage response = httpClient.GetAsync(url).Result;
-
-			string responseContent = await response.Content.ReadAsStringAsync();
-			AdresaDTO? adresa = JsonConvert.DeserializeObject<AdresaDTO?>(responseContent);
-
+			AdresaDTO? adresa;
+			if (response.IsSuccessStatusCode)
+			{
+				string responseContent = await response.Content.ReadAsStringAsync();
+				adresa = JsonConvert.DeserializeObject<AdresaDTO?>(responseContent);
+			}
+			else
+				adresa = null;
 			if (adresa != null && adresa.ID != Guid.Empty)
 				return adresa;
 			else
