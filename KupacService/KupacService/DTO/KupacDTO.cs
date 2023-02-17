@@ -16,49 +16,41 @@ namespace KupacService.DTO
         /// <summary>
         /// JMBG fizičkog lica.
         /// </summary>
-        public Guid LiceID  { get; set; }
+        public LiceDTO Lice { get; set; } = null!;
 
         /// <summary>
         /// ID ovlascenjog lica.
         /// </summary>
-        [Required]
-        public Guid OvlascenoLiceID { get; set; }
+        public OvalscenoLiceDTO OvlascenoLice { get; set; } = null!;
 
         /// <summary>
         /// ID javnog nadmetanja.
         /// </summary>
-        [Required]
-        public Guid JavnoNadmetanjeID { get; set; }
+        public JavnoNadmetanjeDTO JavnoNadmetanje { get; set; } = null!;
 
         /// <summary>
         /// Prioritet kupca.
         /// </summary>
-        [Required]
-        [MaxLength(30)]
         public string? Prioritet{ get; set; }
 
         /// <summary>
         /// Kupac ima/nema zabranu.
         /// </summary>
-        [Required]
         public bool? ImaZabranu { get; set; }
 
         /// <summary>
         /// Datum pocetka zabrane.
         /// </summary>
-        [Required]
         public DateTime? DatumPocetkaZabrane { get; set; }
 
         /// <summary>
         /// Datum zavrsetka zabrane.
         /// </summary>
-        [Required]
         public DateTime? DatumZavrsetkaZabrane { get; set; }
 
         /// <summary>
         /// Broj kupovina kupca.
         /// </summary>
-        [Required]
         public int? BrojKupovina { get; set; }
     }
 }

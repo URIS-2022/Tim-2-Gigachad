@@ -3,7 +3,7 @@
 namespace KupacService.DTO
 {
     /// <summary>
-    /// Model DTO-a za lice.
+    /// Model DTO-a za entitet lice.
     /// </summary>
     public class LiceDTO
     {
@@ -15,50 +15,41 @@ namespace KupacService.DTO
         /// <summary>
         /// ID fizičkog lica.
         /// </summary>
-
-        public Guid FizickoLiceID { get; set; }
+        public FizickoLiceDTO FizickoLice { get; set; } = null!;
 
         /// <summary>
         /// ID pravnog lica.
         /// </summary>
-        //[ForeignKey("PravnoLiceEntity")]
-        //public Guid? PravnoLiceID { get; set; }
+        public PravnoLiceDTO? PravnoLice { get; set; }
 
         /// <summary>
-        /// ID adrese lica.
+        /// Adresa lica.
         /// </summary>
-        //[Required]
-        //public Guid AdresaID { get; set; }
+        public AdresaDTO Adresa { get; set; } = null!;
 
         /// <summary>
-        /// Telefon 1 lica.
+        /// Prvi telefon lica.
         /// </summary>
-
-        [MaxLength(10)]
-        public string? Tel1 { get; set; }
+        public string Telefon1 { get; set; } = null!;
 
         /// <summary>
-        /// Telefon 2 lica.
+        /// Drugi telefon lica.
         /// </summary>
-
-        public string? Tel2 { get; set; }
+        public string? Telefon2 { get; set; }
 
         /// <summary>
         /// Email lica.
         /// </summary>
-
-        public string? Email { get; set; }
+        public string Email { get; set; } = null!;
 
         /// <summary>
         /// Broj računa lica.
         /// </summary>
-
-        public string? BrojRacuna { get; set; }
+        public string BrojRacuna { get; set; } = null!;
 
         /// <summary>
         /// Da li je lice ovlašćeno lice.
         /// </summary>
-
         public bool OvlascenoLice { get; set; }
     }
 }

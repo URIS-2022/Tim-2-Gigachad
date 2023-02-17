@@ -27,30 +27,59 @@ namespace KupacService.Entities
         {
             builder.Entity<KupacEntity>().HasData(new
             {
-                KupacID = Guid.Parse("32b7d397-b9d1-472d-bb40-541c68305098"),
-                LiceID = Guid.Parse("32b7d397-b9d1-472d-bb40-542c68306098"),
+                KupacID = Guid.Parse("34b7d397-b9d1-472d-bb40-541c69305098"),
+                LiceID = Guid.Parse("334f5277-a71c-4be8-b5da-5c9148b228f7"),
                 OvlascenoLiceID = Guid.Parse("32b7d397-b9d1-472d-bb40-542c68305094"),
                 JavnoNadmetanjeID = Guid.Parse("32b7d397-b9d1-472d-bb40-542c68305018"),
-                ID = Guid.Parse("32b7d397-b9d1-472d-bb40-442c68305098"),
-                Prioritet = "stagodtobilo",
-                ImaZabranu = false,
-                DatumPocetkaZabrane = new DateTime(2003, 10, 10),
+                Prioritet = "VLASNIKSISTEMAZANAVODNJAVANJE",
+                ImaZabranu = true,
+                DatumPocetkaZabrane = new DateTime(2000, 10, 10),
                 DatumZavrsetkaZabrane = new DateTime(2008, 10, 10),
                 BrojKupovina = 0
             }) ;
             builder.Entity<KupacEntity>().HasData(new
             {
-                KupacID = Guid.Parse("32c7d397-b9d1-472d-bb40-542c68305098"),
-                LiceID = Guid.Parse("32b4d397-b9d1-472d-bb40-542c68305098"),
+                KupacID = Guid.Parse("34b7d397-b9d1-472d-bb40-541c69305097"),
+                LiceID = Guid.Parse("334f5277-a71c-4be8-b5da-5c9148b228f7"),
                 OvlascenoLiceID = Guid.Parse("12b7d397-b9d1-472d-bb40-542c68305098"),
                 JavnoNadmetanjeID = Guid.Parse("32b7d367-b9d1-472d-bb40-542c68305098"),
-                ID = Guid.Parse("32b7d397-b9d1-472d-bb40-549c68305098"),
-                Prioritet = "stagodtobilo",
+                Prioritet = "POLJOPRIVREDNIKKOJIJEUPISANUREGISTAR",
                 ImaZabranu = false,
-                DatumPocetkaZabrane = new DateTime(2002, 10, 10),
-                DatumZavrsetkaZabrane = new DateTime(2007, 10, 10),
                 BrojKupovina = 50
             });
+            builder.Entity<KupacEntity>().HasData(new
+            {
+                KupacID = Guid.Parse("34b7d397-b9d1-472d-bb40-541c69305096"),
+                LiceID = Guid.Parse("334f5277-a71c-4be8-b5da-5c9148b228f7"),
+                OvlascenoLiceID = Guid.Parse("12b7d397-b9d1-472d-bb40-542c68305098"),
+                JavnoNadmetanjeID = Guid.Parse("32b7d367-b9d1-472d-bb40-542c68305098"),
+                Prioritet = "VLASNIKSISTEMAZANAVODNJAVANJE",
+                ImaZabranu = false,
+                BrojKupovina = 20
+            });
+            builder.Entity<KupacEntity>().HasData(new
+            {
+                KupacID = Guid.Parse("32c7d797-b9d1-472d-bb40-542c68605098"),
+                LiceID = Guid.Parse("334f5277-a71c-4be8-b5da-5c9148b228f7"),
+                OvlascenoLiceID = Guid.Parse("12b7d397-b9d1-472d-bb40-542c68305098"),
+                JavnoNadmetanjeID = Guid.Parse("32b7d367-b9d1-472d-bb40-542c68305098"),
+                Prioritet = "POLJOPRIVREDNIKKOJIJEUPISANUREGISTAR",
+                ImaZabranu = true,
+                DatumPocetkaZabrane = new DateTime(2005, 10, 10),
+                DatumZavrsetkaZabrane = new DateTime(2007, 10, 10),
+                BrojKupovina = 10
+            });
+            builder.Entity<KupacEntity>().HasData(new
+            {
+                KupacID = Guid.Parse("32c7d297-b9d1-472d-bb40-542c68305698"),
+                LiceID = Guid.Parse("334f5277-a71c-4be8-b5da-5c9148b228f7"),
+                OvlascenoLiceID = Guid.Parse("12b7d397-b9d1-472d-bb40-542c68305098"),
+                JavnoNadmetanjeID = Guid.Parse("32b7d367-b9d1-472d-bb40-542c68305098"),
+                Prioritet = "VLASNIKZEMLJISTAKOJEJENAJBLIZEZEMLJISTUKOJESEDAJEUZAKUP",
+                ImaZabranu = false,
+                BrojKupovina = 30
+            });
+
         }
     }
 }

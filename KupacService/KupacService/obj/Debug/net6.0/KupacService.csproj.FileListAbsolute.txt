@@ -87,3 +87,4 @@ C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\KupacService\
 C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\KupacService\KupacService\obj\Debug\net6.0\KupacService.pdb
 C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\KupacService\KupacService\obj\Debug\net6.0\KupacService.genruntimeconfig.cache
 C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\KupacService\KupacService\bin\Debug\net6.0\KupacService.xml
+C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\KupacService\KupacService\bin\Debug\net6.0\Newtonsoft.Json.dll

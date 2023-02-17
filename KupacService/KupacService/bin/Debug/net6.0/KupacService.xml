@@ -9,37 +9,49 @@
             Kontroler za entitet kupac.
             </summary>
         </member>
-        <member name="M:KupacService.Controllers.KupacController.GetKupci">
+        <member name="M:KupacService.Controllers.KupacController.#ctor(KupacService.Data.IKupacRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,KupacService.ServiceCalls.ILiceService)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:KupacService.Controllers.KupacController.GetKupci(System.String)">
             <summary>
             Vraća sve kupce.
             </summary>
             <returns>Vraća potvrdu o listi postojećih kupaca.</returns>
+            <param name="authorization">Autorizovan token.</param>
             <response code="200">Vraća listu kupaca.</response>
             <response code="204">Ne postoje kupaca.</response>
+            <response code="500">Adresa lica nije pronađena.</response>
         </member>
-        <member name="M:KupacService.Controllers.KupacController.GetKupac(System.Guid)">
+        <member name="M:KupacService.Controllers.KupacController.GetKupac(System.Guid,System.String)">
             <summary>
-            Vraća jednog kupca na osnovu zadatog ID-ja.
+            Vraća sve kupce.
             </summary>
-            <param name="kupacID">ID kupca.</param>
-            <returns>Vraća potvrdu o traženom kupcu.</returns>
-            <response code="200">Vraća specifiranog kupca.</response>
-            <response code="404">Specifirani kupac ne postoji.</response>
+            <returns>Vraća potvrdu o listi postojećih kupaca.</returns>
+            <param name="kupacID">ID lica.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <response code="200">Vraća listu kupaca.</response>
+            <response code="204">Ne postoje kupaca.</response>
+            <response code="500">Adresa lica nije pronađena.</response>
         </member>
-        <member name="M:KupacService.Controllers.KupacController.CreateKupac(KupacService.DTO.KupacCreateDTO)">
+        <member name="M:KupacService.Controllers.KupacController.CreateKupac(KupacService.DTO.KupacCreateDTO,System.String)">
             <summary>
             Kreira novog kupca.
             </summary>
             <param name="kupacCreateDTO">Model kupca.</param>
+            <param name="authorization">Autorizovan token.</param>
             <returns>Potvrdu o kreiranom kupcu.</returns>
             <response code="200">Vraća kreiranog kupca.</response>
             <response code="404">Došlo je do greške na serveru prilikom kreiranja kupca.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja lica.</response>
         </member>
-        <member name="M:KupacService.Controllers.KupacController.DeleteKupac(System.Guid)">
+        <member name="M:KupacService.Controllers.KupacController.UpdateKupac(KupacService.Entities.KupacUpdateDTO,System.String)">
             <summary>
             Briše jednog kupca na osnovu zadatog ID-ja.
             </summary>
             <param name="kupacID">ID fizičkog lica.</param>
+            <param name="authorization">Autorizovan token.</param>
             <returns>Potvrdu o brisanju kupca.</returns>
             <response code="204">Kupac uspešno obrisan.</response>
             <response code="404">Specifirani kupac ne postoji i nije obrisan.</response>
@@ -121,6 +133,141 @@
             Država(E).
             </summary>
         </member>
+        <member name="T:KupacService.DTO.FizickoLiceDTO">
+            <summary>
+            Model DTO-a za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.FizickoLiceDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.FizickoLiceDTO.PunoIme">
+            <summary>
+            Puno ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="T:KupacService.DTO.JavnoNadmetanjeDTO">
+            <summary>
+            Model DTO-a za javno nadmetanje entitet.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.ID">
+            <summary>
+            ID javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.TipNadmetanja">
+            <summary>
+            Tip nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.Opstina">
+            <summary>
+            Opstina.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.DatumNad">
+            <summary>
+            Datum javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.VremePoc">
+            <summary>
+            Vreme pocetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.VremeKraj">
+            <summary>
+            Vreme zavrsetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.PeriodZakupaM">
+            <summary>
+            Period zakupa M javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.PocetnaCena">
+            <summary>
+            Pocetna cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.VisinaCene">
+            <summary>
+            Visina cene javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.IzlicitiranaCena">
+            <summary>
+            Izlicitirana cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.NajboljaPonuda">
+            <summary>
+            Najbolja ponuda javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.BrojUcesnika">
+            <summary>
+            Broj ucesnika javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.PrijavljeniKupci">
+            <summary>
+            Prijavljeni kupci javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.Licitanti">
+            <summary>
+            Licitanti javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.Krug">
+            <summary>
+            Krug koji je po redu javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.StatusNadmetanja">
+            <summary>
+            Status javnog nadmetanja. Enumerator
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.Izuzeto">
+            <summary>
+            Izuzeto.
+            </summary>
+        </member>
+        <member name="T:KupacService.DTO.KontaktOsobaDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.KontaktOsobaDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.KontaktOsobaDTO.PunoIme">
+            <summary>
+            Puno ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.KontaktOsobaDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.KontaktOsobaDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
         <member name="T:KupacService.DTO.KupacCreateDTO">
             <summary>
             Model DTO-a za kreiranje fizičkog lica.
@@ -181,17 +328,17 @@
             ID fizičkog lica.
             </summary>
         </member>
-        <member name="P:KupacService.DTO.KupacDTO.LiceID">
+        <member name="P:KupacService.DTO.KupacDTO.Lice">
             <summary>
             JMBG fizičkog lica.
             </summary>
         </member>
-        <member name="P:KupacService.DTO.KupacDTO.OvlascenoLiceID">
+        <member name="P:KupacService.DTO.KupacDTO.OvlascenoLice">
             <summary>
             ID ovlascenjog lica.
             </summary>
         </member>
-        <member name="P:KupacService.DTO.KupacDTO.JavnoNadmetanjeID">
+        <member name="P:KupacService.DTO.KupacDTO.JavnoNadmetanje">
             <summary>
             ID javnog nadmetanja.
             </summary>
@@ -223,7 +370,7 @@
         </member>
         <member name="T:KupacService.DTO.LiceDTO">
             <summary>
-            Model DTO-a za lice.
+            Model DTO-a za entitet lice.
             </summary>
         </member>
         <member name="P:KupacService.DTO.LiceDTO.ID">
@@ -231,19 +378,29 @@
             ID lica.
             </summary>
         </member>
-        <member name="P:KupacService.DTO.LiceDTO.FizickoLiceID">
+        <member name="P:KupacService.DTO.LiceDTO.FizickoLice">
             <summary>
             ID fizičkog lica.
             </summary>
         </member>
-        <member name="P:KupacService.DTO.LiceDTO.Tel1">
+        <member name="P:KupacService.DTO.LiceDTO.PravnoLice">
             <summary>
-            Telefon 1 lica.
+            ID pravnog lica.
             </summary>
         </member>
-        <member name="P:KupacService.DTO.LiceDTO.Tel2">
+        <member name="P:KupacService.DTO.LiceDTO.Adresa">
             <summary>
-            Telefon 2 lica.
+            Adresa lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.LiceDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.LiceDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
             </summary>
         </member>
         <member name="P:KupacService.DTO.LiceDTO.Email">
@@ -259,6 +416,31 @@
         <member name="P:KupacService.DTO.LiceDTO.OvlascenoLice">
             <summary>
             Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="T:KupacService.DTO.PravnoLiceDTO">
+            <summary>
+            Model DTO-a za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.PravnoLiceDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.PravnoLiceDTO.KontaktOsoba">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.PravnoLiceDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.PravnoLiceDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
             </summary>
         </member>
         <member name="T:KupacService.DTO.UplataDTO">
@@ -468,6 +650,37 @@
         </member>
         <member name="M:KupacService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:KupacService.ServiceCalls.ILiceService">
+            <summary>
+            Interfejs od servis poziva za adresu lica.
+            </summary>
+        </member>
+        <member name="M:KupacService.ServiceCalls.ILiceService.GetLiceByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu lica od drugog mikro servisa.
+            </summary>
+            <param name="LiceID">ID adrese lica.</param>
+            <param name="token">Token za adresu lica mikroservis.</param>
+            <returns>Vraća model DTO-a adrese lica.</returns>
+        </member>
+        <member name="T:KupacService.ServiceCalls.LiceService">
+            <summary>
+            Servis poziva za adresu lica.
+            </summary>
+        </member>
+        <member name="M:KupacService.ServiceCalls.LiceService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:KupacService.ServiceCalls.LiceService.GetLiceByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća lice od drugog mikro servisa.
+            </summary>
+            <param name="liceID">ID lica.</param>
+            <param name="token">Token za lice mikroservis.</param>
+            <returns>Vraća model DTO-a lica.</returns>
         </member>
     </members>
 </doc>

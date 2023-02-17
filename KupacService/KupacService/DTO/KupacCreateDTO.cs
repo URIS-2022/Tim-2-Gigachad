@@ -11,20 +11,26 @@ namespace KupacService.DTO
         /// <summary>
         /// ID lica.
         /// </summary>
-        [Required]
-        public Guid LiceID { get; set; }
+        [Required(ErrorMessage = "LiceID je obavezno polje.")]
+        [MinLength(36, ErrorMessage = "Guid mora da ima minimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
+        [MaxLength(36, ErrorMessage = "Guid mora da ima maksimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
+        public string LiceID { get; set; } = null!;
 
         /// <summary>
         /// ID ovlascenjog lica.
         /// </summary>
-        [Required]
-        public Guid OvlascenoLiceID { get; set; }
+        [Required(ErrorMessage = "OvlascenoLiceID je obavezno polje.")]
+        [MinLength(36, ErrorMessage = "Guid mora da ima minimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
+        [MaxLength(36, ErrorMessage = "Guid mora da ima maksimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
+        public string OvlascenoLiceID { get; set; } = null!;
 
         /// <summary>
         /// ID javnog nadmetanja.
         /// </summary>
-        [Required]
-        public Guid JavnoNadmetanjeID { get; set; }
+        [Required(ErrorMessage = "JavnoNadmetanjeID je obavezno polje.")]
+        [MinLength(36, ErrorMessage = "Guid mora da ima minimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
+        [MaxLength(36, ErrorMessage = "Guid mora da ima maksimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
+        public string JavnoNadmetanjeID { get; set; } = null!;
 
         /// <summary>
         /// Prioritet kupca.

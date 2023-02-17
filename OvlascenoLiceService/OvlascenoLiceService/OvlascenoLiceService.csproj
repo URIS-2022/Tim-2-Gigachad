@@ -26,8 +26,6 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Data\" />
-    <Folder Include="DTO\" />
-    <Folder Include="Entities\" />
     <Folder Include="Migrations\" />
     <Folder Include="Postman\" />
     <Folder Include="Profiles\" />
