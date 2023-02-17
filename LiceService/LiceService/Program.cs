@@ -14,9 +14,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IAdresaService, AdresaService>();
 builder.Services.AddScoped<IFizickoLiceRepository, FizickoLiceRepository>();
+builder.Services.AddScoped<IKontaktOsobaRepository, KontaktOsobaRepository>();
+builder.Services.AddScoped<IPravnoLiceRepository, PravnoLiceRepository>();
 builder.Services.AddScoped<ILiceRepository, LiceRepository>();
+builder.Services.AddScoped<IAdresaService, AdresaService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<LiceContext>(options =>

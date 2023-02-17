@@ -12,20 +12,22 @@ namespace LiceService.Controllers
 	/// </summary>
 	[Authorize]
 	[ApiController]
-	[Route("api/fizickaLica")]
+	[Route("api/pravnaLica")]
 	[Produces("application/json", "application/xml")]
 	public class PravnoLiceController : ControllerBase
 	{
 		private readonly IPravnoLiceRepository pravnoLiceRepository;
+		private readonly IKontaktOsobaRepository kontaktOsobaRepository;
 		private readonly LinkGenerator linkGenerator;
 		private readonly IMapper mapper;
 
 		/// <summary>
 		/// Dependency injection za kontroler.
 		/// </summary>
-		public PravnoLiceController(IPravnoLiceRepository pravnoLiceRepository, LinkGenerator linkGenerator, IMapper mapper)
+		public PravnoLiceController(IPravnoLiceRepository pravnoLiceRepository, IKontaktOsobaRepository kontaktOsobaRepository, LinkGenerator linkGenerator, IMapper mapper)
 		{
 			this.pravnoLiceRepository = pravnoLiceRepository;
+			this.kontaktOsobaRepository = kontaktOsobaRepository;
 			this.linkGenerator = linkGenerator;
 			this.mapper = mapper;
 		}
@@ -42,10 +44,19 @@ namespace LiceService.Controllers
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		public ActionResult<List<PravnoLiceDTO>> GetPravnaLica()
 		{
-			List<PravnoLiceEntity> fizickaLica = pravnoLiceRepository.GetPravnaLica();
-			if (fizickaLica == null || fizickaLica.Count == 0)
+			List<PravnoLiceEntity> pravnaLica = pravnoLiceRepository.GetPravnaLica();
+			if (pravnaLica == null || pravnaLica.Count == 0)
 				return NoContent();
-			return Ok(mapper.Map<List<PravnoLiceDTO>>(fizickaLica));
+
+			List<PravnoLiceDTO> pravnaLicaDTO = new();
+			foreach (PravnoLiceEntity pravnoLice in pravnaLica)
+			{
+				PravnoLiceDTO pravnoLiceDTO = mapper.Map<PravnoLiceDTO>(pravnoLice);
+				pravnoLiceDTO.KontaktOsoba = mapper.Map<KontaktOsobaDTO>(kontaktOsobaRepository.GetKontaktOsobaByID(pravnoLice.KontaktOsobaID));
+				pravnaLicaDTO.Add(pravnoLiceDTO);
+			}
+
+			return Ok(pravnaLicaDTO);
 		}
 
 		/// <summary>
@@ -63,7 +74,11 @@ namespace LiceService.Controllers
 			PravnoLiceEntity? pravnoLice = pravnoLiceRepository.GetPravnoLiceByID(pravnoLiceID);
 			if (pravnoLice == null)
 				return NotFound();
-			return Ok(mapper.Map<PravnoLiceDTO>(pravnoLice));
+
+			PravnoLiceDTO pravnoLiceDTO = mapper.Map<PravnoLiceDTO>(pravnoLice);
+			pravnoLiceDTO.KontaktOsoba = mapper.Map<KontaktOsobaDTO>(kontaktOsobaRepository.GetKontaktOsobaByID(pravnoLice.KontaktOsobaID));
+
+			return Ok(pravnoLiceDTO);
 		}
 
 		/// <summary>
@@ -82,10 +97,11 @@ namespace LiceService.Controllers
 		{
 			try
 			{
-				List<PravnoLiceEntity> fizickaLica = pravnoLiceRepository.GetPravnaLica();
-				if (fizickaLica.Find(e => e.MaticniBroj == pravnoLiceCreateDTO.MaticniBroj) == null)
+				List<PravnoLiceEntity> pravnaLica = pravnoLiceRepository.GetPravnaLica();
+				if (pravnaLica.Find(e => e.MaticniBroj == pravnoLiceCreateDTO.MaticniBroj) == null)
 				{
 					PravnoLiceDTO pravnoLice = pravnoLiceRepository.CreatePravnoLice(pravnoLiceCreateDTO);
+					pravnoLice.KontaktOsoba = mapper.Map<KontaktOsobaDTO>(kontaktOsobaRepository.GetKontaktOsobaByID(Guid.Parse(pravnoLiceCreateDTO.KontaktOsobaID)));
 					pravnoLiceRepository.SaveChanges();
 
 					string? location = linkGenerator.GetPathByAction("GetPravnoLice", "PravnoLice", new { pravnoLiceID = pravnoLice.ID });
@@ -96,7 +112,7 @@ namespace LiceService.Controllers
 						return Created(string.Empty, pravnoLice);
 				}
 				else
-					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG pravnog lica.");
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati matični broj pravnog lica.");
 			}
 			catch (Exception exception)
 			{
@@ -125,19 +141,24 @@ namespace LiceService.Controllers
 				PravnoLiceEntity? oldPravnoLice = pravnoLiceRepository.GetPravnoLiceByID(Guid.Parse(pravnoLiceUpdateDTO.ID));
 				if (oldPravnoLice == null)
 					return NotFound();
-				List<PravnoLiceEntity> fizickaLica = pravnoLiceRepository.GetPravnaLica();
-				PravnoLiceEntity? tempPravnoLice = fizickaLica.Find(e => e.ID == Guid.Parse(pravnoLiceUpdateDTO.ID));
+
+				List<PravnoLiceEntity> pravnaLica = pravnoLiceRepository.GetPravnaLica();
+				PravnoLiceEntity? tempPravnoLice = pravnaLica.Find(e => e.ID == Guid.Parse(pravnoLiceUpdateDTO.ID));
 				if (tempPravnoLice != null)
-					fizickaLica.Remove(tempPravnoLice);
-				if (fizickaLica.Find(e => e.MaticniBroj == pravnoLiceUpdateDTO.MaticniBroj) == null)
+					pravnaLica.Remove(tempPravnoLice);
+				if (pravnaLica.Find(e => e.MaticniBroj == pravnoLiceUpdateDTO.MaticniBroj) == null)
 				{
 					PravnoLiceEntity pravnoLice = mapper.Map<PravnoLiceEntity>(pravnoLiceUpdateDTO);
 					mapper.Map(pravnoLice, oldPravnoLice);
 					pravnoLiceRepository.SaveChanges();
-					return Ok(mapper.Map<PravnoLiceDTO>(oldPravnoLice));
+
+					PravnoLiceDTO pravnoLiceDTO = mapper.Map<PravnoLiceDTO>(oldPravnoLice);
+					pravnoLiceDTO.KontaktOsoba = mapper.Map<KontaktOsobaDTO>(kontaktOsobaRepository.GetKontaktOsobaByID(oldPravnoLice.KontaktOsobaID));
+
+					return Ok(pravnoLiceDTO);
 				}
 				else
-					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG pravnog lica.");
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati matični broj pravnog lica.");
 			}
 			catch (Exception exception)
 			{

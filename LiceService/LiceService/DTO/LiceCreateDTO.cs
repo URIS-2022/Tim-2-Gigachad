@@ -18,7 +18,7 @@ namespace LiceService.DTO
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu da bi bio prazan: 00000000-0000-0000-0000-000000000000.")]
 		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
 		public string? PravnoLiceID { get; set; }
 
@@ -28,7 +28,7 @@ namespace LiceService.DTO
 		[Required(ErrorMessage = "Lice mora da ima ID adrese lica.")]
 		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
 		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-		public string AdresaLicaID { get; set; } = null!;
+		public string AdresaID { get; set; } = null!;
 
 		/// <summary>
 		/// Prvi telefon lica.
@@ -72,6 +72,9 @@ namespace LiceService.DTO
 		{
 			if (PravnoLiceID == null || PravnoLiceID.Equals(string.Empty))
 				PravnoLiceID = Guid.Empty.ToString();
+
+			if (Guid.TryParse(PravnoLiceID, out Guid _))
+				yield return new ValidationResult("GUID treba da sadrži samo heksadecimalne karaktere.", new[] { "LiceCreateDTO" });
 
 			if (Telefon2 != null && Telefon1.Equals(Telefon2))
 				yield return new ValidationResult("Lice ne može da ima isti prvi i drugi telefon.", new[] { "LiceCreateDTO" });

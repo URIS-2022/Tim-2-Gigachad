@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LiceService.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration3 : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -49,7 +49,7 @@ namespace LiceService.Migrations
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FizickoLiceID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PravnoLiceID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    AdresaLicaID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AdresaID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Telefon1 = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Telefon2 = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -110,7 +110,7 @@ namespace LiceService.Migrations
 
             migrationBuilder.InsertData(
                 table: "Lica",
-                columns: new[] { "ID", "AdresaLicaID", "BrojRacuna", "Email", "FizickoLiceID", "OvlascenoLice", "PravnoLiceID", "Telefon1", "Telefon2" },
+                columns: new[] { "ID", "AdresaID", "BrojRacuna", "Email", "FizickoLiceID", "OvlascenoLice", "PravnoLiceID", "Telefon1", "Telefon2" },
                 values: new object[,]
                 {
                     { new Guid("16e85d49-9cdd-41a6-85bc-180932f68999"), new Guid("878100df-6973-4292-acb1-0c25b7ac2260"), "854823918379735", "email4@net.org", new Guid("08c019fa-a583-4ae2-bcd0-c1b56600b22c"), false, new Guid("9c236b62-afcf-4902-aba8-c159536883fb"), "2481909941", "" },

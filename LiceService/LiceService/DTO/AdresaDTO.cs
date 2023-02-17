@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Model DTO-a za entitet adresa lica.
 	/// </summary>
-	public class AdresaLicaDTO
+	public class AdresaDTO
 	{
 		/// <summary>
 		/// ID adrese.

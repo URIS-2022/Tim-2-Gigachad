@@ -13,7 +13,7 @@
 		/// <summary>
 		/// ID kontakt osobe.
 		/// </summary>
-		public Guid KontaktOsobaID { get; set; }
+		public KontaktOsobaDTO KontaktOsoba { get; set; } = null!;
 
 		/// <summary>
 		/// Naziv pravnog lica.

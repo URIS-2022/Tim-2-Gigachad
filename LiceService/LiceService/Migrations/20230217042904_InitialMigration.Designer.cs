@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiceService.Migrations
 {
     [DbContext(typeof(LiceContext))]
-    [Migration("20230216233301_InitialMigration3")]
-    partial class InitialMigration3
+    [Migration("20230217042904_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -143,7 +143,7 @@ namespace LiceService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AdresaLicaID")
+                    b.Property<Guid>("AdresaID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("BrojRacuna")
@@ -184,7 +184,7 @@ namespace LiceService.Migrations
                         new
                         {
                             ID = new Guid("334f5277-a71c-4be8-b5da-5c9148b228f7"),
-                            AdresaLicaID = new Guid("6f79d49c-1c14-49b7-94c3-19a81c7f97a0"),
+                            AdresaID = new Guid("6f79d49c-1c14-49b7-94c3-19a81c7f97a0"),
                             BrojRacuna = "343658891760636",
                             Email = "email1@net.org",
                             FizickoLiceID = new Guid("32b7d397-b9d1-472d-bb40-542c68305098"),
@@ -196,7 +196,7 @@ namespace LiceService.Migrations
                         new
                         {
                             ID = new Guid("92e0d8e9-b221-42a6-9bb8-a80974aee937"),
-                            AdresaLicaID = new Guid("3aa0344b-57b5-450a-b83a-18c4555be65c"),
+                            AdresaID = new Guid("3aa0344b-57b5-450a-b83a-18c4555be65c"),
                             BrojRacuna = "788066876873835",
                             Email = "email2@net.org",
                             FizickoLiceID = new Guid("3a054c77-1bf4-4853-8937-8e36502a6848"),
@@ -208,7 +208,7 @@ namespace LiceService.Migrations
                         new
                         {
                             ID = new Guid("f127642e-4d73-42f1-979d-6a506aea9bdc"),
-                            AdresaLicaID = new Guid("3aa0344b-57b5-450a-b83a-18c4555be65c"),
+                            AdresaID = new Guid("3aa0344b-57b5-450a-b83a-18c4555be65c"),
                             BrojRacuna = "801272932440773",
                             Email = "email3@net.org",
                             FizickoLiceID = new Guid("ef4cf6d4-48f9-4508-a91f-330261325403"),
@@ -220,7 +220,7 @@ namespace LiceService.Migrations
                         new
                         {
                             ID = new Guid("16e85d49-9cdd-41a6-85bc-180932f68999"),
-                            AdresaLicaID = new Guid("878100df-6973-4292-acb1-0c25b7ac2260"),
+                            AdresaID = new Guid("878100df-6973-4292-acb1-0c25b7ac2260"),
                             BrojRacuna = "854823918379735",
                             Email = "email4@net.org",
                             FizickoLiceID = new Guid("08c019fa-a583-4ae2-bcd0-c1b56600b22c"),
@@ -232,7 +232,7 @@ namespace LiceService.Migrations
                         new
                         {
                             ID = new Guid("41d2c8bc-0c8c-4fb2-8cf6-2918c33eac9c"),
-                            AdresaLicaID = new Guid("acba6d99-36a6-4688-af14-6b2bba85dcf1"),
+                            AdresaID = new Guid("acba6d99-36a6-4688-af14-6b2bba85dcf1"),
                             BrojRacuna = "252614852215342",
                             Email = "email5@net.org",
                             FizickoLiceID = new Guid("56ea3569-1897-4349-b79e-fccb5568231a"),

@@ -20,8 +20,8 @@ namespace LiceService.Profiles
 					dest => dest.FizickoLiceID,
 					opt => opt.MapFrom(src => Guid.Parse(src.FizickoLiceID)))
 				.ForMember(
-					dest => dest.AdresaLicaID,
-					opt => opt.MapFrom(src => Guid.Parse(src.AdresaLicaID)));
+					dest => dest.AdresaID,
+					opt => opt.MapFrom(src => Guid.Parse(src.AdresaID)));
 			CreateMap<LiceUpdateDTO, LiceEntity>()
 				.ForMember(
 					dest => dest.ID,
@@ -30,8 +30,8 @@ namespace LiceService.Profiles
 					dest => dest.FizickoLiceID,
 					opt => opt.MapFrom(src => Guid.Parse(src.FizickoLiceID)))
 				.ForMember(
-					dest => dest.AdresaLicaID,
-					opt => opt.MapFrom(src => Guid.Parse(src.AdresaLicaID)));
+					dest => dest.AdresaID,
+					opt => opt.MapFrom(src => Guid.Parse(src.AdresaID)));
 			CreateMap<LiceEntity, LiceEntity>();
 		}
 	}

@@ -13,17 +13,17 @@
 		/// <summary>
 		/// ID fizičkog lica.
 		/// </summary>
-		public Guid FizickoLiceID { get; set; }
+		public FizickoLiceDTO FizickoLice { get; set; } = null!;
 
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		public Guid? PravnoLiceID { get; set; }
+		public PravnoLiceDTO? PravnoLice { get; set; }
 
 		/// <summary>
 		/// Adresa lica.
 		/// </summary>
-		public AdresaLicaDTO AdresaLica { get; set; } = null!;
+		public AdresaDTO Adresa { get; set; } = null!;
 
 		/// <summary>
 		/// Prvi telefon lica.

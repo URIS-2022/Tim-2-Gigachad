@@ -24,7 +24,7 @@ namespace LiceService.ServiceCalls
 		/// <param name="adresaLicaID">ID adrese lica.</param>
 		/// <param name="token">Token za adresu lica mikroservis.</param>
 		/// <returns>Vraća model DTO-a adrese lica.</returns>
-		public async Task<AdresaLicaDTO?> GetAdresaByIDAsync(Guid adresaLicaID, string? token)
+		public async Task<AdresaDTO?> GetAdresaByIDAsync(Guid adresaLicaID, string? token)
 		{
 			using HttpClient httpClient = new();
 			Uri url = new ($"{configuration["Services:AdresaService"]}api/adrese/{adresaLicaID}");
@@ -34,9 +34,12 @@ namespace LiceService.ServiceCalls
 			HttpResponseMessage response = httpClient.GetAsync(url).Result;
 
 			string responseContent = await response.Content.ReadAsStringAsync();
-			AdresaLicaDTO? adresa = JsonConvert.DeserializeObject<AdresaLicaDTO?>(responseContent);
+			AdresaDTO? adresa = JsonConvert.DeserializeObject<AdresaDTO?>(responseContent);
 
-			return adresa;
+			if (adresa != null && adresa.ID != Guid.Empty)
+				return adresa;
+			else
+				return null;
 		}
 	}
 }

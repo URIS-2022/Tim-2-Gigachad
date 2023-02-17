@@ -12,7 +12,7 @@ namespace LiceService.Controllers
 	/// </summary>
 	[Authorize]
 	[ApiController]
-	[Route("api/fizickaLica")]
+	[Route("api/kontaktOsobe")]
 	[Produces("application/json", "application/xml")]
 	public class KontaktOsobaController : ControllerBase
 	{
@@ -96,7 +96,7 @@ namespace LiceService.Controllers
 						return Created(string.Empty, kontaktOsoba);
 				}
 				else
-					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG kontakt osobe.");
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati telefon kontakt osobe.");
 			}
 			catch (Exception exception)
 			{
@@ -137,7 +137,7 @@ namespace LiceService.Controllers
 					return Ok(mapper.Map<KontaktOsobaDTO>(oldKontaktOsoba));
 				}
 				else
-					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG kontakt osobe.");
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati telefon kontakt osobe.");
 			}
 			catch (Exception exception)
 			{

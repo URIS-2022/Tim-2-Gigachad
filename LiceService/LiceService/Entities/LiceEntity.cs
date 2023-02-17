@@ -35,7 +35,7 @@ namespace LiceService.Entities
 		/// ID adrese lica.
 		/// </summary>
 		[Required(ErrorMessage = "Lice mora da ima adresu lica.")]
-		public Guid AdresaLicaID { get; set; }
+		public Guid AdresaID { get; set; }
 
 		/// <summary>
 		/// Prvi telefon lica.
