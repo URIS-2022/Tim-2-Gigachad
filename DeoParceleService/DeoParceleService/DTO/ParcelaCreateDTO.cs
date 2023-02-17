@@ -1,18 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DeoParceleService.Entities
+namespace DeoParceleService.DTO
 {
 	/// <summary>
-	/// Model realnog entiteta parcela.
+	/// Model DTO-a za kreiranje entiteta parcela.
 	/// </summary>
-	public class ParcelaEntity
+	//: IValidatableObject
+	public class ParcelaCreateDTO
 	{
-		/// <summary>
-		/// ID parcele.
-		/// </summary>
-		[Key]
-		public Guid ID { get; set; } = Guid.Empty!;
-
 		/// <summary>
 		/// Ukupna površina parcele.
 		/// </summary>
@@ -25,5 +20,16 @@ namespace DeoParceleService.Entities
 		[Required(ErrorMessage = "Katastarska opština mora da bude: CANTAVIR, BACKI_VINOGRADI, BIKOVO, DJUDJIN, ZEDNIK, TAVANKUT, BAJMOK, DONJI_GRAD, STARI_GRAD, NOVI_GRAD, PALIC.")]
 		[MaxLength(20, ErrorMessage = "Katastarska opština mora da bude: CANTAVIR, BACKI_VINOGRADI, BIKOVO, DJUDJIN, ZEDNIK, TAVANKUT, BAJMOK, DONJI_GRAD, STARI_GRAD, NOVI_GRAD, PALIC.")]
 		public string KatastarskaOpstina { get; set; } = null!;
+
+		/*/// <summary>
+		/// Validacija za model DTO-a za kreiranje entiteta parcela.
+		/// </summary>
+		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+		{
+			if (Enum.TryParse(KatastarskaOpstina.ToUpper(), out KatastarskaOpstinaParcele _KatastarskaOpstina))
+				KatastarskaOpstina = _KatastarskaOpstina.ToString();
+			else
+				yield return new ValidationResult("Katastarska opština mora da bude: CANTAVIR, BACKI_VINOGRADI, BIKOVO, DJUDJIN, ZEDNIK, TAVANKUT, BAJMOK, DONJI_GRAD, STARI_GRAD, NOVI_GRAD, PALIC.", new[] { "ParcelaCreateDTO" });
+		}*/
 	}
 }

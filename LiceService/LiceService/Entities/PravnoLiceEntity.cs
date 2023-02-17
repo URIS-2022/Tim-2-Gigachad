@@ -12,13 +12,13 @@ namespace LiceService.Entities
 		/// ID pravnog lica.
 		/// </summary>
 		[Key]
-		public Guid ID { get; set; }
+		public Guid ID { get; set; } = Guid.Empty!;
 
 		/// <summary>
 		/// ID kontakt osobe.
 		/// </summary>
 		[ForeignKey("KontaktOsoba")]
-		public Guid KontaktOsobaID { get; set; }
+		public Guid KontaktOsobaID { get; set; } = Guid.Empty!;
 
 		/// <summary>
 		/// Kontakt osoba.

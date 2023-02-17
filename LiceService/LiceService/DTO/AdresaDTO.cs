@@ -8,7 +8,7 @@
 		/// <summary>
 		/// ID adrese.
 		/// </summary>
-		public Guid ID { get; set; }
+		public Guid ID { get; set; } = Guid.Empty!;
 
 		/// <summary>
 		/// Ulica i broj adrese.

@@ -11,7 +11,7 @@ namespace LiceService.Entities
 		/// ID kontakt osobe.
 		/// </summary>
 		[Key]
-		public Guid ID { get; set; }
+		public Guid ID { get; set; } = Guid.Empty!;
 
 		/// <summary>
 		/// Ime kontakt osobe.

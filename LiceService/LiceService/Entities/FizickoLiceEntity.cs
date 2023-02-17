@@ -11,7 +11,7 @@ namespace LiceService.Entities
 		/// ID fizičkog lica.
 		/// </summary>
 		[Key]
-		public Guid ID { get; set; }
+		public Guid ID { get; set; } = Guid.Empty!;
 
 		/// <summary>
 		/// JMBG fizičkog lica.
