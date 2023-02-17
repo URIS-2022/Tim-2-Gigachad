@@ -5,6 +5,7 @@ using LiceService.Entities;
 using LiceService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace LiceService.Controllers
 {
@@ -38,11 +39,12 @@ namespace LiceService.Controllers
 		/// Vraća listu svih lica.
 		/// </summary>
 		/// <returns>Vraća potvrdu o listi postojećih lica.</returns>
+		/// <param name="authorization">Autorizovan token.</param>
 		/// <response code="200">Vraća listu lica.</response>
 		/// <response code="204">Ne postoje lica.</response>
 		/// <response code="500">Adresa lica nije pronađena.</response>
-		[HttpGet]
 		//[HttpHead]
+		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		public ActionResult<List<LiceDTO>> GetLica([FromHeader] string authorization)
@@ -50,9 +52,10 @@ namespace LiceService.Controllers
 			List<LiceEntity> lica = liceRepository.GetLica();
 			if (lica == null || lica.Count == 0)
 				return NoContent();
-			List<LiceDTO> licaDTO = new List<LiceDTO>();
+			List<LiceDTO> licaDTO = new();
 			foreach (LiceEntity lice in lica)
 			{
+				Guid tempID = lice.ID;
 				LiceDTO liceDTO = mapper.Map<LiceDTO>(lice);
 				AdresaLicaDTO? adresaLica = adresaService.GetAdresaByIDAsync(lice.AdresaLicaID, authorization).Result;
 				if (adresaLica != null)
@@ -61,7 +64,7 @@ namespace LiceService.Controllers
 					licaDTO.Add(liceDTO);
 				}
 				else
-					return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena.");
+					return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena.\n ID adrese lica: " + tempID.ToString() + ".");
 			}
 			return Ok(licaDTO);
 		}
@@ -70,33 +73,45 @@ namespace LiceService.Controllers
 		/// Vraća jedno lice na osnovu zadatog ID-ja.
 		/// </summary>
 		/// <param name="liceID">ID lica.</param>
+		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o specifiranom licu.</returns>
 		/// <response code="200">Vraća specifirano lice.</response>
 		/// <response code="404">Specifirano lice ne postoji.</response>
 		[HttpGet("{liceID}")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
-		public ActionResult<LiceDTO> GetLice(Guid liceID)
+		public ActionResult<LiceDTO> GetLice(Guid liceID, [FromHeader] string authorization)
 		{
-			var lice = liceRepository.GetLiceByID(liceID);
+			LiceEntity? lice = liceRepository.GetLiceByID(liceID);
 			if (lice == null)
 				return NotFound();
-			return Ok(mapper.Map<LiceDTO>(lice));
+
+			Guid tempID = lice.ID;
+			AdresaLicaDTO? adresaLica = adresaService.GetAdresaByIDAsync(lice.AdresaLicaID, authorization).Result;
+			if (adresaLica != null)
+			{
+				LiceDTO liceDTO = mapper.Map<LiceDTO>(lice);
+				liceDTO.AdresaLica = adresaLica;
+				return Ok(liceDTO);
+			}
+			else
+				return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena.\n ID adrese lica: " + tempID.ToString() + ".");
 		}
 
 		/// <summary>
 		/// Kreira novo lice.
 		/// </summary>
 		/// <param name="liceCreateDTO">DTO za kreiranje lica.</param>
-		/// <returns>Potvrdu o kreiranom licu.</returns>
+		/// <param name="authorization">Autorizovan token.</param>
+		/// <returns>Vraća potvrdu o kreiranom licu.</returns>
 		/// <response code="201">Vraća kreirano lice.</response>
-		/// <response code="422">Došlo je do greške, već postoji telefon jedan ili telefon dva ili broj računa na serveru sa istim vrednostima.</response>
+		/// <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja lica.</response>
 		[HttpPost]
 		[Consumes("application/json")]
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public ActionResult<LiceCreateDTO> CreateLice([FromBody] LiceCreateDTO liceCreateDTO)
+		public ActionResult<LiceCreateDTO> CreateLice([FromBody] LiceCreateDTO liceCreateDTO, [FromHeader] string authorization)
 		{
 			try
 			{
@@ -160,17 +175,18 @@ namespace LiceService.Controllers
 		/// Ažurira jedno lice.
 		/// </summary>
 		/// <param name="liceUpdateDTO">DTO za ažuriranje lica.</param>
-		/// <returns>Potvrdu o ažuriranom licu.</returns>
+		/// <param name="authorization">Autorizovan token.</param>
+		/// <returns>Vraća potvrdu o ažuriranom licu.</returns>
 		/// <response code="200">Vraća ažurirano lice.</response>
 		/// <response code="404">Specifirano lice ne postoji.</response>
-		/// <response code="422">Došlo je do greške, već postoji telefon jedan ili telefon dva ili broj računa na serveru sa istim vrednostima.</response>
+		/// <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja lica.</response>
 		[HttpPut]
 		[Consumes("application/json")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public ActionResult<LiceDTO> UpdateLice(LiceUpdateDTO liceUpdateDTO)
+		public ActionResult<LiceDTO> UpdateLice(LiceUpdateDTO liceUpdateDTO, [FromHeader] string authorization)
 		{
 			try
 			{
@@ -232,7 +248,8 @@ namespace LiceService.Controllers
 		/// Briše jedno lice na osnovu zadatog ID-ja.
 		/// </summary>
 		/// <param name="liceID">ID lica.</param>
-		/// <returns>Potvrdu o brisanju lica.</returns>
+		/// <param name="authorization">Autorizovan token.</param>
+		/// <returns>Vraća potvrdu o brisanju lica.</returns>
 		/// <response code="204">Specifirano lice je uspešno obrisano.</response>
 		/// <response code="404">Specifirano lice ne postoji i nije obrisano.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog lica.</response>
@@ -240,7 +257,7 @@ namespace LiceService.Controllers
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public IActionResult DeleteLice(Guid liceID)
+		public IActionResult DeleteLice(Guid liceID, [FromHeader] string authorization)
 		{
 			try
 			{

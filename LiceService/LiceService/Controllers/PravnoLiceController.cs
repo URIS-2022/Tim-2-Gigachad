@@ -1,0 +1,193 @@
+﻿using AutoMapper;
+using LiceService.Data;
+using LiceService.DTO;
+using LiceService.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace LiceService.Controllers
+{
+	/// <summary>
+	/// Kontroler za entitet pravno lice.
+	/// </summary>
+	[Authorize]
+	[ApiController]
+	[Route("api/fizickaLica")]
+	[Produces("application/json", "application/xml")]
+	public class PravnoLiceController : ControllerBase
+	{
+		private readonly IPravnoLiceRepository pravnoLiceRepository;
+		private readonly LinkGenerator linkGenerator;
+		private readonly IMapper mapper;
+
+		/// <summary>
+		/// Dependency injection za kontroler.
+		/// </summary>
+		public PravnoLiceController(IPravnoLiceRepository pravnoLiceRepository, LinkGenerator linkGenerator, IMapper mapper)
+		{
+			this.pravnoLiceRepository = pravnoLiceRepository;
+			this.linkGenerator = linkGenerator;
+			this.mapper = mapper;
+		}
+
+		/// <summary>
+		/// Vraća listu svih pravnih lica.
+		/// </summary>
+		/// <returns>Vraća potvrdu o listi postojećih pravnih lica.</returns>
+		/// <response code="200">Vraća listu pravnih lica.</response>
+		/// <response code="204">Ne postoje pravna lica.</response>
+		//[HttpHead]
+		[HttpGet]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status204NoContent)]
+		public ActionResult<List<PravnoLiceDTO>> GetPravnaLica()
+		{
+			List<PravnoLiceEntity> fizickaLica = pravnoLiceRepository.GetPravnaLica();
+			if (fizickaLica == null || fizickaLica.Count == 0)
+				return NoContent();
+			return Ok(mapper.Map<List<PravnoLiceDTO>>(fizickaLica));
+		}
+
+		/// <summary>
+		/// Vraća jedno pravno lice na osnovu zadatog ID-ja.
+		/// </summary>
+		/// <param name="pravnoLiceID">ID pravnog lica.</param>
+		/// <returns>Vraća potvrdu o specifiranom fizičkom licu.</returns>
+		/// <response code="200">Vraća specifirano pravno lice.</response>
+		/// <response code="404">Specifirano pravno lice ne postoji.</response>
+		[HttpGet("{pravnoLiceID}")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
+		public ActionResult<PravnoLiceDTO> GetPravnoLice(Guid pravnoLiceID)
+		{
+			PravnoLiceEntity? pravnoLice = pravnoLiceRepository.GetPravnoLiceByID(pravnoLiceID);
+			if (pravnoLice == null)
+				return NotFound();
+			return Ok(mapper.Map<PravnoLiceDTO>(pravnoLice));
+		}
+
+		/// <summary>
+		/// Kreira novo pravno lice.
+		/// </summary>
+		/// <param name="pravnoLiceCreateDTO">DTO za kreiranje pravnog lica.</param>
+		/// <returns>Vraća potvrdu o kreiranom fizičkom licu.</returns>
+		/// <response code="201">Vraća kreirano pravno lice.</response>
+		/// <response code="422">Došlo je do greške, već postoji pravno lice na serveru sa istim matičnim brojem.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja pravnog lica.</response>
+		[HttpPost]
+		[Consumes("application/json")]
+		[ProducesResponseType(StatusCodes.Status201Created)]
+		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		public ActionResult<PravnoLiceCreateDTO> CreatePravnoLice([FromBody] PravnoLiceCreateDTO pravnoLiceCreateDTO)
+		{
+			try
+			{
+				List<PravnoLiceEntity> fizickaLica = pravnoLiceRepository.GetPravnaLica();
+				if (fizickaLica.Find(e => e.MaticniBroj == pravnoLiceCreateDTO.MaticniBroj) == null)
+				{
+					PravnoLiceDTO pravnoLice = pravnoLiceRepository.CreatePravnoLice(pravnoLiceCreateDTO);
+					pravnoLiceRepository.SaveChanges();
+
+					string? location = linkGenerator.GetPathByAction("GetPravnoLice", "PravnoLice", new { pravnoLiceID = pravnoLice.ID });
+
+					if (location != null)
+						return Created(location, pravnoLice);
+					else
+						return Created(string.Empty, pravnoLice);
+				}
+				else
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG pravnog lica.");
+			}
+			catch (Exception exception)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+			}
+		}
+
+		/// <summary>
+		/// Ažurira jedno pravno lice.
+		/// </summary>
+		/// <param name="pravnoLiceUpdateDTO">DTO za ažuriranje pravnog lica.</param>
+		/// <returns>Vraća potvrdu o ažuriranom fizičkom licu.</returns>
+		/// <response code="200">Vraća ažurirano pravno lice.</response>
+		/// <response code="404">Specifirano pravno lice ne postoji.</response>
+		/// <response code="422">Došlo je do greške, već postoji pravno lice na serveru sa istim matičnim brojem.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja pravnog lica.</response>
+		[HttpPut]
+		[Consumes("application/json")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
+		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		public ActionResult<PravnoLiceDTO> UpdatePravnoLice(PravnoLiceUpdateDTO pravnoLiceUpdateDTO)
+		{
+			try
+			{
+				PravnoLiceEntity? oldPravnoLice = pravnoLiceRepository.GetPravnoLiceByID(Guid.Parse(pravnoLiceUpdateDTO.ID));
+				if (oldPravnoLice == null)
+					return NotFound();
+				List<PravnoLiceEntity> fizickaLica = pravnoLiceRepository.GetPravnaLica();
+				PravnoLiceEntity? tempPravnoLice = fizickaLica.Find(e => e.ID == Guid.Parse(pravnoLiceUpdateDTO.ID));
+				if (tempPravnoLice != null)
+					fizickaLica.Remove(tempPravnoLice);
+				if (fizickaLica.Find(e => e.MaticniBroj == pravnoLiceUpdateDTO.MaticniBroj) == null)
+				{
+					PravnoLiceEntity pravnoLice = mapper.Map<PravnoLiceEntity>(pravnoLiceUpdateDTO);
+					mapper.Map(pravnoLice, oldPravnoLice);
+					pravnoLiceRepository.SaveChanges();
+					return Ok(mapper.Map<PravnoLiceDTO>(oldPravnoLice));
+				}
+				else
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG pravnog lica.");
+			}
+			catch (Exception exception)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+			}
+		}
+
+		/// <summary>
+		/// Briše jedno pravno lice na osnovu zadatog ID-ja.
+		/// </summary>
+		/// <param name="pravnoLiceID">ID pravnog lica.</param>
+		/// <returns>Vraća potvrdu o brisanju pravnog lica.</returns>
+		/// <response code="204">Specifirano pravno lice je uspešno obrisano.</response>
+		/// <response code="404">Specifirano pravno lice ne postoji i nije obrisano.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog pravnog lica.</response>
+		[HttpDelete("{pravnoLiceID}")]
+		[ProducesResponseType(StatusCodes.Status204NoContent)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
+		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		public IActionResult DeletePravnoLice(Guid pravnoLiceID)
+		{
+			try
+			{
+				PravnoLiceEntity? pravnoLice = pravnoLiceRepository.GetPravnoLiceByID(pravnoLiceID);
+
+				if (pravnoLice == null)
+					return NotFound();
+
+				pravnoLiceRepository.DeletePravnoLice(pravnoLiceID);
+				pravnoLiceRepository.SaveChanges();
+
+				return NoContent();
+			}
+			catch (Exception exception)
+			{
+				return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+			}
+		}
+
+		/// <summary>
+		/// Vraća opcije za rad sa pravnim licima.
+		/// </summary>
+		/// <returns>Vraća prazan 200 HTTP kod.</returns>
+		/// <response code="200">Vraća prazan 200 HTTP kod.</response>
+		[HttpOptions]
+		[AllowAnonymous]
+		public IActionResult GetPravnaLicaOptions()
+		{
+			Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
+			return Ok();
+		}
+	}
+}

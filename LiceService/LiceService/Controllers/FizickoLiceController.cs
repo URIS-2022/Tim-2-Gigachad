@@ -4,7 +4,6 @@ using LiceService.DTO;
 using LiceService.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace LiceService.Controllers
 {
@@ -37,8 +36,8 @@ namespace LiceService.Controllers
 		/// <returns>Vraća potvrdu o listi postojećih fizičkih lica.</returns>
 		/// <response code="200">Vraća listu fizičkih lica.</response>
 		/// <response code="204">Ne postoje fizička lica.</response>
-		[HttpGet]
 		//[HttpHead]
+		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		public ActionResult<List<FizickoLiceDTO>> GetFizickaLica()
@@ -61,7 +60,7 @@ namespace LiceService.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public ActionResult<FizickoLiceDTO> GetFizickoLice(Guid fizickoLiceID)
 		{
-			var fizickoLice = fizickoLiceRepository.GetFizickoLiceByID(fizickoLiceID);
+			FizickoLiceEntity? fizickoLice = fizickoLiceRepository.GetFizickoLiceByID(fizickoLiceID);
 			if (fizickoLice == null)
 				return NotFound();
 			return Ok(mapper.Map<FizickoLiceDTO>(fizickoLice));
@@ -71,7 +70,7 @@ namespace LiceService.Controllers
 		/// Kreira novo fizičko lice.
 		/// </summary>
 		/// <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
-		/// <returns>Potvrdu o kreiranom fizičkom licu.</returns>
+		/// <returns>Vraća potvrdu o kreiranom fizičkom licu.</returns>
 		/// <response code="201">Vraća kreirano fizičko lice.</response>
 		/// <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
@@ -109,7 +108,7 @@ namespace LiceService.Controllers
 		/// Ažurira jedno fizičko lice.
 		/// </summary>
 		/// <param name="fizickoLiceUpdateDTO">DTO za ažuriranje fizičkog lica.</param>
-		/// <returns>Potvrdu o ažuriranom fizičkom licu.</returns>
+		/// <returns>Vraća potvrdu o ažuriranom fizičkom licu.</returns>
 		/// <response code="200">Vraća ažurirano fizičko lice.</response>
 		/// <response code="404">Specifirano fizičko lice ne postoji.</response>
 		/// <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>
@@ -150,7 +149,7 @@ namespace LiceService.Controllers
 		/// Briše jedno fizičko lice na osnovu zadatog ID-ja.
 		/// </summary>
 		/// <param name="fizickoLiceID">ID fizičkog lica.</param>
-		/// <returns>Potvrdu o brisanju fizičkog lica.</returns>
+		/// <returns>Vraća potvrdu o brisanju fizičkog lica.</returns>
 		/// <response code="204">Specifirano fizičko lice je uspešno obrisano.</response>
 		/// <response code="404">Specifirano fizičko lice ne postoji i nije obrisano.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog fizičkog lica.</response>
