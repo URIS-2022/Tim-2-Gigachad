@@ -565,7 +565,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"fizickoLiceID\": \"d82fbb07-6eb1-4516-ac48-758ae5ca2a8c\",\r\n\t\"pravnoLiceID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"adresaID\": \"6F79D49C-1C14-49B7-94C3-19A81C7F97A0\",\r\n\t\"telefon1\": \"1111111111\",\r\n\t\"telefon2\": \"9999999999\",\r\n\t\"email\": \"emails\",\r\n\t\"brojRacuna\": \"555555555555555\",\r\n\t\"ovlascenoLice\": true\r\n}",
+					"raw": "{\r\n\t\"fizickoLiceID\": \"d82fbb07-6eb1-4516-ac48-758ae5ca2a8c\",\r\n\t\"pravnoLiceID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"adresaID\": \"6F79D49C-1C14-49B7-94C3-19A81C7F97A0\",\r\n\t\"telefon1\": \"1111111111\",\r\n\t\"telefon2\": \"9999999999\",\r\n\t\"email\": \"emails\",\r\n\t\"brojRacuna\": \"555555555555555\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -600,7 +600,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"id\": \"47311a9d-1352-4942-a0ee-3db995157818\",\r\n\t\"fizickoLiceID\": \"d82fbb07-6eb1-4516-ac48-758ae5ca2a8c\",\r\n\t\"pravnoLiceID\": \"9C236B62-AFCF-4902-ABA8-C159536883FB\",\r\n\t\"adresaID\": \"6F79D49C-1C14-49B7-94C3-19A81C7F97A0\",\r\n\t\"telefon1\": \"9999999999\",\r\n\t\"telefon2\": \"1111111111\",\r\n\t\"email\": \"emails\",\r\n\t\"brojRacuna\": \"555555555555555\",\r\n\t\"ovlascenoLice\": true\r\n}",
+					"raw": "{\r\n\t\"id\": \"47311a9d-1352-4942-a0ee-3db995157818\",\r\n\t\"fizickoLiceID\": \"d82fbb07-6eb1-4516-ac48-758ae5ca2a8c\",\r\n\t\"pravnoLiceID\": \"9C236B62-AFCF-4902-ABA8-C159536883FB\",\r\n\t\"adresaID\": \"6F79D49C-1C14-49B7-94C3-19A81C7F97A0\",\r\n\t\"telefon1\": \"9999999999\",\r\n\t\"telefon2\": \"1111111111\",\r\n\t\"email\": \"emails\",\r\n\t\"brojRacuna\": \"555555555555555\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

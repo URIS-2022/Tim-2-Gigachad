@@ -75,7 +75,7 @@ namespace LiceService.DTO
 			if (PravnoLiceID == null || PravnoLiceID.Equals(string.Empty))
 				PravnoLiceID = Guid.Empty.ToString();
 
-			if (Guid.TryParse(PravnoLiceID, out Guid _))
+			if (Guid.TryParse(PravnoLiceID, out _))
 				yield return new ValidationResult("GUID treba da sadrži samo heksadecimalne karaktere.", new[] { "LiceUpdateDTO" });
 
 			if (Telefon2 != null && Telefon1.Equals(Telefon2))
