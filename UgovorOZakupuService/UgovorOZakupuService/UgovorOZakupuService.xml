@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UgovorOZakupuService</name>
+    </assembly>
+    <members>
+        <member name="T:DokumentiService.Controllers.UgovorOZakupuController">
+            <summary>
+            Kontroler za entitete eksternih dokumenata.
+            </summary>
+        </member>
+        <member name="M:DokumentiService.Controllers.UgovorOZakupuController.#ctor(UgovorOZakupuService.Data.IUgovorOZakupuRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za kontroler preko konstruktora.
+            </summary>
+        </member>
+        <member name="M:DokumentiService.Controllers.UgovorOZakupuController.GetUgovorOZakupu">
+            <summary>
+            GET za sve ugovore o zakupu
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DokumentiService.Controllers.UgovorOZakupuController.GetUgovorOZakupu(System.Guid)">
+            <summary>
+            Get za Ugovor O Zakupu
+            </summary>
+            <param name="ugovorOZakupuID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DokumentiService.Controllers.UgovorOZakupuController.DeleteUgovorOZakupu(System.Guid)">
+            <summary>
+            Delete za Ugovor o zakupu za zadati ID
+            </summary>
+            <param name="ugovorOZakupuID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DokumentiService.Controllers.UgovorOZakupuController.CreateUgovorOZakupu(UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO)">
+            <summary>
+            Kreira novi ugovor o zakupu.
+            </summary>
+            <param name="ugovorOZakupuCreateDTO">DTO za ugovora o zakupu.</param>
+            <returns>Potvrdu o kreiranom ugovoru o zakupu.</returns>
+            <response code="201">Vraća kreiran Ugovor O Zakupu.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja ugovora o zakupu.</response>
+        </member>
+        <member name="M:DokumentiService.Controllers.UgovorOZakupuController.UpdateUgovorOZakupu(UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO)">
+            <summary>
+            Promena ugovora o zakupu
+            </summary>
+            <param name="ugovorOZakupuUpdateDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UgovorOZakupuService.Entities.UgovorOZakupuContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:UgovorOZakupuService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:UgovorOZakupuService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:UgovorOZakupuService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:UgovorOZakupuService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

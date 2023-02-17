@@ -25,11 +25,11 @@ namespace UgovorOZakupuService.Entities
         [ForeignKey("DokumentDTO")]
         public Guid DokumentID { get; set; }
 
-        public DateOnly? DatumUgovora { get; set; }
-
-        public int? TrajanjeUgovora { get; set; }
-
-        public int? TipGarancije { get; set; }
+        [Required]
+        public DateTime DatumUgovora { get; set; }
+        [Required]
+        public int TrajanjeUgovora { get; set; }
+        public enum TipGarancije { }
 
     }
 }
