@@ -17,7 +17,7 @@ namespace AdresaService.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -32,10 +32,12 @@ namespace AdresaService.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Drzava")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Mesto")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -43,6 +45,7 @@ namespace AdresaService.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Ulica")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -68,6 +71,24 @@ namespace AdresaService.Migrations
                             Mesto = "Novi Sad",
                             PostanskiBroj = 22000,
                             Ulica = "Dositejeva"
+                        },
+                        new
+                        {
+                            ID = new Guid("878100df-6973-4292-acb1-0c25b7ac2260"),
+                            Broj = 7,
+                            Drzava = "Srbija",
+                            Mesto = "Novi Sad",
+                            PostanskiBroj = 22000,
+                            Ulica = "Jevrejska"
+                        },
+                        new
+                        {
+                            ID = new Guid("accad5a2-e5bc-4ff5-a5b7-fc38ab8a47fe"),
+                            Broj = 22,
+                            Drzava = "Srbija",
+                            Mesto = "Novi Sad",
+                            PostanskiBroj = 22000,
+                            Ulica = "Mise Dimitrijevica"
                         });
                 });
 #pragma warning restore 612, 618
