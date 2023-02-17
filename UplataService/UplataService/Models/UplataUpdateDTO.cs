@@ -17,13 +17,13 @@ namespace UplataService.Models
         /// ID javnog nadmetanja.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima javno nadmetanje.")]
-        public Guid JavnoNadmetanjeID { get; set; } = Guid.Empty!;
+        public JavnoNadmetanjeDTO JavnoNadmetanjeID { get; set; } = null!;
 
         /// <summary>
         /// ID kupca.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima kupca.")]
-        public Guid KupacID { get; set; } = Guid.Empty!;
+        public KupacDTO Kupac { get; set; } = null!;
 
         /// <summary>
         /// Broj racuna.

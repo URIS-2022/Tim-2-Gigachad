@@ -5,10 +5,9 @@ using System.Reflection;
 using System.Text;
 using UplataService.Data;
 using UplataService.Entities;
+using UplataService.ServiceCalls;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddMvc();
 builder.Services.AddControllers();
@@ -16,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUplataRepository, UplataRepository>();
+builder.Services.AddScoped<IKupacService, KupacService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<UplataContext>(options =>
@@ -70,7 +70,6 @@ using (var scope = app.Services.CreateScope())
     context.Database.Migrate();
 }
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

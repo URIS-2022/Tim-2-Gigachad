@@ -17,7 +17,7 @@ namespace UplataService.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -30,15 +30,15 @@ namespace UplataService.Migrations
 
                     b.Property<string>("BrojRacuna")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<DateTime?>("DatumUplate")
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("Iznos")
-                        .IsRequired()
+                    b.Property<int>("Iznos")
+                        .HasMaxLength(30)
                         .HasColumnType("int");
 
                     b.Property<Guid>("JavnoNadmetanjeID")
@@ -47,15 +47,10 @@ namespace UplataService.Migrations
                     b.Property<Guid>("KupacID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("KursnaLista")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("PozivNaBroj")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("SvrhaUplate")
                         .IsRequired()
@@ -79,8 +74,7 @@ namespace UplataService.Migrations
                             DatumUplate = new DateTime(2022, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Iznos = 45000,
                             JavnoNadmetanjeID = new Guid("03b0680e-35b6-4449-9150-019b817d7cef"),
-                            KupacID = new Guid("96e691db-3fee-44af-a0db-e51660b53bb4"),
-                            KursnaLista = "???????",
+                            KupacID = new Guid("32b7d397-b9d1-472d-bb40-541c68305098"),
                             PozivNaBroj = "73609",
                             SvrhaUplate = "Uplata na racun",
                             Uplatilac = "Pera Peric"
@@ -92,8 +86,7 @@ namespace UplataService.Migrations
                             DatumUplate = new DateTime(2022, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Iznos = 1550,
                             JavnoNadmetanjeID = new Guid("43d6bc15-a674-4552-abee-f3c3360db11e"),
-                            KupacID = new Guid("47dc24c8-b4d4-49f2-a995-ba38d944a2b2"),
-                            KursnaLista = "???????",
+                            KupacID = new Guid("32c7d397-b9d1-472d-bb40-542c68305098"),
                             PozivNaBroj = "18096",
                             SvrhaUplate = "Racun za Telenor",
                             Uplatilac = "Sima Simic"

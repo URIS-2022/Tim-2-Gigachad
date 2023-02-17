@@ -17,46 +17,41 @@ namespace UplataService.Models
         /// <summary>
         /// ID javnog nadmetanja.
         /// </summary>
-        public Guid JavnoNadmetanjeID { get; set; }
+        public Guid JavnoNadmetanjeID { get; set; } 
 
         /// <summary>
         /// ID kupca.
         /// </summary>
-        public Guid KupacID { get; set; }
+        public KupacDTO Kupac { get; set; } = null!;
 
         /// <summary>
         /// Broj racuna.
         /// </summary>
-        public string? BrojRacuna { get; set; }
+        public string BrojRacuna { get; set; } = null!;
 
         /// <summary>
         /// Poziv na broj.
         /// </summary>
-        public string? PozivNaBroj { get; set; }
+        public string PozivNaBroj { get; set; } = null!;
 
         /// <summary>
         /// Iznos.
         /// </summary>
-        public int? Iznos { get; set; }
+        public int Iznos { get; set; } = 0!;
 
         /// <summary>
         /// Ime uplatioca.
         /// </summary>
-        public string? Uplatilac { get; set; }
+        public string Uplatilac { get; set; } = null!;
 
         /// <summary>
         /// Svrha uplate.
         /// </summary>
-        public string? SvrhaUplate { get; set; }
+        public string SvrhaUplate { get; set; } = null!;
 
         /// <summary>
         /// Datum uplate.
         /// </summary>
         public DateTime? DatumUplate { get; set; }
-
-        /// <summary>
-        /// Kursna lista.
-        /// </summary>
-        public string? KursnaLista { get; set; }
     }
 }

@@ -4,9 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using UplataService.Data;
 using UplataService.Entities;
 using UplataService.Models;
+using UplataService.ServiceCalls;
 
 namespace UplataService.Controllers
 {
+    /// <summary>
+	/// Kontroler za entitet uplata.
+	/// </summary>
     [Authorize]
     [ApiController]
     [Route("api/uplate")]
@@ -16,12 +20,17 @@ namespace UplataService.Controllers
         private readonly IUplataRepository UplataRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
+        private readonly IKupacService KupacService;
 
-        public UplataController(IUplataRepository UplataRepository, LinkGenerator linkGenerator, IMapper mapper)
+        /// <summary>
+		/// Dependency injection za kontroler.
+		/// </summary>
+        public UplataController(IUplataRepository UplataRepository, LinkGenerator linkGenerator, IMapper mapper, IKupacService kupacService)
         {
             this.UplataRepository = UplataRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.KupacService = kupacService;
         }
 
         /// <summary>
@@ -30,15 +39,30 @@ namespace UplataService.Controllers
 		/// <returns>Vraća potvrdu o listi postojećih uplata.</returns>
 		/// <response code="200">Vraća listu uplata.</response>
 		/// <response code="204">Ne postoje uplata.</response>
+        /// /// <response code="500">Kupac nije pronađen.</response>
 		[HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<List<UplataEntity>> GetUplate()
+        public ActionResult<List<UplataEntity>> GetUplate([FromHeader] string authorization)
         {
-            var uplate = UplataRepository.GetUplate();
+            List<UplataEntity> uplate = UplataRepository.GetUplate();
             if (uplate == null || uplate.Count == 0)
                 return NoContent();
-            return Ok(mapper.Map<List<UplataEntity>>(uplate));
+
+            List<UplataDTO> uplateDTO = new();
+            foreach (UplataEntity uplata in uplate)
+            {
+                Guid kupacID = uplata.KupacID;
+                UplataDTO uplataDTO = mapper.Map<UplataDTO>(uplata);
+                KupacDTO? kupacDTO = KupacService.GetKupacByIDAsync(kupacID, authorization).Result;
+                if (kupacDTO != null)
+                {
+                    uplataDTO.Kupac = kupacDTO;
+                    uplateDTO.Add(uplataDTO);
+                }
+            }
+
+            return Ok(uplateDTO);
         }
 
         /// <summary>
@@ -51,12 +75,22 @@ namespace UplataService.Controllers
         [HttpGet("{uplataID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<UplataDTO> GetUplata(Guid uplataID)
+        public ActionResult<UplataDTO> GetUplata(Guid uplataID, [FromHeader] string authorization)
         {
-            var uplata = UplataRepository.GetUplataByID(uplataID);
+            UplataEntity? uplata = UplataRepository.GetUplataByID(uplataID);
             if (uplata == null)
                 return NotFound();
-            return Ok(mapper.Map<UplataEntity>(uplata));
+
+            Guid kupacID = uplata.KupacID;
+            KupacDTO? kupacDTO = KupacService.GetKupacByIDAsync(kupacID, authorization).Result;
+            if (kupacDTO != null)
+            {
+                UplataDTO uplataDTO = mapper.Map<UplataDTO>(uplata);
+                uplataDTO.Kupac = kupacDTO;
+                return Ok(uplataDTO);
+            }
+            else
+                return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronađen. ID kupca: " + kupacID.ToString() + ".");
         }
 
         /// <summary>

@@ -4,15 +4,26 @@
         <name>UplataService</name>
     </assembly>
     <members>
-        <member name="M:UplataService.Controllers.UplataController.GetUplate">
+        <member name="T:UplataService.Controllers.UplataController">
+            <summary>
+            Kontroler za entitet uplata.
+            </summary>
+        </member>
+        <member name="M:UplataService.Controllers.UplataController.#ctor(UplataService.Data.IUplataRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,UplataService.ServiceCalls.IKupacService)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:UplataService.Controllers.UplataController.GetUplate(System.String)">
             <summary>
             Vraća sve uplate.
             </summary>
             <returns>Vraća potvrdu o listi postojećih uplata.</returns>
             <response code="200">Vraća listu uplata.</response>
             <response code="204">Ne postoje uplata.</response>
+            /// <response code="500">Kupac nije pronađen.</response>
         </member>
-        <member name="M:UplataService.Controllers.UplataController.GetUplata(System.Guid)">
+        <member name="M:UplataService.Controllers.UplataController.GetUplata(System.Guid,System.String)">
             <summary>
             Vraća jednu uplatu na osnovu zadatog ID-ja.
             </summary>
@@ -49,6 +60,43 @@
             <response code="200">Vraća ažuriranu uplatu.</response>
             <response code="404">Specifiranu uplatu ne postoji.</response>
             <response code="500">Došlo je do greške na serveru prilikom ažuriranja uplate.</response>
+        </member>
+        <member name="T:UplataService.Data.IUplataRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet uplata.
+            </summary>
+        </member>
+        <member name="M:UplataService.Data.IUplataRepository.GetUplate">
+            <summary>
+            Vraća listu uplata.
+            </summary>
+            <returns>Vraća listu uplata.</returns>
+        </member>
+        <member name="M:UplataService.Data.IUplataRepository.GetUplataByID(System.Guid)">
+            <summary>
+            Vraća jednu uplatu na osnovu zadatog ID-ja.
+            </summary>
+            <param name="UplataID">ID Uplate.</param>
+            <returns>Vraća specifirane uplate.</returns>
+        </member>
+        <member name="M:UplataService.Data.IUplataRepository.CreateUplata(UplataService.Models.UplataCreateDTO)">
+            <summary>
+            Dodaje novu uplatu.
+            </summary>
+            <param name="UplataCreateDTO">DTO za kreiranje uplate.</param>
+            <returns>Vraća DTO kreirane uplate.</returns>
+        </member>
+        <member name="M:UplataService.Data.IUplataRepository.DeleteUplata(System.Guid)">
+            <summary>
+            Briše uplatu.
+            </summary>
+            <param name="UplataID">ID uplate.</param>
+        </member>
+        <member name="M:UplataService.Data.IUplataRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>
         <member name="T:UplataService.Data.UplataRepository">
             <summary>
@@ -91,6 +139,21 @@
             U kontekstu sačuva sve promene i onda vraća boolean na osnovu da li je sačuvano ili ne.
             </summary>
             <returns>Vraća boolean.</returns>
+        </member>
+        <member name="T:UplataService.Entities.UplataContext">
+            <summary>
+            DbContext za UplataService mikroservis.
+            </summary>
+        </member>
+        <member name="M:UplataService.Entities.UplataContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="P:UplataService.Entities.UplataContext.Uplate">
+            <summary>
+            DbSet za entitet uplata.
+            </summary>
         </member>
         <member name="M:UplataService.Entities.UplataContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
@@ -147,22 +210,67 @@
             Datum uplate.
             </summary>
         </member>
-        <member name="P:UplataService.Entities.UplataEntity.KursnaLista">
+        <member name="T:UplataService.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:UplataService.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:UplataService.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:UplataService.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:UplataService.Models.AdresaDTO">
             <summary>
-            Kursna lista.
+            DTO model za adresu.
             </summary>
         </member>
-        <member name="T:UplataService.Migrations.InitialMigration">
-            <inheritdoc />
+        <member name="P:UplataService.Models.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
         </member>
-        <member name="M:UplataService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
+        <member name="P:UplataService.Models.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
         </member>
-        <member name="M:UplataService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
+        <member name="P:UplataService.Models.AdresaDTO.Mesto">
+            <summary>
+            Mesto.
+            </summary>
         </member>
-        <member name="M:UplataService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
+        <member name="P:UplataService.Models.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.AdresaDTO.Drzava">
+            <summary>
+            Država(E).
+            </summary>
+        </member>
+        <member name="T:UplataService.Models.FizickoLiceDTO">
+            <summary>
+            Model DTO-a za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.FizickoLiceDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.FizickoLiceDTO.PunoIme">
+            <summary>
+            Puno ime fizičkog lica.
+            </summary>
         </member>
         <member name="T:UplataService.Models.JavnoNadmetanjeDTO">
             <summary>
@@ -264,34 +372,64 @@
             Da li je izuzeto.
             </summary>
         </member>
+        <member name="T:UplataService.Models.KontaktOsobaDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KontaktOsobaDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KontaktOsobaDTO.PunoIme">
+            <summary>
+            Puno ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KontaktOsobaDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KontaktOsobaDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
         <member name="T:UplataService.Models.KupacDTO">
             <summary>
-            DTO za kupca.
+            DTO za fizičko lice.
             </summary>
         </member>
-        <member name="P:UplataService.Models.KupacDTO.LiceID">
+        <member name="P:UplataService.Models.KupacDTO.KupacID">
             <summary>
-            ID lica.
+            ID fizičkog lica.
             </summary>
         </member>
-        <member name="P:UplataService.Models.KupacDTO.OvlascenoLiceID">
+        <member name="P:UplataService.Models.KupacDTO.Lice">
             <summary>
-            ID ovlascenog lica.
+            JMBG fizičkog lica.
             </summary>
         </member>
-        <member name="P:UplataService.Models.KupacDTO.JavnoNadmetanjeID">
+        <member name="P:UplataService.Models.KupacDTO.OvlascenoLice">
+            <summary>
+            ID ovlascenjog lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.KupacDTO.JavnoNadmetanje">
             <summary>
             ID javnog nadmetanja.
             </summary>
         </member>
         <member name="P:UplataService.Models.KupacDTO.Prioritet">
             <summary>
-            Prioritet.
+            Prioritet kupca.
             </summary>
         </member>
         <member name="P:UplataService.Models.KupacDTO.ImaZabranu">
             <summary>
-            Da li ima zabranu.
+            Kupac ima/nema zabranu.
             </summary>
         </member>
         <member name="P:UplataService.Models.KupacDTO.DatumPocetkaZabrane">
@@ -306,12 +444,87 @@
         </member>
         <member name="P:UplataService.Models.KupacDTO.BrojKupovina">
             <summary>
-            Broj kupovina.
+            Broj kupovina kupca.
+            </summary>
+        </member>
+        <member name="T:UplataService.Models.LiceDTO">
+            <summary>
+            Model DTO-a za entitet lice.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.LiceDTO.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.LiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.LiceDTO.PravnoLice">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.LiceDTO.Adresa">
+            <summary>
+            Adresa lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.LiceDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.LiceDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.LiceDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.LiceDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.LiceDTO.OvlascenoLice">
+            <summary>
+            Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="T:UplataService.Models.PravnoLiceDTO">
+            <summary>
+            Model DTO-a za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.PravnoLiceDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.PravnoLiceDTO.KontaktOsoba">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.PravnoLiceDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:UplataService.Models.PravnoLiceDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
             </summary>
         </member>
         <member name="T:UplataService.Models.UplataCreateDTO">
             <summary>
-            Model DTO-a za kreiranje uplate.
+            Model DTO-a za ažuriranje uplate.
             </summary>
         </member>
         <member name="P:UplataService.Models.UplataCreateDTO.JavnoNadmetanjeID">
@@ -354,9 +567,9 @@
             Datum uplate.
             </summary>
         </member>
-        <member name="P:UplataService.Models.UplataCreateDTO.KursnaLista">
+        <member name="M:UplataService.Models.UplataCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
-            Kursna lista.
+            Validacija za model DTO-a za kreiranje uplate.
             </summary>
         </member>
         <member name="T:UplataService.Models.UplataDTO">
@@ -368,14 +581,14 @@
             <summary>
             ID uplate.
             </summary>
-            [Required]
+            [RequirVoice command windows ed]
         </member>
         <member name="P:UplataService.Models.UplataDTO.JavnoNadmetanjeID">
             <summary>
             ID javnog nadmetanja.
             </summary>
         </member>
-        <member name="P:UplataService.Models.UplataDTO.KupacID">
+        <member name="P:UplataService.Models.UplataDTO.Kupac">
             <summary>
             ID kupca.
             </summary>
@@ -408,11 +621,6 @@
         <member name="P:UplataService.Models.UplataDTO.DatumUplate">
             <summary>
             Datum uplate.
-            </summary>
-        </member>
-        <member name="P:UplataService.Models.UplataDTO.KursnaLista">
-            <summary>
-            Kursna lista.
             </summary>
         </member>
         <member name="T:UplataService.Models.UplataUpdateDTO">
@@ -465,10 +673,51 @@
             Datum uplate.
             </summary>
         </member>
-        <member name="P:UplataService.Models.UplataUpdateDTO.KursnaLista">
+        <member name="M:UplataService.Models.UplataUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
-            Kursna lista.
+            Validacija za model DTO-a za azuriranje uplate.
             </summary>
+        </member>
+        <member name="T:UplataService.Profiles.UplataProfile">
+            <summary>
+            Profil mapera za model entiteta uplata.
+            </summary>
+        </member>
+        <member name="M:UplataService.Profiles.UplataProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta uplata.
+            </summary>
+        </member>
+        <member name="T:UplataService.ServiceCalls.IKupacService">
+            <summary>
+            Interfejs od servis poziva za kupca.
+            </summary>
+        </member>
+        <member name="M:UplataService.ServiceCalls.IKupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća kupca od drugog mikro servisa.
+            </summary>
+            <param name="KupacID">ID Kupca.</param>
+            <param name="token">Token za kupac mikroservis.</param>
+            <returns>Vraća model DTO-a kupca.</returns>
+        </member>
+        <member name="T:UplataService.ServiceCalls.KupacService">
+            <summary>
+            Servis poziva za kupca.
+            </summary>
+        </member>
+        <member name="M:UplataService.ServiceCalls.KupacService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:UplataService.ServiceCalls.KupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća kupca od drugog mikro servisa.
+            </summary>
+            <param name="kupacID">ID Kupca.</param>
+            <param name="token">Token za kupac mikroservis.</param>
+            <returns>Vraća model DTO-a kupca.</returns>
         </member>
     </members>
 </doc>

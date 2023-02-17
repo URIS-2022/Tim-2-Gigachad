@@ -41,6 +41,7 @@ D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\M
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\Mono.TextTemplating.dll
+D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Files\Fax\URIS\Timski projekat\UplataService\UplataService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll

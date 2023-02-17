@@ -1,35 +1,42 @@
-﻿namespace UplataService.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace UplataService.Models
 {
     /// <summary>
-	/// DTO za kupca.
-	/// </summary>
+    /// DTO za fizičko lice.
+    /// </summary>
     public class KupacDTO
     {
         /// <summary>
-		/// ID lica.
-		/// </summary>
-		public Guid? LiceID { get; set; }
+        /// ID fizičkog lica.
+        /// </summary>
+        public Guid KupacID { get; set; }
 
         /// <summary>
-		/// ID ovlascenog lica.
-		/// </summary>
-		public Guid? OvlascenoLiceID { get; set; }
+        /// JMBG fizičkog lica.
+        /// </summary>
+        public LiceDTO Lice { get; set; } = null!;
+
+        /// <summary>
+        /// ID ovlascenjog lica.
+        /// </summary>
+        public OvlascenoLiceDTO OvlascenoLice { get; set; } = null!;
 
         /// <summary>
         /// ID javnog nadmetanja.
         /// </summary>
-        public Guid? JavnoNadmetanjeID { get; set; }
+        public JavnoNadmetanjeDTO JavnoNadmetanje { get; set; } = null!;
 
         /// <summary>
-		/// Prioritet.
-		/// </summary>
-		public string? Prioritet { get; set; }
-        //Enumerator kako?
+        /// Prioritet kupca.
+        /// </summary>
+        public string? Prioritet{ get; set; }
 
         /// <summary>
-		/// Da li ima zabranu.
-		/// </summary>
-		public bool? ImaZabranu { get; set; }
+        /// Kupac ima/nema zabranu.
+        /// </summary>
+        public bool? ImaZabranu { get; set; }
 
         /// <summary>
         /// Datum pocetka zabrane.
@@ -37,13 +44,13 @@
         public DateTime? DatumPocetkaZabrane { get; set; }
 
         /// <summary>
-		/// Datum zavrsetka zabrane.
-		/// </summary>
-		public DateTime? DatumZavrsetkaZabrane { get; set; }
+        /// Datum zavrsetka zabrane.
+        /// </summary>
+        public DateTime? DatumZavrsetkaZabrane { get; set; }
 
         /// <summary>
-		/// Broj kupovina.
-		/// </summary>
-		public int? BrojKupovina { get; set; }
+        /// Broj kupovina kupca.
+        /// </summary>
+        public int? BrojKupovina { get; set; }
     }
 }
