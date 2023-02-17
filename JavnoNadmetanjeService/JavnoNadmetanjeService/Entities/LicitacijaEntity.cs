@@ -18,7 +18,7 @@ namespace JavnoNadmetanjeService.Entities
         /// Datum licitacije.
         /// </summary>
         [Required(ErrorMessage = "Licitacija mora da ima datum.")]
-        public DateTime? DatumLicitacije { get; set; }
+        public DateTime? DatumLicitacije { get; set; } = null!;
 
         /// <summary>
         /// Rok za dostavljanje prijava, datum i sat.
@@ -30,7 +30,7 @@ namespace JavnoNadmetanjeService.Entities
         /// OgrnMaxPovrs licitacije.
         /// </summary>
         [Required(ErrorMessage = "Licitacija mora da ima OgrnMaxPovrs.")]
-        public string? OgrnMaxPovrs { get; set; }
+        public int OgrnMaxPovrs { get; set; }
 
         /// <summary>
         /// Korak cene licitacije.

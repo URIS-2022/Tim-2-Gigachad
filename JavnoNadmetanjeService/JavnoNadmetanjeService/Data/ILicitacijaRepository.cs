@@ -1,4 +1,5 @@
-﻿using JavnoNadmetanjeService.Entities;
+﻿using JavnoNadmetanjeService.DTO;
+using JavnoNadmetanjeService.Entities;
 
 namespace LicitacijaService.Data
 {
@@ -25,7 +26,7 @@ namespace LicitacijaService.Data
 		/// </summary>
 		/// <param name="licitacijaCreateDTO">DTO za kreiranje licitacije.</param>
 		/// <returns>Vraća DTO kreirane licitacije.</returns>
-        //LicitacijaEntity CreateLicitacija(LicitacijaCreateDTO licitacijaCreateDTO);
+        LicitacijaDTO CreateLicitacija(LicitacijaCreateDTO licitacijaCreateDTO);
 
         /// <summary>
         /// Brise licitaciju.

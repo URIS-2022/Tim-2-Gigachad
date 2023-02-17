@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JavnoNadmetanjeService.DTO
 {
@@ -13,9 +14,23 @@ namespace JavnoNadmetanjeService.DTO
 		public Guid ID { get; set; }
 
         /// <summary>
-		/// starni kljuc - ID javnog nadmetanja.
-		/// </summary>
-		[ForeignKey("JavnoNadmetanjeEntity")]
-        public Guid JavnoNadmetanjeID { get; set; }
+        /// Datum licitacije.
+        /// </summary>
+        public DateTime? DatumLicitacije { get; set; }
+
+        /// <summary>
+        /// Rok za dostavljanje prijava, datum i sat.
+        /// </summary>
+        public DateTime? Rok { get; set; } = null!;
+
+        /// <summary>
+        /// OgrnMaxPovrs licitacije.
+        /// </summary>
+        public string? OgrnMaxPovrs { get; set; }
+
+        /// <summary>
+        /// Korak cene licitacije.
+        /// </summary>
+        public int KorakCene { get; set; }
     }
 }

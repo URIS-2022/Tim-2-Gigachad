@@ -31,20 +31,20 @@ namespace AdresaService.Data
         }
 
         /// <summary>
-		/// Vraća jedno fizičko lice iz konteksta na osnovu zadatog ID-ja.
+		/// Vraća jednu adresu iz konteksta na osnovu zadatog ID-ja.
 		/// </summary>
-		/// <param name="adresaID">ID fizičkog lica.</param>
-		/// <returns>Vraća specifirano fizičko lice.</returns>
+		/// <param name="adresaID">ID adrese.</param>
+		/// <returns>Vraća specifiranu adresu.</returns>
 		public AdresaEntity? GetAdresaByID(Guid adresaID)
         {
             return context.Adresa.FirstOrDefault(e => e.ID == adresaID);
         }
 
         /// <summary>
-        /// Dodaje novo fizičko lice u kontekst, koje kasnije vraća kao DTO objekat.
+        /// Dodaje novu adresu u kontekst, koja kasnije vraća kao DTO objekat.
         /// </summary>
-        /// <param name="adresaCreateDTO">DTO za kreiranje fizičkog lica.</param>
-        /// <returns>Vraća DTO kreiranog fizičkog lica.</returns>
+        /// <param name="adresaCreateDTO">DTO za kreiranje adrese.</param>
+        /// <returns>Vraća DTO kreirane adrese.</returns>
         public AdresaDTO CreateAdresa(AdresaCreateDTO adresaCreateDTO)
         {
             AdresaEntity adresa = mapper.Map<AdresaEntity>(adresaCreateDTO);
@@ -54,9 +54,9 @@ namespace AdresaService.Data
         }
 
         /// <summary>
-        /// Briše fizičko lice iz konteksta.
+        /// Briše adresu iz konteksta.
         /// </summary>
-        /// <param name="adresaID">ID fizičkog lica.</param>
+        /// <param name="adresaID">ID adrese.</param>
         public void DeleteAdresa(Guid adresaID)
         {
             AdresaEntity? adresa = GetAdresaByID(adresaID);

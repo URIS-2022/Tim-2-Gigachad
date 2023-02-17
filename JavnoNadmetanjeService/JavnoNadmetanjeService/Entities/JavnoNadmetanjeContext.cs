@@ -94,6 +94,7 @@ namespace JavnoNadmetanjeService.Entities
             builder.Entity<JavnoNadmetanjeEntity>().HasData(new
             {
                 JavnoNadID = Guid.Parse("abec715b-03e0-4c9a-b97b-327f0af16823"),
+                LicictacijaID = Guid.Parse("01724de1-1281-4206-a9ee-a153ba559309"),
                 AdresaID = Guid.Parse("878100df-6973-4292-acb1-0c25b7ac2260"),
                 DeoParceleID = Guid.Parse("9c3cfe25-8edb-4281-a125-adb93a942f4c"),
                 NajbKupacID = Guid.Parse("24472931-dbff-4951-bbed-19f63e7ae19b"),

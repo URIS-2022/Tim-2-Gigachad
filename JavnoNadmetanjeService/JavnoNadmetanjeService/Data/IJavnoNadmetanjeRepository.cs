@@ -26,7 +26,7 @@ namespace JavnoNadmetanjeService.Data
 		/// </summary>
 		/// <param name="javnoNadmetanjeCreateDTO">DTO za kreiranje javnog nadmetanja.</param>
 		/// <returns>Vraća DTO kreiranog javnog nadmetanja.</returns>
-        JavnoNadmetanjeEntity CreateJavnoNadmetanje(JavnoNadmetanjeCreateDTO javnoNadmetanjeCreateDTO);
+        JavnoNadmetanjeDTO CreateJavnoNadmetanje(JavnoNadmetanjeCreateDTO javnoNadmetanjeCreateDTO);
 
         /// <summary>
         /// Brise javno nadmetanje.
