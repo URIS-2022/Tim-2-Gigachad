@@ -12,14 +12,14 @@ namespace JavnoNadmetanjeService.DTO
 		/// Tip javnog nadmetanja. Enumerator.
 		/// </summary>
 		[Required(ErrorMessage = "Javno nadmetanje mora da ima tip.")]
-        [MaxLength(25, ErrorMessage = "Tip javno nadmetanje ne sme da bude preko 25 karaktera.")]
+        [MaxLength(30, ErrorMessage = "Tip javno nadmetanje ne sme da bude preko 30 karaktera.")]
         public string TipNadmetanja { get; set; } = null!;
 
         /// <summary>
         /// Opstina javnog nadmetanja. Enumerator.
         /// </summary>
         [Required(ErrorMessage = "Javno nadmetanje mora da ima opstinu.")]
-        [MaxLength(25, ErrorMessage = "Opstina ne sme da bude preko 25 karaktera.")]
+        [MaxLength(30, ErrorMessage = "Opstina ne sme da bude preko 30 karaktera.")]
         public string Opstina { get; set; } = null!;
 
         /// <summary>
@@ -43,32 +43,25 @@ namespace JavnoNadmetanjeService.DTO
         /// <summary>
         /// Period zakupa M javnog nadmetanja.
         /// </summary>
-        [Required(ErrorMessage = "Javno nadmetanje mora da ima period zakupa M.")]
-        public int PeriodZakupaM { get; set; }
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima period zakupa meseci.")]
+        public int PeriodZakupa { get; set; }
 
         /// <summary>
         /// Pocetna cena javnog nadmetanja.
         /// </summary>
         [Required(ErrorMessage = "Javno nadmetanje mora da ima pocetnu cenu.")]
-        public double PocetnaCena { get; set; }
+        public int PocetnaCena { get; set; }
 
         /// <summary>
         /// Visina cene javnog nadmetanja.
         /// </summary>
-        [Required(ErrorMessage = "Javno nadmetanje mora da ima visinu cene.")]
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima visinu cene zemljista.")]
         public int VisinaCene { get; set; }
 
         /// <summary>
 		/// Izlicitirana cena javnog nadmetanja.
 		/// </summary>
-        [Required(ErrorMessage = "Javno nadmetanje mora da ima izlicitiranu cenu.")]
-        public double IzlicitiranaCena { get; set; }
-
-        /// <summary>
-		/// Najbolja ponuda javnog nadmetanja.
-		/// </summary>
-		[Required(ErrorMessage = "Javno nadmetanje mora da ima najbolju ponudu.")]
-        public double NajboljaPonuda { get; set; }
+        public int IzlicitiranaCena { get; set; }
 
         /// <summary>
 		/// Broj ucesnika javnog nadmetanja.
@@ -104,7 +97,7 @@ namespace JavnoNadmetanjeService.DTO
         /// <summary>
         /// Izuzeto.
         /// </summary>
-        public bool? Izuzeto { get; set; }
+        public bool Izuzeto { get; set; }
 
         /// <summary>
         /// Validacija za model DTO-a za kreiranje javnog nadmetanja.
@@ -113,6 +106,15 @@ namespace JavnoNadmetanjeService.DTO
         {
             if (VremePoc >= VremeKraj)
                 yield return new ValidationResult("Vreme kraja nadmetanja ne sme da bude pre vremena pocetka.", new[] { "JavnoNadmetanjeCreateDTO" });
+
+            if (PocetnaCena < VisinaCene)
+                yield return new ValidationResult("Pocetna cena je uvek manja od najvise cene.", new[] { "JavnoNadmetanjeCreateDTO" });
+
+            if (IzlicitiranaCena <= VisinaCene)
+                yield return new ValidationResult("Izlicitirana cena ne sme da predje definisanu visinu cene zemljista", new[] { "JavnoNadmetanjeCreateDTO" });
+
+            if (IzlicitiranaCena >= PocetnaCena)
+                yield return new ValidationResult("Izlicitirana cena moze biti jednaka ili veca od pocetne cene", new[] { "JavnoNadmetanjeCreateDTO" });
 
             if (Enum.TryParse(TipNadmetanja.ToUpper(), out TipNadmetanja tempTip))
                 TipNadmetanja = tempTip.ToString();

@@ -4,6 +4,7 @@ using JavnoNadmetanjeService.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JavnoNadmetanjeService.Migrations
 {
     [DbContext(typeof(JavnoNadmetanjeContext))]
-    partial class JavnoNadmetanjeContextModelSnapshot : ModelSnapshot
+    [Migration("20230217182358_Migration3")]
+    partial class Migration3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,8 +41,8 @@ namespace JavnoNadmetanjeService.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IzlicitiranaCena")
-                        .HasColumnType("int");
+                    b.Property<decimal>("IzlicitiranaCena")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("Izuzeto")
                         .HasColumnType("bit");
@@ -53,16 +56,19 @@ namespace JavnoNadmetanjeService.Migrations
                     b.Property<int>("Licitanti")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("NajboljaPonuda")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Opstina")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("PeriodZakupa")
+                    b.Property<int>("PeriodZakupaM")
                         .HasColumnType("int");
 
-                    b.Property<int>("PocetnaCena")
-                        .HasColumnType("int");
+                    b.Property<decimal>("PocetnaCena")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("PrijavljeniKupci")
                         .HasColumnType("int");
@@ -77,8 +83,8 @@ namespace JavnoNadmetanjeService.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("VisinaCene")
-                        .HasColumnType("int");
+                    b.Property<decimal>("VisinaCene")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<TimeSpan?>("VremeKraj")
                         .IsRequired()
@@ -101,18 +107,19 @@ namespace JavnoNadmetanjeService.Migrations
                             AdresaID = new Guid("3aa0344b-57b5-450a-b83a-18c4555be65c"),
                             BrojUcesnika = 95,
                             DatumNad = new DateTime(2022, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IzlicitiranaCena = 150000000,
+                            IzlicitiranaCena = 1500000m,
                             Izuzeto = true,
                             Krug = 7,
                             LicitacijaID = new Guid("1ecaca89-af8e-47d5-8a33-5f4ec2fcb04e"),
                             Licitanti = 32,
+                            NajboljaPonuda = 13330.99m,
                             Opstina = "BIKOVO",
-                            PeriodZakupa = 67,
-                            PocetnaCena = 1000000,
+                            PeriodZakupaM = 67,
+                            PocetnaCena = 1000000m,
                             PrijavljeniKupci = 52,
                             StatusNadmetanja = "PRVI_KRUG",
                             TipNadmetanja = "JAVNA_LICITACIJA",
-                            VisinaCene = 92076,
+                            VisinaCene = 92076m,
                             VremeKraj = new TimeSpan(0, 9, 37, 0, 0),
                             VremePoc = new TimeSpan(0, 8, 53, 0, 0)
                         },
@@ -122,18 +129,19 @@ namespace JavnoNadmetanjeService.Migrations
                             AdresaID = new Guid("6f79d49c-1c14-49b7-94c3-19a81c7f97a0"),
                             BrojUcesnika = 95,
                             DatumNad = new DateTime(2017, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IzlicitiranaCena = 34000000,
+                            IzlicitiranaCena = 340000m,
                             Izuzeto = false,
                             Krug = 5,
                             LicitacijaID = new Guid("01724de1-1281-4206-a9ee-a153ba559304"),
                             Licitanti = 39,
+                            NajboljaPonuda = 97930.99m,
                             Opstina = "ZEDNIK",
-                            PeriodZakupa = 28,
-                            PocetnaCena = 400000,
+                            PeriodZakupaM = 28,
+                            PocetnaCena = 400000m,
                             PrijavljeniKupci = 52,
                             StatusNadmetanja = "DRUGI_KRUG_STARI",
                             TipNadmetanja = "OTVARANJE_ZATVORENIH_PONUDA",
-                            VisinaCene = 45698,
+                            VisinaCene = 45698m,
                             VremeKraj = new TimeSpan(0, 18, 27, 0, 0),
                             VremePoc = new TimeSpan(0, 16, 29, 0, 0)
                         },
@@ -143,18 +151,19 @@ namespace JavnoNadmetanjeService.Migrations
                             AdresaID = new Guid("878100df-6973-4292-acb1-0c25b7ac2260"),
                             BrojUcesnika = 18,
                             DatumNad = new DateTime(2012, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IzlicitiranaCena = 4900000,
+                            IzlicitiranaCena = 49000m,
                             Izuzeto = true,
                             Krug = 3,
                             LicitacijaID = new Guid("77eb8e4b-ede1-4825-8da2-72d14c2d7259"),
                             Licitanti = 48,
+                            NajboljaPonuda = 53.19m,
                             Opstina = "DONJI_GRAD",
-                            PeriodZakupa = 55,
-                            PocetnaCena = 45900,
+                            PeriodZakupaM = 55,
+                            PocetnaCena = 45900m,
                             PrijavljeniKupci = 71,
                             StatusNadmetanja = "DRUGI_KRUG_NOVI",
                             TipNadmetanja = "JAVNA_LICITACIJA",
-                            VisinaCene = 55942,
+                            VisinaCene = 55942m,
                             VremeKraj = new TimeSpan(0, 10, 23, 0, 0),
                             VremePoc = new TimeSpan(0, 8, 32, 0, 0)
                         });

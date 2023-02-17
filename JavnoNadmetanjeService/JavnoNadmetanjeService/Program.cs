@@ -42,7 +42,7 @@ builder.Services.AddSwaggerGen(setup =>
         {
             Title = "Adresa API",
             Version = "v1",
-            Description = "Pomocu ovog API-ja moze da se vrsi dodavanje, modifikacija i brisanje adresa, kao i pregled svih kreiranih adresa.",
+            Description = "Pomocu ovog API-ja moze da se vrsi dodavanje, modifikacija i brisanje javnih nadmetanja, kao i pregled svih kreiranih javnih nadmetanja.",
             Contact = new Microsoft.OpenApi.Models.OpenApiContact
             {
                 Name = "Elena Dejanovic",

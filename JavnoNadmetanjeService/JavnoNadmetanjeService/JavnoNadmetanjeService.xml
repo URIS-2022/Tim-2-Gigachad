@@ -151,7 +151,7 @@
             Vreme zavrsetka javnog nadmetanja.
             </summary>
         </member>
-        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.PeriodZakupaM">
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.PeriodZakupa">
             <summary>
             Period zakupa M javnog nadmetanja.
             </summary>
@@ -169,11 +169,6 @@
         <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.IzlicitiranaCena">
             <summary>
             Izlicitirana cena javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.NajboljaPonuda">
-            <summary>
-            Najbolja ponuda javnog nadmetanja.
             </summary>
         </member>
         <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.BrojUcesnika">
@@ -246,9 +241,9 @@
             Vreme zavrsetka javnog nadmetanja.
             </summary>
         </member>
-        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.PeriodZakupaM">
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.PeriodZakupa">
             <summary>
-            Period zakupa M javnog nadmetanja.
+            Period zakupa meseci javnog nadmetanja.
             </summary>
         </member>
         <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.PocetnaCena">
@@ -264,11 +259,6 @@
         <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.IzlicitiranaCena">
             <summary>
             Izlicitirana cena javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.NajboljaPonuda">
-            <summary>
-            Najbolja ponuda javnog nadmetanja.
             </summary>
         </member>
         <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.BrojUcesnika">
@@ -336,7 +326,7 @@
             Vreme zavrsetka javnog nadmetanja.
             </summary>
         </member>
-        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.PeriodZakupaM">
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.PeriodZakupa">
             <summary>
             Period zakupa M javnog nadmetanja.
             </summary>
@@ -354,11 +344,6 @@
         <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.IzlicitiranaCena">
             <summary>
             Izlicitirana cena javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.NajboljaPonuda">
-            <summary>
-            Najbolja ponuda javnog nadmetanja.
             </summary>
         </member>
         <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.BrojUcesnika">
@@ -641,16 +626,6 @@
             strani kljuc - ID adrese nadmetanja.
             </summary>
         </member>
-        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.DeoParceleID">
-            <summary>
-            strani kljuc - ID dela parcele.
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.NajbKupacID">
-            <summary>
-            strani kljuc - ID najboljeg kupca.
-            </summary>
-        </member>
         <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.TipNadmetanja">
             <summary>
             Tip javnog nadmetanja. Enumerator.
@@ -676,7 +651,7 @@
             Vreme kraja javnog nadmetanja.
             </summary>
         </member>
-        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.PeriodZakupaM">
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.PeriodZakupa">
             <summary>
             Period zakupa M javnog nadmetanja.
             </summary>
@@ -694,11 +669,6 @@
         <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.IzlicitiranaCena">
             <summary>
             Izlicitirana cena javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.NajboljaPonuda">
-            <summary>
-            Najbolja ponuda javnog nadmetanja.
             </summary>
         </member>
         <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.BrojUcesnika">
@@ -766,16 +736,28 @@
             Javna nadmetanja licitacije.
             </summary>
         </member>
-        <member name="T:JavnoNadmetanjeService.Migrations.InitialMigration">
+        <member name="T:JavnoNadmetanjeService.Migrations.Migration3">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.Migration3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.Migration3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.Migration3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:JavnoNadmetanjeService.Migrations.Migration4">
+            <inheritdoc />
+        </member>
+        <member name="M:JavnoNadmetanjeService.Migrations.Migration4.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:JavnoNadmetanjeService.Migrations.Migration4.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:JavnoNadmetanjeService.Migrations.Migration4.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:LicitacijaService.Data.ILicitacijaRepository">

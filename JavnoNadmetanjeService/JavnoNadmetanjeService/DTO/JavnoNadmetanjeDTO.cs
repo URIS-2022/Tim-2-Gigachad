@@ -38,14 +38,14 @@ namespace JavnoNadmetanjeService.DTO
         public DateTime VremeKraj { get; set; }
 
         /// <summary>
-        /// Period zakupa M javnog nadmetanja.
+        /// Period zakupa meseci javnog nadmetanja.
         /// </summary>
-        public int PeriodZakupaM { get; set; }
+        public int PeriodZakupa { get; set; }
 
         /// <summary>
         /// Pocetna cena javnog nadmetanja.
         /// </summary>
-        public double PocetnaCena { get; set; }
+        public int PocetnaCena { get; set; }
 
         /// <summary>
         /// Visina cene javnog nadmetanja.
@@ -55,12 +55,7 @@ namespace JavnoNadmetanjeService.DTO
         /// <summary>
 		/// Izlicitirana cena javnog nadmetanja.
 		/// </summary>
-        public double IzlicitiranaCena { get; set; }
-
-        /// <summary>
-		/// Najbolja ponuda javnog nadmetanja.
-		/// </summary>
-		public double NajboljaPonuda { get; set; }
+        public int IzlicitiranaCena { get; set; }
 
         /// <summary>
 		/// Broj ucesnika javnog nadmetanja.
