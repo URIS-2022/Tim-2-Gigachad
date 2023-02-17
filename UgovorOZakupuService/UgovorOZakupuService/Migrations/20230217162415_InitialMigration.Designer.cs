@@ -12,7 +12,7 @@ using UgovorOZakupuService.Entities;
 namespace UgovorOZakupuService.Migrations
 {
     [DbContext(typeof(UgovorOZakupuContext))]
-    [Migration("20230216234600_InitialMigration")]
+    [Migration("20230217162415_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -49,6 +49,10 @@ namespace UgovorOZakupuService.Migrations
                     b.Property<Guid>("OvlascenoLiceID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("TipGarancije")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("TrajanjeUgovora")
                         .HasColumnType("int");
 
@@ -60,12 +64,13 @@ namespace UgovorOZakupuService.Migrations
                         new
                         {
                             UgovorOZakupuID = new Guid("dc662e18-1bb0-4f43-bb36-b20eab32a292"),
-                            DatumUgovora = new DateTime(2007, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DatumUgovora = new DateTime(2007, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeoParceleID = new Guid("006c5863-3eb4-4e65-afab-f3f653dec82a"),
                             DokumentID = new Guid("955b86da-6734-4972-93e5-9d46b0017bae"),
                             JavnoNadmetanjeID = new Guid("fa9c9d6b-e4ce-43b9-9bc9-04fc98872e19"),
                             KupacID = new Guid("035e91b3-55ab-4d36-b41b-95235a2efaa3"),
                             OvlascenoLiceID = new Guid("d3a26942-69f6-4f28-b5d2-05eba4b3ba1a"),
+                            TipGarancije = "JEMSTVO",
                             TrajanjeUgovora = 8
                         },
                         new
@@ -77,6 +82,7 @@ namespace UgovorOZakupuService.Migrations
                             JavnoNadmetanjeID = new Guid("c29c41d4-b729-41fe-a484-d04219fdb5a0"),
                             KupacID = new Guid("020c15d1-0928-4a1e-8fc1-45dcfa24c303"),
                             OvlascenoLiceID = new Guid("a332bcad-8049-4c73-a729-4fe6527b9ae7"),
+                            TipGarancije = "BANKARSKAGARANCIJA",
                             TrajanjeUgovora = 8
                         });
                 });

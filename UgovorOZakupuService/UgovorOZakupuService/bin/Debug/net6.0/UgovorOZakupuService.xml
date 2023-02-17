@@ -50,9 +50,89 @@
             <param name="ugovorOZakupuUpdateDTO"></param>
             <returns></returns>
         </member>
+        <member name="M:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje ugovora.
+            </summary>
+        </member>
+        <member name="F:UgovorOZakupuService.Entities.EntitesEnums.TipGarancije.JEMSTVO">
+            <summary>
+            Jemstvo
+            </summary>
+        </member>
+        <member name="F:UgovorOZakupuService.Entities.EntitesEnums.TipGarancije.BANKARSKAGARANCIJA">
+            <summary>
+            Bankarska garancija.
+            </summary>
+        </member>
+        <member name="F:UgovorOZakupuService.Entities.EntitesEnums.TipGarancije.GARANCIJANEKRETNINOM">
+            <summary>
+            Garancija nekretninom.
+            </summary>
+        </member>
+        <member name="F:UgovorOZakupuService.Entities.EntitesEnums.TipGarancije.ZIRANTSKA">
+            <summary>
+            Zirantska.
+            </summary>
+        </member>
+        <member name="F:UgovorOZakupuService.Entities.EntitesEnums.TipGarancije.UPLATAGOTOVINOM">
+            <summary>
+            Uplata gotovinom
+            </summary>
+        </member>
         <member name="M:UgovorOZakupuService.Entities.UgovorOZakupuContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="M:UgovorOZakupuService.Entities.UgovorOZakupuEntity.#ctor">
+            <summary>
+            Model realnog entiteta Ugovora o zakupu
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.UgovorOZakupuID">
+            <summary>
+            ID ugovora
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.DeoParceleID">
+            <summary>
+            ID dela parcele
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.KupacID">
+            <summary>
+            ID kupca
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.OvlascenoLiceID">
+            <summary>
+            ID ovlascenog lica
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.JavnoNadmetanjeID">
+            <summary>
+            ID javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.DokumentID">
+            <summary>
+            ID Dokumenta
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.DatumUgovora">
+            <summary>
+            Datum ugovora
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.TrajanjeUgovora">
+            <summary>
+            Trajanje ugovora
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.TipGarancije">
+            <summary>
+            Tip garancije
             </summary>
         </member>
         <member name="T:UgovorOZakupuService.Migrations.InitialMigration">

@@ -2,7 +2,7 @@
 using UgovorOZakupuService.Data;
 using UgovorOZakupuService.DTO;
 using UgovorOZakupuService.Entities;
-//using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DokumentiService.Controllers
@@ -10,7 +10,7 @@ namespace DokumentiService.Controllers
     /// <summary>
     /// Kontroler za entitete eksternih dokumenata.
     /// </summary>
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/ugovorOZakupu")]
     [Produces("application/json", "application/xml")]

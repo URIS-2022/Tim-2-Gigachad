@@ -20,7 +20,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<UgovorOZakupuContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("UgovorOZakupuDB")));
 
-/*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -32,7 +32,7 @@ builder.Services.AddDbContext<UgovorOZakupuContext>(options =>
         ValidAudience = builder.Configuration["JWT:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
     };
-});*/
+});
 builder.Services.AddSwaggerGen(setup =>
 {
     setup.SwaggerDoc("UgovorOZakupuServiceOpenApiSpecification",
@@ -82,7 +82,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//app.UseAuthentication();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

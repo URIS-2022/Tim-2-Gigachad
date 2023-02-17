@@ -21,9 +21,9 @@ namespace UgovorOZakupuService.Entities
                 OvlascenoLiceID = Guid.Parse("d3a26942-69f6-4f28-b5d2-05eba4b3ba1a"),
                 JavnoNadmetanjeID = Guid.Parse("fa9c9d6b-e4ce-43b9-9bc9-04fc98872e19"),
                 DokumentID = Guid.Parse("955b86da-6734-4972-93e5-9d46b0017bae"),
-                DatumUgovora = new DateTime(2007, 01, 05),
+                DatumUgovora = new DateTime(2007, 03, 08),
                 TrajanjeUgovora = 8,
-                TipGarancije = 5
+                TipGarancije = "JEMSTVO"
             });
             builder.Entity<UgovorOZakupuEntity>().HasData(new
             {
@@ -35,7 +35,7 @@ namespace UgovorOZakupuService.Entities
                 DokumentID = Guid.Parse("f9b78e65-f70d-4d3c-81a6-f0c687925d3d"),
                 DatumUgovora = new DateTime(2007, 01, 05),
                 TrajanjeUgovora = 8,
-                TipGarancije = 5
+                TipGarancije = "BANKARSKAGARANCIJA"
             });
         }
     }
