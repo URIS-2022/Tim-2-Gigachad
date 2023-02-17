@@ -85,15 +85,15 @@ namespace LiceService.Controllers
 				List<FizickoLiceEntity> fizickaLica = fizickoLiceRepository.GetFizickaLica();
 				if (fizickaLica.Find(e => e.JMBG == fizickoLiceCreateDTO.JMBG) == null)
 				{
-					FizickoLiceDTO fizickoLice = fizickoLiceRepository.CreateFizickoLice(fizickoLiceCreateDTO);
+					FizickoLiceDTO fizickoLiceDTO = fizickoLiceRepository.CreateFizickoLice(fizickoLiceCreateDTO);
 					fizickoLiceRepository.SaveChanges();
 
 					string? location = linkGenerator.GetPathByAction("GetFizickoLice", "FizickoLice", new { fizickoLiceID = fizickoLice.ID });
 
 					if (location != null)
-						return Created(location, fizickoLice);
+						return Created(location, fizickoLiceDTO);
 					else
-						return Created(string.Empty, fizickoLice);
+						return Created(string.Empty, fizickoLiceDTO);
 				}
 				else
 					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG fizičkog lica.");

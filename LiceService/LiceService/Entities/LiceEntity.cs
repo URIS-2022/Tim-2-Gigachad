@@ -65,11 +65,5 @@ namespace LiceService.Entities
 		[Required(ErrorMessage = "Lice mora da ima broj računa.")]
 		[MaxLength(20, ErrorMessage = "Email lica ne sme da bude preko 20 karaktera.")]
 		public string BrojRacuna { get; set; } = null!;
-
-		/// <summary>
-		/// Da li je lice ovlašćeno lice.
-		/// </summary>
-		[Required(ErrorMessage = "Da li je lice ovlašćeno, mora biti definisano.")]
-		public bool OvlascenoLice { get; set; }
 	}
 }

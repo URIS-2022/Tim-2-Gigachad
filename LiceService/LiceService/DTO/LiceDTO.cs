@@ -44,10 +44,5 @@
 		/// Broj računa lica.
 		/// </summary>
 		public string BrojRacuna { get; set; } = null!;
-
-		/// <summary>
-		/// Da li je lice ovlašćeno lice.
-		/// </summary>
-		public bool OvlascenoLice { get; set; }
 	}
 }

@@ -85,15 +85,15 @@ namespace LiceService.Controllers
 				List<KontaktOsobaEntity> fizickaLica = kontaktOsobaRepository.GetKontaktOsobe();
 				if (fizickaLica.Find(e => e.Telefon == kontaktOsobaCreateDTO.Telefon) == null)
 				{
-					KontaktOsobaDTO kontaktOsoba = kontaktOsobaRepository.CreateKontaktOsoba(kontaktOsobaCreateDTO);
+					KontaktOsobaDTO kontaktOsobaDTO = kontaktOsobaRepository.CreateKontaktOsoba(kontaktOsobaCreateDTO);
 					kontaktOsobaRepository.SaveChanges();
 
 					string? location = linkGenerator.GetPathByAction("GetKontaktOsoba", "KontaktOsoba", new { kontaktOsobaID = kontaktOsoba.ID });
 
 					if (location != null)
-						return Created(location, kontaktOsoba);
+						return Created(location, kontaktOsobaDTO);
 					else
-						return Created(string.Empty, kontaktOsoba);
+						return Created(string.Empty, kontaktOsobaDTO);
 				}
 				else
 					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati telefon kontakt osobe.");

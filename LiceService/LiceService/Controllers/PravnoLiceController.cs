@@ -100,16 +100,16 @@ namespace LiceService.Controllers
 				List<PravnoLiceEntity> pravnaLica = pravnoLiceRepository.GetPravnaLica();
 				if (pravnaLica.Find(e => e.MaticniBroj == pravnoLiceCreateDTO.MaticniBroj) == null)
 				{
-					PravnoLiceDTO pravnoLice = pravnoLiceRepository.CreatePravnoLice(pravnoLiceCreateDTO);
-					pravnoLice.KontaktOsoba = mapper.Map<KontaktOsobaDTO>(kontaktOsobaRepository.GetKontaktOsobaByID(Guid.Parse(pravnoLiceCreateDTO.KontaktOsobaID)));
+					PravnoLiceDTO pravnoLiceDTO = pravnoLiceRepository.CreatePravnoLice(pravnoLiceCreateDTO);
 					pravnoLiceRepository.SaveChanges();
-
-					string? location = linkGenerator.GetPathByAction("GetPravnoLice", "PravnoLice", new { pravnoLiceID = pravnoLice.ID });
+					pravnoLiceDTO.KontaktOsoba = mapper.Map<KontaktOsobaDTO>(kontaktOsobaRepository.GetKontaktOsobaByID(Guid.Parse(pravnoLiceCreateDTO.KontaktOsobaID)));
+					
+					string? location = linkGenerator.GetPathByAction("GetPravnoLice", "PravnoLice", new { pravnoLiceID = pravnoLiceDTO.ID });
 
 					if (location != null)
-						return Created(location, pravnoLice);
+						return Created(location, pravnoLiceDTO);
 					else
-						return Created(string.Empty, pravnoLice);
+						return Created(string.Empty, pravnoLiceDTO);
 				}
 				else
 					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati matični broj pravnog lica.");

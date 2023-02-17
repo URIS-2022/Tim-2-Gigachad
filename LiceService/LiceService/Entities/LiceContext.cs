@@ -121,8 +121,7 @@ namespace LiceService.Entities
 				Telefon1 = "4211218533",
 				Telefon2 = "399461094",
 				Email = "email1@net.org",
-				BrojRacuna = "343658891760636",
-				OvlascenoLice = false
+				BrojRacuna = "343658891760636"
 			});
 			builder.Entity<LiceEntity>().HasData(new
 			{
@@ -133,8 +132,7 @@ namespace LiceService.Entities
 				Telefon1 = "377172253",
 				Telefon2 = "8048668952",
 				Email = "email2@net.org",
-				BrojRacuna = "788066876873835",
-				OvlascenoLice = false
+				BrojRacuna = "788066876873835"
 			});
 			builder.Entity<LiceEntity>().HasData(new
 			{
@@ -145,8 +143,7 @@ namespace LiceService.Entities
 				Telefon1 = "4461663339",
 				Telefon2 = "4815540720",
 				Email = "email3@net.org",
-				BrojRacuna = "801272932440773",
-				OvlascenoLice = false
+				BrojRacuna = "801272932440773"
 			});
 			builder.Entity<LiceEntity>().HasData(new
 			{
@@ -157,8 +154,7 @@ namespace LiceService.Entities
 				Telefon1 = "2481909941",
 				Telefon2 = string.Empty,
 				Email = "email4@net.org",
-				BrojRacuna = "854823918379735",
-				OvlascenoLice = false
+				BrojRacuna = "854823918379735"
 			});
 			builder.Entity<LiceEntity>().HasData(new
 			{
@@ -169,8 +165,7 @@ namespace LiceService.Entities
 				Telefon1 = "5528150968",
 				Telefon2 = string.Empty,
 				Email = "email5@net.org",
-				BrojRacuna = "252614852215342",
-				OvlascenoLice = false
+				BrojRacuna = "252614852215342"
 			});
 		}
 	}

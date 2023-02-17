@@ -821,11 +821,6 @@
             Broj računa lica.
             </summary>
         </member>
-        <member name="P:LiceService.DTO.LiceCreateDTO.OvlascenoLice">
-            <summary>
-            Da li je lice ovlašćeno lice.
-            </summary>
-        </member>
         <member name="M:LiceService.DTO.LiceCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
             Validacija za model DTO-a za kreiranje entiteta lice.
@@ -876,11 +871,6 @@
             Broj računa lica.
             </summary>
         </member>
-        <member name="P:LiceService.DTO.LiceDTO.OvlascenoLice">
-            <summary>
-            Da li je lice ovlašćeno lice.
-            </summary>
-        </member>
         <member name="T:LiceService.DTO.LiceUpdateDTO">
             <summary>
             Model DTO-a za ažuriranje entiteta lice.
@@ -924,11 +914,6 @@
         <member name="P:LiceService.DTO.LiceUpdateDTO.BrojRacuna">
             <summary>
             Broj računa lica.
-            </summary>
-        </member>
-        <member name="P:LiceService.DTO.LiceUpdateDTO.OvlascenoLice">
-            <summary>
-            Da li je lice ovlašćeno lice.
             </summary>
         </member>
         <member name="M:LiceService.DTO.LiceUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
@@ -1156,11 +1141,6 @@
             Broj računa lica.
             </summary>
         </member>
-        <member name="P:LiceService.Entities.LiceEntity.OvlascenoLice">
-            <summary>
-            Da li je lice ovlašćeno lice.
-            </summary>
-        </member>
         <member name="T:LiceService.Entities.PravnoLiceEntity">
             <summary>
             Model realnog entiteta pravno lice.
@@ -1201,6 +1181,18 @@
             <inheritdoc />
         </member>
         <member name="M:LiceService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:LiceService.Migrations.InitialMigration2">
+            <inheritdoc />
+        </member>
+        <member name="M:LiceService.Migrations.InitialMigration2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:LiceService.Migrations.InitialMigration2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:LiceService.Migrations.InitialMigration2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:LiceService.Profiles.FizickoLiceProfile">

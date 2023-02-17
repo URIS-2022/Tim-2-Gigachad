@@ -60,12 +60,6 @@ namespace LiceService.DTO
 		public string BrojRacuna { get; set; } = null!;
 
 		/// <summary>
-		/// Da li je lice ovlašćeno lice.
-		/// </summary>
-		[Required(ErrorMessage = "Da li je lice ovlašćeno, mora biti definisano.")]
-		public bool OvlascenoLice { get; set; }
-
-		/// <summary>
 		/// Validacija za model DTO-a za kreiranje entiteta lice.
 		/// </summary>
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
