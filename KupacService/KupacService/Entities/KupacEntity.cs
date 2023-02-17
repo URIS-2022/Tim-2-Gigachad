@@ -25,16 +25,11 @@ namespace KupacService.Entities
         public Guid OvlascenoLiceID { get; set; }
 
         /// <summary>
-        /// ID javnog nadmetanja.
-        /// </summary>
-        public Guid JavnoNadmetanjeID { get; set; }
-
-        /// <summary>
         /// Prioritet kupca.
         /// </summary>
 
         [Required(ErrorMessage = "Kupac mora da ima validan prioritet.")]
-        [MaxLength(50, ErrorMessage = "Prioritet ne sme da bude preko 50 karaktera.")]
+        [MaxLength(100, ErrorMessage = "Prioritet ne sme da bude preko 50 karaktera.")]
         public string? Prioritet { get; set; }
 
         /// <summary>

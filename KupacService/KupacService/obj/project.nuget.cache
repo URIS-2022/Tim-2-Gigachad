@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XIZx2LUuuleIqyeUdEKV+7ApfcGokpiZPksoQXoykC9Lyq0RFkpek3aEFfEk3rXtIyybT+HjMuYXErCzphT0Yg==",
+  "dgSpecHash": "+LdvZX6IQ898y3mKSR6H9iRV0FDfQfv5k+fVQvnwBECcpTuhMJbSMC/SMH3Iwy7ytTN/upm7pMZ0qFvlI3f8QA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Vaso\\Desktop\\faks\\VII_semestar\\URIS\\microservices_project\\KupacService\\KupacService\\KupacService.csproj",
   "expectedPackageFiles": [
@@ -17,10 +17,10 @@
     "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.3\\microsoft.entityframeworkcore.7.0.3.nupkg.sha512",
     "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.3\\microsoft.entityframeworkcore.abstractions.7.0.3.nupkg.sha512",
     "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.3\\microsoft.entityframeworkcore.analyzers.7.0.3.nupkg.sha512",
-    "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.2\\microsoft.entityframeworkcore.design.7.0.2.nupkg.sha512",
-    "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.2\\microsoft.entityframeworkcore.relational.7.0.2.nupkg.sha512",
-    "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.2\\microsoft.entityframeworkcore.sqlserver.7.0.2.nupkg.sha512",
-    "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.2\\microsoft.entityframeworkcore.tools.7.0.2.nupkg.sha512",
+    "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.3\\microsoft.entityframeworkcore.design.7.0.3.nupkg.sha512",
+    "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.3\\microsoft.entityframeworkcore.relational.7.0.3.nupkg.sha512",
+    "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.3\\microsoft.entityframeworkcore.sqlserver.7.0.3.nupkg.sha512",
+    "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.3\\microsoft.entityframeworkcore.tools.7.0.3.nupkg.sha512",
     "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Vaso\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",

@@ -50,7 +50,7 @@
             <summary>
             Briše jednog kupca na osnovu zadatog ID-ja.
             </summary>
-            <param name="kupacID">ID fizičkog lica.</param>
+            <param name="kupacUpdateDTO">ID fizičkog lica.</param>
             <param name="authorization">Autorizovan token.</param>
             <returns>Potvrdu o brisanju kupca.</returns>
             <response code="204">Kupac uspešno obrisan.</response>
@@ -66,6 +66,13 @@
             <response code="200">Vraća ažuriranog kupca.</response>
             <response code="404">Specifirani kupac ne postoji.</response>
             <response code="500">Došlo je do greške na serveru prilikom ažuriranja kupca.</response>
+        </member>
+        <member name="M:KupacService.Controllers.KupacController.GetKupciOptions">
+            <summary>
+            Vraća opcije za rad sa licima.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
         </member>
         <member name="T:KupacService.Data.KupacRepository">
             <summary>
@@ -153,96 +160,6 @@
             Puno ime fizičkog lica.
             </summary>
         </member>
-        <member name="T:KupacService.DTO.JavnoNadmetanjeDTO">
-            <summary>
-            Model DTO-a za javno nadmetanje entitet.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.ID">
-            <summary>
-            ID javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.TipNadmetanja">
-            <summary>
-            Tip nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.Opstina">
-            <summary>
-            Opstina.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.DatumNad">
-            <summary>
-            Datum javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.VremePoc">
-            <summary>
-            Vreme pocetka javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.VremeKraj">
-            <summary>
-            Vreme zavrsetka javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.PeriodZakupaM">
-            <summary>
-            Period zakupa M javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.PocetnaCena">
-            <summary>
-            Pocetna cena javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.VisinaCene">
-            <summary>
-            Visina cene javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.IzlicitiranaCena">
-            <summary>
-            Izlicitirana cena javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.NajboljaPonuda">
-            <summary>
-            Najbolja ponuda javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.BrojUcesnika">
-            <summary>
-            Broj ucesnika javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.PrijavljeniKupci">
-            <summary>
-            Prijavljeni kupci javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.Licitanti">
-            <summary>
-            Licitanti javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.Krug">
-            <summary>
-            Krug koji je po redu javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.StatusNadmetanja">
-            <summary>
-            Status javnog nadmetanja. Enumerator
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.JavnoNadmetanjeDTO.Izuzeto">
-            <summary>
-            Izuzeto.
-            </summary>
-        </member>
         <member name="T:KupacService.DTO.KontaktOsobaDTO">
             <summary>
             Model DTO-a za entitet kontakt osoba.
@@ -281,11 +198,6 @@
         <member name="P:KupacService.DTO.KupacCreateDTO.OvlascenoLiceID">
             <summary>
             ID ovlascenjog lica.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.KupacCreateDTO.JavnoNadmetanjeID">
-            <summary>
-            ID javnog nadmetanja.
             </summary>
         </member>
         <member name="P:KupacService.DTO.KupacCreateDTO.Prioritet">
@@ -336,11 +248,6 @@
         <member name="P:KupacService.DTO.KupacDTO.OvlascenoLice">
             <summary>
             ID ovlascenjog lica.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.KupacDTO.JavnoNadmetanje">
-            <summary>
-            ID javnog nadmetanja.
             </summary>
         </member>
         <member name="P:KupacService.DTO.KupacDTO.Prioritet">
@@ -443,62 +350,6 @@
             Matični broj pravnog lica.
             </summary>
         </member>
-        <member name="T:KupacService.DTO.UplataDTO">
-            <summary>
-            Model DTO-a za uplatu.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.UplataDTO.UplataID">
-            <summary>
-            ID uplate.
-            </summary>
-            [Required]
-        </member>
-        <member name="P:KupacService.DTO.UplataDTO.JavnoNadmetanjeID">
-            <summary>
-            ID javnog nadmetanja.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.UplataDTO.KupacID">
-            <summary>
-            ID kupca.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.UplataDTO.BrojRacuna">
-            <summary>
-            Broj racuna.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.UplataDTO.PozivNaBroj">
-            <summary>
-            Poziv na broj.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.UplataDTO.Iznos">
-            <summary>
-            Iznos.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.UplataDTO.Uplatilac">
-            <summary>
-            Ime uplatioca.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.UplataDTO.SvrhaUplate">
-            <summary>
-            Svrha uplate.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.UplataDTO.DatumUplate">
-            <summary>
-            Datum uplate.
-            </summary>
-        </member>
-        <member name="P:KupacService.DTO.UplataDTO.KursnaLista">
-            <summary>
-            Kursna lista.
-            </summary>
-        </member>
         <member name="T:KupacService.Entities.KupacUpdateDTO">
             <summary>
             Model DTO-a za kreiranje kupca.
@@ -517,11 +368,6 @@
         <member name="P:KupacService.Entities.KupacUpdateDTO.OvlascenoLiceID">
             <summary>
             ID ovlascenjog lica.
-            </summary>
-        </member>
-        <member name="P:KupacService.Entities.KupacUpdateDTO.JavnoNadmetanjeID">
-            <summary>
-            ID javnog nadmetanja.
             </summary>
         </member>
         <member name="P:KupacService.Entities.KupacUpdateDTO.Prioritet">
@@ -607,11 +453,6 @@
         <member name="P:KupacService.Entities.KupacEntity.OvlascenoLiceID">
             <summary>
             ID ovlascenjog lica.
-            </summary>
-        </member>
-        <member name="P:KupacService.Entities.KupacEntity.JavnoNadmetanjeID">
-            <summary>
-            ID javnog nadmetanja.
             </summary>
         </member>
         <member name="P:KupacService.Entities.KupacEntity.Prioritet">

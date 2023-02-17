@@ -34,14 +34,6 @@ namespace KupacService.Entities
         public string OvlascenoLiceID { get; set; } = null!;
 
         /// <summary>
-        /// ID javnog nadmetanja.
-        /// </summary>
-        [Required(ErrorMessage = "Javno nadmetanje mora da ima ID")]
-        [MinLength(36, ErrorMessage = "Guid mora da ima minimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
-        [MaxLength(36, ErrorMessage = "Guid mora da ima maksimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
-        public string JavnoNadmetanjeID { get; set; } = null!;
-
-        /// <summary>
         /// Prioritet kupca.
         /// </summary>
 
@@ -69,7 +61,7 @@ namespace KupacService.Entities
         /// Broj kupovina kupca.
         /// </summary>
         [Required(ErrorMessage = "Kupac mora da ima podatke o broju kupovina")]
-        public int BrojKupovina { get; set; } = 0!;
+        public int BrojKupovina { get; set; } = 0;
 
         /// <summary>
         /// Validacija za model DTO-a za kreiranje kupca.
@@ -91,6 +83,12 @@ namespace KupacService.Entities
             if (DatumPocetkaZabrane != null && DatumZavrsetkaZabrane != null)
                 if (DateTime.Compare(DatumPocetkaZabrane.Value, DatumZavrsetkaZabrane.Value) >= 0)
                     yield return new ValidationResult("Korisnik ne može da ima isti ili noviji datum pocetka od datuma zavrsetka zabrane.", new[] { "KupacCreateDTO" });
+            if (ImaZabranu == true)
+                if (DatumPocetkaZabrane == null || DatumZavrsetkaZabrane == null)
+                    yield return new ValidationResult("Ako kuapc ima zabranu mora da ima i datum pocetka i datum zavrsetka zabrane.");
+            if (ImaZabranu == false)
+                if (DatumPocetkaZabrane != null || DatumZavrsetkaZabrane != null)
+                    yield return new ValidationResult("Ako kuapc nema zabranu ne sme da ima ni datum pocetka niti datum zavrsetka zabrane.");
 
             if (Enum.TryParse(Prioritet.ToUpper(), out Prioritet tempPrioritet))
                 Prioritet = tempPrioritet.ToString();

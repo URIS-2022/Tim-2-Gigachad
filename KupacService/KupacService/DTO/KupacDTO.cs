@@ -24,11 +24,6 @@ namespace KupacService.DTO
         public OvalscenoLiceDTO OvlascenoLice { get; set; } = null!;
 
         /// <summary>
-        /// ID javnog nadmetanja.
-        /// </summary>
-        public JavnoNadmetanjeDTO JavnoNadmetanje { get; set; } = null!;
-
-        /// <summary>
         /// Prioritet kupca.
         /// </summary>
         public string? Prioritet{ get; set; }
