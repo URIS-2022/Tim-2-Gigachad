@@ -27,7 +27,7 @@ namespace KupacService.ServiceCalls
         public async Task<OvlascenoLiceDTO?> GetOvlascenoLiceByIDAsync(Guid ovlascenoLiceID, string? token)
         {
             using HttpClient httpClient = new();
-            Uri url = new($"{configuration["Services:OvlascenoLiceService"]}api/ses/{ovlascenoLiceID}");
+            Uri url = new($"{configuration["Services:OvlascenoLiceService"]}api/ovlascenaLica/{ovlascenoLiceID}");
             if (token != string.Empty)
                 httpClient.DefaultRequestHeaders.Add("Authorization", token);
 
