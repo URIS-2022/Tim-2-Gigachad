@@ -42,11 +42,11 @@ namespace LiceService.Controllers
 		/// <summary>
 		/// Vraća listu svih lica.
 		/// </summary>
-		/// <returns>Vraća potvrdu o listi postojećih lica.</returns>
 		/// <param name="authorization">Autorizovan token.</param>
+		/// <returns>Vraća potvrdu o listi postojećih lica.</returns>
 		/// <response code="200">Vraća listu lica.</response>
 		/// <response code="204">Ne postoje lica.</response>
-		//[HttpHead]
+		[HttpHead]
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -394,7 +394,7 @@ namespace LiceService.Controllers
 		/// <response code="200">Vraća prazan 200 HTTP kod.</response>
 		[HttpOptions]
 		[AllowAnonymous]
-		public IActionResult GetFizickaLicaOptions()
+		public IActionResult GetLicaOptions()
 		{
 			Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
 			return Ok();

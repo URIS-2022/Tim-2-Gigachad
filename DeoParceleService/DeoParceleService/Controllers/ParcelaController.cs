@@ -36,11 +36,11 @@ namespace DeoParceleService.Controllers
 		/// <summary>
 		/// Vraća listu svih parcela.
 		/// </summary>
-		/// <returns>Vraća potvrdu o listi postojećih parcela.</returns>
 		/// <param name="authorization">Autorizovan token.</param>
+		/// <returns>Vraća potvrdu o listi postojećih parcela.</returns>
 		/// <response code="200">Vraća listu parcela.</response>
 		/// <response code="204">Ne postoje parcele.</response>
-		//[HttpHead]
+		[HttpHead]
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]

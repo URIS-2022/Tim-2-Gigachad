@@ -18,8 +18,8 @@
             <summary>
             Vraća listu svih delova parcela.
             </summary>
-            <returns>Vraća potvrdu o listi postojećih delova parcela.</returns>
             <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o listi postojećih delova parcela.</returns>
             <response code="200">Vraća listu delova parcela.</response>
             <response code="204">Ne postoje delovi parcela.</response>
         </member>
@@ -86,8 +86,8 @@
             <summary>
             Vraća listu svih parcela.
             </summary>
-            <returns>Vraća potvrdu o listi postojećih parcela.</returns>
             <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o listi postojećih parcela.</returns>
             <response code="200">Vraća listu parcela.</response>
             <response code="204">Ne postoje parcele.</response>
         </member>

@@ -36,7 +36,7 @@ namespace LiceService.Controllers
 		/// <returns>Vraća potvrdu o listi postojećih fizičkih lica.</returns>
 		/// <response code="200">Vraća listu fizičkih lica.</response>
 		/// <response code="204">Ne postoje fizička lica.</response>
-		//[HttpHead]
+		[HttpHead]
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -71,6 +71,15 @@ namespace LiceService.Controllers
 		/// </summary>
 		/// <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
 		/// <returns>Vraća potvrdu o kreiranom fizičkom licu.</returns>
+		/// <remarks>
+		/// Primer zahteva za kreiranje novog fizičkog lica. \
+		/// POST /api/fizickaLica \
+		/// { \
+		///		"jmbg": "1234567891234", \
+		///		"ime": "Petar", \
+		///		"prezime": "Rakić" \
+		/// }
+		/// </remarks>
 		/// <response code="201">Vraća kreirano fizičko lice.</response>
 		/// <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
@@ -109,6 +118,16 @@ namespace LiceService.Controllers
 		/// </summary>
 		/// <param name="fizickoLiceUpdateDTO">DTO za ažuriranje fizičkog lica.</param>
 		/// <returns>Vraća potvrdu o ažuriranom fizičkom licu.</returns>
+		/// <remarks>
+		/// Primer zahteva za ažuriranje postojećeg fizičkog lica. \
+		/// PUT /api/fizickaLica \
+		/// { \
+		///		"id": "ef4cf6d4-48f9-4508-a91f-330261325403", \
+		///		"jmbg": "1234567891234", \
+		///		"ime": "Petar", \
+		///		"prezime": "Rakić" \
+		///}
+		/// </remarks>
 		/// <response code="200">Vraća ažurirano fizičko lice.</response>
 		/// <response code="404">Specifirano fizičko lice ne postoji.</response>
 		/// <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>

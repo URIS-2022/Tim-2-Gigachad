@@ -39,11 +39,11 @@ namespace DeoParceleService.Controllers
 		/// <summary>
 		/// Vraća listu svih delova parcela.
 		/// </summary>
-		/// <returns>Vraća potvrdu o listi postojećih delova parcela.</returns>
 		/// <param name="authorization">Autorizovan token.</param>
+		/// <returns>Vraća potvrdu o listi postojećih delova parcela.</returns>
 		/// <response code="200">Vraća listu delova parcela.</response>
 		/// <response code="204">Ne postoje delovi parcela.</response>
-		//[HttpHead]
+		[HttpHead]
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -276,7 +276,7 @@ namespace DeoParceleService.Controllers
 		/// <response code="200">Vraća prazan 200 HTTP kod.</response>
 		[HttpOptions]
 		[AllowAnonymous]
-		public IActionResult GetParceleOptions()
+		public IActionResult GetDeloviParcelaOptions()
 		{
 			Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
 			return Ok();

@@ -36,7 +36,7 @@ namespace LiceService.Controllers
 		/// <returns>Vraća potvrdu o listi postojećih kontakt osoba.</returns>
 		/// <response code="200">Vraća listu kontakt osoba.</response>
 		/// <response code="204">Ne postoje kontakt osobe.</response>
-		//[HttpHead]
+		[HttpHead]
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]

@@ -38,7 +38,7 @@ namespace LiceService.Controllers
 		/// <returns>Vraća potvrdu o listi postojećih pravnih lica.</returns>
 		/// <response code="200">Vraća listu pravnih lica.</response>
 		/// <response code="204">Ne postoje pravna lica.</response>
-		//[HttpHead]
+		[HttpHead]
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]

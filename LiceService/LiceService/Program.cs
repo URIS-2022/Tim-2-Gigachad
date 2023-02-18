@@ -75,6 +75,14 @@ using (var scope = app.Services.CreateScope())
 
 if (app.Environment.IsDevelopment())
 {
+	app.UseExceptionHandler(setup =>
+	{
+		setup.Run(async setupRun =>
+		{
+			setupRun.Response.StatusCode = 500;
+			await setupRun.Response.WriteAsync("Došlo je do neočekivane greške. Molimo vas pokušajte kasnije.");
+		});
+	});
 	app.UseSwagger();
 	app.UseSwaggerUI(setup =>
 	{
