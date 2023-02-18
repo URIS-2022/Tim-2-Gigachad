@@ -1,4 +1,5 @@
-﻿using KorisnikService.Data;
+﻿using Google.Cloud.Diagnostics.AspNetCore3;
+using KorisnikService.Data;
 using KorisnikService.Entities;
 using KorisnikService.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -61,6 +62,8 @@ builder.Services.AddSwaggerGen(setup =>
 	var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
 	setup.IncludeXmlComments(xmlCommentsPath);
 });
+
+builder.Services.AddGoogleDiagnosticsForAspNetCore("korisnikservicelog", "KorisnikServiceLog", "1.0.0");
 
 var app = builder.Build();
 

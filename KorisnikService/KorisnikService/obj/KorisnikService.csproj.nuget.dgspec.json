@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aleks\\Downloads\\KorisnikService\\KorisnikService\\KorisnikService\\KorisnikService.csproj": {}
+    "D:\\Files\\Fax\\URIS\\Timski projekat\\KorisnikService\\KorisnikService\\KorisnikService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aleks\\Downloads\\KorisnikService\\KorisnikService\\KorisnikService\\KorisnikService.csproj": {
+    "D:\\Files\\Fax\\URIS\\Timski projekat\\KorisnikService\\KorisnikService\\KorisnikService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aleks\\Downloads\\KorisnikService\\KorisnikService\\KorisnikService\\KorisnikService.csproj",
+        "projectUniqueName": "D:\\Files\\Fax\\URIS\\Timski projekat\\KorisnikService\\KorisnikService\\KorisnikService.csproj",
         "projectName": "KorisnikService",
-        "projectPath": "C:\\Users\\aleks\\Downloads\\KorisnikService\\KorisnikService\\KorisnikService\\KorisnikService.csproj",
+        "projectPath": "D:\\Files\\Fax\\URIS\\Timski projekat\\KorisnikService\\KorisnikService\\KorisnikService.csproj",
         "packagesPath": "C:\\Users\\aleks\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aleks\\Downloads\\KorisnikService\\KorisnikService\\KorisnikService\\obj\\",
+        "outputPath": "D:\\Files\\Fax\\URIS\\Timski projekat\\KorisnikService\\KorisnikService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -47,6 +47,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.0, )"
+            },
+            "Google.Cloud.Diagnostics.AspNetCore3": {
+              "target": "Package",
+              "version": "[5.1.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
