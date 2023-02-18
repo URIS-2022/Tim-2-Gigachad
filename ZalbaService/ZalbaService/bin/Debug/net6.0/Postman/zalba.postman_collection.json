@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "67146ea1-c2fc-4f7d-936d-4fbb8f82037b",
+		"name": "zalba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25524120"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15010/api/zalbe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15010",
+					"path": [
+						"api",
+						"zalbe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15010/api/zalbe/08635d18-5f72-4050-8e5e-c520562675b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15010",
+					"path": [
+						"api",
+						"zalbe",
+						"08635d18-5f72-4050-8e5e-c520562675b1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"kupacID\": \"4d1c0702-aeb4-4a4f-bdb8-26e1cc53b2eb\",\r\n    \"tipZalbe\": \"ZALBA_NA_ODLUKU_O_DAVANJU_NA_KORISCENJE\",\r\n    \"datumPodnosenja\": \"2022-11-11T00:00:00\",\r\n    \"razlog\": \"razlog\",\r\n    \"obrazlozenje\": \"obrazlozenje\",\r\n    \"statusZalbe\": \"OTVORENA\",\r\n    \"radnjaZalbe\": \"JN_IDE_U_DRUGI_KRUG_SA_STARIM_USLOVIMA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15010/api/zalbe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15010",
+					"path": [
+						"api",
+						"zalbe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"zalbaID\": \"5940347a-3fdc-45fa-868f-85bd2670df96\",\r\n    \"kupacID\": \"ccc043c6-398c-485d-9840-092c0441ebe8\",\r\n    \"tipZalbe\": \"ZALBA_NA_ODLUKU_O_DAVANJU_NA_KORISCENJE\",\r\n    \"datumPodnosenja\": \"2022-03-11T00:00:00\",\r\n    \"razlog\": \"razlogic\",\r\n    \"obrazlozenje\": \"obrazlozenjce\",\r\n    \"statusZalbe\": \"ODBIJENA\",\r\n    \"radnjaZalbe\": \"JN_IDE_U_DRUGI_KRUG_SA_NOVIM_USLOVIMA\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15010/api/zalbe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15010",
+					"path": [
+						"api",
+						"zalbe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15010/api/zalbe/5940347a-3fdc-45fa-868f-85bd2670df96",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15010",
+					"path": [
+						"api",
+						"zalbe",
+						"5940347a-3fdc-45fa-868f-85bd2670df96"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY3NTYzNjEsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.XFbPM7lb0vdtym8ArGDmJMmYM87TA4QE3dRGTdk0Syo",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

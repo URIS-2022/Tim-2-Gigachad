@@ -1,0 +1,537 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KomisijaService</name>
+    </assembly>
+    <members>
+        <member name="T:KomisijaService.Controllers.KomisijaController">
+            <summary>
+            Kontroler za entitet komisija.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.Controllers.KomisijaController.#ctor(KomisijaService.Data.IKomisijaRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,KomisijaService.ServiceCalls.ILiceService)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.Controllers.KomisijaController.GetKomisije(System.String)">
+            <summary>
+            Vraća listu svih komisija.
+            </summary>
+            <returns>Vraća potvrdu o listi postojećih komisija.</returns>
+            <response code="200">Vraća listu komisija.</response>
+            <response code="204">Ne postoje komisija.</response>
+        </member>
+        <member name="M:KomisijaService.Controllers.KomisijaController.GetKomisijaByID(System.Guid,System.String)">
+            <summary>
+            Vraća jednu komisiju na osnovu prosleđenog ID-ja.
+            </summary>
+            <param name="komisijaID">ID žalbe</param>
+            <returns>Vraća potvrdu o specifiranoj komisiji.</returns>
+            /// <response code="200">Vraća specifiranu komisiju.</response>
+            <response code="404">Specifirana komisija ne postoji.</response>
+        </member>
+        <member name="M:KomisijaService.Controllers.KomisijaController.CreateKomisija(KomisijaService.Models.KomisijaCreateDTO,System.String)">
+            <summary>
+            Kreira novu komisiju.
+            </summary>
+            <param name="komisijaCreateDTO"> DTO za kreiranje komisije</param>
+            <returns>Potvrdu o kreiranoj komisiji.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog fizičkog lica. \
+            POST /api/komisije \
+            { \
+            	"clan1ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+            	"clan2ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+            	"clan3ID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+            	"clan4ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+            	"clan5ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+            	"predsednikID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+            }
+            </remarks>
+            <response code="201">Vraća kreiranu komisiju.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja komisije.</response>
+        </member>
+        <member name="M:KomisijaService.Controllers.KomisijaController.UpdateKomisija(KomisijaService.Models.KomisijaUpdateDTO,System.String)">
+            <summary>
+            Ažurira jednu komisiju.
+            </summary>
+            <param name="komisijaUpdateDTO">DTO za ažuriranje komisije.</param>
+            <returns>Potvrdu o ažuriranoj komisiji.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog fizičkog lica. \
+            PUT /api/komisije \
+            { \
+            	"clan1ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+            	"clan2ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+            	"clan3ID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+            	"clan4ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+            	"clan5ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+            	"predsednikID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+            }
+            </remarks>		/// <response code="200">Vraća ažuriranu komisiju.</response>
+            <response code="404">Specifirana komisija ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja komisije.</response>
+        </member>
+        <member name="M:KomisijaService.Controllers.KomisijaController.DeleteKomisija(System.Guid,System.String)">
+            <summary>
+            Briše jednu komisiju na osnovu zadatog ID-ja.
+            </summary>
+            <param name="komisijaID">ID komisije.</param>
+            <param name="authorization">Autorizovani token.</param>
+            <returns>Vraća potvrdu o brisanju komisije.</returns>
+            /// <response code="204">Specifirana komisija je uspešno obrisana.</response>
+            <response code="404">Specifirana komisija ne postoji i nije obrisana.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifirane komisije.</response>
+        </member>
+        <member name="M:KomisijaService.Controllers.KomisijaController.GetKomisijeOptions">
+            <summary>
+            Vraća opcije za rad sa komisijama.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:KomisijaService.Data.IKomisijaRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet komsija.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.Data.IKomisijaRepository.GetKomisije">
+            <summary>
+            Vraća listu komsija iz konteksta.
+            </summary>
+            <returns>Vraća listu komisija.</returns>
+        </member>
+        <member name="M:KomisijaService.Data.IKomisijaRepository.GetKomisijaByID(System.Guid)">
+            <summary>
+            Vraća jednu komisiju iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="komisijaID">ID komisije.</param>
+            <returns>Vraća specificiranu komisiju.</returns>
+        </member>
+        <member name="M:KomisijaService.Data.IKomisijaRepository.CreateKomisija(KomisijaService.Models.KomisijaCreateDTO)">
+            <summary>
+            Dodaje novu komisiju u kontekst, koje kasnije vraća kao DTO objekat.
+            </summary>
+            <param name="komisija">DTO za kreiranje komisije.</param>
+            <returns>Vraća DTO kreirane komisije.</returns>
+        </member>
+        <member name="M:KomisijaService.Data.IKomisijaRepository.DeleteKomisija(System.Guid)">
+            <summary>
+            Briše komisiju iz konteksta.
+            </summary>
+            <param name="komisijaID">ID komisije.</param>
+        </member>
+        <member name="M:KomisijaService.Data.IKomisijaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena</returns>
+        </member>
+        <member name="T:KomisijaService.Data.KomisijaRepository">
+            <summary>
+            Repozitorijum za entitet komisija.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.Data.KomisijaRepository.#ctor(KomisijaService.Entities.KomisijaContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.Data.KomisijaRepository.GetKomisije">
+            <summary>
+            Vraća listu komisija iz konteksta.
+            </summary>
+            <returns>Vraća listu komisija.</returns>
+        </member>
+        <member name="M:KomisijaService.Data.KomisijaRepository.CreateKomisija(KomisijaService.Models.KomisijaCreateDTO)">
+            <summary>
+            Dodaje novu komisiju u kontekst, koje kasnije vraća kao DTO objekat.
+            </summary>
+            <param name="komisijaCreateDTO">DTO za kreiranje komisije.</param>
+            <returns>Vraća DTO kreirane komisije.</returns>
+        </member>
+        <member name="M:KomisijaService.Data.KomisijaRepository.DeleteKomisija(System.Guid)">
+            <summary>
+            Briše komisiju iz konteksta.
+            </summary>
+            <param name="komisijaID">ID komisije.</param>
+        </member>
+        <member name="M:KomisijaService.Data.KomisijaRepository.GetKomisijaByID(System.Guid)">
+            <summary>
+            Vraća jednu komisiju iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="komisijaID">ID komisije.</param>
+            <returns>Vraća specifiranu komisiju.</returns>
+        </member>
+        <member name="M:KomisijaService.Data.KomisijaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:KomisijaService.Entities.KomisijaContext">
+            <summary>
+            DbContext za KomisijaService mikroservis.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.Entities.KomisijaContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaContext.Komisije">
+            <summary>
+            DbSet za entitet komisija.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.Entities.KomisijaContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:KomisijaService.Entities.KomisijaEntity">
+            <summary>
+            Model realnog entiteta komisija.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.KomisijaID">
+            <summary>
+            ID komisije.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.Clan1ID">
+            <summary>
+            ID 1. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.Clan2ID">
+            <summary>
+            ID 2. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.Clan3ID">
+            <summary>
+            ID 3. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.Clan4ID">
+            <summary>
+            ID 4. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.Clan5ID">
+            <summary>
+            ID 5. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Entities.KomisijaEntity.PredsednikID">
+            <summary>
+            ID predsednika.
+            </summary>
+        </member>
+        <member name="T:KomisijaService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:KomisijaService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:KomisijaService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:KomisijaService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:KomisijaService.Models.AdresaDTO">
+            <summary>
+            Model DTO-a za entitet adresa lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.AdresaDTO.Mesto">
+            <summary>
+            Mesto adrese.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.AdresaDTO.Drzava">
+            <summary>
+            Država adrese.
+            </summary>
+        </member>
+        <member name="T:KomisijaService.Models.FizickoLiceDTO">
+            <summary>
+            Model DTO-a za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.FizickoLiceDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.FizickoLiceDTO.PunoIme">
+            <summary>
+            Puno ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.Clan1ID">
+            <summary>
+            ID 1. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.Clan2ID">
+            <summary>
+            ID 2. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.Clan3ID">
+            <summary>
+            ID 3. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.Clan4ID">
+            <summary>
+            ID 4. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.Clan5ID">
+            <summary>
+            ID 5. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaCreateDTO.PredsednikID">
+            <summary>
+            ID predsednika.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.KomisijaID">
+            <summary>
+            ID komisije.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Clan1">
+            <summary>
+            ID 1. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Clan2">
+            <summary>
+            ID 2. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Clan3">
+            <summary>
+            ID 3. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Clan4">
+            <summary>
+            ID 4. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Clan5">
+            <summary>
+            ID 5. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaDTO.Predsednik">
+            <summary>
+            ID predsednika.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.KomisijaID">
+            <summary>
+            ID komisije.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.Clan1ID">
+            <summary>
+            ID 1. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.Clan2ID">
+            <summary>
+            ID 2. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.Clan3ID">
+            <summary>
+            ID 3. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.Clan4ID">
+            <summary>
+            ID 4. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.Clan5ID">
+            <summary>
+            ID 5. clana.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KomisijaUpdateDTO.PredsednikID">
+            <summary>
+            ID predsednika.
+            </summary>
+        </member>
+        <member name="T:KomisijaService.Models.KontaktOsobaDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KontaktOsobaDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KontaktOsobaDTO.PunoIme">
+            <summary>
+            Puno ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KontaktOsobaDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.KontaktOsobaDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="T:KomisijaService.Models.LiceDTO">
+            <summary>
+            Model DTO-a za entitet lice.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.PravnoLice">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.Adresa">
+            <summary>
+            Adresa lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.LiceDTO.OvlascenoLice">
+            <summary>
+            Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="T:KomisijaService.Models.PravnoLiceDTO">
+            <summary>
+            Model DTO-a za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.PravnoLiceDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.PravnoLiceDTO.KontaktOsoba">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.PravnoLiceDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:KomisijaService.Models.PravnoLiceDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:KomisijaService.Profiles.KomisijaProfile">
+            <summary>
+            Profil mapera za model entiteta komisija.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.Profiles.KomisijaProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta komisija.
+            </summary>
+        </member>
+        <member name="T:KomisijaService.ServiceCalls.ILiceService">
+            <summary>
+            Interfejs od servis poziva za lice.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.ServiceCalls.ILiceService.GetLiceByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća lice iz drugog mikroservisa.
+            </summary>
+            <param name="liceID">ID lica.</param>
+            <param name="token">Token za lice mikroservis.</param>
+            <returns>Vraća model DTO-a lica.</returns>
+        </member>
+        <member name="T:KomisijaService.ServiceCalls.LiceService">
+            <summary>
+            Servis poziva za lice.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.ServiceCalls.LiceService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:KomisijaService.ServiceCalls.LiceService.GetLiceByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu lica od drugog mikro servisa.
+            </summary>
+            <param name="liceID">ID lica.</param>
+            <param name="token">Token za lice mikroservis.</param>
+            <returns>Vraća model DTO-a adrese lica.</returns>
+        </member>
+    </members>
+</doc>

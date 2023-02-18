@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "7fd51243-3ee5-4749-9cfe-051356f6313c",
+		"name": "komisija",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25524120"
+	},
+	"item": [
+		{
+			"name": "GetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15006/api/komisije",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15006",
+					"path": [
+						"api",
+						"komisije"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15006/api/komisije/4739ab8e-3f8a-413c-b65a-cec5254016e4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15006",
+					"path": [
+						"api",
+						"komisije",
+						"4739ab8e-3f8a-413c-b65a-cec5254016e4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clan1ID\": \"16e85d49-9cdd-41a6-85bc-180932f68999\",\r\n    \"clan2ID\": \"334f5277-a71c-4be8-b5da-5c9148b228f7\",\r\n    \"clan3ID\": \"92e0d8e9-b221-42a6-9bb8-a80974aee937\",\r\n    \"clan4ID\": null,\r\n    \"clan5ID\": null,\r\n    \"predsednikID\": \"92e0d8e9-b221-42a6-9bb8-a80974aee937\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15006/api/komisije",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15006",
+					"path": [
+						"api",
+						"komisije"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"komisijaID\": \"ea9a0e95-f6cf-4208-99e0-9c902c875cb1\",\r\n    \"clan1ID\": \"16e85d49-9cdd-41a6-85bc-180932f68999\",\r\n    \"clan2ID\": \"334f5277-a71c-4be8-b5da-5c9148b228f7\",\r\n    \"clan3ID\": \"92e0d8e9-b221-42a6-9bb8-a80974aee937\",\r\n    \"clan4ID\": null,\r\n    \"clan5ID\": \"334f5277-a71c-4be8-b5da-5c9148b228f7\",\r\n    \"predsednikID\": \"92e0d8e9-b221-42a6-9bb8-a80974aee937\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15006/api/komisije",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15006",
+					"path": [
+						"api",
+						"komisije"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15006/api/komisije/ea9a0e95-f6cf-4208-99e0-9c902c875cb1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15006",
+					"path": [
+						"api",
+						"komisije",
+						"ea9a0e95-f6cf-4208-99e0-9c902c875cb1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY3NTYzNjEsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.XFbPM7lb0vdtym8ArGDmJMmYM87TA4QE3dRGTdk0Syo",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
