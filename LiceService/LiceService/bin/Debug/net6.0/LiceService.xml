@@ -1269,30 +1269,6 @@
         <member name="M:LiceService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:LiceService.Migrations.InitialMigration2">
-            <inheritdoc />
-        </member>
-        <member name="M:LiceService.Migrations.InitialMigration2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:LiceService.Migrations.InitialMigration2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:LiceService.Migrations.InitialMigration2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:LiceService.Migrations.InitialMigratio15">
-            <inheritdoc />
-        </member>
-        <member name="M:LiceService.Migrations.InitialMigratio15.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:LiceService.Migrations.InitialMigratio15.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:LiceService.Migrations.InitialMigratio15.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
         <member name="T:LiceService.Profiles.FizickoLiceProfile">
             <summary>
             Profil mapera za model entiteta fizičko lice.

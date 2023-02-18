@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiceService.Migrations
 {
     [DbContext(typeof(LiceContext))]
-    [Migration("20230218133009_InitialMigratio15")]
-    partial class InitialMigratio15
+    [Migration("20230218191219_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
