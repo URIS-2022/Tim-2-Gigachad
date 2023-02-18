@@ -36,8 +36,8 @@ namespace AdresaService.Controllers
 		/// <returns>Vraća potvrdu o listi postojećih adresa.</returns>
 		/// <response code="200">Vraća listu adresa.</response>
 		/// <response code="204">Ne postoje adresa.</response>
-        [HttpGet]
         [HttpHead]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<AdresaEntity>> GetAdrese()
@@ -55,7 +55,6 @@ namespace AdresaService.Controllers
 		/// <returns>Vraća potvrdu o specifiranoj adresi.</returns>
 		/// <response code="200">Vraća specifiranu adresu.</response>
 		/// <response code="404">Specifirana adresa ne postoji.</response>
-		[HttpHead]
         [HttpGet("{adresaID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -86,7 +85,6 @@ namespace AdresaService.Controllers
 		/// </remarks>
         /// <response code="201">Vraća kreiranu adresu.</response>
         /// <response code="500">Došlo je do greške na serveru prilikom kreiranja adrese.</response>
-        [HttpHead]
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -131,7 +129,6 @@ namespace AdresaService.Controllers
         /// <response code="200">Vraca azuriranu adresu.</response>
         /// <response code="404">Specifirana adresa ne postoji.</response>
         /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja adrese.</response>
-        [HttpHead]
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -163,7 +160,6 @@ namespace AdresaService.Controllers
         /// <response code="204">Specifirana adresa je uspešno obrisana.</response>
         /// <response code="404">Specifirana adresa ne postoji.</response>
         /// <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranoe adrese.</response>
-        [HttpHead]
         [HttpDelete("{adresaID}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

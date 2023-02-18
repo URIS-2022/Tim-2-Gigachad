@@ -89,3 +89,4 @@ C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\obj\Debug\ne
 C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\obj\Debug\net6.0\AdresaService.pdb
 C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\obj\Debug\net6.0\AdresaService.genruntimeconfig.cache
 C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\obj\Debug\net6.0\ref\AdresaService.dll
+C:\Users\ofidi\Documents\Tim-2-Gigachad\AdresaService\AdresaService\bin\Debug\net6.0\Postman\Adresa.postman_collection.json

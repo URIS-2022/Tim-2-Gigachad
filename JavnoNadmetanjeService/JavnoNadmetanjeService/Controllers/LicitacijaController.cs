@@ -36,8 +36,8 @@ namespace JavnoNadmetanjeService.Controllers
 		/// <returns>Vraca potvrdu o listi postojecih licitacija.</returns>
 		/// <response code="200">Vraca listu licitacija.</response>
 		/// <response code="204">Ne postoje licitacija.</response>
-        [HttpGet]
         [HttpHead]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<LicitacijaDTO>> GetLicitacije()
@@ -157,7 +157,6 @@ namespace JavnoNadmetanjeService.Controllers
         /// <response code="204">Specifirana licitacija je uspesno obrisana.</response>
         /// <response code="404">Specifirana licitacija ne postoji.</response>
         /// <response code="500">Doslo je do greske na serveru prilikom brisanja specifiranoe licitacije.</response>
-        [HttpHead]
         [HttpDelete("{licitacijaID}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
