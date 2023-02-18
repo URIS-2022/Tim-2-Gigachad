@@ -2,7 +2,7 @@
   "profiles": {
     "DeoParceleService": {
       "commandName": "Project",
-      "launchUrl": "swagger",
+      "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -11,7 +11,6 @@
     },
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -22,8 +21,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:49723/",
-      "sslPort": 44317
+      "applicationUrl": "",
+      "sslPort": 0
     }
   }
 }

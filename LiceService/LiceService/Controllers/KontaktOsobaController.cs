@@ -71,6 +71,16 @@ namespace LiceService.Controllers
 		/// </summary>
 		/// <param name="kontaktOsobaCreateDTO">DTO za kreiranje kontakt osobe.</param>
 		/// <returns>Potvrdu o kreiranoj kontakt osobi.</returns>
+		/// <remarks>
+		/// Primer zahteva za kreiranje nove kontakt osobe. \
+		/// POST /api/kontaktOsobe \
+		/// { \
+		///		"ime": "Petar", \
+		///		"prezime": "Rakić", \
+		///		"telefon": "1234567891", \
+		///		"funkcija": "programer" \
+		/// }
+		/// </remarks>
 		/// <response code="201">Vraća kreiranu kontakt osobu.</response>
 		/// <response code="422">Došlo je do greške, već postoji kontakt osoba na serveru sa istim telefonom.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja kontakt osobe.</response>
@@ -109,6 +119,17 @@ namespace LiceService.Controllers
 		/// </summary>
 		/// <param name="kontaktOsobaUpdateDTO">DTO za ažuriranje kontakt osobe.</param>
 		/// <returns>Potvrdu o ažuriranoj kontakt osobi.</returns>
+		/// <remarks>
+		/// Primer zahteva za ažuriranje postojeće kontakt osobe. \
+		/// PUT /api/kontaktOsobe \
+		/// { \
+		///		"id": "5a2f51f9-3f5d-420f-9e98-510a3a5296a1", \
+		///		"ime": "Petar", \
+		///		"prezime": "Rakić", \
+		///		"telefon": "1234567891", \
+		///		"funkcija": "programer" \
+		/// }
+		/// </remarks>
 		/// <response code="200">Vraća ažuriranu kontakt osobu.</response>
 		/// <response code="404">Specifirana kontakt osoba ne postoji.</response>
 		/// <response code="422">Došlo je do greške, već postoji kontakt osoba na serveru sa istim telefonom.</response>

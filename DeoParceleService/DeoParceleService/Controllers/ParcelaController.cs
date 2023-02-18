@@ -96,6 +96,16 @@ namespace DeoParceleService.Controllers
 		/// <param name="parcelaCreateDTO">DTO za kreiranje parcele.</param>
 		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o kreiranoj parceli.</returns>
+		/// <remarks>
+		/// Primer zahteva za kreiranje nove parcele. \
+		/// POST /api/parcele \
+		/// { \
+		///		"kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+		///		"oznaka": "NYU9NX5NS9", \
+		///		"ukupnaPovrsina": 5555, \
+		///		"katastarskaOpstina": "DONJI_GRAD", \
+		/// }
+		/// </remarks>
 		/// <response code="201">Vraća kreiranu parcelu.</response>
 		/// <response code="422">Došlo je do greške, već postoji parcela na serveru sa istom oznakom.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja parcele.</response>
@@ -145,6 +155,17 @@ namespace DeoParceleService.Controllers
 		/// <param name="parcelaUpdateDTO">DTO za ažuriranje parcele.</param>
 		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o ažuriranoj parceli.</returns>
+		/// <remarks>
+		/// Primer zahteva za ažuriranje postojeće parcele. \
+		/// PUT /api/parcele \
+		/// { \
+		///		"id": "06f51688-c60a-4dbf-8955-f1713fa47e28", \
+		///		"kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+		///		"oznaka": "NYU9NX5NS9", \
+		///		"ukupnaPovrsina": 5555, \
+		///		"katastarskaOpstina": "DONJI_GRAD", \
+		/// }
+		/// </remarks>
 		/// <response code="200">Vraća ažuriranu parcelu.</response>
 		/// <response code="404">Specifirana parcela ne postoji.</response>
 		/// <response code="422">Došlo je do greške, već postoji parcela na serveru sa istom oznakom.</response>

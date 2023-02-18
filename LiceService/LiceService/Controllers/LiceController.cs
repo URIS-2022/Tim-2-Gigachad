@@ -128,6 +128,19 @@ namespace LiceService.Controllers
 		/// <param name="liceCreateDTO">DTO za kreiranje lica.</param>
 		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o kreiranom licu.</returns>
+		/// <remarks>
+		/// Primer zahteva za kreiranje novog lica. \
+		/// POST /api/lica \
+		/// { \
+		///		"fizickoLiceID": "ef4cf6d4-48f9-4508-a91f-330261325403", \
+		///		"pravnoLiceID": "006d992e-2109-4334-beff-3f5229129d14", \
+		///		"adresaID": "ACCAD5A2-E5BC-4FF5-A5B7-FC38AB8A47FE", \
+		///		"telefon1": "1234567891", \
+		///		"telefon2": "1234567891", \
+		///		"email": "rakic.it19.2019@uns.ac.rs", \
+		///		"brojRacuna": "12345678911234567891" \
+		/// }
+		/// </remarks>
 		/// <response code="201">Vraća kreirano lice.</response>
 		/// <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja lica.</response>
@@ -243,6 +256,20 @@ namespace LiceService.Controllers
 		/// <param name="liceUpdateDTO">DTO za ažuriranje lica.</param>
 		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o ažuriranom licu.</returns>
+		/// <remarks>
+		/// Primer zahteva za ažuriranje postojećeg lica. \
+		/// PUT /api/lica \
+		/// { \
+		///		"id": "f127642e-4d73-42f1-979d-6a506aea9bdc", \
+		///		"fizickoLiceID": "ef4cf6d4-48f9-4508-a91f-330261325403", \
+		///		"pravnoLiceID": "006d992e-2109-4334-beff-3f5229129d14", \
+		///		"adresaID": "ACCAD5A2-E5BC-4FF5-A5B7-FC38AB8A47FE", \
+		///		"telefon1": "1234567891", \
+		///		"telefon2": "1234567891", \
+		///		"email": "rakic.it19.2019@uns.ac.rs", \
+		///		"brojRacuna": "12345678911234567891" \
+		/// }
+		/// </remarks>
 		/// <response code="200">Vraća ažurirano lice.</response>
 		/// <response code="404">Specifirano lice ne postoji.</response>
 		/// <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>

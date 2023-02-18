@@ -86,6 +86,15 @@ namespace LiceService.Controllers
 		/// </summary>
 		/// <param name="pravnoLiceCreateDTO">DTO za kreiranje pravnog lica.</param>
 		/// <returns>Vraća potvrdu o kreiranom fizičkom licu.</returns>
+		/// <remarks>
+		/// Primer zahteva za kreiranje novog pravnog lica. \
+		/// POST /api/pravnaLica \
+		/// { \
+		///		"kontaktOsobaID": "5a2f51f9-3f5d-420f-9e98-510a3a5296a1", \
+		///		"naziv": "KOMPANIJA DOO", \
+		///		"maticniBroj": "12345678" \
+		/// }
+		/// </remarks>
 		/// <response code="201">Vraća kreirano pravno lice.</response>
 		/// <response code="422">Došlo je do greške, već postoji pravno lice na serveru sa istim matičnim brojem.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja pravnog lica.</response>
@@ -125,6 +134,16 @@ namespace LiceService.Controllers
 		/// </summary>
 		/// <param name="pravnoLiceUpdateDTO">DTO za ažuriranje pravnog lica.</param>
 		/// <returns>Vraća potvrdu o ažuriranom fizičkom licu.</returns>
+		/// <remarks>
+		/// Primer zahteva za ažuriranje postojećeg pravnog lica. \
+		/// PUT /api/pravnaLica \
+		/// { \
+		///		"id": "006d992e-2109-4334-beff-3f5229129d14", \
+		///		"kontaktOsobaID": "5a2f51f9-3f5d-420f-9e98-510a3a5296a1", \
+		///		"naziv": "KOMPANIJA DOO", \
+		///		"maticniBroj": "12345678" \
+		/// }
+		/// </remarks>
 		/// <response code="200">Vraća ažurirano pravno lice.</response>
 		/// <response code="404">Specifirano pravno lice ne postoji.</response>
 		/// <response code="422">Došlo je do greške, već postoji pravno lice na serveru sa istim matičnim brojem.</response>

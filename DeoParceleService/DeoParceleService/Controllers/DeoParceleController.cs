@@ -5,7 +5,6 @@ using DeoParceleService.Entities;
 using DeoParceleService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Xml.Linq;
 
 namespace DeoParceleService.Controllers
 {
@@ -128,6 +127,23 @@ namespace DeoParceleService.Controllers
 		/// <param name="deoParceleCreateDTO">DTO za dela parcele.</param>
 		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o kreiranom delu parcele.</returns>
+		/// <remarks>
+		/// Primer zahteva za kreiranje novog dela parcele. \
+		/// POST /api/deloviParcela \
+		/// { \
+		///		"parcelaID": "06f51688-c60a-4dbf-8955-f1713fa47e28", \
+		///		"kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+		///		"redniBroj": "11111", \
+		///		"povrsina": 9999, \
+		///		"brojNekretnina": 99, \
+		///		"obradivost": "OSTALO", \
+		///		"kultura": "VRTOVI", \
+		///		"klasa": "V", \
+		///		"zasticenaZona": "III", \
+		///		"oblikSvojine": "OSTALE_SVOJINE", \
+		///		"odvodnjavanje": false, \
+		/// }
+		/// </remarks>
 		/// <response code="201">Vraća kreirani deo parcele.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja dela parcele.</response>
 		[HttpPost]
@@ -184,6 +200,24 @@ namespace DeoParceleService.Controllers
 		/// <param name="deoParceleUpdateDTO">DTO za ažuriranje dela parcele.</param>
 		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o ažuriranom delu parcele.</returns>
+		/// <remarks>
+		/// Primer zahteva za ažuriranje postojećeg dela parcele. \
+		/// PUT /api/deloviParcela \
+		/// { \
+		///		"id": "6c5fe5f2-5389-4022-ae48-6e905cca6c60", \
+		///		"parcelaID": "06f51688-c60a-4dbf-8955-f1713fa47e28", \
+		///		"kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+		///		"redniBroj": "11111", \
+		///		"povrsina": 9999, \
+		///		"brojNekretnina": 99, \
+		///		"obradivost": "OSTALO", \
+		///		"kultura": "VRTOVI", \
+		///		"klasa": "V", \
+		///		"zasticenaZona": "III", \
+		///		"oblikSvojine": "OSTALE_SVOJINE", \
+		///		"odvodnjavanje": false, \
+		/// }
+		/// </remarks>
 		/// <response code="200">Vraća ažurirani deo parcele.</response>
 		/// <response code="404">Specifirani deo parcele ne postoji.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja dela parcele.</response>

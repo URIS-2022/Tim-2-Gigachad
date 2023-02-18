@@ -47,6 +47,36 @@
 			"response": []
 		},
 		{
+			"name": "OptionsFizickaLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/fizickaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"fizickaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GetFizickaLica",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
@@ -148,7 +178,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"id\": \"32b7d397-b9d1-472d-bb40-542c68305098\",\r\n\t\"jmbg\": \"1111111111111\",\r\n\t\"ime\": \"imes\",\r\n\t\"prezime\": \"prezimes\"\r\n}",
+					"raw": "{\r\n\t\"id\": \"4f5d8be1-9462-4354-9fae-4ed186cba33e\",\r\n\t\"jmbg\": \"1111111111111\",\r\n\t\"ime\": \"imes\",\r\n\t\"prezime\": \"prezimes\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -182,7 +212,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:15004/api/fizickaLica/d82fbb07-6eb1-4516-ac48-758ae5ca2a8c",
+					"raw": "http://localhost:15004/api/fizickaLica/4f5d8be1-9462-4354-9fae-4ed186cba33e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -191,7 +221,37 @@
 					"path": [
 						"api",
 						"fizickaLica",
-						"d82fbb07-6eb1-4516-ac48-758ae5ca2a8c"
+						"4f5d8be1-9462-4354-9fae-4ed186cba33e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptionsKontaktOsobe",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/kontaktOsobe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"kontaktOsobe"
 					]
 				}
 			},
@@ -299,7 +359,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"id\": \"998cd3b0-c502-462e-97c0-d3448a4c4153\",\r\n\t\"ime\": \"imes\",\r\n\t\"prezime\": \"prezimes\",\r\n\t\"telefon\": \"9999999999\",\r\n\t\"funkcija\": \"administrator\"\r\n}",
+					"raw": "{\r\n\t\"id\": \"a513b086-141e-4dac-96f8-00b6e3fb8c4a\",\r\n\t\"ime\": \"imes\",\r\n\t\"prezime\": \"prezimes\",\r\n\t\"telefon\": \"9999999999\",\r\n\t\"funkcija\": \"administrator\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -333,7 +393,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:15004/api/kontaktOsobe/998cd3b0-c502-462e-97c0-d3448a4c4153",
+					"raw": "http://localhost:15004/api/kontaktOsobe/a513b086-141e-4dac-96f8-00b6e3fb8c4a",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -342,7 +402,37 @@
 					"path": [
 						"api",
 						"kontaktOsobe",
-						"998cd3b0-c502-462e-97c0-d3448a4c4153"
+						"a513b086-141e-4dac-96f8-00b6e3fb8c4a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptionsPravnaLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/pravnaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"pravnaLica"
 					]
 				}
 			},
@@ -450,7 +540,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"id\": \"4f4ed88e-c8ba-46b1-968f-371a28e72318\",\r\n\t\"kontaktOsobaID\": \"5a2f51f9-3f5d-420f-9e98-510a3a5296a1\",\r\n\t\"naziv\": \"nazivs\",\r\n\t\"maticniBroj\": \"99999999\"\r\n}",
+					"raw": "{\r\n\t\"id\": \"633b5b56-02b8-4bbe-8a7c-7beef1e1299a\",\r\n\t\"kontaktOsobaID\": \"5a2f51f9-3f5d-420f-9e98-510a3a5296a1\",\r\n\t\"naziv\": \"nazivs\",\r\n\t\"maticniBroj\": \"99999999\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -484,7 +574,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:15004/api/pravnaLica/4f4ed88e-c8ba-46b1-968f-371a28e72318",
+					"raw": "http://localhost:15004/api/pravnaLica/633b5b56-02b8-4bbe-8a7c-7beef1e1299a",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -493,7 +583,36 @@
 					"path": [
 						"api",
 						"pravnaLica",
-						"4f4ed88e-c8ba-46b1-968f-371a28e72318"
+						"633b5b56-02b8-4bbe-8a7c-7beef1e1299a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptionsLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/lica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"lica"
 					]
 				}
 			},
@@ -655,7 +774,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY2MTMyMzMsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.8cbbLL7PTIo2RmiIE4wWpnfcF8Ws7TdoTPR8HoG3M40",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY3MzM1NjUsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.MFwP_HhwM0HTzc-nYbaSRizUtbVG1CwsLpWiNu-s77I",
 				"type": "string"
 			}
 		]
