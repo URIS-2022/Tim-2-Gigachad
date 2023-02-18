@@ -1,50 +1,56 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KomisijaService.Models
 {
-    public class LiceDTO
-    {
-        /// <summary>
-		/// ID fizičkog lica lica.
+    /// <summary>
+	/// Model DTO-a za entitet lice.
+	/// </summary>
+	public class LiceDTO
+	{
+		/// <summary>
+		/// ID lica.
 		/// </summary>
-		[ForeignKey("FizickoLiceEntity")]
-        public Guid FizickoLiceID { get; set; }
+		public Guid ID { get; set; }
 
-        /// <summary>
-        /// ID pravnog lica lica.
-        /// </summary>
-        [ForeignKey("PravnoLiceEntity")]
-        public Guid PravnoLiceID { get; set; }
+		/// <summary>
+		/// ID fizičkog lica.
+		/// </summary>
+		public FizickoLiceDTO FizickoLice { get; set; } = null!;
 
-        /// <summary>
-        /// ID adrese lica.
-        /// </summary>
-        [ForeignKey("AdresaLicaDTO")]
-        public Guid AdresaID { get; set; }
+		/// <summary>
+		/// ID pravnog lica.
+		/// </summary>
+		public PravnoLiceDTO? PravnoLice { get; set; }
 
-        /// <summary>
-        /// Telefon 1 lica.
-        /// </summary>
-        public string? Tel1 { get; set; }
+		/// <summary>
+		/// Adresa lica.
+		/// </summary>
+		public AdresaDTO Adresa { get; set; } = null!;
 
-        /// <summary>
-        /// Telefon 2 lica.
-        /// </summary>
-        public string? Tel2 { get; set; }
+		/// <summary>
+		/// Prvi telefon lica.
+		/// </summary>
+		public string Telefon1 { get; set; } = null!;
 
-        /// <summary>
-        /// Email lica.
-        /// </summary>
-        public string? Email { get; set; }
+		/// <summary>
+		/// Drugi telefon lica.
+		/// </summary>
+		public string? Telefon2 { get; set; }
 
-        /// <summary>
-        /// Broj računa lica.
-        /// </summary>
-        public string? BrojRacuna { get; set; }
+		/// <summary>
+		/// Email lica.
+		/// </summary>
+		public string Email { get; set; } = null!;
 
-        /// <summary>
-        /// Da li je lice ovlašćeno lice.
-        /// </summary>
-        public bool? OvlascenoLice { get; set; }
-    }
+		/// <summary>
+		/// Broj računa lica.
+		/// </summary>
+		public string BrojRacuna { get; set; } = null!;
+
+		/// <summary>
+		/// Da li je lice ovlašćeno lice.
+		/// </summary>
+		public bool OvlascenoLice { get; set; }
+	}
 }

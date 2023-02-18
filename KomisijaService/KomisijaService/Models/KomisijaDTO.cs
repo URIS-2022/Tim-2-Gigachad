@@ -7,41 +7,36 @@ namespace KomisijaService.Models
         /// <summary>
 		/// ID komisije.
 		/// </summary>
-        [Required]
-        public Guid KomisijaID { get; set; }
+        public Guid KomisijaID { get; set; } = Guid.Empty!;
 
         /// <summary>
 		/// ID 1. clana.
 		/// </summary>
-        [Required]
-        public Guid Clan1ID { get; set; }
+        public LiceDTO Clan1 { get; set; } = null!;
 
         /// <summary>
 		/// ID 2. clana.
 		/// </summary>
-        [Required]
-        public Guid Clan2ID { get; set; }
+        public LiceDTO Clan2 { get; set; } = null!;
 
         /// <summary>
 		/// ID 3. clana.
 		/// </summary>
-        [Required]
-        public Guid Clan3ID { get; set; }
+        public LiceDTO Clan3 { get; set; } = null!;
 
         /// <summary>
 		/// ID 4. clana.
 		/// </summary>
-        public Guid Clan4ID { get; set; }
+        public LiceDTO? Clan4 { get; set; } = null;
 
         /// <summary>
 		/// ID 5. clana.
 		/// </summary>
-        public Guid Clan5ID { get; set; }
+        public LiceDTO? Clan5 { get; set; } = null;
 
         /// <summary>
 		/// ID predsednika.
 		/// </summary>
-        [Required]
-        public Guid PredsednikID { get; set; }
+        public LiceDTO Predsednik { get; set; } = null!;
     }
 }

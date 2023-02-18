@@ -11,42 +11,42 @@ namespace KomisijaService.Entities
         /// <summary>
 		/// ID komisije.
 		/// </summary>
-        [Key] 
-        public Guid KomisijaID { get; set; }
+        [Key]
+        public Guid KomisijaID { get; set; } = Guid.Empty!;
 
         /// <summary>
 		/// ID 1. clana.
 		/// </summary>
-        [Required]
-        public Guid Clan1ID { get; set; }
+        [Required(ErrorMessage = "Mora imati prvog clana")]
+        public Guid Clan1ID { get; set; } = Guid.Empty!;
 
         /// <summary>
 		/// ID 2. clana.
 		/// </summary>
-        [Required]
-        public Guid Clan2ID { get; set; }
+        [Required(ErrorMessage = "Mora imati drugog clana")]
+        public Guid Clan2ID { get; set; } = Guid.Empty!;
 
         /// <summary>
 		/// ID 3. clana.
 		/// </summary>
-        [Required]
-        public Guid Clan3ID { get; set; }
+        [Required(ErrorMessage = "Mora imati treceg clana")]
+        public Guid Clan3ID { get; set; } = Guid.Empty!;
 
         /// <summary>
 		/// ID 4. clana.
 		/// </summary>
-        public Guid Clan4ID { get; set; }
+        public Guid? Clan4ID { get; set; } = null;
 
         /// <summary>
 		/// ID 5. clana.
 		/// </summary>
-        public Guid Clan5ID { get; set; }
+        public Guid? Clan5ID { get; set; } = null;
 
         /// <summary>
 		/// ID predsednika.
 		/// </summary>
-        [Required]
-        public Guid PredsednikID { get; set; }
+        [Required(ErrorMessage = "Mora imati predsednika")]
+        public Guid PredsednikID { get; set; } = Guid.Empty!;
 
     }
 }

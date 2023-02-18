@@ -1,5 +1,6 @@
 using KomisijaService.Data;
 using KomisijaService.Entities;
+using KomisijaService.ServiceCalls;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -16,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IKomisijaRepository, KomisijaRepository>();
+builder.Services.AddScoped<ILiceService, LiceService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<KomisijaContext>(options =>
@@ -74,7 +76,11 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(setup =>
+    {
+        setup.SwaggerEndpoint("/swagger/KomisijaServiceOpenApiSpecification/swagger.json", "Komisija API");
+        setup.RoutePrefix = "";
+    });
 }
 
 app.UseHttpsRedirection();

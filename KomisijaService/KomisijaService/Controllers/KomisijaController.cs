@@ -2,8 +2,10 @@
 using KomisijaService.Data;
 using KomisijaService.Entities;
 using KomisijaService.Models;
+using KomisijaService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace KomisijaService.Controllers
 {
@@ -20,14 +22,17 @@ namespace KomisijaService.Controllers
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
+        private readonly ILiceService liceService;
+
         /// <summary>
         /// Dependency injection za kontroler.
         /// </summary>
-        public KomisijaController(IKomisijaRepository komisijaRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public KomisijaController(IKomisijaRepository komisijaRepository, LinkGenerator linkGenerator, IMapper mapper, ILiceService liceService)
         {
             this.komisijaRepository = komisijaRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.liceService = liceService;
         }
 
         /// <summary>
@@ -36,18 +41,109 @@ namespace KomisijaService.Controllers
         /// <returns>Vraća potvrdu o listi postojećih komisija.</returns>
 		/// <response code="200">Vraća listu komisija.</response>
 		/// <response code="204">Ne postoje komisija.</response>
+        
+        //[HttpHead]
         [HttpGet]
-        [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<List<KomisijaEntity>> GetKomisije()
+        public ActionResult<List<KomisijaEntity>> GetKomisije([FromHeader] string authorization)
         {
-            //List<KomisijaEntity>
-            var komisije = komisijaRepository.GetKomisije();
-            if (komisije == null || komisije.Count == 0)
+            List<KomisijaEntity> komisije = komisijaRepository.GetKomisije();
+            if (komisije == null && komisije.Count == 0)
                 return NoContent();
-            return Ok(mapper.Map<List<KomisijaDTO>>(komisije));
-            //return Ok(komisije);
+
+            List<KomisijaDTO> komisijeDTO = new();
+            foreach (KomisijaEntity komisija in komisije)
+            {
+                Guid tempClan1ID = komisija.Clan1ID;
+                LiceDTO? clan1 = liceService.GetLiceByIDAsync(tempClan1ID, authorization).Result;
+
+                Guid tempClan2ID = komisija.Clan2ID;
+                LiceDTO? clan2 = liceService.GetLiceByIDAsync(tempClan2ID, authorization).Result;
+
+                Guid tempClan3ID = komisija.Clan3ID;
+                LiceDTO? clan3 = liceService.GetLiceByIDAsync(tempClan3ID, authorization).Result;
+
+                Guid tempPredsednikID = komisija.PredsednikID;
+                LiceDTO? predsednikID = liceService.GetLiceByIDAsync(tempPredsednikID, authorization).Result;
+
+                LiceDTO? clan4;
+                LiceDTO? clan5;
+
+                if (komisija.Clan4ID != null && komisija.Clan5ID != null)
+                {
+                    Guid tempClan4ID = (Guid)komisija.Clan4ID;
+                    Guid tempClan5ID = (Guid)komisija.Clan5ID;
+                    clan4 = liceService.GetLiceByIDAsync(tempClan4ID, authorization).Result;
+                    clan5 = liceService.GetLiceByIDAsync(tempClan5ID, authorization).Result;
+                    if (clan1 == null || clan2 == null || clan3 == null || clan4 == null || clan5 == null || predsednikID == null)
+                        continue;
+                    else
+                    {
+                        KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(komisija);
+                        komisijaDTO.Clan1 = clan1;
+                        komisijaDTO.Clan2 = clan2;
+                        komisijaDTO.Clan3 = clan3;
+                        komisijaDTO.Clan4 = clan4;
+                        komisijaDTO.Clan5 = clan5;
+                        komisijaDTO.Predsednik = predsednikID;
+
+                        komisijeDTO.Add(komisijaDTO);
+                    }
+                }
+                else if (komisija.Clan4ID != null)
+                {
+                    Guid tempClan4ID = (Guid)komisija.Clan4ID;
+                    clan4 = liceService.GetLiceByIDAsync(tempClan4ID, authorization).Result;
+                    if (clan1 == null || clan2 == null || clan3 == null || clan4 == null || predsednikID == null)
+                        continue;
+                    else
+                    {
+                        KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(komisija);
+                        komisijaDTO.Clan1 = clan1;
+                        komisijaDTO.Clan2 = clan2;
+                        komisijaDTO.Clan3 = clan3;
+                        komisijaDTO.Clan4 = clan4;
+                        komisijaDTO.Predsednik = predsednikID;
+
+                        komisijeDTO.Add(komisijaDTO);
+                    }
+                }
+                else if (komisija.Clan5ID != null)
+                {
+                    Guid tempClan5ID = (Guid)komisija.Clan5ID;
+                    clan5 = liceService.GetLiceByIDAsync(tempClan5ID, authorization).Result;
+                    if (clan1 == null || clan2 == null || clan3 == null || clan5 == null || predsednikID == null)
+                        continue;
+                    else
+                    {
+                        KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(komisija);
+                        komisijaDTO.Clan1 = clan1;
+                        komisijaDTO.Clan2 = clan2;
+                        komisijaDTO.Clan3 = clan3;
+                        komisijaDTO.Clan5 = clan5;
+                        komisijaDTO.Predsednik = predsednikID;
+
+                        komisijeDTO.Add(komisijaDTO);
+                    }
+                }
+                else
+                {
+                    if (clan1 == null || clan2 == null || clan3 == null || predsednikID == null)
+                        continue;
+                    else
+                    {
+                        KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(komisija);
+                        komisijaDTO.Clan1 = clan1;
+                        komisijaDTO.Clan2 = clan2;
+                        komisijaDTO.Clan3 = clan3;
+                        komisijaDTO.Predsednik = predsednikID;
+
+                        komisijeDTO.Add(komisijaDTO);
+                    }
+                }
+            }
+            return Ok(komisijeDTO);
         }
 
         /// <summary>
@@ -60,12 +156,100 @@ namespace KomisijaService.Controllers
         [HttpGet("{komisijaID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<KomisijaDTO> GetKomisijaByID(Guid komisijaID)
+        public ActionResult<KomisijaDTO> GetKomisijaByID(Guid komisijaID, [FromHeader] string authorization)
         {
-            var komisija = komisijaRepository.GetKomisijaByID(komisijaID);
+            
+            KomisijaEntity? komisija = komisijaRepository.GetKomisijaByID(komisijaID);
             if (komisija == null)
                 return NotFound();
-            return Ok(mapper.Map<KomisijaDTO>(komisija));
+
+            Guid tempClan1ID = komisija.Clan1ID;
+            LiceDTO? clan1 = liceService.GetLiceByIDAsync(tempClan1ID, authorization).Result;
+
+            Guid tempClan2ID = komisija.Clan2ID;
+            LiceDTO? clan2 = liceService.GetLiceByIDAsync(tempClan2ID, authorization).Result;
+
+            Guid tempClan3ID = komisija.Clan3ID;
+            LiceDTO? clan3 = liceService.GetLiceByIDAsync(tempClan3ID, authorization).Result;
+
+            Guid tempPredsednikID = komisija.PredsednikID;
+            LiceDTO? predsednikID = liceService.GetLiceByIDAsync(tempPredsednikID, authorization).Result;
+
+            LiceDTO? clan4;
+            LiceDTO? clan5;
+
+            if (komisija.Clan4ID != null && komisija.Clan5ID != null)
+            {
+                Guid tempClan4ID = (Guid)komisija.Clan4ID;
+                Guid tempClan5ID = (Guid)komisija.Clan5ID;
+                clan4 = liceService.GetLiceByIDAsync(tempClan4ID, authorization).Result;
+                clan5 = liceService.GetLiceByIDAsync(tempClan5ID, authorization).Result;
+                if (clan1 == null || clan2 == null || clan3 == null || clan4 == null || clan5 == null || predsednikID == null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                else
+                {
+                    KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(komisija);
+                    komisijaDTO.Clan1 = clan1;
+                    komisijaDTO.Clan2 = clan2;
+                    komisijaDTO.Clan3 = clan3;
+                    komisijaDTO.Clan4 = clan4;
+                    komisijaDTO.Clan5 = clan5;
+                    komisijaDTO.Predsednik = predsednikID;
+
+                    return Ok(komisijaDTO);
+                }
+            }
+            else if (komisija.Clan4ID != null)
+            {
+                Guid tempClan4ID = (Guid)komisija.Clan4ID;
+                clan4 = liceService.GetLiceByIDAsync(tempClan4ID, authorization).Result;
+                if (clan1 == null || clan2 == null || clan3 == null || clan4 == null || predsednikID == null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                else
+                {
+                    KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(komisija);
+                    komisijaDTO.Clan1 = clan1;
+                    komisijaDTO.Clan2 = clan2;
+                    komisijaDTO.Clan3 = clan3;
+                    komisijaDTO.Clan4 = clan4;
+                    komisijaDTO.Predsednik = predsednikID;
+
+                    return Ok(komisijaDTO);
+                }
+            }
+            else if (komisija.Clan5ID != null)
+            {
+                Guid tempClan5ID = (Guid)komisija.Clan5ID;
+                clan5 = liceService.GetLiceByIDAsync(tempClan5ID, authorization).Result;
+                if (clan1 == null || clan2 == null || clan3 == null || clan5 == null || predsednikID == null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                else
+                {
+                    KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(komisija);
+                    komisijaDTO.Clan1 = clan1;
+                    komisijaDTO.Clan2 = clan2;
+                    komisijaDTO.Clan3 = clan3;
+                    komisijaDTO.Clan5 = clan5;
+                    komisijaDTO.Predsednik = predsednikID;
+
+                    return Ok(komisijaDTO);
+                }
+            }
+            else
+            {
+                if (clan1 == null || clan2 == null || clan3 == null || predsednikID == null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                else
+                {
+                    KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(komisija);
+                    komisijaDTO.Clan1 = clan1;
+                    komisijaDTO.Clan2 = clan2;
+                    komisijaDTO.Clan3 = clan3;
+                    komisijaDTO.Predsednik = predsednikID;
+
+                    return Ok(komisijaDTO);
+                }
+            }
         }
 
         /// <summary>
@@ -79,19 +263,117 @@ namespace KomisijaService.Controllers
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<KomisijaCreateDTO> CreateKomisija([FromBody] KomisijaCreateDTO komisijaCreateDTO)
+        public ActionResult<KomisijaCreateDTO> CreateKomisija([FromBody] KomisijaCreateDTO komisijaCreateDTO, [FromHeader] string authorization)
         {
             try
             {
-                KomisijaDTO komisija = komisijaRepository.CreateKomisija(komisijaCreateDTO);
-                komisijaRepository.SaveChanges();
+                Guid tempClan1ID = Guid.Parse(komisijaCreateDTO.Clan1ID);
+                LiceDTO? clan1 = liceService.GetLiceByIDAsync(tempClan1ID, authorization).Result;
 
-                string? location = linkGenerator.GetPathByAction("GetKomisija", "Komisija", new { komisijaID = komisija.KomisijaID });
+                Guid tempClan2ID = Guid.Parse(komisijaCreateDTO.Clan2ID);
+                LiceDTO? clan2 = liceService.GetLiceByIDAsync(tempClan2ID, authorization).Result;
 
-                if (location != null)
-                    return Created(location, komisija);
+                Guid tempClan3ID = Guid.Parse(komisijaCreateDTO.Clan3ID);
+                LiceDTO? clan3 = liceService.GetLiceByIDAsync(tempClan3ID, authorization).Result;
+
+                Guid tempPredsednikID = Guid.Parse(komisijaCreateDTO.PredsednikID);
+                LiceDTO? predsednik = liceService.GetLiceByIDAsync(tempPredsednikID, authorization).Result;
+
+                LiceDTO? clan4;
+                LiceDTO? clan5;
+
+                if (clan1 != null && clan2 != null && clan3 != null && predsednik != null)
+                {
+                    if (komisijaCreateDTO.Clan4ID != null && komisijaCreateDTO.Clan5ID != null)
+                    {
+                        clan4 = liceService.GetLiceByIDAsync(Guid.Parse(komisijaCreateDTO.Clan4ID), authorization).Result;
+                        clan5 = liceService.GetLiceByIDAsync(Guid.Parse(komisijaCreateDTO.Clan5ID), authorization).Result;
+                        if (clan4 != null && clan5 != null)
+                        {
+                            KomisijaDTO komisijaDTO = komisijaRepository.CreateKomisija(komisijaCreateDTO);
+                            komisijaRepository.SaveChanges();
+                            komisijaDTO.Clan1 = clan1;
+                            komisijaDTO.Clan2 = clan2;
+                            komisijaDTO.Clan3 = clan3;
+                            komisijaDTO.Clan4 = clan4;
+                            komisijaDTO.Clan5 = clan5;
+                            komisijaDTO.Predsednik = predsednik;
+
+                            string? location = linkGenerator.GetPathByAction("GetKomisijaByID", "Komisija", new { komisijaID = komisijaDTO.KomisijaID });
+
+                            if (location != null)
+                                return Created(location, komisijaDTO);
+                            else
+                                return Created(string.Empty, komisijaDTO);
+                        }
+                        else
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                    }
+                    else if (komisijaCreateDTO.Clan4ID != null)
+                    {
+                        clan4 = liceService.GetLiceByIDAsync(Guid.Parse(komisijaCreateDTO.Clan4ID), authorization).Result;
+                        if (clan4 != null)
+                        {
+                            KomisijaDTO komisijaDTO = komisijaRepository.CreateKomisija(komisijaCreateDTO);
+                            komisijaRepository.SaveChanges();
+                            komisijaDTO.Clan1 = clan1;
+                            komisijaDTO.Clan2 = clan2;
+                            komisijaDTO.Clan3 = clan3;
+                            komisijaDTO.Clan4 = clan4;
+                            komisijaDTO.Predsednik = predsednik;
+
+                            string? location = linkGenerator.GetPathByAction("GetKomisijaByID", "Komisija", new { komisijaID = komisijaDTO.KomisijaID });
+
+                            if (location != null)
+                                return Created(location, komisijaDTO);
+                            else
+                                return Created(string.Empty, komisijaDTO);
+                        }
+                        else
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                    }
+                    else if (komisijaCreateDTO.Clan5ID != null)
+                    {
+                        clan5 = liceService.GetLiceByIDAsync(Guid.Parse(komisijaCreateDTO.Clan5ID), authorization).Result;
+                        if (clan5 != null)
+                        {
+                            KomisijaDTO komisijaDTO = komisijaRepository.CreateKomisija(komisijaCreateDTO);
+                            komisijaRepository.SaveChanges();
+                            komisijaDTO.Clan1 = clan1;
+                            komisijaDTO.Clan2 = clan2;
+                            komisijaDTO.Clan3 = clan3;
+                            komisijaDTO.Clan5 = clan5;
+                            komisijaDTO.Predsednik = predsednik;
+
+                            string? location = linkGenerator.GetPathByAction("GetKomisijaByID", "Komisija", new { komisijaID = komisijaDTO.KomisijaID });
+
+                            if (location != null)
+                                return Created(location, komisijaDTO);
+                            else
+                                return Created(string.Empty, komisijaDTO);
+                        }
+                        else
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                    }
+                    else
+                    {
+                        KomisijaDTO komisijaDTO = komisijaRepository.CreateKomisija(komisijaCreateDTO);
+                        komisijaRepository.SaveChanges();
+                        komisijaDTO.Clan1 = clan1;
+                        komisijaDTO.Clan2 = clan2;
+                        komisijaDTO.Clan3 = clan3;
+                        komisijaDTO.Predsednik = predsednik;
+
+                        string? location = linkGenerator.GetPathByAction("GetKomisijaByID", "Komisija", new { komisijaID = komisijaDTO.KomisijaID });
+
+                        if (location != null)
+                            return Created(location, komisijaDTO);
+                        else
+                            return Created(string.Empty, komisijaDTO);
+                    }
+                }
                 else
-                    return Created("", komisija);
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
             }
             catch (Exception exception)
             {
@@ -112,17 +394,122 @@ namespace KomisijaService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<KomisijaDTO> UpdateKomisija(KomisijaUpdateDTO komisijaUpdateDTO)
+        public ActionResult<KomisijaDTO> UpdateKomisija(KomisijaUpdateDTO komisijaUpdateDTO, [FromHeader] string authorization)
         {
             try
             {
+                KomisijaEntity? oldKomisija = komisijaRepository.GetKomisijaByID(Guid.Parse(komisijaUpdateDTO.KomisijaID));
+                if (oldKomisija == null)
+                    return NotFound();
+
+                Guid tempClan1ID = Guid.Parse(komisijaUpdateDTO.Clan1ID);
+                LiceDTO? clan1 = liceService.GetLiceByIDAsync(tempClan1ID, authorization).Result;
+
+                Guid tempClan2ID = Guid.Parse(komisijaUpdateDTO.Clan2ID);
+                LiceDTO? clan2 = liceService.GetLiceByIDAsync(tempClan2ID, authorization).Result;
+
+                Guid tempClan3ID = Guid.Parse(komisijaUpdateDTO.Clan3ID);
+                LiceDTO? clan3 = liceService.GetLiceByIDAsync(tempClan3ID, authorization).Result;
+
+                Guid tempPredsednikID = Guid.Parse(komisijaUpdateDTO.PredsednikID);
+                LiceDTO? predsednik = liceService.GetLiceByIDAsync(tempPredsednikID, authorization).Result;
+
+                LiceDTO? clan4;
+                LiceDTO? clan5;
+
+                if (clan1 != null && clan2 != null && clan3 != null && predsednik != null)
+                {
+                    if (komisijaUpdateDTO.Clan4ID != null && komisijaUpdateDTO.Clan5ID != null)
+                    {
+                        clan4 = liceService.GetLiceByIDAsync(Guid.Parse(komisijaUpdateDTO.Clan4ID), authorization).Result;
+                        clan5 = liceService.GetLiceByIDAsync(Guid.Parse(komisijaUpdateDTO.Clan5ID), authorization).Result;
+                        if (clan4 != null && clan5 != null)
+                        {
+                            KomisijaEntity komisija = mapper.Map<KomisijaEntity>(komisijaUpdateDTO);
+                            mapper.Map(komisija, oldKomisija);
+                            komisijaRepository.SaveChanges();
+
+                            KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(oldKomisija);
+                            komisijaDTO.Clan1 = clan1;
+                            komisijaDTO.Clan2 = clan2;
+                            komisijaDTO.Clan3 = clan3;
+                            komisijaDTO.Clan4 = clan4;
+                            komisijaDTO.Clan5 = clan5;
+                            komisijaDTO.Predsednik = predsednik;
+
+                            return Ok(komisijaDTO);
+                        }
+                        else
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                    }
+                    else if (komisijaUpdateDTO.Clan4ID != null)
+                    {
+                        clan4 = liceService.GetLiceByIDAsync(Guid.Parse(komisijaUpdateDTO.Clan4ID), authorization).Result;
+                        if (clan4 != null)
+                        {
+                            KomisijaEntity komisija = mapper.Map<KomisijaEntity>(komisijaUpdateDTO);
+                            mapper.Map(komisija, oldKomisija);
+                            komisijaRepository.SaveChanges();
+
+                            KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(oldKomisija);
+                            komisijaDTO.Clan1 = clan1;
+                            komisijaDTO.Clan2 = clan2;
+                            komisijaDTO.Clan3 = clan3;
+                            komisijaDTO.Clan4 = clan4;
+                            komisijaDTO.Predsednik = predsednik;
+
+                            return Ok(komisijaDTO);
+                        }
+                        else
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                    }
+                    else if (komisijaUpdateDTO.Clan5ID != null)
+                    {
+                        clan5 = liceService.GetLiceByIDAsync(Guid.Parse(komisijaUpdateDTO.Clan5ID), authorization).Result;
+                        if (clan5 != null)
+                        {
+                            KomisijaEntity komisija = mapper.Map<KomisijaEntity>(komisijaUpdateDTO);
+                            mapper.Map(komisija, oldKomisija);
+                            komisijaRepository.SaveChanges();
+
+                            KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(oldKomisija);
+                            komisijaDTO.Clan1 = clan1;
+                            komisijaDTO.Clan2 = clan2;
+                            komisijaDTO.Clan3 = clan3;
+                            komisijaDTO.Clan5 = clan5;
+                            komisijaDTO.Predsednik = predsednik;
+
+                            return Ok(komisijaDTO);
+                        }
+                        else
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                    }
+                    else
+                    {
+                        KomisijaEntity komisija = mapper.Map<KomisijaEntity>(komisijaUpdateDTO);
+                        mapper.Map(komisija, oldKomisija);
+                        komisijaRepository.SaveChanges();
+
+                        KomisijaDTO komisijaDTO = mapper.Map<KomisijaDTO>(oldKomisija);
+                        komisijaDTO.Clan1 = clan1;
+                        komisijaDTO.Clan2 = clan2;
+                        komisijaDTO.Clan3 = clan3;
+                        komisijaDTO.Predsednik = predsednik;
+
+                        return Ok(komisijaDTO);
+                    }
+                }
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+
+                /*
                 KomisijaEntity? oldKomisija = komisijaRepository.GetKomisijaByID(komisijaUpdateDTO.KomisijaID);
                 if (oldKomisija == null)
                     return NotFound();
                 KomisijaEntity komisija = mapper.Map<KomisijaEntity>(komisijaUpdateDTO);
                 mapper.Map(komisija, oldKomisija);
                 komisijaRepository.SaveChanges();
-                return Ok(mapper.Map<KomisijaDTO>(oldKomisija));
+                return Ok(mapper.Map<KomisijaDTO>(oldKomisija));*/
             }
             catch (Exception exception)
             {
@@ -135,7 +522,7 @@ namespace KomisijaService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult DeleteKomsija(Guid komisijaID)
+        public IActionResult DeleteKomisija(Guid komisijaID, [FromHeader] string authorization)
         {
             try
             {
