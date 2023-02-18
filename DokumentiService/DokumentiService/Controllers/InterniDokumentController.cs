@@ -129,7 +129,7 @@ namespace DokumentiService.Controllers
         {
             try
             {
-                InterniDokumentEntity? interniDokument = interniDokumentRepository.GetInterniDokumentID(interniDokumentUpdateDTO.InterniDokumentID);
+                InterniDokumentEntity? interniDokument = interniDokumentRepository.GetInterniDokumentID(Guid.Parse(interniDokumentUpdateDTO.InterniDokumentID));
                 if (interniDokument == null)
                     return NotFound();
                 InterniDokumentEntity intdok = mapper.Map<InterniDokumentEntity>(interniDokumentUpdateDTO);

@@ -51,7 +51,7 @@ namespace KorisnikService.Helpers
 				JwtSecurityToken token = new(configuration["JWT:Issuer"],
 										configuration["JWT:Audience"],
 										null,
-										expires: DateTime.Now.AddMinutes(120),
+										expires: DateTime.Now.AddMinutes(1080),
 										signingCredentials: credentials);
 
 				return new JwtSecurityTokenHandler().WriteToken(token);

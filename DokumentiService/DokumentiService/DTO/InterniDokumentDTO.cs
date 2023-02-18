@@ -1,13 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace DokumentiService.DTO
+﻿namespace DokumentiService.DTO
 {
     public class InterniDokumentDTO
     {
+        /// <summary>
+        /// Interni dokument ID
+        /// </summary>
         public Guid InterniDokumentID { get; set; }
-
-        [Required]
-        [MaxLength(100)]
+        /// <summary>
+        /// Putanja Dokumenta
+        /// </summary>
         public string PutanjaDokumenta { get; set; }
     }
 }

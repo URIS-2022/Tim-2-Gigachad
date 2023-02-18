@@ -4,8 +4,9 @@ using UgovorOZakupuService.DTO;
 using UgovorOZakupuService.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using UgovorOZakupuService.ServiceCalls;
 
-namespace DokumentiService.Controllers
+namespace UgovorOZakupuService.Controllers
 {
     /// <summary>
     /// Kontroler za entitete eksternih dokumenata.
@@ -19,31 +20,36 @@ namespace DokumentiService.Controllers
         private readonly IUgovorOZakupuRepository ugovorOZakupuRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
-
+        private readonly IDokumentiService dokumentiService;
         /// <summary>
         /// Dependency injection za kontroler preko konstruktora.
         /// </summary>
-        public UgovorOZakupuController(IUgovorOZakupuRepository ugovorOZakupuRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public UgovorOZakupuController(IUgovorOZakupuRepository ugovorOZakupuRepository, LinkGenerator linkGenerator, IMapper mapper, IDokumentiService dokumentiService)
         {
             this.ugovorOZakupuRepository = ugovorOZakupuRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.dokumentiService = dokumentiService;
         }
         /// <summary>
         /// GET za sve ugovore o zakupu
         /// </summary>
         /// <returns></returns>
+        //[HttpHead]
         [HttpGet]
-        [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<List<UgovorOZakupuDTO>> GetUgovorOZakupu()
+        public ActionResult<List<UgovorOZakupuDTO>> GetUgovorOZakupu([FromHeader] string authorization)
         {
-            var ugovor = ugovorOZakupuRepository.GetUgovorOZakupu();
-            if (ugovor == null || ugovor.Count == 0)
+            List<UgovorOZakupuEntity> ugovori = ugovorOZakupuRepository.GetUgovorOZakupu();
+            if (ugovori == null || ugovori.Count == 0)
                 return NoContent();
-            return Ok(mapper.Map<List<UgovorOZakupuDTO>>(ugovor));
+            return Ok(mapper.Map<List<UgovorOZakupuDTO>>(ugovori)); 
+
+
         }
+
+        
         /// <summary>
         /// Get za Ugovor O Zakupu
         /// </summary>
@@ -70,7 +76,7 @@ namespace DokumentiService.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public IActionResult DeleteUgovorOZakupu(Guid ugovorOZakupuID)
+        public IActionResult DeleteUgovorOZakupu(Guid ugovorOZakupuID, [FromHeader] string  authorization)
         {
             try
             {

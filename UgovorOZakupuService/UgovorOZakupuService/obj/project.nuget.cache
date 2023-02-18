@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HXCz5heB8SX1NQSGylmOfrKWCBSelWDyz0wgQM5S9B+i8PJRTFeK5i7EwRzbr7N20A9wtIa5Pp5G+iccExhRaQ==",
+  "dgSpecHash": "k3qBOUL6x+Pb+zzcWWsyloMG1mRr7YAxXis8XnmQorMaNvDR3/CKH/oUcO+3X6vif13BQDNAZr0lqfF3VXhlIw==",
   "success": true,
   "projectFilePath": "D:\\URIS projekat gigachad\\github repo\\UgovorOZakupuService\\UgovorOZakupuService\\UgovorOZakupuService.csproj",
   "expectedPackageFiles": [
@@ -47,6 +47,7 @@
     "C:\\Users\\Milan Maglov\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Milan Maglov\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\Milan Maglov\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\Milan Maglov\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\Milan Maglov\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\Milan Maglov\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\Milan Maglov\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

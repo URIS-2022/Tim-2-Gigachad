@@ -12,7 +12,7 @@ namespace DokumentiService.Profiles
             CreateMap<InterniDokumentCreateDTO, InterniDokumentEntity>();
             CreateMap<InterniDokumentUpdateDTO, InterniDokumentEntity>();
             CreateMap<InterniDokumentEntity, InterniDokumentEntity>();
-            //CreateMap<InterniDokumentEntity, InterniDokumentCreateDTO>();
+            CreateMap<InterniDokumentEntity, InterniDokumentCreateDTO>();
         }
     }
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DokumentiService.Migrations
 {
     [DbContext(typeof(DokumentContext))]
-    [Migration("20230216215517_migration1")]
-    partial class migration1
+    [Migration("20230217220629_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

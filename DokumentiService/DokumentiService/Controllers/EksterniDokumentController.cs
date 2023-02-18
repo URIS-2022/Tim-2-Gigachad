@@ -134,7 +134,7 @@ namespace DokumentiService.Controllers
         {
             try
             {
-                EksterniDokumentEntity? eksterniDokument = eksterniDokumentRepository.GetEksterniDokumentID(eksterniDokumentUpdateDTO.EksterniDokumentID);
+                EksterniDokumentEntity? eksterniDokument = eksterniDokumentRepository.GetEksterniDokumentID(Guid.Parse(eksterniDokumentUpdateDTO.EksterniDokumentID));
                 if (eksterniDokument == null)
                     return NotFound();
                 EksterniDokumentEntity eksdok = mapper.Map<EksterniDokumentEntity>(eksterniDokumentUpdateDTO);

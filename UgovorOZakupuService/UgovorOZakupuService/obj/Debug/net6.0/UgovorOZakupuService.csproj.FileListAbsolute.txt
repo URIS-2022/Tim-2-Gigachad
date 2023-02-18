@@ -116,3 +116,4 @@ D:\URIS projekat gigachad\github repo\UgovorOZakupuService\UgovorOZakupuService\
 D:\URIS projekat gigachad\github repo\UgovorOZakupuService\UgovorOZakupuService\obj\Debug\net6.0\UgovorOZakupuService.genruntimeconfig.cache
 D:\URIS projekat gigachad\github repo\UgovorOZakupuService\UgovorOZakupuService\obj\Debug\net6.0\ref\UgovorOZakupuService.dll
 D:\URIS projekat gigachad\github repo\UgovorOZakupuService\UgovorOZakupuService\bin\Debug\net6.0\UgovorOZakupuService.xml
+D:\URIS projekat gigachad\github repo\UgovorOZakupuService\UgovorOZakupuService\bin\Debug\net6.0\Newtonsoft.Json.dll

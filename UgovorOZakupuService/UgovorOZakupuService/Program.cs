@@ -1,5 +1,6 @@
 ﻿using UgovorOZakupuService.Data;
 using UgovorOZakupuService.Entities;
+using UgovorOZakupuService.ServiceCalls;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -13,8 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMvc();
-
 builder.Services.AddScoped<IUgovorOZakupuRepository, UgovorOZakupuRepository>();
+builder.Services.AddScoped<IDokumentiService, DokumentiService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<UgovorOZakupuContext>(options =>
