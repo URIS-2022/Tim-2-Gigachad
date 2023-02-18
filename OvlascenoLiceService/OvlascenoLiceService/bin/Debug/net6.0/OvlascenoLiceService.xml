@@ -1,0 +1,737 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OvlascenoLiceService</name>
+    </assembly>
+    <members>
+        <member name="T:OvlascenoLiceService.Controllers.FizickoLiceController">
+            <summary>
+            Kontroler za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.FizickoLiceController.#ctor(OvlascenoLiceService.Data.IFizickoLiceRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.FizickoLiceController.GetFizickaLica">
+            <summary>
+            Vraća listu svih fizičkih lica.
+            </summary>
+            <returns>Vraća potvrdu o listi postojećih fizičkih lica.</returns>
+            <response code="200">Vraća listu fizičkih lica.</response>
+            <response code="204">Ne postoje fizička lica.</response>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.FizickoLiceController.GetFizickoLice(System.Guid)">
+            <summary>
+            Vraća jedno fizičko lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+            <returns>Vraća potvrdu o specifiranom fizičkom licu.</returns>
+            <response code="200">Vraća specifirano fizičko lice.</response>
+            <response code="404">Specifirano fizičko lice ne postoji.</response>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.FizickoLiceController.CreateFizickoLice(OvlascenoLiceService.DTO.FizickoLiceCreateDTO)">
+            <summary>
+            Kreira novo fizičko lice.
+            </summary>
+            <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
+            <returns>Vraća potvrdu o kreiranom fizičkom licu.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog fizičkog lica. \
+            POST /api/fizickaLica \
+            { \
+            	"jmbg": "1234567891234", \
+            	"ime": "Pera", \
+            	"prezime": "Perić" \
+            }
+            </remarks>
+            <response code="201">Vraća kreirano fizičko lice.</response>
+            <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.FizickoLiceController.UpdateFizickoLice(OvlascenoLiceService.DTO.FizickoLiceUpdateDTO)">
+            <summary>
+            Ažurira jedno fizičko lice.
+            </summary>
+            <param name="fizickoLiceUpdateDTO">DTO za ažuriranje fizičkog lica.</param>
+            <returns>Vraća potvrdu o ažuriranom fizičkom licu.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog fizičkog lica. \
+            PUT /api/fizickaLica \
+            { \
+                "id" : "673eb87d-4a9f-4838-a542-3d4cef1b9495"\
+            	"jmbg": "1234567891234", \
+            	"ime": "Pera", \
+            	"prezime": "Perić" \
+            }
+            </remarks>
+            <response code="200">Vraća ažurirano fizičko lice.</response>
+            <response code="404">Specifirano fizičko lice ne postoji.</response>
+            <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja fizičkog lica.</response>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.FizickoLiceController.DeleteFizickoLice(System.Guid)">
+            <summary>
+            Briše jedno fizičko lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+            <returns>Vraća potvrdu o brisanju fizičkog lica.</returns>
+            <response code="204">Specifirano fizičko lice je uspešno obrisano.</response>
+            <response code="404">Specifirano fizičko lice ne postoji i nije obrisano.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog fizičkog lica.</response>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.FizickoLiceController.GetFizickaLicaOptions">
+            <summary>
+            Vraća opcije za rad sa fizičkim licima.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:OvlascenoLiceService.Controllers.OvlascenoLiceController">
+            <summary>
+            Kontroler za entitet ovlasceno lice.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.OvlascenoLiceController.#ctor(OvlascenoLiceService.Data.IOvlascenoLiceRepository,OvlascenoLiceService.Data.IFizickoLiceRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,OvlascenoLiceService.ServiceCalls.IAdresaService)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.OvlascenoLiceController.GetLica(System.String)">
+            <summary>
+            Vraća listu svih ovlascenih lica.
+            </summary>
+            <returns>Vraća potvrdu o listi postojećih ovlascenih lica.</returns>
+            <param name="authorization">Autorizovan token.</param>
+            <response code="200">Vraća listu ovlasccenih lica.</response>
+            <response code="204">Ne postoje ovlascena lica.</response>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.OvlascenoLiceController.GetOvlascenoLiceByID(System.Guid,System.String)">
+            <summary>
+            Vraća listu svih ovlascenih lica.
+            </summary>
+            <returns>Vraća potvrdu o listi postojećih ovlascenih lica.</returns>
+            <param name="ovlascenoLiceID">ID lica.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <response code="200">Vraća listu ovlasccenih lica.</response>
+            <response code="204">Ne postoje ovlascena lica.</response>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.OvlascenoLiceController.CreateOvlascenoLice(OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO,System.String)">
+            <summary>
+            Kreira novo ovlasceno lice.
+            </summary>
+            <param name="ovlascenoLiceCreateDTO">DTO za kreiranje ovlascenog lica.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o kreiranom ovlascenom licu.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog ovlascenog lica. \
+            POST /api/ovlascenaLica \
+               { \
+                   "fizickoLiceID": "7756fb00-136f-4fd8-9f98-36170844c2d4", \
+                   "adresaID": "6f79d49c-1c14-49b7-94c3-19a81c7f97a0", \
+                   "telefon1": "4211218511", \
+                   "telefon2": "3994610111", \
+                   "email": "malicigo@net.org", \
+                   "brojRacuna": "343658891760644" \
+               }
+            </remarks>
+            <response code="201">Vraća kreirano ovlasceno lice.</response>
+            <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja ovlascenog lica.</response>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.OvlascenoLiceController.UpdateOvlascenoLice(OvlascenoLiceService.DTO.OvlascenoLiceUpdateDTO,System.String)">
+             <summary>
+             Modifikuje ovlasceno lice.
+             </summary>
+             <param name="ovlascenoLiceUpdateDTO">DTO za modifikaciju ovlascenog lica.</param>
+             <param name="authorization">Autorizovan token.</param>
+             <returns>Vraća potvrdu o modifikovanom ovlascenom licu.</returns>
+             <remarks>
+             Primer zahteva za kreiranje novog ovlascenog lica. \
+             PUT /api/ovlascenaLica \
+            { \
+                "id": "211af020-36ee-4d7b-84ef-2521af14a0cc", \
+                "fizickoLiceID": "7756fb00-136f-4fd8-9f98-36170844c2d4", \
+                "adresaID": "6f79d49c-1c14-49b7-94c3-19a81c7f97a0", \
+                "telefon1": "222222222", \
+                "telefon2": "111111111", \
+                "email": "malicigo@net.org", \
+                "brojRacuna": "343658891760644" \
+            }
+             </remarks>
+             <response code="201">Vraća modifikovano ovlasceno lice.</response>
+             <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
+             <response code="500">Došlo je do greške na serveru prilikom modifikovanja ovlascenog lica.</response>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.OvlascenoLiceController.DeleteLice(System.Guid,System.String)">
+            <summary>
+            Briše jedno ovlasceno lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="ovlascenoLiceID">ID ovlascenog lica.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o brisanju ovlascenog lica.</returns>
+            <response code="204">Specifirano ovlasceno lice je uspešno obrisano.</response>
+            <response code="404">Specifirano ovlasceno lice ne postoji i nije obrisano.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog ovlascenog lica.</response>
+        </member>
+        <member name="M:OvlascenoLiceService.Controllers.OvlascenoLiceController.GetOvlascenaLicaOptions">
+            <summary>
+            Vraća opcije za rad sa ovlascenim licima.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:OvlascenoLiceService.Data.FizickoLiceRepository">
+            <summary>
+            Repozitorijum za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.FizickoLiceRepository.#ctor(OvlascenoLiceService.Entities.OvlascenoLiceContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.FizickoLiceRepository.GetFizickaLica">
+            <summary>
+            Vraća listu fizičkih lica iz konteksta.
+            </summary>
+            <returns>Vraća listu fizičkih lica.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.FizickoLiceRepository.GetFizickoLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno fizičko lice iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+            <returns>Vraća specifirano fizičko lice.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.FizickoLiceRepository.CreateFizickoLice(OvlascenoLiceService.DTO.FizickoLiceCreateDTO)">
+            <summary>
+            Dodaje novo fizičko lice u kontekst.
+            </summary>
+            <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
+            <returns>Vraća DTO kreiranog fizičkog lica.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.FizickoLiceRepository.DeleteFizickoLice(System.Guid)">
+            <summary>
+            Briše fizičko lice iz konteksta.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.FizickoLiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:OvlascenoLiceService.Data.IFizickoLiceRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.IFizickoLiceRepository.GetFizickaLica">
+            <summary>
+            Vraća listu fizičkih lica iz konteksta.
+            </summary>
+            <returns>Vraća listu fizičkih lica.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.IFizickoLiceRepository.GetFizickoLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno fizičko lice iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+            <returns>Vraća specifirano fizičko lice.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.IFizickoLiceRepository.CreateFizickoLice(OvlascenoLiceService.DTO.FizickoLiceCreateDTO)">
+            <summary>
+            Dodaje novo fizičko lice u kontekst.
+            </summary>
+            <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
+            <returns>Vraća DTO kreiranog fizičkog lica.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.IFizickoLiceRepository.DeleteFizickoLice(System.Guid)">
+            <summary>
+            Briše fizičko lice iz konteksta.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.IFizickoLiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:OvlascenoLiceService.Data.IOvlascenoLiceRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet ovlasceno lice.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.IOvlascenoLiceRepository.GetOvlascenaLica">
+            <summary>
+            Vraća listu ovlascenih lica iz konteksta.
+            </summary>
+            <returns>Vraća listu lica.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.IOvlascenoLiceRepository.GetOvlascenoLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno ovlasceno lice iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="ovlascenoLiceID">ID ovlascenog lica.</param>
+            <returns>Vraća specifirano ovlasceno lice.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.IOvlascenoLiceRepository.CreateOvlascenoLice(OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO)">
+            <summary>
+            Dodaje novo ovlasceno lice u kontekst.
+            </summary>
+            <param name="ovlascenoLiceCreateDTO">DTO za kreiranje ovlascenog lica.</param>
+            <returns>Vraća DTO kreiranog ovlascenog lica.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.IOvlascenoLiceRepository.DeleteOvlascenoLice(System.Guid)">
+            <summary>
+            Briše ovlasceno lice iz konteksta.
+            </summary>
+            <param name="ovlascenoLiceID">ID ovlascenog lica.</param>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.IOvlascenoLiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:OvlascenoLiceService.Data.OvlascenoLiceRepository">
+            <summary>
+            Repozitorijum za entitet lice.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.OvlascenoLiceRepository.#ctor(OvlascenoLiceService.Entities.OvlascenoLiceContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.OvlascenoLiceRepository.GetOvlascenaLica">
+            <summary>
+            Vraća listu ovlascenih lica iz konteksta.
+            </summary>
+            <returns>Vraća listu lica.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.OvlascenoLiceRepository.GetOvlascenoLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno ovlascno lice iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="ovlascenoLiceID">ID ovlascenog lica.</param>
+            <returns>Vraća specifirano ovlasceno lice.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.OvlascenoLiceRepository.CreateOvlascenoLice(OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO)">
+            <summary>
+            Dodaje novo ovlasceno lice u kontekst.
+            </summary>
+            <param name="ovlascenoLiceCreateDTO">DTO za kreiranje ovlascenog lica.</param>
+            <returns>Vraća DTO kreiranog lica.</returns>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.OvlascenoLiceRepository.DeleteOvlascenoLice(System.Guid)">
+            <summary>
+            Briše ovlasceno lice iz konteksta.
+            </summary>
+            <param name="ovlascenoLiceID">ID ovlascenoglica.</param>
+        </member>
+        <member name="M:OvlascenoLiceService.Data.OvlascenoLiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:OvlascenoLiceService.DTO.AdresaDTO">
+            <summary>
+            Model DTO-a za entitet adresa lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.AdresaDTO.Mesto">
+            <summary>
+            Mesto adrese.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.AdresaDTO.Drzava">
+            <summary>
+            Država adrese.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.DTO.FizickoLiceCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.FizickoLiceCreateDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.FizickoLiceCreateDTO.Ime">
+            <summary>
+            Ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.FizickoLiceCreateDTO.Prezime">
+            <summary>
+            Prezime fizičkog lica.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.DTO.FizickoLiceCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.DTO.FizickoLiceDTO">
+            <summary>
+            Model DTO-a za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.FizickoLiceDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.FizickoLiceDTO.PunoIme">
+            <summary>
+            Puno ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.DTO.FizickoLiceUpdateDTO">
+            <summary>
+            Model DTO-a za ažuriranje entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.FizickoLiceUpdateDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.FizickoLiceUpdateDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.FizickoLiceUpdateDTO.Ime">
+            <summary>
+            Ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.FizickoLiceUpdateDTO.Prezime">
+            <summary>
+            Prezime fizičkog lica.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.DTO.FizickoLiceUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje entiteta ovlasceno lice.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO.FizickoLiceID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO.AdresaID">
+            <summary>
+            ID adrese ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO.Telefon1">
+            <summary>
+            Prvi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO.Telefon2">
+            <summary>
+            Drugi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO.Email">
+            <summary>
+            Email ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO.BrojRacuna">
+            <summary>
+            Broj računa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.DTO.OvlascenoLiceCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje entiteta ovlasceno lice.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.DTO.OvlascenoLiceDTO">
+            <summary>
+            Model DTO-a za entitet ovlasceno lice.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceDTO.ID">
+            <summary>
+            ID ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceDTO.Adresa">
+            <summary>
+            Adresa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceDTO.Telefon1">
+            <summary>
+            Prvi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceDTO.Telefon2">
+            <summary>
+            Drugi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceDTO.Email">
+            <summary>
+            Email ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceDTO.BrojRacuna">
+            <summary>
+            Broj računa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.DTO.OvlascenoLiceUpdateDTO">
+            <summary>
+            Model DTO-a za ažuriranje entiteta ovlasceno lice.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceUpdateDTO.ID">
+            <summary>
+            ID ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceUpdateDTO.FizickoLiceID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceUpdateDTO.AdresaID">
+            <summary>
+            ID adrese ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceUpdateDTO.Telefon1">
+            <summary>
+            Prvi telefon ovlsacenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceUpdateDTO.Telefon2">
+            <summary>
+            Drugi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceUpdateDTO.Email">
+            <summary>
+            Email ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.DTO.OvlascenoLiceUpdateDTO.BrojRacuna">
+            <summary>
+            Broj računa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.DTO.OvlascenoLiceUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta ovlascenog lica.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.Entities.FizickoLiceEntity">
+            <summary>
+            Model realnog entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.FizickoLiceEntity.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.FizickoLiceEntity.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.FizickoLiceEntity.Ime">
+            <summary>
+            Ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.FizickoLiceEntity.Prezime">
+            <summary>
+            Prezime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.FizickoLiceEntity.Lica">
+            <summary>
+            Lica fizičkih lica.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.Entities.OvlascenoLiceContext">
+            <summary>
+            DbContext za OvlascenoLiceService mikroservis.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Entities.OvlascenoLiceContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.OvlascenoLiceContext.FizickaLica">
+            <summary>
+            DbSet za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.OvlascenoLiceContext.OvlascenaLica">
+            <summary>
+            DbSet za entitet ovlasceno lice.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Entities.OvlascenoLiceContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.Entities.OvlascenoLiceEntity">
+            <summary>
+            Model realnog entiteta ovlasceno lice.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.OvlascenoLiceEntity.ID">
+            <summary>
+            ID ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.OvlascenoLiceEntity.FizickoLiceID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.OvlascenoLiceEntity.FizickoLice">
+            <summary>
+            Fizičko lice.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.OvlascenoLiceEntity.AdresaID">
+            <summary>
+            ID adrese ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.OvlascenoLiceEntity.Telefon1">
+            <summary>
+            Prvi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.OvlascenoLiceEntity.Telefon2">
+            <summary>
+            Drugi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.OvlascenoLiceEntity.Email">
+            <summary>
+            Email ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:OvlascenoLiceService.Entities.OvlascenoLiceEntity.BrojRacuna">
+            <summary>
+            Broj računa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:OvlascenoLiceService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:OvlascenoLiceService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:OvlascenoLiceService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:OvlascenoLiceService.Profiles.FizickoLiceProfile">
+            <summary>
+            Profil mapera za model entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Profiles.FizickoLiceProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.Profiles.OvlascenoLiceProfile">
+            <summary>
+            Profil mapera za model entiteta ovlasceno lice.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.Profiles.OvlascenoLiceProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta ovlasceno lice.
+            </summary>
+        </member>
+        <member name="T:OvlascenoLiceService.ServiceCalls.AdresaService">
+            <summary>
+            Servis poziva za adresu lica.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.ServiceCalls.AdresaService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.ServiceCalls.AdresaService.GetAdresaByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu lica od drugog mikro servisa.
+            </summary>
+            <param name="adresaLicaID">ID adrese lica.</param>
+            <param name="token">Token za adresu lica mikroservis.</param>
+            <returns>Vraća model DTO-a adrese lica.</returns>
+        </member>
+        <member name="T:OvlascenoLiceService.ServiceCalls.IAdresaService">
+            <summary>
+            Interfejs od servis poziva za adresu lica.
+            </summary>
+        </member>
+        <member name="M:OvlascenoLiceService.ServiceCalls.IAdresaService.GetAdresaByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu lica od drugog mikro servisa.
+            </summary>
+            <param name="adresaID">ID adrese lica.</param>
+            <param name="token">Token za adresu lica mikroservis.</param>
+            <returns>Vraća model DTO-a adrese lica.</returns>
+        </member>
+    </members>
+</doc>

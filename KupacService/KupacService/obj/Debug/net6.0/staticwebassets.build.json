@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "l2xNd32dHosnrV57ZaaZqE78WHXKiO5KSSarfJk7aAk=",
+  "Source": "KupacService",
+  "BasePath": "_content/KupacService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
