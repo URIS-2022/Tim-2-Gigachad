@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using ZalbaService.Data;
 using ZalbaService.Entities;
+using ZalbaService.ServiceCalls;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IZalbaRepository, ZalbaRepository>();
+builder.Services.AddScoped<IKupacService, KupacService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<ZalbaContext>(options =>
@@ -75,7 +77,11 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(setup =>
+    {
+        setup.SwaggerEndpoint("/swagger/ZalbaServiceOpenApiSpecification/swagger.json", "Zalba API");
+        setup.RoutePrefix = "";
+    });
 }
 
 app.UseHttpsRedirection();

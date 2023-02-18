@@ -25,7 +25,7 @@ namespace ZalbaService.Entities
             builder.Entity<ZalbaEntity>().HasData(new
             {
                 ZalbaID = Guid.Parse("08635d18-5f72-4050-8e5e-c520562675b1"),
-                KupacID = Guid.Parse("fb046e3b-a95c-4079-9898-9e16d653d9a3"),
+                KupacID = Guid.Parse("ccc043c6-398c-485d-9840-092c0441ebe8"),
                 TipZalbe = "ZALBA_NA_ODLUKU_O_DAVANJU_NA_KORISCENJE",
                 DatumPodnosenja = new DateTime(2022, 12, 12),
                 Razlog = "Neki razlog",
@@ -36,7 +36,7 @@ namespace ZalbaService.Entities
             builder.Entity<ZalbaEntity>().HasData(new
             {
                 ZalbaID = Guid.Parse("9014d78d-7b9b-4f63-b674-d83ed1d5356a"),
-                KupacID = Guid.Parse("6f356c53-1dfb-48fa-93a1-18577d5db2b6"),
+                KupacID = Guid.Parse("93d92981-a754-41d8-8d1f-b5462a9e0386"),
                 TipZalbe = "ZALBA_NA_ODLUKU_O_DAVANJU_U_ZAKUP",
                 DatumPodnosenja = new DateTime(2021, 11, 11),
                 Razlog = "Neki drugi razlog",

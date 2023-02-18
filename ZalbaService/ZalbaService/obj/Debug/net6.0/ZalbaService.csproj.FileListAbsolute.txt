@@ -89,3 +89,4 @@ C:\Users\marii\Documents\Tim-2-Gigachad\ZalbaService\ZalbaService\obj\Debug\net6
 C:\Users\marii\Documents\Tim-2-Gigachad\ZalbaService\ZalbaService\obj\Debug\net6.0\ZalbaService.genruntimeconfig.cache
 C:\Users\marii\Documents\Tim-2-Gigachad\ZalbaService\ZalbaService\obj\Debug\net6.0\ref\ZalbaService.dll
 C:\Users\marii\Documents\Tim-2-Gigachad\ZalbaService\ZalbaService\bin\Debug\net6.0\ZalbaService.xml
+C:\Users\marii\Documents\Tim-2-Gigachad\ZalbaService\ZalbaService\bin\Debug\net6.0\Newtonsoft.Json.dll

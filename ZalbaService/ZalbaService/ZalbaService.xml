@@ -9,20 +9,20 @@
             Kontroler za entitet žalba.
             </summary>
         </member>
-        <member name="M:ZalbaService.Controllers.ZalbaController.#ctor(ZalbaService.Data.IZalbaRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+        <member name="M:ZalbaService.Controllers.ZalbaController.#ctor(ZalbaService.Data.IZalbaRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,ZalbaService.ServiceCalls.IKupacService)">
             <summary>
             Dependency injection za kontroler.
             </summary>
         </member>
-        <member name="M:ZalbaService.Controllers.ZalbaController.GetZalbe">
+        <member name="M:ZalbaService.Controllers.ZalbaController.GetZalbe(System.String)">
             <summary>
             Vraća listu svih žalbi
             </summary>
             <returns>Vraća potvrdu o listi postojećih žalbi.</returns>
             <response code="200">Vraća listu žalbi.</response>
-            <response code="204">Ne postoje žalbi.</response>
+            <response code="204">Ne postoje žalbe.</response>
         </member>
-        <member name="M:ZalbaService.Controllers.ZalbaController.GetZalbaByID(System.Guid)">
+        <member name="M:ZalbaService.Controllers.ZalbaController.GetZalbaByID(System.Guid,System.String)">
             <summary>
             Vraća jednu žalbu na osnovu prosleđenog ID-ja.
             </summary>
@@ -31,7 +31,7 @@
             /// <response code="200">Vraća specifiranu žalbu.</response>
             <response code="404">Specifirana žalba ne postoji.</response>
         </member>
-        <member name="M:ZalbaService.Controllers.ZalbaController.CreateZalba(ZalbaService.Models.ZalbaCreateDTO)">
+        <member name="M:ZalbaService.Controllers.ZalbaController.CreateZalba(ZalbaService.Models.ZalbaCreateDTO,System.String)">
             <summary>
             Kreira novu žalbu.
             </summary>
@@ -40,7 +40,7 @@
             /// <response code="201">Vraća kreiranu žalbu.</response>
             <response code="500">Došlo je do greške na serveru prilikom kreiranja žalbe.</response>
         </member>
-        <member name="M:ZalbaService.Controllers.ZalbaController.DeleteZalba(System.Guid)">
+        <member name="M:ZalbaService.Controllers.ZalbaController.DeleteZalba(System.Guid,System.String)">
             <summary>
             Briše jednu žalbu na osnovu zadatog ID-ja.
             </summary>
@@ -50,7 +50,7 @@
             <response code="404">Specifirana žalba ne postoji i nije obrisano.</response>
             <response code="500">Došlo je do greške na serveru prilikom brisanja specifirane žalbe.</response>
         </member>
-        <member name="M:ZalbaService.Controllers.ZalbaController.UpdateZalba(ZalbaService.Models.ZalbaUpdateDTO)">
+        <member name="M:ZalbaService.Controllers.ZalbaController.UpdateZalba(ZalbaService.Models.ZalbaUpdateDTO,System.String)">
             <summary>
             Ažurira jednu žalbu.
             </summary>
@@ -87,7 +87,7 @@
         </member>
         <member name="M:ZalbaService.Data.IZalbaRepository.CreateZalba(ZalbaService.Models.ZalbaCreateDTO)">
             <summary>
-            Dodaje novo fizičko lice u kontekst, koje kasnije vraća kao DTO objekat.
+            Dodaje novu žalbu u kontekst, koje kasnije vraća kao DTO objekat.
             </summary>
             <param name="zalba">DTO za kreiranje žalbe.</param>
             <returns>Vraća DTO kreirane žalbe.</returns>
@@ -288,49 +288,239 @@
         <member name="M:ZalbaService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:ZalbaService.Models.AdresaDTO">
+            <summary>
+            Model DTO-a za entitet adresa lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.AdresaDTO.Mesto">
+            <summary>
+            Mesto adrese.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.AdresaDTO.Drzava">
+            <summary>
+            Država adrese.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.FizickoLiceDTO">
+            <summary>
+            Model DTO-a za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.FizickoLiceDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.FizickoLiceDTO.PunoIme">
+            <summary>
+            Puno ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.KontaktOsobaDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KontaktOsobaDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KontaktOsobaDTO.PunoIme">
+            <summary>
+            Puno ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KontaktOsobaDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KontaktOsobaDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
         <member name="T:ZalbaService.Models.KupacDTO">
             <summary>
-            DTO za kupca koji je podneo zalbu.
+            DTO za kupca.
             </summary>
         </member>
-        <member name="P:ZalbaService.Models.KupacDTO.LiceID">
+        <member name="P:ZalbaService.Models.KupacDTO.KupacID">
             <summary>
-            ID lice.
+            ID kupca.
             </summary>
         </member>
-        <member name="P:ZalbaService.Models.KupacDTO.OvlascenoLiceID">
+        <member name="P:ZalbaService.Models.KupacDTO.Lice">
             <summary>
-            ID ovlasceno lice.
+            ID lica kupca.
             </summary>
         </member>
-        <member name="P:ZalbaService.Models.KupacDTO.JavnoNadmetanjeID">
+        <member name="P:ZalbaService.Models.KupacDTO.OvlascenoLice">
             <summary>
-            ID javno nadmetanje.
+            ID ovlascenjog lica.
             </summary>
         </member>
         <member name="P:ZalbaService.Models.KupacDTO.Prioritet">
             <summary>
-            Prioritet javnog nadmetanja.
+            Prioritet kupca.
             </summary>
         </member>
         <member name="P:ZalbaService.Models.KupacDTO.ImaZabranu">
             <summary>
-            Zabrana javnog nadmetanja.
+            Kupac ima/nema zabranu.
             </summary>
         </member>
         <member name="P:ZalbaService.Models.KupacDTO.DatumPocetkaZabrane">
             <summary>
-            Datum pocetka zabrane javnog nadmetanja.
+            Datum pocetka zabrane.
             </summary>
         </member>
         <member name="P:ZalbaService.Models.KupacDTO.DatumZavrsetkaZabrane">
             <summary>
-            Datum kraja zabrane javnog nadmetanja.
+            Datum zavrsetka zabrane.
             </summary>
         </member>
         <member name="P:ZalbaService.Models.KupacDTO.BrojKupovina">
             <summary>
-            Broj kupovina na javnom nadmetanju.
+            Broj kupovina kupca.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.LiceDTO">
+            <summary>
+            Model DTO-a za entitet lice.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.PravnoLice">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.Adresa">
+            <summary>
+            Adresa lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.OvlascenoLice">
+            <summary>
+            Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.OvlascenoLiceDTO">
+            <summary>
+            Model DTO-a za entitet lice.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.ID">
+            <summary>
+            ID ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.Adresa">
+            <summary>
+            Adresa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.Telefon1">
+            <summary>
+            Prvi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.Telefon2">
+            <summary>
+            Drugi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.Email">
+            <summary>
+            Email ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.BrojRacuna">
+            <summary>
+            Broj računa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.PravnoLiceDTO">
+            <summary>
+            Model DTO-a za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.PravnoLiceDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.PravnoLiceDTO.KontaktOsoba">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.PravnoLiceDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.PravnoLiceDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
             </summary>
         </member>
         <member name="T:ZalbaService.Models.ZalbaCreateDTO">
@@ -388,7 +578,7 @@
             ID zalbe.
             </summary>
         </member>
-        <member name="P:ZalbaService.Models.ZalbaDTO.KupacID">
+        <member name="P:ZalbaService.Models.ZalbaDTO.Kupac">
             <summary>
             ID kupca.
             </summary>
@@ -472,6 +662,37 @@
             <summary>
             Profil mapera za model entiteta žalba.
             </summary>
+        </member>
+        <member name="T:ZalbaService.ServiceCalls.IKupacService">
+            <summary>
+            Interfejs od servis poziva za kupca.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.ServiceCalls.IKupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća kupca iz drugog mikroservisa.
+            </summary>
+            <param name="kupacID">ID kupca.</param>
+            <param name="token">Token za kupac mikroservis.</param>
+            <returns>Vraća model DTO-a kupca.</returns>
+        </member>
+        <member name="T:ZalbaService.ServiceCalls.KupacService">
+            <summary>
+            Servis poziva za kupca.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.ServiceCalls.KupacService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.ServiceCalls.KupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća kupca od drugog mikroservisa.
+            </summary>
+            <param name="kupacID">ID kupca.</param>
+            <param name="token">Token za kupac mikroservis.</param>
+            <returns>Vraća model DTO-a kupca.</returns>
         </member>
     </members>
 </doc>

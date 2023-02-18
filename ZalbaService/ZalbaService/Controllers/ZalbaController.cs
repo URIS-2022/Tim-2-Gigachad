@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ZalbaService.Data;
 using ZalbaService.Entities;
 using ZalbaService.Models;
+using ZalbaService.ServiceCalls;
 
 namespace ZalbaService.Controllers
 {
@@ -20,14 +21,16 @@ namespace ZalbaService.Controllers
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
+        private readonly IKupacService kupacService;
         /// <summary>
         /// Dependency injection za kontroler.
         /// </summary>
-        public ZalbaController(IZalbaRepository zalbaRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public ZalbaController(IZalbaRepository zalbaRepository, LinkGenerator linkGenerator, IMapper mapper, IKupacService kupacService)
         {
             this.zalbaRepository = zalbaRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.kupacService = kupacService;
         }
 
         /// <summary>
@@ -35,19 +38,38 @@ namespace ZalbaService.Controllers
         /// </summary>
         /// <returns>Vraća potvrdu o listi postojećih žalbi.</returns>
 		/// <response code="200">Vraća listu žalbi.</response>
-		/// <response code="204">Ne postoje žalbi.</response>
+		/// <response code="204">Ne postoje žalbe.</response>
+        //[HttpHead]
         [HttpGet]
-        [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<List<ZalbaEntity>> GetZalbe()
+        public ActionResult<List<ZalbaEntity>> GetZalbe([FromHeader] string authorization)
         {
-            //return Ok("seses");
-            var zalbe = zalbaRepository.GetZalbe();
+            List<ZalbaEntity> zalbe = zalbaRepository.GetZalbe();
+            if (zalbe == null && zalbe.Count == 0)
+                return NoContent();
+
+            List<ZalbaDTO> zalbeDTO = new();
+            foreach (ZalbaEntity zalba in zalbe)
+            {
+                Guid tempKupacID = zalba.KupacID;
+                KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupacID, authorization).Result;
+
+                if (kupac != null)
+                {
+                    ZalbaDTO zalbaDTO = mapper.Map<ZalbaDTO>(zalba);
+                    zalbaDTO.Kupac = kupac;
+
+                    zalbeDTO.Add(zalbaDTO);
+                }
+                else
+                    continue;
+            }
+            return Ok(zalbeDTO);
+            /*var zalbe = zalbaRepository.GetZalbe();
             if (zalbe == null || zalbe.Count == 0)
                 return NoContent();
-            return Ok(mapper.Map<List<ZalbaDTO>>(zalbe));
-            //return Ok(zalbe);
+            return Ok(mapper.Map<List<ZalbaDTO>>(zalbe));*/
         }
 
         /// <summary>
@@ -60,12 +82,29 @@ namespace ZalbaService.Controllers
         [HttpGet("{zalbaID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<ZalbaDTO> GetZalbaByID(Guid zalbaID)
+        public ActionResult<ZalbaDTO> GetZalbaByID(Guid zalbaID, [FromHeader] string authorization)
         {
+            ZalbaEntity? zalba = zalbaRepository.GetZalbaByID(zalbaID);
+            if (zalba == null) 
+                return NoContent();
+
+            Guid tempKupac = zalba.KupacID;
+            KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupac, authorization).Result;
+
+            if (kupac == null)
+                return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+            else
+            {
+                ZalbaDTO zalbaDTO = mapper.Map<ZalbaDTO>(zalba);
+
+                return Ok(zalbaDTO);
+            }
+                
+            /*
             var zalba = zalbaRepository.GetZalbaByID(zalbaID);
             if (zalba == null)
                 return NotFound();
-            return Ok(mapper.Map<ZalbaDTO>(zalba));
+            return Ok(mapper.Map<ZalbaDTO>(zalba)); */
         }
 
         /// <summary>
@@ -79,11 +118,29 @@ namespace ZalbaService.Controllers
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<ZalbaCreateDTO> CreateZalba([FromBody] ZalbaCreateDTO zalbaCreateDTO)
+        public ActionResult<ZalbaCreateDTO> CreateZalba([FromBody] ZalbaCreateDTO zalbaCreateDTO, [FromHeader] string authorization)
         {
             try
             {
-                ZalbaDTO zalba = zalbaRepository.CreateZalba(zalbaCreateDTO);
+                Guid tempKupac = Guid.Parse(zalbaCreateDTO.KupacID);
+                KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupac, authorization).Result;
+
+                if (kupac == null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                else
+                {
+                    ZalbaDTO zalbaDTO = zalbaRepository.CreateZalba(zalbaCreateDTO);
+                    zalbaRepository.SaveChanges();
+
+                    string? location = linkGenerator.GetPathByAction("GetZalbaByID", "Zalba", new { zalbaID = zalbaDTO.ZalbaID });
+
+                    if (location != null)
+                        return Created(location, zalbaDTO);
+                    else
+                        return Created(string.Empty, zalbaDTO);
+                }
+
+                /*  ZalbaDTO zalba = zalbaRepository.CreateZalba(zalbaCreateDTO);
                 zalbaRepository.SaveChanges();
 
                 string? location = linkGenerator.GetPathByAction("GetZalba", "Zalba", new { zalbaID = zalba.ZalbaID });
@@ -91,7 +148,7 @@ namespace ZalbaService.Controllers
                 if (location != null)
                     return Created(location, zalba);
                 else
-                    return Created("", zalba);
+                    return Created("", zalba);  */
             }
             catch (Exception exception)
             {
@@ -111,7 +168,7 @@ namespace ZalbaService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult DeleteZalba(Guid zalbaID)
+        public IActionResult DeleteZalba(Guid zalbaID, [FromHeader] string authorization)
         {
             try
             {
@@ -145,17 +202,37 @@ namespace ZalbaService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<ZalbaDTO> UpdateZalba(ZalbaUpdateDTO zalbaUpdateDTO)
+        public ActionResult<ZalbaDTO> UpdateZalba(ZalbaUpdateDTO zalbaUpdateDTO, [FromHeader] string authorization)
         {
             try
             {
-                ZalbaEntity? oldZalba = zalbaRepository.GetZalbaByID(zalbaUpdateDTO.ZalbaID);
+                ZalbaEntity? oldZalba = zalbaRepository.GetZalbaByID(Guid.Parse(zalbaUpdateDTO.ZalbaID));
+                if (oldZalba == null)
+                    return NotFound();
+
+                Guid tempKupac = Guid.Parse(zalbaUpdateDTO.KupacID);
+                KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupac, authorization).Result;
+
+                if(kupac == null) 
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
+                else
+                {
+                    ZalbaEntity zalba = mapper.Map<ZalbaEntity>(zalbaUpdateDTO);
+                    mapper.Map(zalba, oldZalba);
+                    zalbaRepository.SaveChanges();
+
+                    ZalbaDTO zalbaDTO = mapper.Map<ZalbaDTO>(oldZalba);
+                    zalbaDTO.Kupac = kupac;
+
+                    return Ok(zalbaDTO);
+                }
+                /*ZalbaEntity? oldZalba = zalbaRepository.GetZalbaByID(zalbaUpdateDTO.ZalbaID);
                 if (oldZalba == null)
                     return NotFound();
                 ZalbaEntity zalba = mapper.Map<ZalbaEntity>(zalbaUpdateDTO);
                 mapper.Map(zalba, oldZalba);
                 zalbaRepository.SaveChanges();
-                return Ok(mapper.Map<ZalbaDTO>(oldZalba));
+                return Ok(mapper.Map<ZalbaDTO>(oldZalba)); */
             }
             catch (Exception exception)
             {

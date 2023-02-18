@@ -501,15 +501,6 @@ namespace KomisijaService.Controllers
                 }
                 else
                     return StatusCode(StatusCodes.Status500InternalServerError, "Izasao je error!");
-
-                /*
-                KomisijaEntity? oldKomisija = komisijaRepository.GetKomisijaByID(komisijaUpdateDTO.KomisijaID);
-                if (oldKomisija == null)
-                    return NotFound();
-                KomisijaEntity komisija = mapper.Map<KomisijaEntity>(komisijaUpdateDTO);
-                mapper.Map(komisija, oldKomisija);
-                komisijaRepository.SaveChanges();
-                return Ok(mapper.Map<KomisijaDTO>(oldKomisija));*/
             }
             catch (Exception exception)
             {
@@ -518,6 +509,15 @@ namespace KomisijaService.Controllers
         }
 
 
+        /// <summary>
+        /// Briše jednu komisiju na osnovu zadatog ID-ja.
+        /// </summary>
+        /// <param name="komisijaID">ID komisije.</param>
+        /// <param name="authorization">Autorizovani token.</param>
+        /// <returns>Vraća potvrdu o brisanju komisije.</returns>
+        /// /// <response code="204">Specifirana komisija je uspešno obrisana.</response>
+		/// <response code="404">Specifirana komisija ne postoji i nije obrisana.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom brisanja specifirane komisije.</response>
         [HttpDelete("{komisijaID}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

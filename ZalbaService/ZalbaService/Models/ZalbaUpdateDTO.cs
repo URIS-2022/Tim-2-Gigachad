@@ -9,13 +9,13 @@ namespace ZalbaService.Models
 		/// ID zalbe.
 		/// </summary>
         [Required(ErrorMessage = "Žalba mora da ima svoj ID.")]
-        public Guid ZalbaID { get; set; }
+        public string ZalbaID { get; set; }
 
         /// <summary>
 		/// ID kupca.
 		/// </summary>
         [Required(ErrorMessage = "Žalba mora da ima kupca koji je podneo.")]
-        public Guid KupacID { get; set; }
+        public string KupacID { get; set; }
 
         /// <summary>
 		/// Tip zalbe.

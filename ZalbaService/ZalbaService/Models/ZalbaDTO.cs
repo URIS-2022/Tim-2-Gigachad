@@ -15,7 +15,7 @@ namespace ZalbaService.Models
         /// <summary>
 		/// ID kupca.
 		/// </summary>
-        public Guid KupacID { get; set; }
+        public KupacDTO Kupac { get; set; }
 
         /// <summary>
 		/// Tip zalbe.
