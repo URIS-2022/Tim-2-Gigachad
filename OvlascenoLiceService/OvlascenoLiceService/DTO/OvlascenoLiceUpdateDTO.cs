@@ -35,14 +35,14 @@ namespace OvlascenoLiceService.DTO
         /// Prvi telefon ovlsacenog lica.
         /// </summary>
         [Required(ErrorMessage = "Lice mora da ima prvi telefon.")]
-        [MinLength(9, ErrorMessage = "Prvi telefon lica mora da bude manji od 9 karaktera.")]
+        [MinLength(9, ErrorMessage = "Prvi telefon lica mora da bude veci od 9 karaktera.")]
         [MaxLength(10, ErrorMessage = "Prvi telefon lica ne sme da bude preko 10 karaktera.")]
         public string Telefon1 { get; set; } = null!;
 
         /// <summary>
         /// Drugi telefon ovlascenog lica.
         /// </summary>
-        [MinLength(9, ErrorMessage = "Drugi telefon lica mora da bude manji od 9 karaktera.")]
+        [MinLength(9, ErrorMessage = "Drugi telefon lica mora da bude veci od 9 karaktera.")]
         [MaxLength(10, ErrorMessage = "Drugi telefon lica ne sme da bude preko 10 karaktera.")]
         public string? Telefon2 { get; set; }
 

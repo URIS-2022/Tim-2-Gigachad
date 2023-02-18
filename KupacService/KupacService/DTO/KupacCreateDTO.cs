@@ -29,7 +29,7 @@ namespace KupacService.DTO
         /// </summary>
 
         [Required(ErrorMessage = "Kupac mora da ima validne podatke podatke o prioritetu.")]
-        [MaxLength(50, ErrorMessage = "Prioritet ne moze da bude duzi od 50 karaktera")]
+        [MaxLength(50, ErrorMessage = "Prioritet ne moze da bude duzi od 100 karaktera")]
         public string Prioritet { get; set; } = string.Empty!;
 
         /// <summary>

@@ -38,7 +38,7 @@ namespace KupacService.Entities
         /// </summary>
 
         [Required(ErrorMessage = "Kupac mora da ima validan prioritet")]
-        [MaxLength(50, ErrorMessage = "Prioritet moze da ima maksimalno 50 karaktera")]
+        [MaxLength(50, ErrorMessage = "Prioritet moze da ima maksimalno 100 karaktera")]
         public string Prioritet { get; set; } = null!;
 
         /// <summary>

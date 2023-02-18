@@ -90,3 +90,4 @@ C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\KupacService\
 C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\KupacService\KupacService\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\KupacService\KupacService\obj\Debug\net6.0\refint\KupacService.dll
 C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\KupacService\KupacService\obj\Debug\net6.0\ref\KupacService.dll
+C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\KupacService\KupacService\bin\Debug\net6.0\Postman\KupacCRUD.postman_collection.json

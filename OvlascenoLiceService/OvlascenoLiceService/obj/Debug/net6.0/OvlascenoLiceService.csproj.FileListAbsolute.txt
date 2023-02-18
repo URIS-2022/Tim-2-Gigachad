@@ -90,3 +90,4 @@ C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\OvlascenoLice
 C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\OvlascenoLiceService\OvlascenoLiceService\obj\Debug\net6.0\OvlascenoLiceService.pdb
 C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\OvlascenoLiceService\OvlascenoLiceService\obj\Debug\net6.0\OvlascenoLiceService.genruntimeconfig.cache
 C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\OvlascenoLiceService\OvlascenoLiceService\obj\Debug\net6.0\ref\OvlascenoLiceService.dll
+C:\Users\Vaso\Desktop\faks\VII_semestar\URIS\microservices_project\OvlascenoLiceService\OvlascenoLiceService\bin\Debug\net6.0\Postman\OvlascenoLiceCRUD.postman_collection.json

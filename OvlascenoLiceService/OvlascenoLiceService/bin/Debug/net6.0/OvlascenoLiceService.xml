@@ -150,7 +150,7 @@
              <remarks>
              Primer zahteva za kreiranje novog ovlascenog lica. \
              PUT /api/ovlascenaLica \
-            {
+            { \
                 "id": "211af020-36ee-4d7b-84ef-2521af14a0cc", \
                 "fizickoLiceID": "7756fb00-136f-4fd8-9f98-36170844c2d4", \
                 "adresaID": "6f79d49c-1c14-49b7-94c3-19a81c7f97a0", \
