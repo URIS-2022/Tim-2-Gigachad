@@ -1,3 +1,4 @@
+using Google.Cloud.Diagnostics.AspNetCore3;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -63,6 +64,8 @@ builder.Services.AddSwaggerGen(setup =>
     var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
     setup.IncludeXmlComments(xmlCommentsPath);
 });
+
+builder.Services.AddGoogleDiagnosticsForAspNetCore("zalbaservicelog", "ZalbaService", "1.0.0");
 
 var app = builder.Build();
 

@@ -1,3 +1,4 @@
+using Google.Cloud.Diagnostics.AspNetCore3;
 using KomisijaService.Data;
 using KomisijaService.Entities;
 using KomisijaService.ServiceCalls;
@@ -62,6 +63,8 @@ builder.Services.AddSwaggerGen(setup =>
     var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
     setup.IncludeXmlComments(xmlCommentsPath);
 });
+
+builder.Services.AddGoogleDiagnosticsForAspNetCore("komisijaservicelog", "KomisijaService", "1.0.0");
 
 var app = builder.Build();
 
