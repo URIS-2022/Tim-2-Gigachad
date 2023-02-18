@@ -73,8 +73,8 @@ namespace UplataService.Migrations
                             BrojRacuna = "005-417672-67",
                             DatumUplate = new DateTime(2022, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Iznos = 45000,
-                            JavnoNadmetanjeID = new Guid("03b0680e-35b6-4449-9150-019b817d7cef"),
-                            KupacID = new Guid("32b7d397-b9d1-472d-bb40-541c68305098"),
+                            JavnoNadmetanjeID = new Guid("abec715b-03e0-4c9a-b97b-327f0af16823"),
+                            KupacID = new Guid("ccc043c6-398c-485d-9840-092c0441ebe8"),
                             PozivNaBroj = "73609",
                             SvrhaUplate = "Uplata na racun",
                             Uplatilac = "Pera Peric"
@@ -85,8 +85,8 @@ namespace UplataService.Migrations
                             BrojRacuna = "214-826330-03",
                             DatumUplate = new DateTime(2022, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Iznos = 1550,
-                            JavnoNadmetanjeID = new Guid("43d6bc15-a674-4552-abee-f3c3360db11e"),
-                            KupacID = new Guid("32c7d397-b9d1-472d-bb40-542c68305098"),
+                            JavnoNadmetanjeID = new Guid("5d62b2c0-d13c-4f74-840f-ad96bf204d69"),
+                            KupacID = new Guid("753d20f5-73a3-4e00-a3a2-e1c43d6b0777"),
                             PozivNaBroj = "18096",
                             SvrhaUplate = "Racun za Telenor",
                             Uplatilac = "Sima Simic"

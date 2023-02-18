@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace UplataService.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,8 +37,8 @@ namespace UplataService.Migrations
                 columns: new[] { "UplataID", "BrojRacuna", "DatumUplate", "Iznos", "JavnoNadmetanjeID", "KupacID", "PozivNaBroj", "SvrhaUplate", "Uplatilac" },
                 values: new object[,]
                 {
-                    { new Guid("167ef647-33c2-466c-b777-5271365bffbd"), "214-826330-03", new DateTime(2022, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 1550, new Guid("43d6bc15-a674-4552-abee-f3c3360db11e"), new Guid("32c7d397-b9d1-472d-bb40-542c68305098"), "18096", "Racun za Telenor", "Sima Simic" },
-                    { new Guid("460f3547-d626-49d7-92c4-6f96ae3714e0"), "005-417672-67", new DateTime(2022, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 45000, new Guid("03b0680e-35b6-4449-9150-019b817d7cef"), new Guid("32b7d397-b9d1-472d-bb40-541c68305098"), "73609", "Uplata na racun", "Pera Peric" }
+                    { new Guid("167ef647-33c2-466c-b777-5271365bffbd"), "214-826330-03", new DateTime(2022, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 1550, new Guid("5d62b2c0-d13c-4f74-840f-ad96bf204d69"), new Guid("753d20f5-73a3-4e00-a3a2-e1c43d6b0777"), "18096", "Racun za Telenor", "Sima Simic" },
+                    { new Guid("460f3547-d626-49d7-92c4-6f96ae3714e0"), "005-417672-67", new DateTime(2022, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 45000, new Guid("abec715b-03e0-4c9a-b97b-327f0af16823"), new Guid("ccc043c6-398c-485d-9840-092c0441ebe8"), "73609", "Uplata na racun", "Pera Peric" }
                 });
         }
 
