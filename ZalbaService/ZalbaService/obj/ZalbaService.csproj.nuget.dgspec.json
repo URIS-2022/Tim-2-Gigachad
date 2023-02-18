@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marii\\Documents\\Tim-2-Gigachad\\ZalbaService\\ZalbaService\\ZalbaService.csproj": {}
+    "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\ZalbaService\\ZalbaService\\ZalbaService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marii\\Documents\\Tim-2-Gigachad\\ZalbaService\\ZalbaService\\ZalbaService.csproj": {
+    "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\ZalbaService\\ZalbaService\\ZalbaService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marii\\Documents\\Tim-2-Gigachad\\ZalbaService\\ZalbaService\\ZalbaService.csproj",
+        "projectUniqueName": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\ZalbaService\\ZalbaService\\ZalbaService.csproj",
         "projectName": "ZalbaService",
-        "projectPath": "C:\\Users\\marii\\Documents\\Tim-2-Gigachad\\ZalbaService\\ZalbaService\\ZalbaService.csproj",
-        "packagesPath": "C:\\Users\\marii\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marii\\Documents\\Tim-2-Gigachad\\ZalbaService\\ZalbaService\\obj\\",
+        "projectPath": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\ZalbaService\\ZalbaService\\ZalbaService.csproj",
+        "packagesPath": "C:\\Users\\ptrra\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\ZalbaService\\ZalbaService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\marii\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ptrra\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
