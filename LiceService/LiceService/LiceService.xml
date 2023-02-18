@@ -1236,7 +1236,7 @@
         </member>
         <member name="T:LiceService.ServiceCalls.AdresaService">
             <summary>
-            Servis poziva za adresu lica.
+            Servis poziva za adresu od AdresaService mikroservis.
             </summary>
         </member>
         <member name="M:LiceService.ServiceCalls.AdresaService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
@@ -1246,24 +1246,24 @@
         </member>
         <member name="M:LiceService.ServiceCalls.AdresaService.GetAdresaByIDAsync(System.Guid,System.String)">
             <summary>
-            Vraća adresu lica od drugog mikro servisa.
+            Vraća adresu od AdresaService mikroservis.
             </summary>
-            <param name="adresaLicaID">ID adrese lica.</param>
-            <param name="token">Token za adresu lica mikroservis.</param>
-            <returns>Vraća model DTO-a adrese lica.</returns>
+            <param name="adresaID">ID adrese.</param>
+            <param name="token">Token za AdresaService mikroservis.</param>
+            <returns>Vraća model DTO-a adresu.</returns>
         </member>
         <member name="T:LiceService.ServiceCalls.IAdresaService">
             <summary>
-            Interfejs od servis poziva za adresu lica.
+            Interfejs od servis poziva za  AdresaService mikroservis.
             </summary>
         </member>
         <member name="M:LiceService.ServiceCalls.IAdresaService.GetAdresaByIDAsync(System.Guid,System.String)">
             <summary>
-            Vraća adresu lica od drugog mikro servisa.
+            Vraća adresu od AdresaService mikroservis.
             </summary>
-            <param name="adresaID">ID adrese lica.</param>
-            <param name="token">Token za adresu lica mikroservis.</param>
-            <returns>Vraća model DTO-a adrese lica.</returns>
+            <param name="adresaID">ID adrese.</param>
+            <param name="token">Token za AdresaService mikroservis.</param>
+            <returns>Vraća model DTO-a adresu.</returns>
         </member>
     </members>
 </doc>

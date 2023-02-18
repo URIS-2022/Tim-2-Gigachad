@@ -5,7 +5,6 @@ using LiceService.Entities;
 using LiceService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace LiceService.Controllers
 {
@@ -60,9 +59,8 @@ namespace LiceService.Controllers
 			List<LiceDTO> licaDTO = new();
 			foreach (LiceEntity lice in lica)
 			{
-				Guid adresaID = lice.AdresaID;
 				LiceDTO liceDTO = mapper.Map<LiceDTO>(lice);
-				AdresaDTO? adresaDTO = adresaService.GetAdresaByIDAsync(adresaID, authorization).Result;
+				AdresaDTO? adresaDTO = adresaService.GetAdresaByIDAsync(lice.AdresaID, authorization).Result;
 				if (adresaDTO != null)
 				{
 					liceDTO.FizickoLice = mapper.Map<FizickoLiceDTO>(fizickoLiceRepository.GetFizickoLiceByID(lice.FizickoLiceID));

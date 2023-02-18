@@ -1,6 +1,6 @@
-﻿//using DeoParceleService.Data;
+﻿using DeoParceleService.Data;
 using DeoParceleService.Entities;
-//using DeoParceleService.ServiceCalls;
+using DeoParceleService.ServiceCalls;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -14,11 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-/*builder.Services.AddScoped<IFizickoLiceRepository, FizickoLiceRepository>();
-builder.Services.AddScoped<IKontaktOsobaRepository, KontaktOsobaRepository>();
-builder.Services.AddScoped<IPravnoLiceRepository, PravnoLiceRepository>();
-builder.Services.AddScoped<ILiceRepository, LiceRepository>();
-builder.Services.AddScoped<IAdresaService, AdresaService>();*/
+builder.Services.AddScoped<IParcelaRepository, ParcelaRepository>();
+builder.Services.AddScoped<IDeoParceleRepository, DeoParceleRepository>();
+builder.Services.AddScoped<IKupacService, KupacService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<DeoParceleContext>(options =>

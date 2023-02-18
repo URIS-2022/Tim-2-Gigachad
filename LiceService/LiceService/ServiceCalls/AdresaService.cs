@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace LiceService.ServiceCalls
 {
 	/// <summary>
-	/// Servis poziva za adresu lica.
+	/// Servis poziva za adresu od AdresaService mikroservis.
 	/// </summary>
 	public class AdresaService : IAdresaService
 	{
@@ -19,15 +19,15 @@ namespace LiceService.ServiceCalls
 		}
 
 		/// <summary>
-		/// Vraća adresu lica od drugog mikro servisa.
+		/// Vraća adresu od AdresaService mikroservis.
 		/// </summary>
-		/// <param name="adresaLicaID">ID adrese lica.</param>
-		/// <param name="token">Token za adresu lica mikroservis.</param>
-		/// <returns>Vraća model DTO-a adrese lica.</returns>
-		public async Task<AdresaDTO?> GetAdresaByIDAsync(Guid adresaLicaID, string? token)
+		/// <param name="adresaID">ID adrese.</param>
+		/// <param name="token">Token za AdresaService mikroservis.</param>
+		/// <returns>Vraća model DTO-a adrese.</returns>
+		public async Task<AdresaDTO?> GetAdresaByIDAsync(Guid adresaID, string? token)
 		{
 			using HttpClient httpClient = new();
-			Uri url = new($"{configuration["Services:AdresaService"]}api/adrese/{adresaLicaID}");
+			Uri url = new($"{configuration["Services:AdresaService"]}api/adrese/{adresaID}");
 			if (token != string.Empty)
 				httpClient.DefaultRequestHeaders.Add("Authorization", token);
 
