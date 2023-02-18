@@ -49,7 +49,7 @@ namespace JavnoNadmetanjeService.Controllers
 		/// <param name="authorization">Autorizovan token.</param>
         /// <response code="200">Vraca listu javnih nadmetanja.</response>
 		/// <response code="204">Ne postoje javna nadmetanja.</response>
-        //[HttpHead]
+        [HttpHead]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -99,12 +99,12 @@ namespace JavnoNadmetanjeService.Controllers
 
 
         /// <summary>
-        /// Vraća jedno javno nadmetanje na osnovu zadatog ID-ja.
+        /// Vraca jedno javno nadmetanje na osnovu zadatog ID-ja.
         /// </summary>
         /// <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
         /// <param name="authorization">Autorizovan token.</param>
-        /// <returns>Vraća potvrdu o specifiranom javnom nadmetanju.</returns>
-        /// <response code="200">Vraća specifirano javno nadmetanje.</response>
+        /// <returns>Vraca potvrdu o specifiranom javnom nadmetanju.</returns>
+        /// <response code="200">Vraca specifirano javno nadmetanje.</response>
         /// <response code="404">Specifirano javno nadmetanje ne postoji.</response>
         [HttpGet("{javnoNadmetanjeID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -153,7 +153,33 @@ namespace JavnoNadmetanjeService.Controllers
 		/// </summary>
 		/// <param name="javnoNadmetanjeCreateDTO">DTO za kreiranje javnog nadmetanja.</param>
 		/// <param name="authorization">Autorizovan token.</param>
-		/// <returns>Vraća potvrdu o kreiranom javnom nadmetanju.</returns>
+		/// <returns>Vraca potvrdu o kreiranom javnom nadmetanju.</returns>
+        /// <remarks>
+		/// Primer zahteva za kreiranje novog javnog nadmetanja. \
+		/// POST /api/javnaNadmetanja \
+		/// { \
+        ///     "id": "02994fa5-b1aa-40c9-80cb-582a3549f0c1", \
+        ///     "licitacijaID": "01724de1-1281-4206-a9ee-a153ba559304", \
+        ///     "adresaID":  "6f79d49c-1c14-49b7-94c3-19a81c7f97a0", \
+        ///     "deoParceleID":  "3846acaf-3d0e-439a-bf27-85344934f2ca", \
+        ///     "kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+        ///     "tipNadmetanja": "OTVARANJE_ZATVORENIH_PONUDA", \
+        ///     "opstina": "ZEDNIK", \
+        ///     "datumNad": "2019-05-25T00:00:00", \
+        ///     "vremePoc": "2019-05-25T10:00:00", \
+        ///     "vremeKraj": "2019-05-25T12:30:00", \
+        ///     "periodZakupa": 28, \
+        ///     "pocetnaCena": 100, \
+        ///     "visinaCene": 1000000, \
+        ///     "izlicitiranaCena": 14000, \
+        ///     "brojUcesnika": 95, \
+        ///     "prijavljeniKupci": 52, \
+        ///     "licitanti": 39, \
+        ///     "krug": 5, \
+        ///     "statusNadmetanja": "DRUGI_KRUG_STARI", \
+        ///     "izuzeto": false \
+        /// }
+		/// </remarks>
 		/// <response code="201">Vraća kreirano javno nadmetanje.</response>
 		/// <response code="422">Došlo je do greške, već postoji atribut na serveru sa istim vrednostima.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja javnog nadmetanja.</response>
@@ -210,18 +236,44 @@ namespace JavnoNadmetanjeService.Controllers
             }
         }
 
-        
+
         /// <summary>
-		/// Azurira jedno javno nadmetanje.
-		/// </summary>
-		/// <param name="javnoNadmetanjeUpdateDTO">DTO za azuriranje javnog nadmetanja.</param>
-		/// <param name="authorization">Autorizovan token.</param>
-		/// <returns>Vraca potvrdu o azuriranom javnom nadmetanju.</returns>
-		/// <response code="200">Vraca azurirano javno nadmetanje.</response>
-		/// <response code="404">Specifirano javno nadmetanje ne postoji.</response>
-		/// <response code="422">Doslo je do greške, već postoji atribut sa istim vrednostima.</response>
-		/// <response code="500">Doslo je do greške na serveru prilikom ažuriranja javnog nadmetanja.</response>
-		[HttpPut]
+        /// Azurira jedno javno nadmetanje.
+        /// </summary>
+        /// <param name="javnoNadmetanjeUpdateDTO">DTO za azuriranje javnog nadmetanja.</param>
+        /// <param name="authorization">Autorizovan token.</param>
+        /// <returns>Vraca potvrdu o azuriranom javnom nadmetanju.</returns>
+        /// <remarks>
+        /// Primer zahteva za azuriranje postojeceg javnog nadmetanja. \
+        /// PUT /api/javnaNadmetanja \
+        /// { \
+        ///     "id": "02994fa5-b1aa-40c9-80cb-582a3549f0c1", \
+        ///     "licitacijaID": "01724de1-1281-4206-a9ee-a153ba559304", \
+        ///     "adresaID":  "6f79d49c-1c14-49b7-94c3-19a81c7f97a0", \
+        ///     "deoParceleID":  "3846acaf-3d0e-439a-bf27-85344934f2ca", \
+        ///     "kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+        ///     "tipNadmetanja": "OTVARANJE_ZATVORENIH_PONUDA", \
+        ///     "opstina": "ZEDNIK", \
+        ///     "datumNad": "2019-05-25T00:00:00", \
+        ///     "vremePoc": "2019-05-25T10:00:00", \
+        ///     "vremeKraj": "2019-05-25T12:30:00", \
+        ///     "periodZakupa": 28, \
+        ///     "pocetnaCena": 700, \
+        ///     "visinaCene": 7000000, \
+        ///     "izlicitiranaCena": 74000, \
+        ///     "brojUcesnika": 95, \
+        ///     "prijavljeniKupci": 52, \
+        ///     "licitanti": 39, \
+        ///     "krug": 5, \
+        ///     "statusNadmetanja": "DRUGI_KRUG_STARI", \
+        ///     "izuzeto": false \
+        /// }
+        /// </remarks>
+        /// <response code="200">Vraca azurirano javno nadmetanje.</response>
+        /// <response code="404">Specifirano javno nadmetanje ne postoji.</response>
+        /// <response code="422">Doslo je do greške, već postoji atribut sa istim vrednostima.</response>
+        /// <response code="500">Doslo je do greške na serveru prilikom ažuriranja javnog nadmetanja.</response>
+        [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

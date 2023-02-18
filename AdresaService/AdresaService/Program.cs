@@ -35,7 +35,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 builder.Services.AddSwaggerGen(setup =>
 {
-    setup.SwaggerDoc("LiceServiceOpenApiSpecification",
+    setup.SwaggerDoc("AdresaServiceOpenApiSpecification",
         new Microsoft.OpenApi.Models.OpenApiInfo()
         {
             Title = "Adresa API",

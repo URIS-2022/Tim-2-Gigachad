@@ -72,7 +72,7 @@ namespace JavnoNadmetanjeService.Controllers
 		/// <param name="licitacijaCreateDTO">DTO za kreiranje licitacije.</param>
 		/// <returns>Vraca potvrdu o kreiranoj licitaciji.</returns>
         /// <remarks>
-		/// Primer zahteva za kreiranje novog fizičkog lica. \
+		/// Primer zahteva za kreiranje nove licitacije. \
 		/// POST /api/licitacije \
 		/// { \
 		///		"datumLicitacije": "1999-02-26T00:00:00", \
@@ -113,7 +113,7 @@ namespace JavnoNadmetanjeService.Controllers
         /// <param name="LicitacijaUpdateDTO">DTO za azuriranje licitacije.</param>
         /// <returns>Vraca potvrdu o azuriranoj licitaciji.</returns>
         /// <remarks>
-		/// Primer zahteva za ažuriranje postojećeg fizičkog lica. \
+		/// Primer zahteva za azuriranje postojece licitacije. \
         /// PUT /api/licitacije \
 		/// { \
 		///		"id": "",

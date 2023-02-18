@@ -37,16 +37,40 @@
             </summary>
             <param name="adresaCreateDTO">DTO za kreiranje adrese.</param>
             <returns>Potvrdu o kreiranoj adresi.</returns>
+            <remarks>
+            Primer zahteva za kreiranje nove adrese. \
+            POST /api/adrese \
+            { \
+            	"id": "abcd6g99-36a6-4688-af14-6b2bba85dcf1", \
+            	"ulica": "Test Ulica", \
+            	"broj": 12, \
+            	"mesto": "Malo Crnice", \
+            	"postanskiBroj": 707 \
+            	"drzava": "Srbija"  \
+            }
+            </remarks>
             <response code="201">Vraća kreiranu adresu.</response>
             <response code="500">Došlo je do greške na serveru prilikom kreiranja adrese.</response>
         </member>
         <member name="M:AdresaService.Controllers.AdresaController.UpdateAdresa(AdresaService.DTO.AdresaUpdateDTO)">
             <summary>
-            Ažurira jednu adresu.
+            Azurira jednu adresu.
             </summary>
-            <param name="AdresaUpdateDTO">DTO za ažuriranje adrese.</param>
-            <returns>Potvrdu o ažuriranoj adresi.</returns>
-            <response code="200">Vraća ažuriranu adresu.</response>
+            <param name="AdresaUpdateDTO">DTO za azuriranje adrese.</param>
+            <returns>Vraca potvrdu o azuriranoj adresi.</returns>
+            <remarks>
+            Primer zahteva za azuriranje postojece licitacije. \
+            PUT /api/adrese \
+            { \
+            	"id": "abcd6g99-36a6-4688-af14-6b2bba85dcf1",
+            	"ulica": "Test Ulica Izmenjena", \
+            	"broj": 12, \
+            	"mesto": "Malo Crnice", \
+            	"postanskiBroj": 707 \
+            	"drzava": "Srbija"  \
+            }
+            </remarks>
+            <response code="200">Vraca azuriranu adresu.</response>
             <response code="404">Specifirana adresa ne postoji.</response>
             <response code="500">Došlo je do greške na serveru prilikom ažuriranja adrese.</response>
         </member>
