@@ -12,27 +12,22 @@ namespace UgovorOZakupuService.DTO
         /// <summary>
         /// ID za eksterni Dokument
         /// </summary>
-        [ForeignKey("EksterniDokument")]
-        public Guid EksterniDokumentID { get; set; }
+        public EksterniDokumentDTO EksterniDokument { get; set; } = null!;
         /// <summary>
         /// ID za interni Dokument
         /// </summary>
-        [ForeignKey("InterniDokument")]
-        public Guid InterniDokumentID { get; set; }
+        public InterniDokumentDTO InterniDokument { get; set; } = null!;
         /// <summary>
         /// Datum donosenja
         /// </summary>
-        [Required]
         public DateTime? DatumDonosenja { get; set; }
         /// <summary>
         /// Sablon dokumenta
         /// </summary>
-        [Required]
         public int? Sablon { get; set; }
         /// <summary>
         /// Status Dokumenta
         /// </summary>
-        [Required]
         public int StatusDokumenta { get; set; }
     }
 }

@@ -20,21 +20,25 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.GetUgovorOZakupu(System.Guid)">
+        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.GetUgovor(System.Guid,System.String)">
             <summary>
-            Get za Ugovor O Zakupu
+            Vraća sve kupce.
             </summary>
-            <param name="ugovorOZakupuID"></param>
-            <returns></returns>
+            <returns>Vraća potvrdu o listi postojećih kupaca.</returns>
+            <param name="ugovorOZakupuID">ID lica.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <response code="200">Vraća listu kupaca.</response>
+            <response code="204">Ne postoje kupaca.</response>
+            <response code="500">Adresa lica nije pronađena.</response>
         </member>
-        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.DeleteUgovorOZakupu(System.Guid)">
+        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.DeleteUgovorOZakupu(System.Guid,System.String)">
             <summary>
             Delete za Ugovor o zakupu za zadati ID
             </summary>
             <param name="ugovorOZakupuID"></param>
             <returns></returns>
         </member>
-        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.CreateUgovorOZakupu(UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO)">
+        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.CreateUgovorOZakupu(UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO,System.String)">
             <summary>
             Kreira novi ugovor o zakupu.
             </summary>
@@ -55,12 +59,12 @@
             ID za dokument
             </summary>
         </member>
-        <member name="P:UgovorOZakupuService.DTO.DokumentDTO.EksterniDokumentID">
+        <member name="P:UgovorOZakupuService.DTO.DokumentDTO.EksterniDokument">
             <summary>
             ID za eksterni Dokument
             </summary>
         </member>
-        <member name="P:UgovorOZakupuService.DTO.DokumentDTO.InterniDokumentID">
+        <member name="P:UgovorOZakupuService.DTO.DokumentDTO.InterniDokument">
             <summary>
             ID za interni Dokument
             </summary>
@@ -80,10 +84,37 @@
             Status Dokumenta
             </summary>
         </member>
+        <member name="P:UgovorOZakupuService.DTO.EksterniDokumentDTO.EksterniDokumentID">
+            <summary>
+            Eksterni dokument ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.EksterniDokumentDTO.PutanjaDokumenta">
+            <summary>
+            Putanj dokumenta
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.InterniDokumentDTO.InterniDokumentID">
+            <summary>
+            Interni dokument ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.InterniDokumentDTO.PutanjaDokumenta">
+            <summary>
+            Putanja Dokumenta
+            </summary>
+        </member>
         <member name="M:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
             Validacija za model DTO-a za kreiranje ugovora.
             </summary>
+        </member>
+        <member name="M:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            za update
+            </summary>
+            <param name="validationContext"></param>
+            <returns></returns>
         </member>
         <member name="F:UgovorOZakupuService.Entities.EntitesEnums.TipGarancije.JEMSTVO">
             <summary>

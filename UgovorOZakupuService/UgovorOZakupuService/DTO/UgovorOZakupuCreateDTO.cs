@@ -18,7 +18,7 @@ namespace UgovorOZakupuService.DTO
         public Guid JavnoNadmetanjeID { get; set; }
 
         [Required(ErrorMessage = "Mora da postoji dokument")]
-        public Guid DokumentID { get; set; }
+        public string DokumentID { get; set; } = null!;
 
         [Required(ErrorMessage = "Mora da postoji datum ugovora")]
         public DateTime DatumUgovora { get; set; }

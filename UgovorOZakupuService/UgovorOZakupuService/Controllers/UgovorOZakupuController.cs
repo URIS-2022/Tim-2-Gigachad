@@ -5,6 +5,7 @@ using UgovorOZakupuService.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UgovorOZakupuService.ServiceCalls;
+using System.Net;
 
 namespace UgovorOZakupuService.Controllers
 {
@@ -41,30 +42,58 @@ namespace UgovorOZakupuService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<UgovorOZakupuDTO>> GetUgovorOZakupu([FromHeader] string authorization)
         {
-            List<UgovorOZakupuEntity> ugovori = ugovorOZakupuRepository.GetUgovorOZakupu();
-            if (ugovori == null || ugovori.Count == 0)
+            List<UgovorOZakupuEntity> ugovoriOZakupu = ugovorOZakupuRepository.GetUgovorOZakupu();
+            if (ugovoriOZakupu == null || ugovoriOZakupu.Count == 0)
                 return NoContent();
-            return Ok(mapper.Map<List<UgovorOZakupuDTO>>(ugovori)); 
 
+            List<UgovorOZakupuDTO>  ugovoriDTO = new();
+            foreach (UgovorOZakupuEntity ugovor in ugovoriOZakupu)
+            {
+                Guid tempDokumentID = ugovor.DokumentID; ;
+                DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempDokumentID, authorization).Result;
+
+                if (dokument != null)
+                {
+                    UgovorOZakupuDTO ugovorOZakupuDTO = mapper.Map<UgovorOZakupuDTO>(ugovor);
+                    ugovorOZakupuDTO.Dokument = dokument;
+                    ugovoriDTO.Add(ugovorOZakupuDTO);
+                }
+                
+            }
+            return Ok(ugovoriDTO);
 
         }
 
-        
+
         /// <summary>
-        /// Get za Ugovor O Zakupu
+        /// Vraća sve kupce.
         /// </summary>
-        /// <param name="ugovorOZakupuID"></param>
-        /// <returns></returns>
+        /// <returns>Vraća potvrdu o listi postojećih kupaca.</returns>
+        /// <param name="ugovorOZakupuID">ID lica.</param>
+        /// <param name="authorization">Autorizovan token.</param>
+        /// <response code="200">Vraća listu kupaca.</response>
+        /// <response code="204">Ne postoje kupaca.</response>
+        /// <response code="500">Adresa lica nije pronađena.</response>
         [HttpGet("{ugovorOZakupuID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-
-        public ActionResult<UgovorOZakupuDTO> GetUgovorOZakupu(Guid ugovorOZakupuID)
+        public ActionResult<UgovorOZakupuDTO> GetUgovor(Guid ugovorOZakupuID, [FromHeader] string authorization)
         {
-            var ugovorOZakupu = ugovorOZakupuRepository.GetUgovorOZakupuID(ugovorOZakupuID);
-            if (ugovorOZakupu == null)
+            UgovorOZakupuEntity? ugovor = ugovorOZakupuRepository.GetUgovorOZakupuID(ugovorOZakupuID);
+            if (ugovor == null)
                 return NotFound();
-            return Ok(mapper.Map<UgovorOZakupuEntity>(ugovorOZakupu));
+
+            Guid tempDokumentID = ugovor.DokumentID; ;
+            DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempDokumentID, authorization).Result;
+            if (dokument != null)
+            {
+                UgovorOZakupuDTO ugovorDTO = mapper.Map<UgovorOZakupuDTO>(ugovor);
+
+                ugovorDTO.Dokument = dokument;
+                return Ok(ugovorDTO);
+            }
+            else
+                return StatusCode(StatusCodes.Status500InternalServerError, "Dokument nije pronađen. ID dokumenta: " + tempDokumentID.ToString() + ".");
         }
         /// <summary>
         /// Delete za Ugovor o zakupu za zadati ID
@@ -107,19 +136,32 @@ namespace UgovorOZakupuService.Controllers
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<UgovorOZakupuDTO> CreateUgovorOZakupu([FromBody] UgovorOZakupuCreateDTO ugovorOZakupuCreateDTO)
+        public ActionResult<UgovorOZakupuDTO> CreateUgovorOZakupu([FromBody] UgovorOZakupuCreateDTO ugovorOZakupuCreateDTO, [FromHeader] string authorization)
         {
             try
             {
-                UgovorOZakupuDTO ugovorOZakupu = ugovorOZakupuRepository.CreateUgovorOZakupu(ugovorOZakupuCreateDTO);
-                ugovorOZakupuRepository.SaveChanges();
+                List<UgovorOZakupuEntity> ugovori =ugovorOZakupuRepository.GetUgovorOZakupu();
+                if (ugovori.Find(e => e.DokumentID == Guid.Parse(ugovorOZakupuCreateDTO.DokumentID)) == null)
+                {
+                    Guid tempID = Guid.Parse(ugovorOZakupuCreateDTO.DokumentID);
+                    DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempID, authorization).Result;
+                    if (dokument != null)
+                    {
+                        UgovorOZakupuDTO ugovor = ugovorOZakupuRepository.CreateUgovorOZakupu(ugovorOZakupuCreateDTO);
+                        ugovorOZakupuRepository.SaveChanges();
 
-                string? location = linkGenerator.GetPathByAction("GetUgovorOZakupu", "UgovorOZakupu", new { ugovorOZakupuID = ugovorOZakupu.UgovorOZakupuID });
+                        string? location = linkGenerator.GetPathByAction("GetUgovorOZakupu", "UgovoroZakupu", new { ugovorOZakupuID = ugovor.UgovorOZakupuID });
 
-                if (location != null)
-                    return Created(location, ugovorOZakupu);
+                        if (location != null)
+                            return Created(location, ugovor);
+                        else
+                            return Created(string.Empty, ugovor);
+                    }
+                    else
+                        return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji dokument sa zadatim ID-jem.");
+                }
                 else
-                    return Created("", ugovorOZakupu);
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji Ugovor koji je predstavljen ovim dokumentom.");
             }
             catch (Exception exception)
             {
@@ -140,13 +182,13 @@ namespace UgovorOZakupuService.Controllers
         {
             try
             {
-                UgovorOZakupuEntity? ugovorOZakupu = ugovorOZakupuRepository.GetUgovorOZakupuID(ugovorOZakupuUpdateDTO.UgovorOZakupuID);
-                if (ugovorOZakupu == null)
+                UgovorOZakupuEntity? oldUgovorOZakupu = ugovorOZakupuRepository.GetUgovorOZakupuID(Guid.Parse(ugovorOZakupuUpdateDTO.UgovorOZakupuID));
+                if (oldUgovorOZakupu == null)
                     return NotFound();
                 UgovorOZakupuEntity ugovor = mapper.Map<UgovorOZakupuEntity>(ugovorOZakupuUpdateDTO);
-                mapper.Map(ugovor, ugovorOZakupu);
+                mapper.Map(ugovor, oldUgovorOZakupu);
                 ugovorOZakupuRepository.SaveChanges();
-                return Ok(mapper.Map<UgovorOZakupuDTO>(ugovorOZakupu));
+                return Ok(mapper.Map<UgovorOZakupuDTO>(oldUgovorOZakupu));
             }
             catch (Exception exception)
             {

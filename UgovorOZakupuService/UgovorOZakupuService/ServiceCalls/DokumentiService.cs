@@ -1,5 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using UgovorOZakupuService.DTO;
+
 
 namespace UgovorOZakupuService.ServiceCalls
 {
@@ -21,7 +24,7 @@ namespace UgovorOZakupuService.ServiceCalls
         public async Task<DokumentDTO?> GetDokumentByIDAsync(Guid dokumentID, string token)
         {
             using HttpClient httpClient = new();
-            Uri url = new($"{configuration["Services:DokumentiService"]}api/Dokument/{dokumentID}");
+            Uri url = new($"{configuration["Services:DokumentiService"]}api/Dokumenti/{dokumentID}");
             if (token != string.Empty)
                 httpClient.DefaultRequestHeaders.Add("Authorization", token);
 
@@ -39,5 +42,7 @@ namespace UgovorOZakupuService.ServiceCalls
             else
                 return null;
         }
+        
+
     }
 }

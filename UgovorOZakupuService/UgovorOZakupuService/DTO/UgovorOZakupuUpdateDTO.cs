@@ -1,26 +1,39 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using static UgovorOZakupuService.Entities.EntitesEnums;
 
 namespace UgovorOZakupuService.DTO
 {
-    public class UgovorOZakupuUpdateDTO
+    public class UgovorOZakupuUpdateDTO : IValidatableObject
     {
         [Required(ErrorMessage = "Mora da postoji ID")]
-        public Guid UgovorOZakupuID { get; set; }
+        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        public string UgovorOZakupuID { get; set; }
         [Required(ErrorMessage = "Mora da postoji deo parcele")]
-        public Guid DeoParceleID { get; set; }
+        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        public string DeoParceleID { get; set; }
 
         [Required(ErrorMessage = "Mora da postoji kupac")]
-        public Guid KupacID { get; set; }
+        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        public string KupacID { get; set; }
 
         [Required(ErrorMessage = "Mora da postoji ovlasceno lice")]
-        public Guid OvlascenoLiceID { get; set; }
+        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        public string OvlascenoLiceID { get; set; }
 
         [Required(ErrorMessage = "Mora da postoji javno nadmetanje")]
-        public Guid JavnoNadmetanjeID { get; set; }
+        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        public string JavnoNadmetanjeID { get; set; }
 
         [Required(ErrorMessage = "Mora da postoji dokument")]
-        public Guid DokumentID { get; set; }
+        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        public string DokumentID { get; set; }
 
         [Required(ErrorMessage = "Mora da postoji datum ugovora")]
         public DateTime? DatumUgovora { get; set; }
@@ -28,5 +41,17 @@ namespace UgovorOZakupuService.DTO
         public int? TrajanjeUgovora { get; set; }
         [Required(ErrorMessage = "Mora da postoji tip garancije")]
         public string TipGarancije { get; set; }
+        /// <summary>
+        /// za update
+        /// </summary>
+        /// <param name="validationContext"></param>
+        /// <returns></returns>
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Enum.TryParse(TipGarancije.ToUpper(), out TipGarancije tempGarancija))
+                TipGarancije = tempGarancija.ToString();
+            else
+                yield return new ValidationResult("Tip garancije mora da bude: JEMSTVO, BANKARSKAGARANCIJA, GARANCIJANEKRETNINOM, ZIRANTSKA, UPLATAGOTOVINOM.", new[] { "UgovorOZakupuCreateDTO" });
+        }
     }
 }
