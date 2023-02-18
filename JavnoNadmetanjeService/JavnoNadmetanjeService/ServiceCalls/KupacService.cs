@@ -27,7 +27,7 @@ namespace JavnoNadmetanjeService.ServiceCalls
         public async Task<KupacDTO?> GetKupacByIDAsync(Guid najboljiKupacID, string? token)
         {
             using HttpClient httpClient = new();
-            Uri url = new($"{configuration["Services:KupacService"]}api/adrese/{najboljiKupacID}");
+            Uri url = new($"{configuration["Services:KupacService"]}api/kupci/{najboljiKupacID}");
             if (token != string.Empty)
                 httpClient.DefaultRequestHeaders.Add("Authorization", token);
 

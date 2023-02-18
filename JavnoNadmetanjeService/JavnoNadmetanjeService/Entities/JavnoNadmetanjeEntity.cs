@@ -14,8 +14,6 @@ namespace JavnoNadmetanjeService.Entities
 		[Key]
         public Guid ID { get; set; }
 
-
-
         /// <summary>
 		/// strani kljuc - ID licitacije.
 		/// </summary>
@@ -37,13 +35,13 @@ namespace JavnoNadmetanjeService.Entities
         /// <summary>
 		/// strani kljuc - ID dela parcele.
 		/// </summary>
-        //[Required(ErrorMessage = "Javno nadmetanje mora da ima deo parcele.")]
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima deo parcele.")]
         public Guid DeoParceleID { get; set; }
 
         /// <summary>
 		/// strani kljuc - ID najboljeg kupca.
 		/// </summary>
-        //[Required(ErrorMessage = "Javno nadmetanje mora da ima najboljeg kupca.")]
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima najboljeg kupca.")]
         public Guid KupacID { get; set; }
 
         /// <summary>

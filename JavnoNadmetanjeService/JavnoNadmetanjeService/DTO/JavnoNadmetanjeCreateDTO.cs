@@ -139,13 +139,13 @@ namespace JavnoNadmetanjeService.DTO
             if (VremePoc >= VremeKraj)
                 yield return new ValidationResult("Vreme kraja nadmetanja ne sme da bude pre vremena pocetka.", new[] { "JavnoNadmetanjeCreateDTO" });
 
-            if (PocetnaCena < VisinaCene)
+            if (PocetnaCena > VisinaCene)
                 yield return new ValidationResult("Pocetna cena je uvek manja od najvise cene.", new[] { "JavnoNadmetanjeCreateDTO" });
 
-            if (IzlicitiranaCena <= VisinaCene)
+            if (IzlicitiranaCena >= VisinaCene)
                 yield return new ValidationResult("Izlicitirana cena ne sme da predje definisanu visinu cene zemljista", new[] { "JavnoNadmetanjeCreateDTO" });
 
-            if (IzlicitiranaCena >= PocetnaCena)
+            if (IzlicitiranaCena <= PocetnaCena)
                 yield return new ValidationResult("Izlicitirana cena moze biti jednaka ili veca od pocetne cene", new[] { "JavnoNadmetanjeCreateDTO" });
 
             if (Enum.TryParse(TipNadmetanja.ToUpper(), out TipNadmetanja tempTip))

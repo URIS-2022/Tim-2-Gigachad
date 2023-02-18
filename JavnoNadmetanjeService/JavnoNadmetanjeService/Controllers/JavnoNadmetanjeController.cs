@@ -6,6 +6,7 @@ using JavnoNadmetanjeService.ServiceCalls;
 using LicitacijaService.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Xml.Linq;
 
 namespace JavnoNadmetanjeService.Controllers
 {
@@ -147,7 +148,6 @@ namespace JavnoNadmetanjeService.Controllers
         }
 
 
-        /*
         /// <summary>
 		/// Kreira novo javno nadmetanje.
 		/// </summary>
@@ -167,23 +167,39 @@ namespace JavnoNadmetanjeService.Controllers
             {
                 Guid adresaID = Guid.Parse(javnoNadmetanjeCreateDTO.AdresaID);
                 AdresaDTO? adresaDTO = adresaService.GetAdresaByIDAsync(adresaID, authorization).Result;
+
+                Guid deoParceleID = Guid.Parse(javnoNadmetanjeCreateDTO.DeoParceleID);
+                DeoParceleDTO? deoParceleDTO = deoParceleService.GetDeoParceleByIDAsync(deoParceleID, authorization).Result;
+
+                Guid kupacID = Guid.Parse(javnoNadmetanjeCreateDTO.KupacID);
+                KupacDTO? kupacDTO = kupacService.GetKupacByIDAsync(kupacID, authorization).Result;
+
                 if (adresaDTO != null)
                 {
-                    JavnoNadmetanjeDTO javnoNadmetanje = javnoNadmetanjeRepository.CreateJavnoNadmetanje(javnoNadmetanjeCreateDTO);
-                    javnoNadmetanjeRepository.SaveChanges();
-                    javnoNadmetanje.FizickoLice = mapper.Map<FizickoLiceDTO>(fizickoLiceRepository.GetFizickoLiceByID(Guid.Parse(javnoNadmetanjeCreateDTO.FizickoLiceID)));
-                    if (Guid.TryParse(javnoNadmetanjeCreateDTO.PravnoLiceID, out Guid pravnoLiceID))
+                    if (kupacDTO != null)
                     {
-                        
+                        if (deoParceleDTO != null)
+                        {
+                            JavnoNadmetanjeDTO javnoNadmetanje = javnoNadmetanjeRepository.CreateJavnoNadmetanje(javnoNadmetanjeCreateDTO);
+                            javnoNadmetanjeRepository.SaveChanges();
+
+                            javnoNadmetanje.Licitacija = mapper.Map<LicitacijaDTO>(licitacijaRepository.GetLicitacijaByID(Guid.Parse(javnoNadmetanjeCreateDTO.LicitacijaID)));
+                            javnoNadmetanje.Adresa = adresaDTO;
+                            javnoNadmetanje.DeoParcele = deoParceleDTO;
+                            javnoNadmetanje.Kupac = kupacDTO;
+
+                            string? location = linkGenerator.GetPathByAction("GetJavnoNadmetanje", "Kupac", new { javnoNadmetanjeID = javnoNadmetanje.ID });
+
+                            if (location != null)
+                                return Created(location, javnoNadmetanje);
+                            else
+                                return Created(string.Empty, javnoNadmetanje);
+                        }
+                        else
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Deo parcele nije pronadjen. ID dela parcele: " + deoParceleID.ToString() + ".");
                     }
-                    javnoNadmetanje.Adresa = adresaDTO;
-
-                    string? location = linkGenerator.GetPathByAction("GetLice", "Lice", new { javnoNadmetanjeID = javnoNadmetanje.ID });
-
-                    if (location != null)
-                        return Created(location, javnoNadmetanje);
                     else
-                        return Created(string.Empty, javnoNadmetanje);
+                        return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronadjen. ID kupca: " + kupacID.ToString() + ".");
                 }
                 else
                     return StatusCode(StatusCodes.Status500InternalServerError, "Adresa javnog nadmetanja nije pronadjena. ID adrese nadmetanja: " + adresaID.ToString() + ".");
@@ -193,19 +209,18 @@ namespace JavnoNadmetanjeService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
         }
-        */
 
-        /*
+        
         /// <summary>
-		/// Ažurira jedno javno nadmetanje.
+		/// Azurira jedno javno nadmetanje.
 		/// </summary>
-		/// <param name="javnoNadmetanjeUpdateDTO">DTO za ažuriranje javnog nadmetanja.</param>
+		/// <param name="javnoNadmetanjeUpdateDTO">DTO za azuriranje javnog nadmetanja.</param>
 		/// <param name="authorization">Autorizovan token.</param>
-		/// <returns>Vraća potvrdu o ažuriranom javnom nadmetanju.</returns>
-		/// <response code="200">Vraća ažurirano javno nadmetanje.</response>
+		/// <returns>Vraca potvrdu o azuriranom javnom nadmetanju.</returns>
+		/// <response code="200">Vraca azurirano javno nadmetanje.</response>
 		/// <response code="404">Specifirano javno nadmetanje ne postoji.</response>
-		/// <response code="422">Došlo je do greške, već postoji atribut sa istim vrednostima.</response>
-		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja javnog nadmetanja.</response>
+		/// <response code="422">Doslo je do greške, već postoji atribut sa istim vrednostima.</response>
+		/// <response code="500">Doslo je do greške na serveru prilikom ažuriranja javnog nadmetanja.</response>
 		[HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -215,13 +230,56 @@ namespace JavnoNadmetanjeService.Controllers
         {
             try
             {
+                JavnoNadmetanjeEntity? oldJavnoNadmetanje = javnoNadmetanjeRepository.GetJavnoNadmetanjeByID(javnoNadmetanjeUpdateDTO.ID);
+                if (oldJavnoNadmetanje == null)
+                    return NotFound();
+
+                List<JavnoNadmetanjeEntity> javnaNadmetanja = javnoNadmetanjeRepository.GetJavnaNadmetanja();
+                JavnoNadmetanjeEntity? tempJavnoNadmetanje = javnaNadmetanja.Find(e => e.ID == javnoNadmetanjeUpdateDTO.ID);
+                if (tempJavnoNadmetanje != null)
+                    javnaNadmetanja.Remove(tempJavnoNadmetanje);
+
+                Guid adresaID = Guid.Parse(javnoNadmetanjeUpdateDTO.AdresaID);
+                AdresaDTO? adresaDTO = adresaService.GetAdresaByIDAsync(adresaID, authorization).Result;
+
+                Guid deoParceleID = Guid.Parse(javnoNadmetanjeUpdateDTO.DeoParceleID);
+                DeoParceleDTO? deoParceleDTO = deoParceleService.GetDeoParceleByIDAsync(deoParceleID, authorization).Result;
+
+                Guid kupacID = Guid.Parse(javnoNadmetanjeUpdateDTO.KupacID);
+                KupacDTO? kupacDTO = kupacService.GetKupacByIDAsync(kupacID, authorization).Result;
+
+                if (adresaDTO != null)
+                {
+                    if (kupacDTO != null)
+                    {
+                        if (deoParceleDTO != null)
+                        {
+                            JavnoNadmetanjeEntity javnoNadmetanje = mapper.Map<JavnoNadmetanjeEntity>(javnoNadmetanjeUpdateDTO);
+                            mapper.Map(javnoNadmetanje, oldJavnoNadmetanje);
+                            javnoNadmetanjeRepository.SaveChanges();
+
+                            JavnoNadmetanjeDTO javnoNadmetanjeDTO = mapper.Map<JavnoNadmetanjeDTO>(oldJavnoNadmetanje);
+
+                            javnoNadmetanjeDTO.Licitacija = mapper.Map<LicitacijaDTO>(licitacijaRepository.GetLicitacijaByID(Guid.Parse(javnoNadmetanjeUpdateDTO.LicitacijaID)));
+                            javnoNadmetanjeDTO.Adresa = adresaDTO;
+                            javnoNadmetanjeDTO.DeoParcele = deoParceleDTO;
+                            javnoNadmetanjeDTO.Kupac = kupacDTO;
+                            return Ok(javnoNadmetanjeDTO);
+                        }
+                        else
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Deo parcele nije pronadjen. ID dela parcele: " + deoParceleID.ToString() + ".");
+                    }
+                    else
+                        return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronadjen. ID kupca: " + kupacID.ToString() + ".");
+                }
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Adresa javnog nadmetanja nije pronadjena. ID adrese nadmetanja: " + adresaID.ToString() + ".");
             }
             catch (Exception exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
         }
-        */
 
 
         /// <summary>

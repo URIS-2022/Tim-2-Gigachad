@@ -71,6 +71,16 @@ namespace JavnoNadmetanjeService.Controllers
 		/// </summary>
 		/// <param name="licitacijaCreateDTO">DTO za kreiranje licitacije.</param>
 		/// <returns>Vraca potvrdu o kreiranoj licitaciji.</returns>
+        /// <remarks>
+		/// Primer zahteva za kreiranje novog fizičkog lica. \
+		/// POST /api/licitacije \
+		/// { \
+		///		"datumLicitacije": "1999-02-26T00:00:00", \
+		///		"rok": "2023-02-18T00:00:00", \
+		///		"ogrnMaxPovrs": "13", \
+        ///		"korakCene": "15" \
+		/// }
+		/// </remarks>
 		/// <response code="201">Vraca kreiranu licitaciju.</response>
 		/// <response code="500">Doslo je do greske na serveru prilikom kreiranja licitacije.</response>
         [HttpPost]
@@ -101,11 +111,21 @@ namespace JavnoNadmetanjeService.Controllers
         /// Azurira jednu licitaciju.
         /// </summary>
         /// <param name="LicitacijaUpdateDTO">DTO za azuriranje licitacije.</param>
-        /// <returns>Potvrdu o azuriranoj licitaciji.</returns>
+        /// <returns>Vraca potvrdu o azuriranoj licitaciji.</returns>
+        /// <remarks>
+		/// Primer zahteva za ažuriranje postojećeg fizičkog lica. \
+        /// PUT /api/licitacije \
+		/// { \
+		///		"id": "",
+        ///     "datumLicitacije": "1999-02-27T00:00:00", \
+		///		"rok": "2023-02-17T00:00:00", \
+		///		"ogrnMaxPovrs": "77", \
+        ///		"korakCene": "25" \
+		/// }
+        /// </remarks>
         /// <response code="200">Vraca azuriranu licitaciju.</response>
         /// <response code="404">Specifirana licitacija ne postoji.</response>
         /// <response code="500">Doslo je do greske na serveru prilikom azuriranja licitacije.</response>
-        //[HttpHead]
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -133,7 +153,7 @@ namespace JavnoNadmetanjeService.Controllers
         /// Brise jednu licitaciju na osnovu zadatog ID-ja.
         /// </summary>
         /// <param name="licitacijaID">ID licitacije.</param>
-        /// <returns>Potvrdu o brisanju licitacije.</returns>
+        /// <returns>Vraca potvrdu o brisanju licitacije.</returns>
         /// <response code="204">Specifirana licitacija je uspesno obrisana.</response>
         /// <response code="404">Specifirana licitacija ne postoji.</response>
         /// <response code="500">Doslo je do greske na serveru prilikom brisanja specifiranoe licitacije.</response>
@@ -163,7 +183,7 @@ namespace JavnoNadmetanjeService.Controllers
         }
 
         /// <summary>
-        /// Vraća opcije za rad sa licitacijama.
+        /// Vraca opcije za rad sa licitacijama.
         /// </summary>
         /// <returns>Vraca prazan 200 HTTP kod.</returns>
         /// <response code="200">Vraca prazan 200 HTTP kod.</response>

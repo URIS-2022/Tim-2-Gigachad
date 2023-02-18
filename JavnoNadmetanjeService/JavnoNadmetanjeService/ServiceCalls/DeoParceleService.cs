@@ -27,7 +27,7 @@ namespace JavnoNadmetanjeService.ServiceCalls
         public async Task<DeoParceleDTO?> GetDeoParceleByIDAsync(Guid deoParceleID, string? token)
         {
             using HttpClient httpClient = new();
-            Uri url = new($"{configuration["Services:DeoParceleService"]}api/adrese/{deoParceleID}");
+            Uri url = new($"{configuration["Services:DeoParceleService"]}api/deloviParcela/{deoParceleID}");
             if (token != string.Empty)
                 httpClient.DefaultRequestHeaders.Add("Authorization", token);
 
