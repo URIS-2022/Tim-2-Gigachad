@@ -42,7 +42,7 @@
             <response code="404">Specifirana uplata ne postoji i nije obrisana.</response>
             <response code="500">Došlo je do greške na serveru prilikom brisanja uplate.</response>
         </member>
-        <member name="M:UplataService.Controllers.UplataController.CreateUplata(UplataService.Models.UplataCreateDTO)">
+        <member name="M:UplataService.Controllers.UplataController.CreateUplata(UplataService.Models.UplataCreateDTO,System.String)">
             <summary>
             Kreira novu uplatu.
             </summary>
@@ -51,7 +51,7 @@
             <response code="201">Vraća kreiranu uplatu.</response>
             <response code="500">Došlo je do greške na serveru prilikom kreiranja uplate.</response>
         </member>
-        <member name="M:UplataService.Controllers.UplataController.UpdateUplata(UplataService.Models.UplataUpdateDTO)">
+        <member name="M:UplataService.Controllers.UplataController.UpdateUplata(UplataService.Models.UplataUpdateDTO,System.String)">
             <summary>
             Ažurira jednu uplatu.
             </summary>

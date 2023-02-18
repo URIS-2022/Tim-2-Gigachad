@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using UplataService.Data;
 using UplataService.Entities;
 using UplataService.Models;
@@ -136,19 +137,26 @@ namespace UplataService.Controllers
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<UplataCreateDTO> CreateUplata([FromBody] UplataCreateDTO uplataCreateDTO)
+        public ActionResult<UplataCreateDTO> CreateUplata([FromBody] UplataCreateDTO uplataCreateDTO, [FromHeader] string authorization)
         {
             try
             {
-                UplataDTO uplata = UplataRepository.CreateUplata(uplataCreateDTO);
-                UplataRepository.SaveChanges();
+                Guid tempID = Guid.Parse(uplataCreateDTO.KupacID);
+                KupacDTO? kupac = KupacService.GetKupacByIDAsync(tempID, authorization).Result;
+                if (kupac != null)
+                {
+                    UplataDTO uplata = UplataRepository.CreateUplata(uplataCreateDTO);
+                    UplataRepository.SaveChanges();
+                    
+                    string? location = linkGenerator.GetPathByAction("GetUplata", "Uplata", new { UplataID = uplata.UplataID });
 
-                string? location = linkGenerator.GetPathByAction("GetUplata", "Uplata", new { uplataID = uplata.UplataID });
-
-                if (location != null)
-                    return Created(location, uplata);
+                    if (location != null)
+                        return Created(location, uplata);
+                    else
+                        return Created(string.Empty, uplata);
+                }
                 else
-                    return Created("", uplata);
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji kupac sa zadatim ID-jem.");
             }
             catch (Exception exception)
             {
@@ -169,17 +177,28 @@ namespace UplataService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<UplataDTO> UpdateUplata(UplataUpdateDTO uplataUpdateDTO)
+        public ActionResult<UplataDTO> UpdateUplata([FromBody] UplataUpdateDTO uplataUpdateDTO, [FromHeader] string authorization)
         {
             try
             {
-                UplataEntity? oldUplata = UplataRepository.GetUplataByID(uplataUpdateDTO.UplataID);
+                UplataEntity? oldUplata = UplataRepository.GetUplataByID(Guid.Parse(uplataUpdateDTO.UplataID));
                 if (oldUplata == null)
                     return NotFound();
-                UplataEntity uplata = mapper.Map<UplataEntity>(uplataUpdateDTO);
-                mapper.Map(uplata, oldUplata);
-                UplataRepository.SaveChanges();
-                return Ok(mapper.Map<UplataDTO>(oldUplata));
+
+                Guid tempID = Guid.Parse(uplataUpdateDTO.KupacID);
+                KupacDTO? kupac = KupacService.GetKupacByIDAsync(tempID, authorization).Result;
+                if (kupac != null)
+                {
+                    UplataEntity uplata = mapper.Map<UplataEntity>(uplataUpdateDTO);
+                    mapper.Map(uplata, oldUplata);
+                    UplataRepository.SaveChanges();
+
+                    UplataDTO uplataDTO = mapper.Map<UplataDTO>(oldUplata);
+
+                    return Ok(uplataDTO);
+                }
+                else
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji lice sa zadatim ID-jem.");
             }
             catch (Exception exception)
             {

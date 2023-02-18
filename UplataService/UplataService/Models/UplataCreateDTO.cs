@@ -12,34 +12,33 @@ namespace UplataService.Models
         /// ID javnog nadmetanja.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima javno nadmetanje.")]
-        public JavnoNadmetanjeDTO JavnoNadmetanjeID { get; set; } = null!;
+        public string JavnoNadmetanjeID { get; set; } = null!;
 
         /// <summary>
         /// ID kupca.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima kupca.")]
-        public KupacDTO Kupac { get; set; } = null!;
+        public string KupacID { get; set; } = null!;
 
         /// <summary>
         /// Broj racuna.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima broj racuna.")]
         [MaxLength(30, ErrorMessage = "Broj racuna ne sme da bude preko 30 karaktera.")]
-        public string? BrojRacuna { get; set; } = null!;
+        public string BrojRacuna { get; set; } = null!;
 
         /// <summary>
         /// Poziv na broj.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima poziv na broj.")]
         [MaxLength(10, ErrorMessage = "Poziv na broj ne sme da bude preko 10 karaktera.")]
-        public string? PozivNaBroj { get; set; } = null!;
+        public string PozivNaBroj { get; set; } = null!;
 
         /// <summary>
         /// Iznos.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima iznos.")]
-        [MaxLength(30, ErrorMessage = "Iznos ne sme da bude preko 30 karaktera.")]
-        public int? Iznos { get; set; } = 0!;
+        public int Iznos { get; set; } = 0!;
 
         /// <summary>
         /// Ime uplatioca.

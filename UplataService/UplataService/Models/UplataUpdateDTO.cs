@@ -11,19 +11,19 @@ namespace UplataService.Models
         /// ID uplate.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima ID.")]
-        public Guid UplataID { get; set; } = Guid.Empty!;
+        public string UplataID { get; set; } = null!;
 
         /// <summary>
         /// ID javnog nadmetanja.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima javno nadmetanje.")]
-        public JavnoNadmetanjeDTO JavnoNadmetanjeID { get; set; } = null!;
+        public string JavnoNadmetanjeID { get; set; } = null!;
 
         /// <summary>
         /// ID kupca.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima kupca.")]
-        public KupacDTO Kupac { get; set; } = null!;
+        public string KupacID { get; set; } = null!;
 
         /// <summary>
         /// Broj racuna.
@@ -43,7 +43,6 @@ namespace UplataService.Models
         /// Iznos.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima iznos.")]
-        [MaxLength(30, ErrorMessage = "Iznos ne sme da bude preko 30 karaktera.")]
         public int Iznos { get; set; } = 0!;
 
         /// <summary>
