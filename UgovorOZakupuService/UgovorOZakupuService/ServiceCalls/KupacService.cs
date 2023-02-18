@@ -21,7 +21,7 @@ namespace UgovorOZakupuService.ServiceCalls
         public async Task<KupacDTO?> GetKupacByIDAsync(Guid kupacID, string token)
         {
             using HttpClient httpClient = new();
-            Uri url = new($"{configuration["Services:KupacService"]}api/Kupac/{kupacID}");
+            Uri url = new($"{configuration["Services:KupacService"]}api/kupci/{kupacID}");
             if (token != string.Empty)
                 httpClient.DefaultRequestHeaders.Add("Authorization", token);
 

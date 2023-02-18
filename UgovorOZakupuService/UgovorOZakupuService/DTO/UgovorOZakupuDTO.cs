@@ -9,16 +9,12 @@ namespace UgovorOZakupuService.DTO
         
         public Guid UgovorOZakupuID { get; set; }
 
-        
-        public Guid DeoParceleID { get; set; }
+
+        public DeoParceleDTO DeoParcele { get; set; } = null!;
 
 
         public KupacDTO Kupac { get; set; } = null!;
-
-        
-        public Guid OvlascenoLiceID { get; set; }
-
-        
+       
         public Guid JavnoNadmetanjeID { get; set; }
 
 

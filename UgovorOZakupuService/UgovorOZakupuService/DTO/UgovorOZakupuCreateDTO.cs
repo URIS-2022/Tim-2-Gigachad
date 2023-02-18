@@ -9,10 +9,7 @@ namespace UgovorOZakupuService.DTO
         public Guid DeoParceleID { get; set; }
 
         [Required(ErrorMessage = "Mora da postoji kupac")]
-        public Guid KupacID { get; set; }
-
-        [Required(ErrorMessage = "Mora da postoji ovlasceno lice")]
-        public Guid OvlascenoLiceID { get; set; }
+        public string KupacID { get; set; } = null!;
 
         [Required(ErrorMessage = "Mora da postoji javno nadmetanje")]
         public Guid JavnoNadmetanjeID { get; set; }

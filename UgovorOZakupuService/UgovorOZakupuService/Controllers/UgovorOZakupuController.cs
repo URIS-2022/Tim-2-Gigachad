@@ -23,22 +23,24 @@ namespace UgovorOZakupuService.Controllers
         private readonly IMapper mapper;
         private readonly IDokumentiService dokumentiService;
         private readonly IKupacService kupacService;
+        private readonly IDeoParceleService deoParceleService;
         /// <summary>
         /// Dependency injection za kontroler preko konstruktora.
         /// </summary>
-        public UgovorOZakupuController(IUgovorOZakupuRepository ugovorOZakupuRepository, LinkGenerator linkGenerator, IMapper mapper, IDokumentiService dokumentiService, IKupacService kupacService)
+        public UgovorOZakupuController(IUgovorOZakupuRepository ugovorOZakupuRepository, LinkGenerator linkGenerator, IMapper mapper, IDokumentiService dokumentiService, IKupacService kupacService, IDeoParceleService deoParceleService)
         {
             this.ugovorOZakupuRepository = ugovorOZakupuRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
             this.dokumentiService = dokumentiService;
-            this.kupacService = kupacService;   
+            this.kupacService = kupacService;
+            this.deoParceleService = deoParceleService;
         }
         /// <summary>
         /// GET za sve ugovore o zakupu
         /// </summary>
         /// <returns></returns>
-        //[HttpHead]
+        [HttpHead]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -54,14 +56,18 @@ namespace UgovorOZakupuService.Controllers
                 Guid tempDokumentID = ugovor.DokumentID; ;
                 DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempDokumentID, authorization).Result;
 
-               // Guid temnpKupacID = ugovor.KupacID;
-               // KupacDTO? kupac = kupacService.GetKupacByIDAsync(temnpKupacID, authorization).Result;
+                Guid temnpKupacID = ugovor.KupacID;
+                KupacDTO? kupac = kupacService.GetKupacByIDAsync(temnpKupacID, authorization).Result;
 
-                if (dokument != null  /*kupac != null*/)
+                Guid tempDeoParceleID = ugovor.DeoParceleID;
+                DeoParceleDTO? deoParcele = deoParceleService.GetDeoParceleByIDAsync(tempDeoParceleID, authorization).Result;
+
+                if (dokument != null && kupac != null && deoParcele != null)
                 {
                     UgovorOZakupuDTO ugovorOZakupuDTO = mapper.Map<UgovorOZakupuDTO>(ugovor);
                     ugovorOZakupuDTO.Dokument = dokument;
-                    //ugovorOZakupuDTO.Kupac = kupac;
+                    ugovorOZakupuDTO.Kupac = kupac;
+                    ugovorOZakupuDTO.DeoParcele = deoParcele;
                     ugovoriDTO.Add(ugovorOZakupuDTO);
                 }
                 else
@@ -95,10 +101,20 @@ namespace UgovorOZakupuService.Controllers
             DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempDokumentID, authorization).Result;
             if (dokument != null)
             {
-                UgovorOZakupuDTO ugovorDTO = mapper.Map<UgovorOZakupuDTO>(ugovor);
+                Guid tempKupacID = ugovor.KupacID; ;
+                KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupacID, authorization).Result;
+                if (kupac != null)
+                {
+                    UgovorOZakupuDTO ugovorDTO = mapper.Map<UgovorOZakupuDTO>(ugovor);
+                    ugovorDTO.Kupac = kupac;
+                    ugovorDTO.Dokument = dokument;
+                    return Ok(ugovorDTO);
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronadjen. ID kupca: " + tempKupacID.ToString() + ".");
+                }
 
-                ugovorDTO.Dokument = dokument;
-                return Ok(ugovorDTO);
             }
             else
                 return StatusCode(StatusCodes.Status500InternalServerError, "Dokument nije pronađen. ID dokumenta: " + tempDokumentID.ToString() + ".");
@@ -155,16 +171,26 @@ namespace UgovorOZakupuService.Controllers
                     DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempID, authorization).Result;
                     if (dokument != null)
                     {
-                        UgovorOZakupuDTO ugovor = ugovorOZakupuRepository.CreateUgovorOZakupu(ugovorOZakupuCreateDTO);
-                        ugovorOZakupuRepository.SaveChanges();
+                        Guid tempKupacID = Guid.Parse(ugovorOZakupuCreateDTO.KupacID);
+                        KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupacID, authorization).Result;
+                        if (kupac != null)
+                        {
+                            UgovorOZakupuDTO ugovor = ugovorOZakupuRepository.CreateUgovorOZakupu(ugovorOZakupuCreateDTO);
+                            ugovorOZakupuRepository.SaveChanges();
 
-                        ugovor.Dokument = dokument;
-                        string? location = linkGenerator.GetPathByAction("GetUgovorOZakupu", "UgovoroZakupu", new { ugovorOZakupuID = ugovor.UgovorOZakupuID });
+                            ugovor.Dokument = dokument;
+                            ugovor.Kupac = kupac;
+                            string? location = linkGenerator.GetPathByAction("GetUgovorOZakupu", "UgovoroZakupu", new { ugovorOZakupuID = ugovor.UgovorOZakupuID });
 
-                        if (location != null)
-                            return Created(location, ugovor);
+                            if (location != null)
+                                return Created(location, ugovor);
+                            else
+                                return Created(string.Empty, ugovor);
+                        }
                         else
-                            return Created(string.Empty, ugovor);
+                        {
+                            return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji kupac sa zadatim ID.");
+                        }
                     }
                     else
                         return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji dokument sa zadatim ID-jem.");
@@ -195,23 +221,40 @@ namespace UgovorOZakupuService.Controllers
                 if (oldUgovorOZakupu == null)
                     return NotFound();
 
-                Guid tempID = Guid.Parse(ugovorOZakupuUpdateDTO.DokumentID);
-                DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempID, authorization).Result;
-                if (dokument != null)
+                List<UgovorOZakupuEntity> ugovori = ugovorOZakupuRepository.GetUgovorOZakupu();
+                UgovorOZakupuEntity? tempUgovor = ugovori.Find(e => e.UgovorOZakupuID == Guid.Parse(ugovorOZakupuUpdateDTO.UgovorOZakupuID));
+                if(tempUgovor == null)
                 {
-                    UgovorOZakupuEntity ugovor = mapper.Map<UgovorOZakupuEntity>(ugovorOZakupuUpdateDTO);
-                    mapper.Map(ugovor, oldUgovorOZakupu);
-                    ugovorOZakupuRepository.SaveChanges();
+                    ugovori.Remove(tempUgovor);
+                }
+                    Guid tempID = Guid.Parse(ugovorOZakupuUpdateDTO.DokumentID);
+                    DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempID, authorization).Result;
+                    if (dokument != null)
+                    {
+                        Guid tempKupacID = Guid.Parse(ugovorOZakupuUpdateDTO.KupacID);
+                        KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupacID, authorization).Result;
+                        if (kupac != null)
+                        {
+                            UgovorOZakupuEntity ugovor = mapper.Map<UgovorOZakupuEntity>(ugovorOZakupuUpdateDTO);
+                            mapper.Map(ugovor, oldUgovorOZakupu);
+                            ugovorOZakupuRepository.SaveChanges();
 
-                    UgovorOZakupuDTO UGOVORDTO = mapper.Map<UgovorOZakupuDTO>(oldUgovorOZakupu);
-                    UGOVORDTO.Dokument = dokument; 
-                    return Ok(UGOVORDTO);
+                            UgovorOZakupuDTO UGOVORDTO = mapper.Map<UgovorOZakupuDTO>(oldUgovorOZakupu);
+                            UGOVORDTO.Dokument = dokument;
+                            UGOVORDTO.Kupac = kupac;
+                            return Ok(UGOVORDTO);
+                        }
+                        else
+                        {
+                            return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji kupac sa zadatim ID");
+                        }
+                    }
+                    else
+                    {
+                        return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji dokument sa ID.");
+                    }
                 }
-                else
-                {
-                    return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji dokument sa ID.");
-                }
-            }
+                
             catch (Exception exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
@@ -221,6 +264,17 @@ namespace UgovorOZakupuService.Controllers
         }
 
 
-
+        /// <summary>
+        /// Vraća opcije za rad.
+        /// </summary>
+        /// <returns>Vraća prazan 200 HTTP kod.</returns>
+        /// <response code="200">Vraća prazan 200 HTTP kod.</response>
+        [HttpOptions]
+        [AllowAnonymous]
+        public IActionResult GetUgovoriOptions()
+        {
+            Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
+            return Ok();
+        }
     }
 }

@@ -43,9 +43,6 @@ namespace UgovorOZakupuService.Migrations
                     b.Property<Guid>("KupacID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("OvlascenoLiceID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("TipGarancije")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -62,11 +59,10 @@ namespace UgovorOZakupuService.Migrations
                         {
                             UgovorOZakupuID = new Guid("dc662e18-1bb0-4f43-bb36-b20eab32a292"),
                             DatumUgovora = new DateTime(2007, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DeoParceleID = new Guid("006c5863-3eb4-4e65-afab-f3f653dec82a"),
-                            DokumentID = new Guid("c9c1ccd3-e953-490e-b69c-cf903d8758f9"),
+                            DeoParceleID = new Guid("edf1f7ca-3b73-4cb8-8cfd-4bd615dd6ada"),
+                            DokumentID = new Guid("cbaf109e-4cba-4382-9a65-8eacf0567b4d"),
                             JavnoNadmetanjeID = new Guid("fa9c9d6b-e4ce-43b9-9bc9-04fc98872e19"),
-                            KupacID = new Guid("035e91b3-55ab-4d36-b41b-95235a2efaa3"),
-                            OvlascenoLiceID = new Guid("d3a26942-69f6-4f28-b5d2-05eba4b3ba1a"),
+                            KupacID = new Guid("ccc043c6-398c-485d-9840-092c0441ebe8"),
                             TipGarancije = "JEMSTVO",
                             TrajanjeUgovora = 8
                         },
@@ -74,11 +70,10 @@ namespace UgovorOZakupuService.Migrations
                         {
                             UgovorOZakupuID = new Guid("1a41fbb4-ad86-4eec-be18-3ca94c1682cc"),
                             DatumUgovora = new DateTime(2007, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DeoParceleID = new Guid("ba05b8cf-42dc-4d35-b5bc-5f309b7ca43e"),
-                            DokumentID = new Guid("378ffff9-f997-4b7f-8c6e-c674918ef2e9"),
+                            DeoParceleID = new Guid("3846acaf-3d0e-439a-bf27-85344934f2ca"),
+                            DokumentID = new Guid("8f807775-67a4-4c52-825c-63cc8da27c98"),
                             JavnoNadmetanjeID = new Guid("c29c41d4-b729-41fe-a484-d04219fdb5a0"),
-                            KupacID = new Guid("020c15d1-0928-4a1e-8fc1-45dcfa24c303"),
-                            OvlascenoLiceID = new Guid("a332bcad-8049-4c73-a729-4fe6527b9ae7"),
+                            KupacID = new Guid("753d20f5-73a3-4e00-a3a2-e1c43d6b0777"),
                             TipGarancije = "BANKARSKAGARANCIJA",
                             TrajanjeUgovora = 8
                         });

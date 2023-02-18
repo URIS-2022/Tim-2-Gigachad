@@ -23,11 +23,6 @@ namespace UgovorOZakupuService.DTO
         [Required(ErrorMessage = "Mora da postoji ovlasceno lice")]
         [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
         [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-        public string OvlascenoLiceID { get; set; }
-
-        [Required(ErrorMessage = "Mora da postoji javno nadmetanje")]
-        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
         public string JavnoNadmetanjeID { get; set; }
 
         [Required(ErrorMessage = "Mora da postoji dokument")]

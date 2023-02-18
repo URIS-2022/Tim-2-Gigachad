@@ -17,6 +17,9 @@ builder.Services.AddMvc();
 builder.Services.AddScoped<IUgovorOZakupuRepository, UgovorOZakupuRepository>();
 builder.Services.AddScoped<IDokumentiService, DokumentiService>();
 builder.Services.AddScoped<IKupacService, KupacService>();
+builder.Services.AddScoped<IDeoParceleService, DeoParceleService>();
+
+
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<UgovorOZakupuContext>(options =>

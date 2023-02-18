@@ -28,13 +28,6 @@ namespace UgovorOZakupuService.Entities
         [Required(ErrorMessage = "Mora imati kupca")]
         public Guid KupacID { get; set; }
         /// <summary>
-        /// ID ovlascenog lica
-        /// </summary>
-
-        [ForeignKey("OvlascenoLiceDTO")]
-        [Required(ErrorMessage = "Mora imati ovlasceno lice")]
-        public Guid OvlascenoLiceID { get; set; }
-        /// <summary>
         /// ID javnog nadmetanja
         /// </summary>
 

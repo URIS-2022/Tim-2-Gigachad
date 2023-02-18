@@ -9,7 +9,7 @@
             Kontroler za entitete eksternih dokumenata.
             </summary>
         </member>
-        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.#ctor(UgovorOZakupuService.Data.IUgovorOZakupuRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,UgovorOZakupuService.ServiceCalls.IDokumentiService,UgovorOZakupuService.ServiceCalls.IKupacService)">
+        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.#ctor(UgovorOZakupuService.Data.IUgovorOZakupuRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,UgovorOZakupuService.ServiceCalls.IDokumentiService,UgovorOZakupuService.ServiceCalls.IKupacService,UgovorOZakupuService.ServiceCalls.IDeoParceleService)">
             <summary>
             Dependency injection za kontroler preko konstruktora.
             </summary>
@@ -54,6 +54,13 @@
             <param name="ugovorOZakupuUpdateDTO"></param>
             <returns></returns>
         </member>
+        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.GetUgovoriOptions">
+            <summary>
+            Vraća opcije za rad.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.AdresaDTO.ID">
             <summary>
             ID adrese.
@@ -77,6 +84,66 @@
         <member name="P:UgovorOZakupuService.DTO.AdresaDTO.Drzava">
             <summary>
             Država(E).
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.ID">
+            <summary>
+            ID dela parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.Parcela">
+            <summary>
+            ID parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.Kupac">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.RedniBroj">
+            <summary>
+            Redni broj dela parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.Povrsina">
+            <summary>
+            Površina dela parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.BrojNekretnina">
+            <summary>
+            Broj nekretnina dela parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.Obradivost">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.Kultura">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.Klasa">
+            <summary>
+            Klasa dela parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.ZasticenaZona">
+            <summary>
+            Zaštićena zona dela parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.OblikSvojine">
+            <summary>
+            Oblik svojine dela parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.Odvodnjavanje">
+            <summary>
+            Odvodnjavanje dela parcele.
             </summary>
         </member>
         <member name="P:UgovorOZakupuService.DTO.DokumentDTO.DokumentID">
@@ -285,6 +352,31 @@
             Broj računa ovlascenog lica.
             </summary>
         </member>
+        <member name="P:UgovorOZakupuService.DTO.ParcelaDTO.ID">
+            <summary>
+            ID parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.ParcelaDTO.Kupac">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.ParcelaDTO.Oznaka">
+            <summary>
+            Oznaka parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.ParcelaDTO.UkupnaPovrsina">
+            <summary>
+            Ukupna površina parcele.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.ParcelaDTO.KatastarskaOpstina">
+            <summary>
+            Katastarska opština parcele.
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.PravnoLiceDTO.ID">
             <summary>
             ID pravnog lica.
@@ -367,11 +459,6 @@
             ID kupca
             </summary>
         </member>
-        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.OvlascenoLiceID">
-            <summary>
-            ID ovlascenog lica
-            </summary>
-        </member>
         <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.JavnoNadmetanjeID">
             <summary>
             ID javnog nadmetanja
@@ -397,17 +484,25 @@
             Tip garancije
             </summary>
         </member>
-        <member name="T:UgovorOZakupuService.Migrations.InitialMigration1">
+        <member name="T:UgovorOZakupuService.Migrations.migracijaDeoParcele">
             <inheritdoc />
         </member>
-        <member name="M:UgovorOZakupuService.Migrations.InitialMigration1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:UgovorOZakupuService.Migrations.migracijaDeoParcele.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:UgovorOZakupuService.Migrations.InitialMigration1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:UgovorOZakupuService.Migrations.migracijaDeoParcele.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:UgovorOZakupuService.Migrations.InitialMigration1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:UgovorOZakupuService.Migrations.migracijaDeoParcele.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="M:UgovorOZakupuService.ServiceCalls.DeoParceleService.GetDeoParceleByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu dela parcele od drugog mikro servisa.
+            </summary>
+            <param name="deoParceleID">ID adrese dokumenta.</param>
+            <param name="token">Token za adresu dokumenta mikroservis.</param>
+            <returns>Vraća model DTO-a adrese dokumenta.</returns>
         </member>
         <member name="M:UgovorOZakupuService.ServiceCalls.DokumentiService.GetDokumentByIDAsync(System.Guid,System.String)">
             <summary>
@@ -416,6 +511,14 @@
             <param name="dokumentID">ID adrese dokumenta.</param>
             <param name="token">Token za adresu dokumenta mikroservis.</param>
             <returns>Vraća model DTO-a adrese dokumenta.</returns>
+        </member>
+        <member name="M:UgovorOZakupuService.ServiceCalls.IDeoParceleService.GetDeoParceleByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu delaParcele od drugog mikro servisa.
+            </summary>
+            <param name="deoParceleID">ID dela parcele.</param>
+            <param name="token">Token za deo parcele mikroservis.</param>
+            <returns>Vraća model DTO-a dela parcele.</returns>
         </member>
         <member name="M:UgovorOZakupuService.ServiceCalls.IDokumentiService.GetDokumentByIDAsync(System.Guid,System.String)">
             <summary>
