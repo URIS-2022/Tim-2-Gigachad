@@ -111,12 +111,23 @@ namespace DokumentiService.Controllers
             }
         }
         /// <summary>
-        /// Kreira novi  doument.
-        /// </summary>
-        /// <param name="DokumentCreateDTO">DTO za kreiranje dokumenta.</param>
-        /// <returns>Potvrdu o kreiranom dokumentu.</returns>
-        /// <response code="201">Vraća kreiran dokument.</response>
-        /// <response code="500">Došlo je do greške na serveru prilikom kreiranja dokumenta.</response>
+		/// Kreira novi dokument parcele.
+		/// </summary>
+		/// <param name="DokumentCreateDTO">DTO za eksterni DOKUMENT.</param>
+		/// <returns>Vraća potvrdu o kreiranom  eksternom dokumentu.</returns>
+		/// <remarks>
+		/// Primer zahteva za kreiranje novog eksternog dokumenta. \
+		/// POST /api/Dokument \
+		/// { 
+		///	     "eksterniDokumentID": "36701e85-41ac-410e-8889-1cc1423c3b3a",\
+        ///      "interniDokumentID": "858930f0-92ec-4975-b697-0c7afb2842de",\
+        ///      "datumDonosenja": "2012-09-20T00:00:00",\
+        ///      "sablon": "11",\
+        ///      "statusDokumenta": "33"\
+		/// }
+		/// </remarks>
+		/// <response code="201">Vraća kreirani eksterni dokument.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja dela parcele.</response>
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -146,10 +157,23 @@ namespace DokumentiService.Controllers
             }
         }
         /// <summary>
-        /// Proeman dokumenta
-        /// </summary>
-        /// <param name="DokumentUpdateDTO"></param>
-        /// <returns></returns>
+		/// Menja dokument .
+		/// </summary>
+		/// <param name="DokumentUpdateDTO">DTO za DOKUMENT.</param>
+		/// <returns>Vraća potvrdu o menjanom dokumentu.</returns>
+		/// <remarks>
+		/// Primer zahteva za menjanje dokumenta. \
+		/// PUT /api/Dokument \
+		/// { 
+		///		"eksterniDokumentID": "36701e85-41ac-410e-8889-1cc1423c3b3a",\
+		///		"interniDokumentID": "858930f0-92ec-4975-b697-0c7afb2842de",\
+		///		"datumDonosenja": "2012-09-20T00:00:00",\
+		///		"sablon": "11",\
+		///		"statusDokumenta": "33"\
+		/// }
+		/// </remarks>
+		/// <response code="201">Vraća menjani dokument.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom menjanja dokumenta response>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]

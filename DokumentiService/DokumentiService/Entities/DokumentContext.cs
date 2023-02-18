@@ -2,6 +2,9 @@
 
 namespace DokumentiService.Entities
 {
+    /// <summary>
+    /// DB context za DokumentService
+    /// </summary>
     public class DokumentContext : DbContext
     {
         /// <summary>
@@ -9,9 +12,18 @@ namespace DokumentiService.Entities
         /// </summary>
         public DokumentContext(DbContextOptions options) : base(options) { }
 
-
+        /// <summary>
+        /// DbSet za eksterni Dokument
+        /// </summary>
         public DbSet<EksterniDokumentEntity> EksterniDokumenti { get; set; }
+        /// <summary>
+        /// DbSet za interni dokument
+        /// </summary>
         public DbSet<InterniDokumentEntity> InterniDokumenti { get; set; }
+
+        /// <summary>
+        /// DbSet za dokument
+        /// </summary>
         public DbSet<DokumentEntity> Dokumenti { get; set; }
      
 

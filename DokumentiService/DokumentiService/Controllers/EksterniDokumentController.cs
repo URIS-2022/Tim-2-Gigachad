@@ -30,9 +30,11 @@ namespace DokumentiService.Controllers
             this.mapper = mapper;
         }
         /// <summary>
-        /// GET za sva eksterna dokumenta
+        /// Vraća listu svih eksternih dokumenata.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Vraća potvrdu o listu postojećih eksternih dokumenata.</returns>
+        /// <response code="200">Vraća listu delova parcela.</response>
+        /// <response code="204">Ne postoje delovi parcela.</response>
         [HttpGet]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -91,13 +93,21 @@ namespace DokumentiService.Controllers
         }
 
         /// <summary>
-		/// Kreira novi eksterni doument.
-		/// </summary>
-		/// <param name="eksterniDokumentCreateDTO">DTO za kreiranje eksternog dokumenta.</param>
-		/// <returns>Potvrdu o kreiranom eksternom dokumentu.</returns>
-		/// <response code="201">Vraća kreiran eksterni dokument.</response>
-		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja eksternog dokumenta.</response>
-		[HttpPost]
+        /// Menja dokument .
+        /// </summary>
+        /// <param name="eksterniDokumentCreateDTO">DTO za DOKUMENT.</param>
+        /// <param name="authorization">Autorizovan token.</param>
+        /// <returns>Vraća potvrdu o menjanom dokumentu.</returns>
+        /// <remarks>
+        /// Primer zahteva za menjanje dokumenta. \
+        /// POST /api/eksterniDokument \
+        /// { 
+        ///	"PutanjaDokumenta" : "Hellou226542"
+        /// }
+        /// </remarks>
+        /// <response code="201">Vraća menjani dokument.</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom menjanja dokumenta response>
+        [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -121,10 +131,19 @@ namespace DokumentiService.Controllers
             }
         }
         /// <summary>
-        /// Promena eksternog dokumenta
+        /// Menja dokument .
         /// </summary>
-        /// <param name="eksterniDokumentUpdateDTO"></param>
-        /// <returns></returns>
+        /// <param name="eksterniDokumentUpdateDTO">DTO za DOKUMENT.</param>
+        /// <returns>Vraća potvrdu o menjanom eksternom dokumentu.</returns>
+        /// <remarks>
+        /// Primer zahteva za menjanje eksternog dokumenta. \
+        /// PUT /api/eksterniDokument \
+        /// { 
+        ///	"PutanjaDokumenta" : "Hellou226542"
+        /// }
+        /// </remarks>
+        /// <response code="201">Vraća menjani dokument.</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom menjanja dokumenta response>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]

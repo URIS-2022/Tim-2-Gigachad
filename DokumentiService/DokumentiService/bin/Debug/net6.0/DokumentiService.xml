@@ -36,20 +36,25 @@
         </member>
         <member name="M:DokumentiService.Controllers.DokumentController.CreateDokument(DokumentiService.DTO.DokumentCreateDTO)">
             <summary>
-            Kreira novi  doument.
+            Kreira novi dokument parcele.
             </summary>
-            <param name="DokumentCreateDTO">DTO za kreiranje dokumenta.</param>
-            <returns>Potvrdu o kreiranom dokumentu.</returns>
-            <response code="201">Vraća kreiran dokument.</response>
-            <response code="500">Došlo je do greške na serveru prilikom kreiranja dokumenta.</response>
+            <param name="DokumentCreateDTO">DTO za eksterni DOKUMENT.</param>
+            <returns>Vraća potvrdu o kreiranom  eksternom dokumentu.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog eksternog dokumenta. \
+            POST /api/Dokument \
+            { 
+                 "eksterniDokumentID": "36701e85-41ac-410e-8889-1cc1423c3b3a",\
+                 "interniDokumentID": "858930f0-92ec-4975-b697-0c7afb2842de",\
+                 "datumDonosenja": "2012-09-20T00:00:00",\
+                 "sablon": "11",\
+                 "statusDokumenta": "33"\
+            }
+            </remarks>
+            <response code="201">Vraća kreirani eksterni dokument.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja dela parcele.</response>
         </member>
-        <member name="M:DokumentiService.Controllers.DokumentController.UpdateDokument(DokumentiService.DTO.DokumentUpdateDTO)">
-            <summary>
-            Proeman dokumenta
-            </summary>
-            <param name="DokumentUpdateDTO"></param>
-            <returns></returns>
-        </member>
+        <!-- Badly formed XML comment ignored for member "M:DokumentiService.Controllers.DokumentController.UpdateDokument(DokumentiService.DTO.DokumentUpdateDTO)" -->
         <member name="T:DokumentiService.Controllers.EksterniDokumentController">
             <summary>
             Kontroler za entitete eksternih dokumenata.
@@ -62,9 +67,11 @@
         </member>
         <member name="M:DokumentiService.Controllers.EksterniDokumentController.GetEksterniDokumenti">
             <summary>
-            GET za sva eksterna dokumenta
+            Vraća listu svih eksternih dokumenata.
             </summary>
-            <returns></returns>
+            <returns>Vraća potvrdu o listu postojećih eksternih dokumenata.</returns>
+            <response code="200">Vraća listu delova parcela.</response>
+            <response code="204">Ne postoje delovi parcela.</response>
         </member>
         <member name="M:DokumentiService.Controllers.EksterniDokumentController.GetEksterniDokument(System.Guid)">
             <summary>
@@ -80,22 +87,8 @@
             <param name="eksterniDokumentID"></param>
             <returns></returns>
         </member>
-        <member name="M:DokumentiService.Controllers.EksterniDokumentController.CreateEksterniDokument(DokumentiService.DTO.EksterniDokumentCreateDTO)">
-            <summary>
-            Kreira novi eksterni doument.
-            </summary>
-            <param name="eksterniDokumentCreateDTO">DTO za kreiranje eksternog dokumenta.</param>
-            <returns>Potvrdu o kreiranom eksternom dokumentu.</returns>
-            <response code="201">Vraća kreiran eksterni dokument.</response>
-            <response code="500">Došlo je do greške na serveru prilikom kreiranja eksternog dokumenta.</response>
-        </member>
-        <member name="M:DokumentiService.Controllers.EksterniDokumentController.UpdateEksterniDokument(DokumentiService.DTO.EksterniDokumentUpdateDTO)">
-            <summary>
-            Promena eksternog dokumenta
-            </summary>
-            <param name="eksterniDokumentUpdateDTO"></param>
-            <returns></returns>
-        </member>
+        <!-- Badly formed XML comment ignored for member "M:DokumentiService.Controllers.EksterniDokumentController.CreateEksterniDokument(DokumentiService.DTO.EksterniDokumentCreateDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:DokumentiService.Controllers.EksterniDokumentController.UpdateEksterniDokument(DokumentiService.DTO.EksterniDokumentUpdateDTO)" -->
         <member name="T:DokumentiService.Controllers.InterniDokumentController">
             <summary>
             Kontroler za entitete eksternih dokumenata.
@@ -108,9 +101,11 @@
         </member>
         <member name="M:DokumentiService.Controllers.InterniDokumentController.GetInterniDokumenti">
             <summary>
-            GET za sva interna dokumenta
+            Vraća listu svih intenig dokumenata.
             </summary>
-            <returns></returns>
+            <returns>Vraća potvrdu o listi postojećih internih dokumenata.</returns>
+            <response code="200">Vraća listu delova parcela.</response>
+            <response code="204">Ne postoje delovi parcela.</response>
         </member>
         <member name="M:DokumentiService.Controllers.InterniDokumentController.GetInterniDokument(System.Guid)">
             <summary>
@@ -121,25 +116,16 @@
         </member>
         <member name="M:DokumentiService.Controllers.InterniDokumentController.DeleteInterniDokument(System.Guid)">
             <summary>
-            Delete za interni Dokument sa zadatim ID
+            Vraća jedan eksterni Dokument na osnovu zadatog ID-ja.
             </summary>
-            <param name="interniDokumentID"></param>
-            <returns></returns>
+            <param name="interniDokumentID">ID internog Dokumenta.</param>
+            <returns>Vraća potvrdu o specifiranom internom dokumentu.</returns>
+            <response code="200">Vraća specifirani interni dokument.</response>
+            <response code="404">Specifirani interni dokument ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom pronalaženja specifiranog internog dokumenta.</response>
         </member>
-        <member name="M:DokumentiService.Controllers.InterniDokumentController.CreateInterniiDokument(DokumentiService.DTO.InterniDokumentCreateDTO)">
-            <summary>
-            Dodavanje novog internog dokumenta
-            </summary>
-            <param name="interniDokumentCreateDTO"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DokumentiService.Controllers.InterniDokumentController.UpdateInterniDokument(DokumentiService.DTO.InterniDokumentUpdateDTO)">
-            <summary>
-            Promena internog Dokumenta
-            </summary>
-            <param name="interniDokumentUpdateDTO"></param>
-            <returns></returns>
-        </member>
+        <!-- Badly formed XML comment ignored for member "M:DokumentiService.Controllers.InterniDokumentController.CreateInterniiDokument(DokumentiService.DTO.InterniDokumentCreateDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:DokumentiService.Controllers.InterniDokumentController.UpdateInterniDokument(DokumentiService.DTO.InterniDokumentUpdateDTO)" -->
         <member name="T:DokumentiService.Data.DokumentRepository">
             <summary>
             Repozitorijum za entitet Dokument.
@@ -176,6 +162,12 @@
             <param name="DokumentID">ID dokumenta.</param>
             <returns>Vraća specificiran dokument.</returns>
         </member>
+        <member name="M:DokumentiService.Data.DokumentRepository.SaveChanges">
+            <summary>
+            Cuva promene
+            </summary>
+            <returns>Sacuvane promene</returns>
+        </member>
         <member name="T:DokumentiService.Data.EksterniDokumentRepository">
             <summary>
             Repozitorijum za eksterni dokument Entity
@@ -206,6 +198,12 @@
             </summary>
             <param name="EksterniDokumentID">ID dokumenta.</param>
             <returns>Vraća specificiran eksterni dokument.</returns>
+        </member>
+        <member name="M:DokumentiService.Data.EksterniDokumentRepository.SaveChanges">
+            <summary>
+            Cuva eksterne dokumente
+            </summary>
+            <returns> Vraca potvrdu o sacuvanim promenama </returns>
         </member>
         <member name="T:DokumentiService.Data.InterniDokumentRepository">
             <summary>
@@ -238,6 +236,42 @@
             <param name="InterniDokumentID">ID dokumenta.</param>
             <returns>Vraća specificiran interni dokument.</returns>
         </member>
+        <member name="M:DokumentiService.Data.InterniDokumentRepository.SaveChanges">
+            <summary>
+            Cuva interne dokumente
+            </summary>
+            <returns> Vraca sacuvane promene </returns>
+        </member>
+        <member name="T:DokumentiService.DTO.DokumentCreateDTO">
+            <summary>
+            Repozitorijum za Dokument create
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentCreateDTO.EksterniDokumentID">
+            <summary>
+            ID eksternog dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentCreateDTO.InterniDokumentID">
+            <summary>
+            ID internog dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentCreateDTO.DatumDonosenja">
+            <summary>
+            Datum donosenja
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentCreateDTO.Sablon">
+            <summary>
+            Sablon
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentCreateDTO.StatusDokumenta">
+            <summary>
+            status dokumenta
+            </summary>
+        </member>
         <member name="P:DokumentiService.DTO.DokumentDTO.DokumentID">
             <summary>
             ID za dokument
@@ -268,6 +302,56 @@
             Status Dokumenta
             </summary>
         </member>
+        <member name="T:DokumentiService.DTO.DokumentUpdateDTO">
+            <summary>
+            Dokument update model DTO
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentUpdateDTO.DokumentID">
+            <summary>
+            Dokument ID
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentUpdateDTO.EksterniDokumentID">
+            <summary>
+            EksterniDokument ID
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentUpdateDTO.InterniDokumentID">
+            <summary>
+            Interni Dokument ID
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentUpdateDTO.DatumDonosenja">
+            <summary>
+            Datum donosenja dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentUpdateDTO.Sablon">
+            <summary>
+            Sablon 
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.DokumentUpdateDTO.StatusDokumenta">
+            <summary>
+            Status dokumenta
+            </summary>
+        </member>
+        <member name="T:DokumentiService.DTO.EksterniDokumentCreateDTO">
+            <summary>
+            Model dto za Create eksternog dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.EksterniDokumentCreateDTO.PutanjaDokumenta">
+            <summary>
+            Putanja dokumenta
+            </summary>
+        </member>
+        <member name="T:DokumentiService.DTO.EksterniDokumentDTO">
+            <summary>
+            Model Eksternog dokumenta DTO
+            </summary>
+        </member>
         <member name="P:DokumentiService.DTO.EksterniDokumentDTO.EksterniDokumentID">
             <summary>
             Eksterni dokument ID
@@ -276,6 +360,31 @@
         <member name="P:DokumentiService.DTO.EksterniDokumentDTO.PutanjaDokumenta">
             <summary>
             Putanj dokumenta
+            </summary>
+        </member>
+        <member name="T:DokumentiService.DTO.EksterniDokumentUpdateDTO">
+            <summary>
+            Model eksternog Dokumenta za update
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.EksterniDokumentUpdateDTO.EksterniDokumentID">
+            <summary>
+            Eksterni Dokument ID
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.EksterniDokumentUpdateDTO.PutanjaDokumenta">
+            <summary>
+            Putanja dokumenta
+            </summary>
+        </member>
+        <member name="T:DokumentiService.DTO.InterniDokumentCreateDTO">
+            <summary>
+            DTO za model InterniDokumentCreate
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.InterniDokumentCreateDTO.PutanjaDokumenta">
+            <summary>
+            Putanja dokumenta
             </summary>
         </member>
         <member name="P:DokumentiService.DTO.InterniDokumentDTO.InterniDokumentID">
@@ -288,14 +397,124 @@
             Putanja Dokumenta
             </summary>
         </member>
+        <member name="T:DokumentiService.DTO.InterniDokumentUpdateDTO">
+            <summary>
+            InterniDokument Update DTO
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.InterniDokumentUpdateDTO.InterniDokumentID">
+            <summary>
+            Interni Dokument ID
+            </summary>
+        </member>
+        <member name="P:DokumentiService.DTO.InterniDokumentUpdateDTO.PutanjaDokumenta">
+            <summary>
+            Putanja dokumenta 
+            </summary>
+        </member>
+        <member name="T:DokumentiService.Entities.DokumentContext">
+            <summary>
+            DB context za DokumentService
+            </summary>
+        </member>
         <member name="M:DokumentiService.Entities.DokumentContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
             <summary>
             Dependency injection za konfiguraciju konekcije i opcije sa bazom.
             </summary>
         </member>
+        <member name="P:DokumentiService.Entities.DokumentContext.EksterniDokumenti">
+            <summary>
+            DbSet za eksterni Dokument
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.DokumentContext.InterniDokumenti">
+            <summary>
+            DbSet za interni dokument
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.DokumentContext.Dokumenti">
+            <summary>
+            DbSet za dokument
+            </summary>
+        </member>
         <member name="M:DokumentiService.Entities.DokumentContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:DokumentiService.Entities.DokumentEntity">
+            <summary>
+            Model realnog entitea dokument
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.DokumentEntity.DokumentID">
+            <summary>
+            ID dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.DokumentEntity.EksterniDokumentID">
+            <summary>
+            ID eksternog dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.DokumentEntity.InterniDokumentID">
+            <summary>
+            ID internog dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.DokumentEntity.DatumDonosenja">
+            <summary>
+            Datum donosenja dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.DokumentEntity.Sablon">
+            <summary>
+            Sablon
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.DokumentEntity.StatusDokumenta">
+            <summary>
+            Status dokumenta
+            </summary>
+        </member>
+        <member name="T:DokumentiService.Entities.EksterniDokumentEntity">
+            <summary>
+            Eksterni Dokument entity realni entitet
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.EksterniDokumentEntity.EksterniDokumentID">
+            <summary>
+            EksterniDokument ID
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.EksterniDokumentEntity.PutanjaDokumenta">
+            <summary>
+            Putanja Eksternog dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.EksterniDokumentEntity.Dokument">
+            <summary>
+            Lista dokumenta zbog stranog kljuca
+            </summary>
+        </member>
+        <member name="T:DokumentiService.Entities.InterniDokumentEntity">
+            <summary>
+            Model entita internog dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.InterniDokumentEntity.InterniDokumentID">
+            <summary>
+            ID internog dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.InterniDokumentEntity.PutanjaDokumenta">
+            <summary>
+            Putanja internog dokumenta
+            </summary>
+        </member>
+        <member name="P:DokumentiService.Entities.InterniDokumentEntity.Dokument">
+            <summary>
+            lista internih dokumenata zbog stranog kljuca
             </summary>
         </member>
         <member name="T:DokumentiService.Migrations.InitialMigration">

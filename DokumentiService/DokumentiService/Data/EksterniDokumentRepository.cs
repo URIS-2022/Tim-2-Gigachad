@@ -63,7 +63,10 @@ namespace DokumentiService.Data
             return context.EksterniDokumenti.FirstOrDefault(e => e.EksterniDokumentID == EksterniDokumentID);
         }
 
-
+        /// <summary>
+        /// Cuva eksterne dokumente
+        /// </summary>
+        /// <returns> Vraca potvrdu o sacuvanim promenama </returns>
         public bool SaveChanges()
         {
             return context.SaveChanges() > 0;

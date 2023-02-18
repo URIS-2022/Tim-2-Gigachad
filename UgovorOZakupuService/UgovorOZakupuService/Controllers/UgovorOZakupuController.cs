@@ -23,18 +23,18 @@ namespace UgovorOZakupuService.Controllers
         private readonly IMapper mapper;
         private readonly IDokumentiService dokumentiService;
         private readonly IKupacService kupacService;
-        private readonly IDeoParceleService deoParceleService;
+       // private readonly IDeoParceleService deoParceleService;
         /// <summary>
         /// Dependency injection za kontroler preko konstruktora.
         /// </summary>
-        public UgovorOZakupuController(IUgovorOZakupuRepository ugovorOZakupuRepository, LinkGenerator linkGenerator, IMapper mapper, IDokumentiService dokumentiService, IKupacService kupacService, IDeoParceleService deoParceleService)
+        public UgovorOZakupuController(IUgovorOZakupuRepository ugovorOZakupuRepository, LinkGenerator linkGenerator, IMapper mapper, IDokumentiService dokumentiService, IKupacService kupacService /*IDeoParceleService deoParceleService*/)
         {
             this.ugovorOZakupuRepository = ugovorOZakupuRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
             this.dokumentiService = dokumentiService;
             this.kupacService = kupacService;
-            this.deoParceleService = deoParceleService;
+            //this.deoParceleService = deoParceleService;
         }
         /// <summary>
         /// GET za sve ugovore o zakupu
@@ -59,15 +59,15 @@ namespace UgovorOZakupuService.Controllers
                 Guid temnpKupacID = ugovor.KupacID;
                 KupacDTO? kupac = kupacService.GetKupacByIDAsync(temnpKupacID, authorization).Result;
 
-                Guid tempDeoParceleID = ugovor.DeoParceleID;
-                DeoParceleDTO? deoParcele = deoParceleService.GetDeoParceleByIDAsync(tempDeoParceleID, authorization).Result;
+              //  Guid tempDeoParceleID = ugovor.DeoParceleID;
+               // DeoParceleDTO? deoParcele = deoParceleService.GetDeoParceleByIDAsync(tempDeoParceleID, authorization).Result;
 
-                if (dokument != null && kupac != null && deoParcele != null)
+                if (dokument != null && kupac != null /*&& deoParcele != null*/)
                 {
                     UgovorOZakupuDTO ugovorOZakupuDTO = mapper.Map<UgovorOZakupuDTO>(ugovor);
                     ugovorOZakupuDTO.Dokument = dokument;
                     ugovorOZakupuDTO.Kupac = kupac;
-                    ugovorOZakupuDTO.DeoParcele = deoParcele;
+                    //ugovorOZakupuDTO.DeoParcele = deoParcele;
                     ugovoriDTO.Add(ugovorOZakupuDTO);
                 }
                 else

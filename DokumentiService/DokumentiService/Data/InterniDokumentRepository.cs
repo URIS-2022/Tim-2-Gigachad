@@ -60,7 +60,10 @@ namespace DokumentiService.Data
         {
             return context.InterniDokumenti.FirstOrDefault(e => e.InterniDokumentID == InterniDokumentID);
         }
-
+        /// <summary>
+        /// Cuva interne dokumente
+        /// </summary>
+        /// <returns> Vraca sacuvane promene </returns>
         public bool SaveChanges()
         {
             return context.SaveChanges() > 0;

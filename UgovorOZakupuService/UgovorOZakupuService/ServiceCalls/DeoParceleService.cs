@@ -18,7 +18,7 @@ namespace UgovorOZakupuService.ServiceCalls
             /// <param name="deoParceleID">ID adrese dokumenta.</param>
             /// <param name="token">Token za adresu dokumenta mikroservis.</param>
             /// <returns>Vraća model DTO-a adrese dokumenta.</returns>
-            public async Task<DeoParceleDTO?> GetDeoParceleByIDAsync(Guid deoParceleID, string token)
+            public async Task<DeoParceleDTO?> GetDeoParceleByIDAsync(Guid deoParceleID, string? token)
             {
                 using HttpClient httpClient = new();
                 Uri url = new($"{configuration["Services:DeoParceleService"]}api/deloviParcela/{deoParceleID}");

@@ -1,5 +1,8 @@
 ﻿namespace DokumentiService.DTO
 {
+    /// <summary>
+    /// Model Eksternog dokumenta DTO
+    /// </summary>
     public class EksterniDokumentDTO
     {
         /// <summary>

@@ -64,6 +64,10 @@ namespace DokumentiService.Data
             return context.Dokumenti.FirstOrDefault(e => e.DokumentID == DokumentID);
         }
 
+        /// <summary>
+        /// Cuva promene
+        /// </summary>
+        /// <returns>Sacuvane promene</returns>
         public bool SaveChanges()
         {
             return context.SaveChanges() > 0;

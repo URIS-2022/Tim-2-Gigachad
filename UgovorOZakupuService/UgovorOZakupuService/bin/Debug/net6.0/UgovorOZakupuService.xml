@@ -9,7 +9,7 @@
             Kontroler za entitete eksternih dokumenata.
             </summary>
         </member>
-        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.#ctor(UgovorOZakupuService.Data.IUgovorOZakupuRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,UgovorOZakupuService.ServiceCalls.IDokumentiService,UgovorOZakupuService.ServiceCalls.IKupacService,UgovorOZakupuService.ServiceCalls.IDeoParceleService)">
+        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.#ctor(UgovorOZakupuService.Data.IUgovorOZakupuRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,UgovorOZakupuService.ServiceCalls.IDokumentiService,UgovorOZakupuService.ServiceCalls.IKupacService)">
             <summary>
             Dependency injection za kontroler preko konstruktora.
             </summary>

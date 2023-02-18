@@ -30,11 +30,13 @@ namespace DokumentiService.Controllers
             this.mapper = mapper;
         }
         /// <summary>
-        /// GET za sva interna dokumenta
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
+		/// Vraća listu svih intenig dokumenata.
+		/// </summary>
+		/// <returns>Vraća potvrdu o listi postojećih internih dokumenata.</returns>
+		/// <response code="200">Vraća listu delova parcela.</response>
+		/// <response code="204">Ne postoje delovi parcela.</response>
         [HttpHead]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<EksterniDokumentDTO>> GetInterniDokumenti()
@@ -60,10 +62,13 @@ namespace DokumentiService.Controllers
             return Ok(mapper.Map<InterniDokumentEntity>(interniDokument));
         }
         /// <summary>
-        /// Delete za interni Dokument sa zadatim ID
+        /// Vraća jedan eksterni Dokument na osnovu zadatog ID-ja.
         /// </summary>
-        /// <param name="interniDokumentID"></param>
-        /// <returns></returns>
+        /// <param name="interniDokumentID">ID internog Dokumenta.</param>
+        /// <returns>Vraća potvrdu o specifiranom internom dokumentu.</returns>
+        /// <response code="200">Vraća specifirani interni dokument.</response>
+        /// <response code="404">Specifirani interni dokument ne postoji.</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom pronalaženja specifiranog internog dokumenta.</response>
         [HttpDelete("{interniDokumentID}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -88,10 +93,19 @@ namespace DokumentiService.Controllers
             }
         }
         /// <summary>
-        /// Dodavanje novog internog dokumenta
+        /// Menja dokument .
         /// </summary>
-        /// <param name="interniDokumentCreateDTO"></param>
-        /// <returns></returns>
+        /// <param name="interniDokumentCreateDTO">DTO za interni DOKUMENT.</param>
+        /// <returns>Vraća potvrdu o menjanom internom dokumentu.</returns>
+        /// <remarks>
+        /// Primer zahteva za menjanje internog dokumenta. \
+        /// POST /api/interniDokument \
+        /// { 
+        ///	"PutanjaDokumenta" : "Hellou226542"
+        /// }
+        /// </remarks>
+        /// <response code="201">Vraća menjani dokument.</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom menjanja dokumenta response>
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -116,10 +130,19 @@ namespace DokumentiService.Controllers
             }
         }
         /// <summary>
-        /// Promena internog Dokumenta
+        /// Menja dokument .
         /// </summary>
-        /// <param name="interniDokumentUpdateDTO"></param>
-        /// <returns></returns>
+        /// <param name="interniDokumentUpdateDTO">DTO za interni DOKUMENT.</param>
+        /// <returns>Vraća potvrdu o menjanom dokumentu.</returns>
+        /// <remarks>
+        /// Primer zahteva za menjanje dokumenta. \
+        /// PUT/api/interniDokument \
+        /// { 
+        ///	"PutanjaDokumenta" : "Hellou226542"
+        /// }
+        /// </remarks>
+        /// <response code="201">Vraća menjani dokument.</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom menjanja dokumenta response>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
