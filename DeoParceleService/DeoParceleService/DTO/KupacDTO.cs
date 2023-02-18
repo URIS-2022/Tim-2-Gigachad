@@ -8,7 +8,7 @@
 		/// <summary>
 		/// ID kupca.
 		/// </summary>
-		public Guid ID { get; set; } = Guid.Empty!;
+		public Guid KupacID { get; set; } = Guid.Empty!;
 
 		/// <summary>
 		/// Lice kupca.

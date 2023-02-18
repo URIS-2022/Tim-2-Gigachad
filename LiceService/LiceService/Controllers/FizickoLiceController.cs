@@ -178,7 +178,7 @@ namespace LiceService.Controllers
 		}
 
 		/// <summary>
-		/// Vraća opcije za rad sa fizičkim licima.
+		/// Vraća opcije za rad sa entitetom fizičko lice.
 		/// </summary>
 		/// <returns>Vraća prazan 200 HTTP kod.</returns>
 		/// <response code="200">Vraća prazan 200 HTTP kod.</response>

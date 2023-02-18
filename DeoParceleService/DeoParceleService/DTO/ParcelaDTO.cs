@@ -11,6 +11,11 @@
 		public Guid ID { get; set; } = Guid.Empty!;
 
 		/// <summary>
+		/// ID kupca.
+		/// </summary>
+		public KupacDTO Kupac { get; set; } = null!;
+
+		/// <summary>
 		/// Oznaka parcele.
 		/// </summary>
 		public string Oznaka { get; set; } = null!;

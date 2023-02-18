@@ -14,10 +14,17 @@ namespace DeoParceleService.Entities
 		public Guid ID { get; set; } = Guid.Empty!;
 
 		/// <summary>
+		/// ID kupca.
+		/// </summary>
+		[Required(ErrorMessage = "Parcele mora da ima kupca.")]
+		public Guid KupacID { get; set; } = Guid.Empty!;
+
+		/// <summary>
 		/// Oznaka parcele.
 		/// </summary>
 		[Required(ErrorMessage = "Parcela mora da ima oznaku.")]
-		[MaxLength(10, ErrorMessage = "Oznaka parcele ne sme da bude preko 10 karaktera.")]
+		[MinLength(10, ErrorMessage = "Oznaka parcele mora da ima 10 karaktera.")]
+		[MaxLength(10, ErrorMessage = "Oznaka parcele mora da ima 10 karaktera.")]
 		public string Oznaka { get; set; } = null!;
 
 		/// <summary>

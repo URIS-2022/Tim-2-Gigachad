@@ -28,7 +28,7 @@ namespace DeoParceleService.DTO
 		/// Redni broj dela parcele.
 		/// </summary>
 		[Required(ErrorMessage = "Deo parcele mora da ima redni broj.")]
-		[MaxLength(10, ErrorMessage = "Redni broj dela parcele ne sme da bude preko 10 karaktera.")]
+		[MaxLength(5, ErrorMessage = "Redni broj dela parcele ne sme da bude preko 10 karaktera.")]
 		public string RedniBroj { get; set; } = null!;
 
 		/// <summary>

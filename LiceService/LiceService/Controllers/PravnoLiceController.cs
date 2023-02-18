@@ -199,7 +199,7 @@ namespace LiceService.Controllers
 		}
 
 		/// <summary>
-		/// Vraća opcije za rad sa pravnim licima.
+		/// Vraća opcije za rad sa entitetom pravno lice.
 		/// </summary>
 		/// <returns>Vraća prazan 200 HTTP kod.</returns>
 		/// <response code="200">Vraća prazan 200 HTTP kod.</response>

@@ -381,7 +381,7 @@ namespace LiceService.Controllers
 		}
 
 		/// <summary>
-		/// Vraća opcije za rad sa licima.
+		/// Vraća opcije za rad sa entitetom lica.
 		/// </summary>
 		/// <returns>Vraća prazan 200 HTTP kod.</returns>
 		/// <response code="200">Vraća prazan 200 HTTP kod.</response>
