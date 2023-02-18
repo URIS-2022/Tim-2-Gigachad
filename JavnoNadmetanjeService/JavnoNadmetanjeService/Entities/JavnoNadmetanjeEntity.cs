@@ -28,9 +28,6 @@ namespace JavnoNadmetanjeService.Entities
 		[Required(ErrorMessage = "Javno nadmetanje mora da ima licitaciju.")]
         public LicitacijaEntity Licitacija { get; set; } = null!;
 
-
-
-
         /// <summary>
 		/// strani kljuc - ID adrese nadmetanja.
 		/// </summary>
@@ -41,17 +38,13 @@ namespace JavnoNadmetanjeService.Entities
 		/// strani kljuc - ID dela parcele.
 		/// </summary>
         //[Required(ErrorMessage = "Javno nadmetanje mora da ima deo parcele.")]
-        //public Guid DeoParceleID { get; set; }
+        public Guid DeoParceleID { get; set; }
 
         /// <summary>
 		/// strani kljuc - ID najboljeg kupca.
 		/// </summary>
         //[Required(ErrorMessage = "Javno nadmetanje mora da ima najboljeg kupca.")]
-        //public Guid NajbKupacID { get; set; }
-
-
-
-
+        public Guid KupacID { get; set; }
 
         /// <summary>
         /// Tip javnog nadmetanja. Enumerator.
@@ -77,13 +70,13 @@ namespace JavnoNadmetanjeService.Entities
         /// Vreme pocetka javnog nadmetanja.
         /// </summary>
         [Required(ErrorMessage = "Javno nadmetanje mora da ima vreme pocetka.")]
-        public TimeSpan? VremePoc { get; set; } = null!;
+        public DateTime? VremePoc { get; set; } = null!;
 
         /// <summary>
         /// Vreme kraja javnog nadmetanja.
         /// </summary>
         [Required(ErrorMessage = "Javno nadmetanje mora da ima vreme kraja.")]
-        public TimeSpan? VremeKraj { get; set; } = null!;
+        public DateTime? VremeKraj { get; set; } = null!;
 
         /// <summary>
 		/// Period zakupa M javnog nadmetanja.

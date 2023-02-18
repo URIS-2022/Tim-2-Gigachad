@@ -30,7 +30,7 @@ namespace JavnoNadmetanjeService.Controllers
         /// <summary>
 		/// Dependency injection za JavnoNadmetanje kontroler.
 		/// </summary>
-        public JavnoNadmetanjeController(IJavnoNadmetanjeRepository javnoNadmetanjeRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public JavnoNadmetanjeController(IJavnoNadmetanjeRepository javnoNadmetanjeRepository,IAdresaService adresaService, IDeoParceleService deoParceleService, IKupacService kupacService, LinkGenerator linkGenerator, IMapper mapper, ILicitacijaRepository licitacijaRepository)
         {
             this.javnoNadmetanjeRepository = javnoNadmetanjeRepository;
             this.licitacijaRepository = licitacijaRepository;
@@ -61,28 +61,51 @@ namespace JavnoNadmetanjeService.Controllers
             List<JavnoNadmetanjeDTO> javnaNadmetanjaDTO = new();
             foreach (JavnoNadmetanjeEntity javnoNadmetanje in javnaNadmetanja)
             {
-                Guid adresaID = javnoNadmetanje.AdresaID;
                 JavnoNadmetanjeDTO javnoNadmetanjeDTO = mapper.Map<JavnoNadmetanjeDTO>(javnoNadmetanje);
+
+                Guid adresaID = javnoNadmetanje.AdresaID;
                 AdresaDTO? adresaDTO = adresaService.GetAdresaByIDAsync(adresaID, authorization).Result;
+
+                Guid deoParceleID = javnoNadmetanje.DeoParceleID;
+                DeoParceleDTO? deoParceleDTO = deoParceleService.GetDeoParceleByIDAsync(deoParceleID, authorization).Result;
+
+                Guid kupacID = javnoNadmetanje.KupacID;
+                KupacDTO? kupacDTO = kupacService.GetKupacByIDAsync(kupacID, authorization).Result;
+
                 if (adresaDTO != null)
                 {
-                    javnoNadmetanjeDTO.Adresa = adresaDTO;
-                    javnoNadmetanjeDTO.Licitacija = mapper.Map<LicitacijaDTO>(licitacijaRepository.GetLicitacijaByID(javnoNadmetanje.LicitacijaID));
-                    javnaNadmetanjaDTO.Add(javnoNadmetanjeDTO);
+                    if (kupacDTO != null)
+                    {
+                        if (deoParceleDTO != null)
+                        {
+                            javnoNadmetanjeDTO.Adresa = adresaDTO;
+                            javnoNadmetanjeDTO.DeoParcele = deoParceleDTO;
+                            javnoNadmetanjeDTO.Kupac = kupacDTO;
+                            javnoNadmetanjeDTO.Licitacija = mapper.Map<LicitacijaDTO>(licitacijaRepository.GetLicitacijaByID(javnoNadmetanje.LicitacijaID));
+                            javnaNadmetanjaDTO.Add(javnoNadmetanjeDTO);
+                        }
+                        else
+                            return StatusCode(StatusCodes.Status500InternalServerError, "Deo parcele nije pronadjen. ID dela parcele: " + deoParceleID.ToString() + ".");
+                    }
+                    else
+                        return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronadjen. ID kupca: " + kupacID.ToString() + ".");
                 }
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Adresa nije pronadjena. ID adrese: " + adresaID.ToString() + ".");
             }
             return Ok(javnaNadmetanjaDTO);
         }
-        /*
+
+
         /// <summary>
-		/// Vraća jedno javno nadmetanje na osnovu zadatog ID-ja.
-		/// </summary>
-		/// <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
-		/// <param name="authorization">Autorizovan token.</param>
-		/// <returns>Vraća potvrdu o specifiranom javnom nadmetanju.</returns>
-		/// <response code="200">Vraća specifirano javno nadmetanje.</response>
-		/// <response code="404">Specifirano javno nadmetanje ne postoji.</response>
-		[HttpGet("{javnoNadmetanjeID}")]
+        /// Vraća jedno javno nadmetanje na osnovu zadatog ID-ja.
+        /// </summary>
+        /// <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
+        /// <param name="authorization">Autorizovan token.</param>
+        /// <returns>Vraća potvrdu o specifiranom javnom nadmetanju.</returns>
+        /// <response code="200">Vraća specifirano javno nadmetanje.</response>
+        /// <response code="404">Specifirano javno nadmetanje ne postoji.</response>
+        [HttpGet("{javnoNadmetanjeID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<JavnoNadmetanjeDTO> GetJavnoNadmetanje(Guid javnoNadmetanjeID, [FromHeader] string authorization)
@@ -91,20 +114,40 @@ namespace JavnoNadmetanjeService.Controllers
             if (javnoNadmetanje == null)
                 return NotFound();
 
-            Guid adresaID = javnoNadmetanje.AdresaID;
-            AdresaDTO? adresaDTO = adresaService.GetAdresaByIDAsync(adresaID, authorization).Result;
-            if (adresaDTO != null)
+            Guid adresaID = javnoNadmetanje.AdresaID; ;
+            AdresaDTO? adresa = adresaService.GetAdresaByIDAsync(adresaID, authorization).Result;
+
+            Guid deoParceleID = javnoNadmetanje.DeoParceleID;
+            DeoParceleDTO? deoParceleDTO = deoParceleService.GetDeoParceleByIDAsync(deoParceleID, authorization).Result;
+
+            Guid kupacID = javnoNadmetanje.KupacID;
+            KupacDTO? kupacDTO = kupacService.GetKupacByIDAsync(kupacID, authorization).Result;
+
+            if (adresa != null)
             {
-                JavnoNadmetanjeDTO javnoNadmetanjeDTO = mapper.Map<JavnoNadmetanjeDTO>(javnoNadmetanje);
-                javnoNadmetanjeDTO.DeoParcele = mapper.Map<DeoParceleDTO>(deoParceleRepository.GetDeoParceleByID(javnoNadmetanje.DeoParceleID));
-                
-                javnoNadmetanjeDTO.Adresa = adresaDTO;
-                return Ok(javnoNadmetanjeDTO);
+                if (kupacDTO != null)
+                {
+                    if (deoParceleDTO != null)
+                    {
+                        JavnoNadmetanjeDTO javnoNadmetanjeDTO = mapper.Map<JavnoNadmetanjeDTO>(javnoNadmetanje);
+                        javnoNadmetanjeDTO.Licitacija = mapper.Map<LicitacijaDTO>(licitacijaRepository.GetLicitacijaByID(javnoNadmetanje.LicitacijaID));
+                        javnoNadmetanjeDTO.Adresa = adresa;
+                        javnoNadmetanjeDTO.DeoParcele = deoParceleDTO;
+                        javnoNadmetanjeDTO.Kupac = kupacDTO;
+                        return Ok(javnoNadmetanjeDTO);
+                    }
+                    else
+                        return StatusCode(StatusCodes.Status500InternalServerError, "Deo parcele nije pronadjen. ID dela parcele: " + deoParceleID.ToString() + ".");
+                }
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronadjen. ID kupca: " + kupacID.ToString() + ".");
             }
             else
-                return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena. ID adrese lica: " + adresaID.ToString() + ".");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Adresa nije pronadjena. ID adrese: " + adresaID.ToString() + ".");
         }
 
+
+        /*
         /// <summary>
 		/// Kreira novo javno nadmetanje.
 		/// </summary>
@@ -131,15 +174,7 @@ namespace JavnoNadmetanjeService.Controllers
                     javnoNadmetanje.FizickoLice = mapper.Map<FizickoLiceDTO>(fizickoLiceRepository.GetFizickoLiceByID(Guid.Parse(javnoNadmetanjeCreateDTO.FizickoLiceID)));
                     if (Guid.TryParse(javnoNadmetanjeCreateDTO.PravnoLiceID, out Guid pravnoLiceID))
                     {
-                        PravnoLiceEntity? pravnoLice = pravnoLiceRepository.GetPravnoLiceByID(pravnoLiceID);
-                        if (pravnoLice != null)
-                        {
-                            javnoNadmetanje.PravnoLice = mapper.Map<PravnoLiceDTO>(pravnoLice);
-                            KontaktOsobaDTO kontaktOsobaDTO = mapper.Map<KontaktOsobaDTO>(kontaktOsobaRepository.GetKontaktOsobaByID(pravnoLice.KontaktOsobaID));
-                            javnoNadmetanje.PravnoLice.KontaktOsoba = kontaktOsobaDTO;
-                        }
-                        else
-                            return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati broj računa lica.");
+                        
                     }
                     javnoNadmetanje.Adresa = adresaDTO;
 
@@ -158,7 +193,9 @@ namespace JavnoNadmetanjeService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
         }
+        */
 
+        /*
         /// <summary>
 		/// Ažurira jedno javno nadmetanje.
 		/// </summary>

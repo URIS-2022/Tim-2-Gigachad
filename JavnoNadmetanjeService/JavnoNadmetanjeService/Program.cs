@@ -1,5 +1,6 @@
 using JavnoNadmetanjeService.Data;
 using JavnoNadmetanjeService.Entities;
+using JavnoNadmetanjeService.ServiceCalls;
 using LicitacijaService.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IJavnoNadmetanjeRepository, JavnoNadmetanjeRepository>();
 builder.Services.AddScoped<ILicitacijaRepository, LicitacijaRepository>();
+builder.Services.AddScoped<IAdresaService, AdresaService>();
+builder.Services.AddScoped<IDeoParceleService, DeoParceleService>();
+builder.Services.AddScoped<IKupacService, KupacService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<JavnoNadmetanjeContext>(options =>
@@ -36,10 +40,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 builder.Services.AddSwaggerGen(setup =>
 {
-    setup.SwaggerDoc("LiceServiceOpenApiSpecification",
+    setup.SwaggerDoc("JavnoNadmetanjeServiceOpenApiSpecification",
         new Microsoft.OpenApi.Models.OpenApiInfo()
         {
-            Title = "Adresa API",
+            Title = "JavnoNadmetanje API",
             Version = "v1",
             Description = "Pomocu ovog API-ja moze da se vrsi dodavanje, modifikacija i brisanje javnih nadmetanja, kao i pregled svih kreiranih javnih nadmetanja.",
             Contact = new Microsoft.OpenApi.Models.OpenApiContact

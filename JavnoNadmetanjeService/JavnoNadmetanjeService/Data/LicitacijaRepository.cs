@@ -35,7 +35,7 @@ namespace LicitacijaService.Data
 		/// </summary>
 		/// <param name="licitacijaID">ID licitacije.</param>
 		/// <returns>Vraća specifiranu licitaciju.</returns>
-        public LicitacijaEntity? GetLicitacijaByID(Guid licitacijaID)
+        public LicitacijaEntity GetLicitacijaByID(Guid licitacijaID)
         {
             return context.Licitacija.FirstOrDefault(e => e.ID == licitacijaID);
         }

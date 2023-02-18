@@ -9,7 +9,7 @@
             Kontroler za javna nadmetanja.
             </summary>
         </member>
-        <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.#ctor(JavnoNadmetanjeService.Data.IJavnoNadmetanjeRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+        <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.#ctor(JavnoNadmetanjeService.Data.IJavnoNadmetanjeRepository,JavnoNadmetanjeService.ServiceCalls.IAdresaService,JavnoNadmetanjeService.ServiceCalls.IDeoParceleService,JavnoNadmetanjeService.ServiceCalls.IKupacService,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,LicitacijaService.Data.ILicitacijaRepository)">
             <summary>
             Dependency injection za JavnoNadmetanje kontroler.
             </summary>
@@ -22,6 +22,16 @@
             <param name="authorization">Autorizovan token.</param>
             <response code="200">Vraca listu javnih nadmetanja.</response>
             <response code="204">Ne postoje javna nadmetanja.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.GetJavnoNadmetanje(System.Guid,System.String)">
+            <summary>
+            Vraća jedno javno nadmetanje na osnovu zadatog ID-ja.
+            </summary>
+            <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o specifiranom javnom nadmetanju.</returns>
+            <response code="200">Vraća specifirano javno nadmetanje.</response>
+            <response code="404">Specifirano javno nadmetanje ne postoji.</response>
         </member>
         <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.DeleteJavnoNadmetanje(System.Guid,System.String)">
             <summary>
@@ -417,6 +427,16 @@
         <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.Adresa">
             <summary>
             Adresa javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.DeoParcele">
+            <summary>
+            Deo parcele javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.Kupac">
+            <summary>
+            Kupac javnog nadmetanja.
             </summary>
         </member>
         <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.TipNadmetanja">
@@ -1034,6 +1054,16 @@
             strani kljuc - ID adrese nadmetanja.
             </summary>
         </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.DeoParceleID">
+            <summary>
+            strani kljuc - ID dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.KupacID">
+            <summary>
+            strani kljuc - ID najboljeg kupca.
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.TipNadmetanja">
             <summary>
             Tip javnog nadmetanja. Enumerator.
@@ -1144,28 +1174,28 @@
             Javna nadmetanja licitacije.
             </summary>
         </member>
-        <member name="T:JavnoNadmetanjeService.Migrations.Migration3">
+        <member name="T:JavnoNadmetanjeService.Migrations.InitialUpload">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.Migration3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.InitialUpload.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.Migration3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.InitialUpload.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.Migration3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.InitialUpload.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:JavnoNadmetanjeService.Migrations.Migration4">
+        <member name="T:JavnoNadmetanjeService.Migrations.AllMigration">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.Migration4.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.AllMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.Migration4.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.AllMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.Migration4.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.AllMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:JavnoNadmetanjeService.Profiles.JavnoNadmetanjeProfile">

@@ -14,10 +14,39 @@ namespace JavnoNadmetanjeService.Profiles
 		/// </summary>
 		public JavnoNadmetanjeProfile()
         {
-            CreateMap<JavnoNadmetanjeEntity, JavnoNadmetanjeDTO>();
+            
             CreateMap<JavnoNadmetanjeDTO, JavnoNadmetanjeEntity>();
-            CreateMap<JavnoNadmetanjeUpdateDTO, JavnoNadmetanjeEntity>();
+
+            CreateMap<JavnoNadmetanjeEntity, JavnoNadmetanjeDTO>();
+            CreateMap<JavnoNadmetanjeCreateDTO, JavnoNadmetanjeEntity>()
+                .ForMember(
+                    dest => dest.LicitacijaID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.LicitacijaID)))
+                .ForMember(
+                    dest => dest.AdresaID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.AdresaID)))
+                .ForMember(
+                    dest => dest.DeoParceleID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.DeoParceleID)))
+                .ForMember(
+                    dest => dest.KupacID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.KupacID)));
+            CreateMap<JavnoNadmetanjeUpdateDTO, JavnoNadmetanjeEntity>()
+                .ForMember(
+                    dest => dest.LicitacijaID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.LicitacijaID)))
+                .ForMember(
+                    dest => dest.AdresaID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.AdresaID)))
+                .ForMember(
+                    dest => dest.DeoParceleID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.DeoParceleID)))
+                .ForMember(
+                    dest => dest.KupacID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.KupacID)));
             CreateMap<JavnoNadmetanjeEntity, JavnoNadmetanjeEntity>();
+
+            
         }
     }
 }
