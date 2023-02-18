@@ -15,7 +15,7 @@ namespace UgovorOZakupuService.DTO
 
         public KupacDTO Kupac { get; set; } = null!;
        
-        public Guid JavnoNadmetanjeID { get; set; }
+        public JavnoNadmetanjeDTO JavnoNadmetanje { get; set; }
 
 
         public DokumentDTO Dokument { get; set; } = null!;

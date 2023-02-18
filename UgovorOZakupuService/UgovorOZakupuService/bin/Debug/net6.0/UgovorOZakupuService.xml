@@ -9,7 +9,7 @@
             Kontroler za entitete eksternih dokumenata.
             </summary>
         </member>
-        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.#ctor(UgovorOZakupuService.Data.IUgovorOZakupuRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,UgovorOZakupuService.ServiceCalls.IDokumentiService,UgovorOZakupuService.ServiceCalls.IKupacService)">
+        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.#ctor(UgovorOZakupuService.Data.IUgovorOZakupuRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,UgovorOZakupuService.ServiceCalls.IDokumentiService,UgovorOZakupuService.ServiceCalls.IKupacService,UgovorOZakupuService.ServiceCalls.IDeoParceleService,UgovorOZakupuService.ServiceCalls.IJavnoNadmetanjeService)">
             <summary>
             Dependency injection za kontroler preko konstruktora.
             </summary>
@@ -49,10 +49,27 @@
         </member>
         <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.UpdateUgovorOZakupu(UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO,System.String)">
             <summary>
-            Promena ugovora o zakupu
+            Ažurira jedan Ugovor O ZAKUPU.
             </summary>
-            <param name="ugovorOZakupuUpdateDTO"></param>
-            <returns></returns>
+            <param name="ugovorOZakupuUpdateDTO">DTO za ažuriranje ugovora o zakupu.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o ažuriranom ugovoru o zakupu.</returns>
+            <remarks>
+            Primer zahteva za ažuriranje postojećeg ugovora o zakupu. \
+            PUT /api/ugovorOZakupu \
+            { 
+            	"deoParceleID": "3846ACAF-3D0E-439A-BF27-85344934F2CA",\
+                "kupacID": "753D20F5-73A3-4E00-A3A2-E1C43D6B0777",\
+                "javnoNadmetanjeID": "c29c41d4-b729-41fe-a484-d04219fdb5a0",\
+                "dokumentID": "500e3385-6365-41d9-98a5-568bc359c5bd",\
+                "datumUgovora": "2007-01-05T00:00:00",\
+                "trajanjeUgovora": 11,\
+               "tipGarancije": "BANKARSKAGARANCIJA"\
+            }\
+            </remarks>
+            <response code="200">Vraća ažurirani ugovor o zakupu.</response>
+            <response code="404">Specifirani ugovor o zakupu ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom azuriranja ugovora o zakupu.</response>
         </member>
         <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.GetUgovoriOptions">
             <summary>
@@ -211,6 +228,111 @@
             Putanja Dokumenta
             </summary>
         </member>
+        <member name="T:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO">
+            <summary>
+            Model DTO-a za javno nadmetanje entitet.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.ID">
+            <summary>
+            ID javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.Licitacija">
+            <summary>
+            Licitacija javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.Adresa">
+            <summary>
+            Adresa javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.DeoParcele">
+            <summary>
+            Deo parcele javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.Kupac">
+            <summary>
+            Kupac javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.TipNadmetanja">
+            <summary>
+            Tip nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.Opstina">
+            <summary>
+            Opstina.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.DatumNad">
+            <summary>
+            Datum javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.VremePoc">
+            <summary>
+            Vreme pocetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.VremeKraj">
+            <summary>
+            Vreme zavrsetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.PeriodZakupa">
+            <summary>
+            Period zakupa meseci javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.PocetnaCena">
+            <summary>
+            Pocetna cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.VisinaCene">
+            <summary>
+            Visina cene javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.IzlicitiranaCena">
+            <summary>
+            Izlicitirana cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.BrojUcesnika">
+            <summary>
+            Broj ucesnika javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.PrijavljeniKupci">
+            <summary>
+            Prijavljeni kupci javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.Licitanti">
+            <summary>
+            Licitanti javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.Krug">
+            <summary>
+            Krug koji je po redu javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.StatusNadmetanja">
+            <summary>
+            Status javnog nadmetanja. Enumerator
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.JavnoNadmetanjeDTO.Izuzeto">
+            <summary>
+            Izuzeto.
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.KontaktOsobaDTO.ID">
             <summary>
             ID kontakt osobe.
@@ -315,6 +437,36 @@
         <member name="P:UgovorOZakupuService.DTO.LiceDTO.OvlascenoLice">
             <summary>
             Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="T:UgovorOZakupuService.DTO.LicitacijaDTO">
+            <summary>
+            Model DTO-a za licitacija entitet.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LicitacijaDTO.ID">
+            <summary>
+            ID licitacije.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LicitacijaDTO.DatumLicitacije">
+            <summary>
+            Datum licitacije.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LicitacijaDTO.Rok">
+            <summary>
+            Rok za dostavljanje prijava, datum i sat.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LicitacijaDTO.OgrnMaxPovrs">
+            <summary>
+            OgrnMaxPovrs licitacije.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LicitacijaDTO.KorakCene">
+            <summary>
+            Korak cene licitacije.
             </summary>
         </member>
         <member name="P:UgovorOZakupuService.DTO.OvlascenoLiceDTO.ID">
@@ -484,16 +636,16 @@
             Tip garancije
             </summary>
         </member>
-        <member name="T:UgovorOZakupuService.Migrations.migracijaDeoParcele">
+        <member name="T:UgovorOZakupuService.Migrations.InitialMigration">
             <inheritdoc />
         </member>
-        <member name="M:UgovorOZakupuService.Migrations.migracijaDeoParcele.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:UgovorOZakupuService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:UgovorOZakupuService.Migrations.migracijaDeoParcele.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:UgovorOZakupuService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:UgovorOZakupuService.Migrations.migracijaDeoParcele.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:UgovorOZakupuService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="M:UgovorOZakupuService.ServiceCalls.DeoParceleService.GetDeoParceleByIDAsync(System.Guid,System.String)">
@@ -528,6 +680,14 @@
             <param name="token">Token za adresu lica mikroservis.</param>
             <returns>Vraća model DTO-a adrese lica.</returns>
         </member>
+        <member name="M:UgovorOZakupuService.ServiceCalls.IJavnoNadmetanjeService.GetJavnoNadmetanjeByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu javnog nadmetanja od drugog mikro servisa.
+            </summary>
+            <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
+            <param name="token">Token za adresu lica mikroservis.</param>
+            <returns>Vraća model DTO-a javnog nadmetanja.</returns>
+        </member>
         <member name="M:UgovorOZakupuService.ServiceCalls.IKupacService.GetKupacByIDAsync(System.Guid,System.String)">
             <summary>
             Vraća adresu lica od drugog mikro servisa.
@@ -535,6 +695,14 @@
             <param name="kupacID">ID adrese lica.</param>
             <param name="token">Token za adresu lica mikroservis.</param>
             <returns>Vraća model DTO-a adrese lica.</returns>
+        </member>
+        <member name="M:UgovorOZakupuService.ServiceCalls.JavnoNadmetanjeService.GetJavnoNadmetanjeByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu dokumenta od drugog mikro servisa.
+            </summary>
+            <param name="javnoNadmetanjeID">ID adrese dokumenta.</param>
+            <param name="token">Token za adresu dokumenta mikroservis.</param>
+            <returns>Vraća model DTO-a adrese dokumenta.</returns>
         </member>
         <member name="M:UgovorOZakupuService.ServiceCalls.KupacService.GetKupacByIDAsync(System.Guid,System.String)">
             <summary>

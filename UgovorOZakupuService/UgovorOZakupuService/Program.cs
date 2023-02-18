@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;
+using Google.Cloud.Diagnostics.AspNetCore3;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,8 @@ builder.Services.AddMvc();
 builder.Services.AddScoped<IUgovorOZakupuRepository, UgovorOZakupuRepository>();
 builder.Services.AddScoped<IDokumentiService, DokumentiService>();
 builder.Services.AddScoped<IKupacService, KupacService>();
-//builder.Services.AddScoped<IDeoParceleService, DeoParceleService>();
+builder.Services.AddScoped<IDeoParceleService, DeoParceleService>();
+builder.Services.AddScoped<IJavnoNadmetanjeService, JavnoNadmetanjeService>();
 
 
 
@@ -64,7 +66,7 @@ builder.Services.AddSwaggerGen(setup =>
     var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
     setup.IncludeXmlComments(xmlCommentsPath);
 });
-
+builder.Services.AddGoogleDiagnosticsForAspNetCore("ugovorozakupuservicelog", "UgovorOZakupuService", "1.0.0");
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())

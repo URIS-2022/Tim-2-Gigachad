@@ -1,5 +1,6 @@
 ﻿using DokumentiService.Data;
 using DokumentiService.Entities;
+using Google.Cloud.Diagnostics.AspNetCore3;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -17,6 +18,7 @@ builder.Services.AddMvc();
 builder.Services.AddScoped<IEksterniDokumentRepository, EksterniDokumentRepository>();
 builder.Services.AddScoped<IInterniDokumentRepository, InterniDokumentRepository>();
 builder.Services.AddScoped<IDokumentRepository, DokumentRepository>();
+
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<DokumentContext>(options =>
@@ -61,6 +63,8 @@ builder.Services.AddSwaggerGen(setup =>
     var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
     setup.IncludeXmlComments(xmlCommentsPath);
 });
+
+builder.Services.AddGoogleDiagnosticsForAspNetCore("dokumentiservicelog", "DokumentiService", "1.0.0");
 
 var app = builder.Build();
 

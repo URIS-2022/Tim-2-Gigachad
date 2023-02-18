@@ -23,18 +23,20 @@ namespace UgovorOZakupuService.Controllers
         private readonly IMapper mapper;
         private readonly IDokumentiService dokumentiService;
         private readonly IKupacService kupacService;
-       // private readonly IDeoParceleService deoParceleService;
+        private readonly IDeoParceleService deoParceleService;
+        private readonly IJavnoNadmetanjeService javnoNadmetanjeService;
         /// <summary>
         /// Dependency injection za kontroler preko konstruktora.
         /// </summary>
-        public UgovorOZakupuController(IUgovorOZakupuRepository ugovorOZakupuRepository, LinkGenerator linkGenerator, IMapper mapper, IDokumentiService dokumentiService, IKupacService kupacService /*IDeoParceleService deoParceleService*/)
+        public UgovorOZakupuController(IUgovorOZakupuRepository ugovorOZakupuRepository, LinkGenerator linkGenerator, IMapper mapper, IDokumentiService dokumentiService, IKupacService kupacService, IDeoParceleService deoParceleService, IJavnoNadmetanjeService javnoNadmetanjeService)
         {
             this.ugovorOZakupuRepository = ugovorOZakupuRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
             this.dokumentiService = dokumentiService;
             this.kupacService = kupacService;
-            //this.deoParceleService = deoParceleService;
+            this.deoParceleService = deoParceleService;
+            this.javnoNadmetanjeService = javnoNadmetanjeService;
         }
         /// <summary>
         /// GET za sve ugovore o zakupu
@@ -50,7 +52,7 @@ namespace UgovorOZakupuService.Controllers
             if (ugovoriOZakupu == null || ugovoriOZakupu.Count == 0)
                 return NoContent();
 
-            List<UgovorOZakupuDTO>  ugovoriDTO = new();
+            List<UgovorOZakupuDTO> ugovoriDTO = new();
             foreach (UgovorOZakupuEntity ugovor in ugovoriOZakupu)
             {
                 Guid tempDokumentID = ugovor.DokumentID; ;
@@ -59,20 +61,24 @@ namespace UgovorOZakupuService.Controllers
                 Guid temnpKupacID = ugovor.KupacID;
                 KupacDTO? kupac = kupacService.GetKupacByIDAsync(temnpKupacID, authorization).Result;
 
-              //  Guid tempDeoParceleID = ugovor.DeoParceleID;
-               // DeoParceleDTO? deoParcele = deoParceleService.GetDeoParceleByIDAsync(tempDeoParceleID, authorization).Result;
+                Guid tempDeoParceleID = ugovor.DeoParceleID;
+                DeoParceleDTO? deoParcele = deoParceleService.GetDeoParceleByIDAsync(tempDeoParceleID, authorization).Result;
 
-                if (dokument != null && kupac != null /*&& deoParcele != null*/)
+                Guid tempJavnoNadmetanjeID = ugovor.JavnoNadmetanjeID;
+                JavnoNadmetanjeDTO? javnoNadmetanje = javnoNadmetanjeService.GetJavnoNadmetanjeByIDAsync(tempJavnoNadmetanjeID, authorization).Result;
+
+                if (dokument != null && kupac != null && deoParcele != null && javnoNadmetanje != null)
                 {
                     UgovorOZakupuDTO ugovorOZakupuDTO = mapper.Map<UgovorOZakupuDTO>(ugovor);
                     ugovorOZakupuDTO.Dokument = dokument;
                     ugovorOZakupuDTO.Kupac = kupac;
-                    //ugovorOZakupuDTO.DeoParcele = deoParcele;
+                    ugovorOZakupuDTO.DeoParcele = deoParcele;
+                    ugovorOZakupuDTO.JavnoNadmetanje = javnoNadmetanje;
                     ugovoriDTO.Add(ugovorOZakupuDTO);
                 }
                 else
                     continue;
-                
+
             }
             return Ok(ugovoriDTO);
 
@@ -105,16 +111,32 @@ namespace UgovorOZakupuService.Controllers
                 KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupacID, authorization).Result;
                 if (kupac != null)
                 {
-                    UgovorOZakupuDTO ugovorDTO = mapper.Map<UgovorOZakupuDTO>(ugovor);
-                    ugovorDTO.Kupac = kupac;
-                    ugovorDTO.Dokument = dokument;
-                    return Ok(ugovorDTO);
+                    Guid tempDeoParceleID = ugovor.DeoParceleID;
+                    DeoParceleDTO? deo = deoParceleService.GetDeoParceleByIDAsync(tempDeoParceleID, authorization).Result;
+                    if (deo != null)
+                    {
+                        Guid tempJavnoNadmetanjeID = ugovor.JavnoNadmetanjeID; 
+                        JavnoNadmetanjeDTO? jn = javnoNadmetanjeService.GetJavnoNadmetanjeByIDAsync(tempJavnoNadmetanjeID, authorization).Result;
+                        if(jn != null)
+                        {
+                            UgovorOZakupuDTO ugovorDTO = mapper.Map<UgovorOZakupuDTO>(ugovor);
+                            ugovorDTO.Kupac = kupac;
+                            ugovorDTO.Dokument = dokument;
+                            ugovorDTO.DeoParcele = deo;
+                            return Ok(ugovorDTO);
+                        }
+                        
+                        else { return StatusCode(StatusCodes.Status500InternalServerError, "Javno nadmetanje nije pronadjeno. ID javnog nadmetanja: " + tempJavnoNadmetanjeID.ToString() + "."); }
+                    }
+                    else
+                    {
+                        return StatusCode(StatusCodes.Status500InternalServerError, "Deo parcele nije pronadjen. ID dela parcele: " + tempDeoParceleID.ToString() + ".");
+                    }
                 }
                 else
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronadjen. ID kupca: " + tempKupacID.ToString() + ".");
                 }
-
             }
             else
                 return StatusCode(StatusCodes.Status500InternalServerError, "Dokument nije pronađen. ID dokumenta: " + tempDokumentID.ToString() + ".");
@@ -129,7 +151,7 @@ namespace UgovorOZakupuService.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public IActionResult DeleteUgovorOZakupu(Guid ugovorOZakupuID, [FromHeader] string  authorization)
+        public IActionResult DeleteUgovorOZakupu(Guid ugovorOZakupuID, [FromHeader] string authorization)
         {
             try
             {
@@ -164,7 +186,7 @@ namespace UgovorOZakupuService.Controllers
         {
             try
             {
-                List<UgovorOZakupuEntity> ugovori =ugovorOZakupuRepository.GetUgovorOZakupu();
+                List<UgovorOZakupuEntity> ugovori = ugovorOZakupuRepository.GetUgovorOZakupu();
                 if (ugovori.Find(e => e.DokumentID == Guid.Parse(ugovorOZakupuCreateDTO.DokumentID)) == null)
                 {
                     Guid tempID = Guid.Parse(ugovorOZakupuCreateDTO.DokumentID);
@@ -175,39 +197,75 @@ namespace UgovorOZakupuService.Controllers
                         KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupacID, authorization).Result;
                         if (kupac != null)
                         {
-                            UgovorOZakupuDTO ugovor = ugovorOZakupuRepository.CreateUgovorOZakupu(ugovorOZakupuCreateDTO);
-                            ugovorOZakupuRepository.SaveChanges();
+                            Guid tempDeoParceleID = ugovorOZakupuCreateDTO.DeoParceleID;
+                            DeoParceleDTO? deo = deoParceleService.GetDeoParceleByIDAsync(tempDeoParceleID, authorization).Result;
+                            if (deo != null)
+                            {
+                                Guid tempJavnoNadmetanjeID = ugovorOZakupuCreateDTO.JavnoNadmetanjeID;
+                                JavnoNadmetanjeDTO? jn = javnoNadmetanjeService.GetJavnoNadmetanjeByIDAsync(tempJavnoNadmetanjeID, authorization).Result;
+                                if (jn != null) 
+                                {
+                                    UgovorOZakupuDTO ugovor = ugovorOZakupuRepository.CreateUgovorOZakupu(ugovorOZakupuCreateDTO);
+                                    ugovorOZakupuRepository.SaveChanges();
 
-                            ugovor.Dokument = dokument;
-                            ugovor.Kupac = kupac;
-                            string? location = linkGenerator.GetPathByAction("GetUgovorOZakupu", "UgovoroZakupu", new { ugovorOZakupuID = ugovor.UgovorOZakupuID });
+                                    ugovor.Dokument = dokument;
+                                    ugovor.JavnoNadmetanje = jn;
+                                    ugovor.Kupac = kupac;
+                                    ugovor.DeoParcele = deo;
+                                    string? location = linkGenerator.GetPathByAction("GetUgovorOZakupu", "UgovoroZakupu", new { ugovorOZakupuID = ugovor.UgovorOZakupuID });
 
-                            if (location != null)
-                                return Created(location, ugovor);
+                                    if (location != null)
+                                        return Created(location, ugovor);
+                                    else
+                                        return Created(string.Empty, ugovor);
+                                }
+                                else
+                                {
+                                    return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji javno nadmetanje sa zadatim ID.");
+                                }
+                            }
                             else
-                                return Created(string.Empty, ugovor);
+                            {
+                                return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji deo parcele sa zadatim ID.");
+                            }
                         }
                         else
-                        {
-                            return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji kupac sa zadatim ID.");
-                        }
+                            return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji dokument sa zadatim ID-jem.");
                     }
                     else
-                        return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji dokument sa zadatim ID-jem.");
+                        return StatusCode(StatusCodes.Status422UnprocessableEntity, "Vec postoji dokument sa zadatim ID.");
                 }
                 else
-                    return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji Ugovor koji je predstavljen ovim dokumentom.");
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji ugovor sa datim dokument ID.");
+
             }
             catch (Exception exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
-            }
+             }
         }
         /// <summary>
-        /// Promena ugovora o zakupu
+        /// Ažurira jedan Ugovor O ZAKUPU.
         /// </summary>
-        /// <param name="ugovorOZakupuUpdateDTO"></param>
-        /// <returns></returns>
+        /// <param name="ugovorOZakupuUpdateDTO">DTO za ažuriranje ugovora o zakupu.</param>
+        /// <param name="authorization">Autorizovan token.</param>
+        /// <returns>Vraća potvrdu o ažuriranom ugovoru o zakupu.</returns>
+        /// <remarks>
+        /// Primer zahteva za ažuriranje postojećeg ugovora o zakupu. \
+        /// PUT /api/ugovorOZakupu \
+        /// { 
+        ///		"deoParceleID": "3846ACAF-3D0E-439A-BF27-85344934F2CA",\
+        ///     "kupacID": "753D20F5-73A3-4E00-A3A2-E1C43D6B0777",\
+        ///     "javnoNadmetanjeID": "c29c41d4-b729-41fe-a484-d04219fdb5a0",\
+        ///     "dokumentID": "500e3385-6365-41d9-98a5-568bc359c5bd",\
+        ///     "datumUgovora": "2007-01-05T00:00:00",\
+        ///     "trajanjeUgovora": 11,\
+         ///    "tipGarancije": "BANKARSKAGARANCIJA"\
+        /// }\
+        /// </remarks>
+        /// <response code="200">Vraća ažurirani ugovor o zakupu.</response>
+        /// <response code="404">Specifirani ugovor o zakupu ne postoji.</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom azuriranja ugovora o zakupu.</response>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -225,7 +283,7 @@ namespace UgovorOZakupuService.Controllers
                 UgovorOZakupuEntity? tempUgovor = ugovori.Find(e => e.UgovorOZakupuID == Guid.Parse(ugovorOZakupuUpdateDTO.UgovorOZakupuID));
                 if(tempUgovor == null)
                 {
-                    ugovori.Remove(tempUgovor);
+                  ugovori.Remove(tempUgovor);
                 }
                     Guid tempID = Guid.Parse(ugovorOZakupuUpdateDTO.DokumentID);
                     DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempID, authorization).Result;
@@ -235,15 +293,34 @@ namespace UgovorOZakupuService.Controllers
                         KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupacID, authorization).Result;
                         if (kupac != null)
                         {
-                            UgovorOZakupuEntity ugovor = mapper.Map<UgovorOZakupuEntity>(ugovorOZakupuUpdateDTO);
-                            mapper.Map(ugovor, oldUgovorOZakupu);
-                            ugovorOZakupuRepository.SaveChanges();
+                            Guid tempDeoParcele = Guid.Parse(ugovorOZakupuUpdateDTO.DeoParceleID);
+                            DeoParceleDTO? deo = deoParceleService.GetDeoParceleByIDAsync(tempDeoParcele, authorization).Result;
+                            if( deo != null) 
+                            {
+                                Guid tempJavnoNadmetanje = Guid.Parse(ugovorOZakupuUpdateDTO.JavnoNadmetanjeID);
+                                JavnoNadmetanjeDTO? javno = javnoNadmetanjeService.GetJavnoNadmetanjeByIDAsync(tempJavnoNadmetanje, authorization).Result;
+                                if(javno != null)
+                                {
+                                UgovorOZakupuEntity ugovor = mapper.Map<UgovorOZakupuEntity>(ugovorOZakupuUpdateDTO);
+                                mapper.Map(ugovor, oldUgovorOZakupu);
+                                ugovorOZakupuRepository.SaveChanges();
 
-                            UgovorOZakupuDTO UGOVORDTO = mapper.Map<UgovorOZakupuDTO>(oldUgovorOZakupu);
-                            UGOVORDTO.Dokument = dokument;
-                            UGOVORDTO.Kupac = kupac;
-                            return Ok(UGOVORDTO);
-                        }
+                                UgovorOZakupuDTO UGOVORDTO = mapper.Map<UgovorOZakupuDTO>(oldUgovorOZakupu);
+                                UGOVORDTO.DeoParcele = deo;
+                                UGOVORDTO.Dokument = dokument;
+                                UGOVORDTO.JavnoNadmetanje = javno;
+                                UGOVORDTO.Kupac = kupac;
+                                return Ok(UGOVORDTO);
+                                } 
+                            else
+                            {
+                                return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji kupac sa zadatim ID");
+                            }
+                            }
+                            else
+                                return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji kupac sa zadatim ID");
+
+                    }
                         else
                         {
                             return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji kupac sa zadatim ID");
