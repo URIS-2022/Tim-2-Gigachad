@@ -1,0 +1,445 @@
+{
+	"info": {
+		"_postman_id": "fe39dc17-96e4-4074-ace1-a5b266f72d07",
+		"name": "DeoParceleService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autentifikacija",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"naziv\": \"it19-2019\",\r\n\t\"lozinka\": \"it19-2019\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15001/api/korisnici/autentifikacija",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15001",
+					"path": [
+						"api",
+						"korisnici",
+						"autentifikacija"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptionsParcele",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15008/api/parcele",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"parcele"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetParcele",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15008/api/parcele",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"parcele"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetParcelaByID",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15008/api/parcele/06f51688-c60a-4dbf-8955-f1713fa47e28",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"parcele",
+						"06f51688-c60a-4dbf-8955-f1713fa47e28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateParcela",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"kupacID\": \"f9e22f42-cd14-4e3b-bbb7-eee4fe30a60a\",\r\n\t\"oznaka\": \"1111111111\",\r\n\t\"ukupnaPovrsina\": 9999,\r\n\t\"katastarskaOpstina\": \"DONJI_GRAD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15008/api/parcele",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"parcele"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateParcela",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": \"c64e13cf-235d-417b-87cc-8e2c1e95146b\",\r\n\t\"kupacID\": \"f9e22f42-cd14-4e3b-bbb7-eee4fe30a60a\",\r\n\t\"oznaka\": \"9999999999\",\r\n\t\"ukupnaPovrsina\": 1111,\r\n\t\"katastarskaOpstina\": \"BACKI_VINOGRADI\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15008/api/parcele",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"parcele"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteParcela",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15008/api/parcele/1e0c2ce8-cd7a-44fd-a60b-9e9c3b236bfc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"parcele",
+						"1e0c2ce8-cd7a-44fd-a60b-9e9c3b236bfc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptionsDeloviParcela",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15008/api/deloviParcela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"deloviParcela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDeloviParcela",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15008/api/deloviParcela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"deloviParcela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDeoParceleByID",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15008/api/deloviParcela/aaa2b53b-278d-4ceb-9992-f57bb8818773",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"deloviParcela",
+						"aaa2b53b-278d-4ceb-9992-f57bb8818773"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateDeoParcele",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"parcelaID\": \"08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e\",\r\n\t\"kupacID\": \"753d20f5-73a3-4e00-a3a2-e1c43d6b0777\",\r\n\t\"redniBroj\": \"11111\",\r\n\t\"povrsina\": 999,\r\n\t\"brojNekretnina\": 99,\r\n\t\"obradivost\": \"OSTALO\",\r\n\t\"kultura\": \"VRTOVI\",\r\n\t\"klasa\": \"V\",\r\n\t\"zasticenaZona\": \"III\",\r\n\t\"oblikSvojine\": \"OSTALE_SVOJINE\",\r\n\t\"odvodnjavanje\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15008/api/deloviParcela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"deloviParcela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateDeoParcele",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": \"6a410fb1-3724-4cd0-985b-0e856e8fb039\",\r\n\t\"parcelaID\": \"08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e\",\r\n\t\"kupacID\": \"753d20f5-73a3-4e00-a3a2-e1c43d6b0777\",\r\n\t\"redniBroj\": \"99999\",\r\n\t\"povrsina\": 111,\r\n\t\"brojNekretnina\": 11,\r\n\t\"obradivost\": \"OSTALO\",\r\n\t\"kultura\": \"VRTOVI\",\r\n\t\"klasa\": \"V\",\r\n\t\"zasticenaZona\": \"III\",\r\n\t\"oblikSvojine\": \"OSTALE_SVOJINE\",\r\n\t\"odvodnjavanje\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15008/api/deloviParcela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"deloviParcela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteDeoParcele",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15008/api/deloviParcela/db1b7bf2-f580-4b20-82e5-20e81ee7f3c2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15008",
+					"path": [
+						"api",
+						"deloviParcela",
+						"db1b7bf2-f580-4b20-82e5-20e81ee7f3c2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY3NDczMTYsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0._e5SRrAxCqbc8PT1zAHUmzl1zL9ZMU77HDwHxEOYgKg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
