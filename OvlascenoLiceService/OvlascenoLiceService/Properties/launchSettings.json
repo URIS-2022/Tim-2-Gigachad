@@ -2,7 +2,7 @@
   "profiles": {
     "OvlascenoLiceService": {
       "commandName": "Project",
-      "launchUrl": "swagger",
+      "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -11,7 +11,6 @@
     },
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,10 +19,10 @@
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
-    "anonymousAuthentication": true,
+    "anonymousAuthentication": false,
     "iisExpress": {
-      "applicationUrl": "http://localhost:26920",
-      "sslPort": 44319
+      "applicationUrl": "http://localhost:54097/",
+      "sslPort": 44330
     }
   }
 }

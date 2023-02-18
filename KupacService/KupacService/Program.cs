@@ -40,7 +40,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 builder.Services.AddSwaggerGen(setup =>
 {
-    setup.SwaggerDoc("LiceServiceOpenApiSpecification",
+    setup.SwaggerDoc("KupacServiceOpenApiSpecification",
         new Microsoft.OpenApi.Models.OpenApiInfo()
         {
             Title = "Kupac API",

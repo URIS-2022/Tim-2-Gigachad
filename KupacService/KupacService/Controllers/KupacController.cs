@@ -46,8 +46,8 @@ namespace KupacService.Controllers
         /// <response code="200">Vraća listu kupaca.</response>
         /// <response code="204">Ne postoje kupaci.</response>
         /// <response code="500">Kupac nije pronađen.</response>
+        [HttpHead]
         [HttpGet]
-        //[HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
 
@@ -124,6 +124,19 @@ namespace KupacService.Controllers
         /// <param name="kupacCreateDTO">Model kupca.</param>
         /// <param name="authorization">Autorizovan token.</param>
         /// <returns>Potvrdu o kreiranom kupcu.</returns>
+        /// <remarks>
+        /// Primer zahteva za kreiranje novog kupca. \
+        /// POST /api/kupci \
+        ///{ \
+        ///    "liceID": "f127642e-4d73-42f1-979d-6a506aea9bdc", \
+        ///    "ovlascenoLiceID": "904BD8B6-E268-4CA8-89FB-EF2750A74E19", \
+        ///    "prioritet": "VLASNIKSISTEMAZANAVODNJAVANJE", \
+        ///    "imaZabranu": true, \
+        ///    "datumPocetkaZabrane": "2013-11-10T00:00:00", \
+        ///    "datumZavrsetkaZabrane": "2020-10-10T00:00:00", \
+        ///    "brojKupovina": 20 \
+        ///}
+        /// </remarks>
         /// <response code="200">Vraća kreiranog kupca.</response>
         /// <response code="404">Došlo je do greške na serveru prilikom kreiranja kupca.</response>
         /// <response code="500">Došlo je do greške na serveru prilikom kreiranja lica.</response>
@@ -214,6 +227,20 @@ namespace KupacService.Controllers
         /// <param name="kupacUpdateDTO">DTO za ažuriranje kupca.</param>
         /// <param name="authorization">Autorizovan token.</param>
         /// <returns>Potvrdu o ažuriranom kupcu.</returns>
+        /// <remarks>
+        /// Primer zahteva za azuriranje kupca. \
+        /// PUT /api/kupci \
+        ///{ \
+        ///    "kupacID" : "df2d74ef-65b6-4409-b1c3-5851f7089e0d", \
+        ///    "liceID": "f127642e-4d73-42f1-979d-6a506aea9bdc", \
+        ///    "ovlascenoLiceID": "904BD8B6-E268-4CA8-89FB-EF2750A74E19", \
+        ///    "prioritet": "VLASNIKSISTEMAZANAVODNJAVANJE", \
+        ///    "imaZabranu": true, \
+        ///    "datumPocetkaZabrane": "2013-11-10T00:00:00", \
+        ///    "datumZavrsetkaZabrane": "2020-10-10T00:00:00", \
+        ///    "brojKupovina": 20 \
+        ///}
+        /// </remarks>
         /// <response code="200">Vraća ažuriranog kupca.</response>
         /// <response code="404">Specifirani kupac ne postoji.</response>
         /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja kupca.</response>

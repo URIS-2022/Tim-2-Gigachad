@@ -38,7 +38,7 @@ namespace OvlascenoLiceService.Controllers
         /// <returns>Vraća potvrdu o listi postojećih fizičkih lica.</returns>
         /// <response code="200">Vraća listu fizičkih lica.</response>
         /// <response code="204">Ne postoje fizička lica.</response>
-        //[HttpHead]
+        [HttpHead]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -73,6 +73,15 @@ namespace OvlascenoLiceService.Controllers
         /// </summary>
         /// <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
         /// <returns>Vraća potvrdu o kreiranom fizičkom licu.</returns>
+        /// <remarks>
+        /// Primer zahteva za kreiranje novog fizičkog lica. \
+        /// POST /api/fizickaLica \
+        /// { \
+        ///		"jmbg": "1234567891234", \
+        ///		"ime": "Pera", \
+        ///		"prezime": "Perić" \
+        /// }
+        /// </remarks>
         /// <response code="201">Vraća kreirano fizičko lice.</response>
         /// <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>
         /// <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
@@ -111,6 +120,16 @@ namespace OvlascenoLiceService.Controllers
         /// </summary>
         /// <param name="fizickoLiceUpdateDTO">DTO za ažuriranje fizičkog lica.</param>
         /// <returns>Vraća potvrdu o ažuriranom fizičkom licu.</returns>
+        /// <remarks>
+        /// Primer zahteva za kreiranje novog fizičkog lica. \
+        /// PUT /api/fizickaLica \
+        /// { \
+        ///     "id" : "673eb87d-4a9f-4838-a542-3d4cef1b9495"\
+        ///		"jmbg": "1234567891234", \
+        ///		"ime": "Pera", \
+        ///		"prezime": "Perić" \
+        /// }
+        /// </remarks>
         /// <response code="200">Vraća ažurirano fizičko lice.</response>
         /// <response code="404">Specifirano fizičko lice ne postoji.</response>
         /// <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>

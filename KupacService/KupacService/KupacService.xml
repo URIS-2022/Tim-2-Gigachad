@@ -21,8 +21,8 @@
             <returns>Vraća potvrdu o listi postojećih kupaca.</returns>
             <param name="authorization">Autorizovan token.</param>
             <response code="200">Vraća listu kupaca.</response>
-            <response code="204">Ne postoje kupaca.</response>
-            <response code="500">Adresa lica nije pronađena.</response>
+            <response code="204">Ne postoje kupaci.</response>
+            <response code="500">Kupac nije pronađen.</response>
         </member>
         <member name="M:KupacService.Controllers.KupacController.GetKupac(System.Guid,System.String)">
             <summary>
@@ -36,15 +36,28 @@
             <response code="500">Adresa lica nije pronađena.</response>
         </member>
         <member name="M:KupacService.Controllers.KupacController.CreateKupac(KupacService.DTO.KupacCreateDTO,System.String)">
-            <summary>
-            Kreira novog kupca.
-            </summary>
-            <param name="kupacCreateDTO">Model kupca.</param>
-            <param name="authorization">Autorizovan token.</param>
-            <returns>Potvrdu o kreiranom kupcu.</returns>
-            <response code="200">Vraća kreiranog kupca.</response>
-            <response code="404">Došlo je do greške na serveru prilikom kreiranja kupca.</response>
-            <response code="500">Došlo je do greške na serveru prilikom kreiranja lica.</response>
+             <summary>
+             Kreira novog kupca.
+             </summary>
+             <param name="kupacCreateDTO">Model kupca.</param>
+             <param name="authorization">Autorizovan token.</param>
+             <returns>Potvrdu o kreiranom kupcu.</returns>
+             <remarks>
+             Primer zahteva za kreiranje novog kupca. \
+             POST /api/kupci \
+            { \
+                "liceID": "f127642e-4d73-42f1-979d-6a506aea9bdc", \
+                "ovlascenoLiceID": "904BD8B6-E268-4CA8-89FB-EF2750A74E19", \
+                "prioritet": "VLASNIKSISTEMAZANAVODNJAVANJE", \
+                "imaZabranu": true, \
+                "datumPocetkaZabrane": "2013-11-10T00:00:00", \
+                "datumZavrsetkaZabrane": "2020-10-10T00:00:00", \
+                "brojKupovina": 20 \
+            }
+             </remarks>
+             <response code="200">Vraća kreiranog kupca.</response>
+             <response code="404">Došlo je do greške na serveru prilikom kreiranja kupca.</response>
+             <response code="500">Došlo je do greške na serveru prilikom kreiranja lica.</response>
         </member>
         <member name="M:KupacService.Controllers.KupacController.DeleteKupac(System.Guid,System.String)">
             <summary>
@@ -58,15 +71,73 @@
             <response code="500">Došlo je do greške na serveru prilikom brisanja kupca.</response>
         </member>
         <member name="M:KupacService.Controllers.KupacController.UpdateKupac(KupacService.Entities.KupacUpdateDTO,System.String)">
+             <summary>
+             Ažurira jednog kupca.
+             </summary>
+             <param name="kupacUpdateDTO">DTO za ažuriranje kupca.</param>
+             <param name="authorization">Autorizovan token.</param>
+             <returns>Potvrdu o ažuriranom kupcu.</returns>
+             <remarks>
+             Primer zahteva za azuriranje kupca. \
+             PUT /api/kupci \
+            { \
+                "kupacID" : "df2d74ef-65b6-4409-b1c3-5851f7089e0d", \
+                "liceID": "f127642e-4d73-42f1-979d-6a506aea9bdc", \
+                "ovlascenoLiceID": "904BD8B6-E268-4CA8-89FB-EF2750A74E19", \
+                "prioritet": "VLASNIKSISTEMAZANAVODNJAVANJE", \
+                "imaZabranu": true, \
+                "datumPocetkaZabrane": "2013-11-10T00:00:00", \
+                "datumZavrsetkaZabrane": "2020-10-10T00:00:00", \
+                "brojKupovina": 20 \
+            }
+             </remarks>
+             <response code="200">Vraća ažuriranog kupca.</response>
+             <response code="404">Specifirani kupac ne postoji.</response>
+             <response code="500">Došlo je do greške na serveru prilikom ažuriranja kupca.</response>
+        </member>
+        <member name="M:KupacService.Controllers.KupacController.GetKupciOptions">
             <summary>
-            Ažurira jednog kupca.
+            Vraća opcije za rad sa kupcima.
             </summary>
-            <param name="kupacUpdateDTO">DTO za ažuriranje kupca.</param>
-            <param name="authorization">Autorizovan token.</param>
-            <returns>Potvrdu o ažuriranom kupcu.</returns>
-            <response code="200">Vraća ažuriranog kupca.</response>
-            <response code="404">Specifirani kupac ne postoji.</response>
-            <response code="500">Došlo je do greške na serveru prilikom ažuriranja kupca.</response>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:KupacService.Data.IKupacRepository">
+            <summary>
+            Interfejs repozitorijuma entiteta kupca.
+            </summary>
+        </member>
+        <member name="M:KupacService.Data.IKupacRepository.GetKupci">
+            <summary>
+            Vraća listu kupaca iz konteksta.
+            </summary>
+            <returns>Vraća listu kupaca.</returns>
+        </member>
+        <member name="M:KupacService.Data.IKupacRepository.GetKupacByID(System.Guid)">
+            <summary>
+            Vraća jednog kupca iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="kupacID">ID lica kupca.</param>
+            <returns>Vraća specifiranog kupca.</returns>
+        </member>
+        <member name="M:KupacService.Data.IKupacRepository.CreateKupac(KupacService.DTO.KupacCreateDTO)">
+            <summary>
+            Dodaje novog kupca u kontekst.
+            </summary>
+            <param name="kupacCreateDTO">DTO za kreiranje kupca.</param>
+            <returns>Vraća DTO kreiranog kupca.</returns>
+        </member>
+        <member name="M:KupacService.Data.IKupacRepository.DeleteKupac(System.Guid)">
+            <summary>
+            Briše kupca iz konteksta.
+            </summary>
+            <param name="kupacID">ID kupca.</param>
+        </member>
+        <member name="M:KupacService.Data.IKupacRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>
         <member name="T:KupacService.Data.KupacRepository">
             <summary>
@@ -77,6 +148,12 @@
             <summary>
             Dependency injection za repozitorijum.
             </summary>
+        </member>
+        <member name="M:KupacService.Data.KupacRepository.GetKupci">
+            <summary>
+            Vraća listu kupaca iz konteksta.
+            </summary>
+            <returns>Vraća listu kupaca.</returns>
         </member>
         <member name="M:KupacService.Data.KupacRepository.CreateKupac(KupacService.DTO.KupacCreateDTO)">
             <summary>
@@ -186,7 +263,7 @@
         </member>
         <member name="P:KupacService.DTO.KupacCreateDTO.LiceID">
             <summary>
-            ID lica.
+            ID kupca.
             </summary>
         </member>
         <member name="P:KupacService.DTO.KupacCreateDTO.OvlascenoLiceID">
@@ -201,7 +278,7 @@
         </member>
         <member name="P:KupacService.DTO.KupacCreateDTO.ImaZabranu">
             <summary>
-            Lice ima/nema zabranu.
+            Kupac ima/nema zabranu.
             </summary>
         </member>
         <member name="P:KupacService.DTO.KupacCreateDTO.DatumPocetkaZabrane">
@@ -226,17 +303,17 @@
         </member>
         <member name="T:KupacService.DTO.KupacDTO">
             <summary>
-            DTO za fizičko lice.
+            DTO za kupca.
             </summary>
         </member>
         <member name="P:KupacService.DTO.KupacDTO.KupacID">
             <summary>
-            ID fizičkog lica.
+            ID kupca.
             </summary>
         </member>
         <member name="P:KupacService.DTO.KupacDTO.Lice">
             <summary>
-            JMBG fizičkog lica.
+            ID lica kupca.
             </summary>
         </member>
         <member name="P:KupacService.DTO.KupacDTO.OvlascenoLice">
@@ -441,32 +518,47 @@
         </member>
         <member name="T:KupacService.Entities.EntitiesEnums.Prioritet">
             <summary>
-            Enumerator za tipa korisnika.
+            Enumerator za tip prioriteta kupca.
             </summary>
         </member>
         <member name="F:KupacService.Entities.EntitiesEnums.Prioritet.VLASNIKSISTEMAZANAVODNJAVANJE">
             <summary>
-            Administrator.
+            VLASNIK SISTEMA ZA NAVODNJAVANJE.
             </summary>
         </member>
         <member name="F:KupacService.Entities.EntitiesEnums.Prioritet.VLASNIKZEMLJISTAKOJESEGRANICISAZEMLJISTEMKOJESEDAJEUZAKUP">
             <summary>
-            Komisija.
+            VLASNIK ZEMLJISTA KOJE SE GRANICI SA ZEMLJISTEM KOJE SE DAJE U ZAKUP
             </summary>
         </member>
         <member name="F:KupacService.Entities.EntitiesEnums.Prioritet.POLJOPRIVREDNIKKOJIJEUPISANUREGISTAR">
             <summary>
-            Operater.
+            POLJOPRIVREDNIK KOJI JE UPISAN U REGISTAR
             </summary>
         </member>
         <member name="F:KupacService.Entities.EntitiesEnums.Prioritet.VLASNIKZEMLJISTAKOJEJENAJBLIZEZEMLJISTUKOJESEDAJEUZAKUP">
             <summary>
-            Licitant.
+            VLASNIK ZEMLJISTA KOJE JE NAJBLIZE ZEMLJISTU KOJE SE DAJE U ZAKUP
+            </summary>
+        </member>
+        <member name="T:KupacService.Entities.KupacContext">
+            <summary>
+            DbContext za KupacService mikroservis.
+            </summary>
+        </member>
+        <member name="M:KupacService.Entities.KupacContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="P:KupacService.Entities.KupacContext.Kupci">
+            <summary>
+            DbSet za entitet kupac.
             </summary>
         </member>
         <member name="M:KupacService.Entities.KupacContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
-            Popunjava bazu sa nekim inicijalnim podacima.
+            Popunjava bazu nekim inicijalnim podacima.
             </summary>
         </member>
         <member name="T:KupacService.Entities.KupacEntity">
@@ -526,35 +618,45 @@
         <member name="M:KupacService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:KupacService.Profiles.KupacProfile">
+            <summary>
+            Profil mapera za model entiteta kupac.
+            </summary>
+        </member>
+        <member name="M:KupacService.Profiles.KupacProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta kupac.
+            </summary>
+        </member>
         <member name="T:KupacService.ServiceCalls.ILiceService">
             <summary>
-            Interfejs od servis poziva za adresu lica.
+            Interfejs servis poziva za lica.
             </summary>
         </member>
         <member name="M:KupacService.ServiceCalls.ILiceService.GetLiceByIDAsync(System.Guid,System.String)">
             <summary>
-            Vraća adresu lica od drugog mikro servisa.
+            Vraća adresu lica drugog mikroservisa.
             </summary>
-            <param name="LiceID">ID adrese lica.</param>
-            <param name="token">Token za adresu lica mikroservis.</param>
-            <returns>Vraća model DTO-a adrese lica.</returns>
+            <param name="LiceID">ID lica.</param>
+            <param name="token">Token za lice mikroservis.</param>
+            <returns>Vraća model DTO-a lica.</returns>
         </member>
         <member name="T:KupacService.ServiceCalls.IOvlascenoLiceService">
             <summary>
-            Interfejs od servis poziva za adresu lica.
+            Interfejs servis poziva za ovlasceno lice.
             </summary>
         </member>
         <member name="M:KupacService.ServiceCalls.IOvlascenoLiceService.GetOvlascenoLiceByIDAsync(System.Guid,System.String)">
             <summary>
-            Vraća adresu lica od drugog mikro servisa.
+            Vraća lice drugog mikroservisa.
             </summary>
-            <param name="OvlascenoLiceID">ID adrese lica.</param>
-            <param name="token">Token za adresu lica mikroservis.</param>
-            <returns>Vraća model DTO-a adrese lica.</returns>
+            <param name="OvlascenoLiceID">ID ovlascenog lica.</param>
+            <param name="token">Token ovlascenog lica mikroservisa.</param>
+            <returns>Vraća model DTO-a ovlascenog lica.</returns>
         </member>
         <member name="T:KupacService.ServiceCalls.LiceService">
             <summary>
-            Servis poziva za adresu lica.
+            Servis poziva lice.
             </summary>
         </member>
         <member name="M:KupacService.ServiceCalls.LiceService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
@@ -564,7 +666,7 @@
         </member>
         <member name="M:KupacService.ServiceCalls.LiceService.GetLiceByIDAsync(System.Guid,System.String)">
             <summary>
-            Vraća lice od drugog mikro servisa.
+            Vraća lice od drugog mikroservisa.
             </summary>
             <param name="liceID">ID lica.</param>
             <param name="token">Token za lice mikroservis.</param>
@@ -572,7 +674,7 @@
         </member>
         <member name="T:KupacService.ServiceCalls.OvlascenoLiceService">
             <summary>
-            Servis poziva za adresu lica.
+            Servis poziva za ovlasceno lice.
             </summary>
         </member>
         <member name="M:KupacService.ServiceCalls.OvlascenoLiceService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
@@ -582,11 +684,11 @@
         </member>
         <member name="M:KupacService.ServiceCalls.OvlascenoLiceService.GetOvlascenoLiceByIDAsync(System.Guid,System.String)">
             <summary>
-            Vraća lice od drugog mikro servisa.
+            Vraća ovlasceno lice od drugog mikroservisa.
             </summary>
-            <param name="ovlascenoLiceID">ID lica.</param>
-            <param name="token">Token za lice mikroservis.</param>
-            <returns>Vraća model DTO-a lica.</returns>
+            <param name="ovlascenoLiceID">ID ovlascenog lica.</param>
+            <param name="token">Token za ovlasceno lice mikroservis.</param>
+            <returns>Vraća model DTO-a ovlsacenog lica.</returns>
         </member>
     </members>
 </doc>

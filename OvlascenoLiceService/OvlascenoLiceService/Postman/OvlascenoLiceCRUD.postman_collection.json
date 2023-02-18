@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "d6b21f8a-d39d-4663-92c8-d8d98f7e0d8c",
+		"name": "OvlascenoLiceCRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetToken",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"naziv\": \"it23-2019\",\r\n    \"lozinka\": \"it23-2019\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15001/api/korisnici/autentifikacija",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15001",
+					"path": [
+						"api",
+						"korisnici",
+						"autentifikacija"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OvlascenoLiceGetAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:15005/api/ovlascenaLica/211af020-36ee-4d7b-84ef-2521af14a0cc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15005",
+					"path": [
+						"api",
+						"ovlascenaLica",
+						"211af020-36ee-4d7b-84ef-2521af14a0cc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OvlascenoLiceGetByID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "OvlascenoLicePut",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"211af020-36ee-4d7b-84ef-2521af14a0cc\",\r\n    \"fizickoLiceID\": \"7756fb00-136f-4fd8-9f98-36170844c2d4\",\r\n    \"adresaID\": \"6f79d49c-1c14-49b7-94c3-19a81c7f97a0\",\r\n    \"telefon1\": \"4211218511\",\r\n    \"telefon2\": \"3994610222\",\r\n    \"email\": \"malicigo@net.org\",\r\n    \"brojRacuna\": \"343658891760644\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15005/api/ovlascenaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15005",
+					"path": [
+						"api",
+						"ovlascenaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OvlascenoLiceDelete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15005/api/ovlascenaLica/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15005",
+					"path": [
+						"api",
+						"ovlascenaLica",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OvlascenoLicePost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fizickoLice\": \"673eb87d-4a9f-4838-a542-3d4cef1b9495\",\r\n    \"adresa\": \"6f79d49c-1c14-49b7-94c3-19a81c7f97a0\",\r\n    \"telefon1\": \"4211218511\",\r\n    \"telefon2\": \"3994610111\",\r\n    \"email\": \"malicigo@net.org\",\r\n    \"brojRacuna\": \"343658891760644\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15005/api/ovlascenaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15005",
+					"path": [
+						"api",
+						"ovlascenaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOvlascenaLicaOptions",
+			"request": {
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15005/api/ovlascenaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15005",
+					"path": [
+						"api",
+						"ovlascenaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FizickoLiceGetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15005/api/fizickaLica/af948f2a-745b-45bc-abc1-1f4da1727af4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15005",
+					"path": [
+						"api",
+						"fizickaLica",
+						"af948f2a-745b-45bc-abc1-1f4da1727af4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FizickoLiceGetByID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "FizickoLicePut",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"315041da-faf1-49f4-866a-6f03fb6779d8\",\r\n    \"jmbg\": \"0786741214878\",\r\n    \"ime\": \"Ra\",\r\n    \"prezime\": \"Ra\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15005/api/fizickaLica/315041da-faf1-49f4-866a-6f03fb6779d8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15005",
+					"path": [
+						"api",
+						"fizickaLica",
+						"315041da-faf1-49f4-866a-6f03fb6779d8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FizickoLiceDelete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15005/api/fizickaLica/315041da-faf1-49f4-866a-6f03fb6779d8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15005",
+					"path": [
+						"api",
+						"fizickaLica",
+						"315041da-faf1-49f4-866a-6f03fb6779d8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FizickoLicePost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jmbg\": \"0786741214888\",\r\n    \"ime\": \"Rak\",\r\n    \"prezime\": \"Rajko\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15005/api/fizickaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15005",
+					"path": [
+						"api",
+						"fizickaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFizickaLicaOptions",
+			"request": {
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15005/api/fizickaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15005",
+					"path": [
+						"api",
+						"fizickaLica"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY3MzYwODUsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.CrHpD9ao6zrO9JXNmEhIYHKwKXZbfrD5ukHqY4MRBpg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

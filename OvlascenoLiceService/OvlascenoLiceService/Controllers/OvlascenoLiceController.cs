@@ -42,7 +42,7 @@ namespace OvlascenoLiceService.Controllers
         /// <param name="authorization">Autorizovan token.</param>
         /// <response code="200">Vraća listu ovlasccenih lica.</response>
         /// <response code="204">Ne postoje ovlascena lica.</response>
-        //[HttpHead]
+        [HttpHead]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -108,6 +108,18 @@ namespace OvlascenoLiceService.Controllers
         /// <param name="ovlascenoLiceCreateDTO">DTO za kreiranje ovlascenog lica.</param>
         /// <param name="authorization">Autorizovan token.</param>
         /// <returns>Vraća potvrdu o kreiranom ovlascenom licu.</returns>
+        /// <remarks>
+        /// Primer zahteva za kreiranje novog ovlascenog lica. \
+        /// POST /api/ovlascenaLica \
+        ///    { \
+        ///        "fizickoLiceID": "7756fb00-136f-4fd8-9f98-36170844c2d4", \
+        ///        "adresaID": "6f79d49c-1c14-49b7-94c3-19a81c7f97a0", \
+        ///        "telefon1": "4211218511", \
+        ///        "telefon2": "3994610111", \
+        ///        "email": "malicigo@net.org", \
+        ///        "brojRacuna": "343658891760644" \
+        ///    }
+        /// </remarks>
         /// <response code="201">Vraća kreirano ovlasceno lice.</response>
         /// <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
         /// <response code="500">Došlo je do greške na serveru prilikom kreiranja ovlascenog lica.</response>
@@ -201,10 +213,23 @@ namespace OvlascenoLiceService.Controllers
         /// <param name="ovlascenoLiceUpdateDTO">DTO za modifikaciju ovlascenog lica.</param>
         /// <param name="authorization">Autorizovan token.</param>
         /// <returns>Vraća potvrdu o modifikovanom ovlascenom licu.</returns>
-        /// <response code="201">Vraća modifikovano ovlasceno lice.</response>
-        /// <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
-        /// <response code="500">Došlo je do greške na serveru prilikom modifikovanja ovlascenog lica.</response>
-        [HttpPut]
+        /// <remarks>
+        /// Primer zahteva za kreiranje novog ovlascenog lica. \
+        /// PUT /api/ovlascenaLica \
+        ///{ \
+        ///    "id": "211af020-36ee-4d7b-84ef-2521af14a0cc", \
+        ///    "fizickoLiceID": "7756fb00-136f-4fd8-9f98-36170844c2d4", \
+        ///    "adresaID": "6f79d49c-1c14-49b7-94c3-19a81c7f97a0", \
+        ///    "telefon1": "222222222", \
+        ///    "telefon2": "111111111", \
+        ///    "email": "malicigo@net.org", \
+        ///    "brojRacuna": "343658891760644" \
+        ///}
+    /// </remarks>
+    /// <response code="201">Vraća modifikovano ovlasceno lice.</response>
+    /// <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
+    /// <response code="500">Došlo je do greške na serveru prilikom modifikovanja ovlascenog lica.</response>
+    [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
