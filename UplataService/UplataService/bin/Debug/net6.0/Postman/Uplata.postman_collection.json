@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "0f187159-f66a-4770-9e37-662a0e5439bc",
+		"name": "Uplata",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17453395"
+	},
+	"item": [
+		{
+			"name": "GetUplataByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15009/api/uplate/167ef647-33c2-466c-b777-5271365bffbd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15009",
+					"path": [
+						"api",
+						"uplate",
+						"167ef647-33c2-466c-b777-5271365bffbd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllUplate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15009/api/uplate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15009",
+					"path": [
+						"api",
+						"uplate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUplata",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15009/api/uplate/6F00BF6F-9EA1-40D2-865E-210CF8EACA1F",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15009",
+					"path": [
+						"api",
+						"uplate",
+						"6F00BF6F-9EA1-40D2-865E-210CF8EACA1F"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUplata",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"JavnoNadmetanjeID\": \"ABEC715B-03E0-4C9A-B97B-327F0AF16823\",\r\n    \"KupacID\": \"93D92981-A754-41D8-8D1F-B5462A9E0386\",\r\n    \"BrojRacuna\": \"005-417672-67\",\r\n    \"PozivNaBroj\": \"45264\",\r\n    \"Iznos\": 363357,\r\n    \"Uplatilac\": \"Kaile Botterman\",\r\n    \"SvrhaUplate\": \"Pellentesque at nulla\",\r\n    \"DatumUplate\": \"2022-01-09T00:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15009/api/uplate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15009",
+					"path": [
+						"api",
+						"uplate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUplata",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uplataID\": \"61d82709-c5a3-49bf-9a71-829f8ee335d1\",\r\n    \"javnoNadmetanjeID\": \"03b0680e-35b6-4449-9150-019b817d7cef\",\r\n    \"kupacID\": \"93D92981-A754-41D8-8D1F-B5462A9E0386\",\r\n    \"brojRacuna\": \"005-417672-67\",\r\n    \"pozivNaBroj\": \"45264\",\r\n    \"iznos\": 500,\r\n    \"uplatilac\": \"Kaile Botterman\",\r\n    \"svrhaUplate\": \"Pellentesque at nulla\",\r\n    \"datumUplate\": \"2022-01-09T00:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15009/api/uplate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15009",
+					"path": [
+						"api",
+						"uplate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptionsUplate",
+			"request": {
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15009/api/uplate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15009",
+					"path": [
+						"api",
+						"uplate"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY3NTYxNTUsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.Bt-IUs8WygAv-kk87C2z2E6WEFYSYhVfRKwdjS2UzwU",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
