@@ -1,6 +1,7 @@
 ﻿using DeoParceleService.Data;
 using DeoParceleService.Entities;
 using DeoParceleService.ServiceCalls;
+using Google.Cloud.Diagnostics.AspNetCore3;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -61,6 +62,8 @@ builder.Services.AddSwaggerGen(setup =>
 	var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
 	setup.IncludeXmlComments(xmlCommentsPath);
 });
+
+builder.Services.AddGoogleDiagnosticsForAspNetCore("deoparceleservicelog", "DeoParceleService", "1.0.0");
 
 var app = builder.Build();
 

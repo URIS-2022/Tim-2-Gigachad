@@ -210,9 +210,9 @@
         </member>
         <member name="M:DeoParceleService.Data.DeoParceleRepository.GetDeloviParcela">
             <summary>
-            Vraća listu dela parcele iz konteksta.
+            Vraća listu delova parcela iz konteksta.
             </summary>
-            <returns>Vraća listu dela parcele.</returns>
+            <returns>Vraća listu delova parcela.</returns>
         </member>
         <member name="M:DeoParceleService.Data.DeoParceleRepository.GetDeoParceleByID(System.Guid)">
             <summary>
@@ -247,33 +247,33 @@
         </member>
         <member name="M:DeoParceleService.Data.IDeoParceleRepository.GetDeloviParcela">
             <summary>
-            Vraća listu dela parcele iz konteksta.
+            Vraća listu dela parcele.
             </summary>
             <returns>Vraća listu dela parcele.</returns>
         </member>
         <member name="M:DeoParceleService.Data.IDeoParceleRepository.GetDeoParceleByID(System.Guid)">
             <summary>
-            Vraća jedan deo parcele iz konteksta na osnovu zadatog ID-ja.
+            Vraća jedan deo parcele na osnovu zadatog ID-ja.
             </summary>
             <param name="deoParceleID">ID deo parcele.</param>
             <returns>Vraća specifirani deo parcele.</returns>
         </member>
         <member name="M:DeoParceleService.Data.IDeoParceleRepository.CreateDeoParcele(DeoParceleService.DTO.DeoParceleCreateDTO)">
             <summary>
-            Dodaje novi deo parcele u kontekst.
+            Dodaje novi deo parcele.
             </summary>
             <param name="deoParceleCreateDTO">DTO za kreiranje dela parcele.</param>
             <returns>Vraća DTO kreirang dela parcele.</returns>
         </member>
         <member name="M:DeoParceleService.Data.IDeoParceleRepository.DeleteDeoParcele(System.Guid)">
             <summary>
-            Briše deo parcele iz konteksta.
+            Briše deo parcele.
             </summary>
             <param name="deoParceleID">ID dela parcele.</param>
         </member>
         <member name="M:DeoParceleService.Data.IDeoParceleRepository.SaveChanges">
             <summary>
-            Sačuva sve promene u kontekstu.
+            Sačuva sve promene.
             </summary>
             <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>
@@ -284,33 +284,33 @@
         </member>
         <member name="M:DeoParceleService.Data.IParcelaRepository.GetParcele">
             <summary>
-            Vraća listu parcela iz konteksta.
+            Vraća listu parcela.
             </summary>
             <returns>Vraća listu parcela.</returns>
         </member>
         <member name="M:DeoParceleService.Data.IParcelaRepository.GetParcelaByID(System.Guid)">
             <summary>
-            Vraća jednu parcelu iz konteksta na osnovu zadatog ID-ja.
+            Vraća jednu parcelu na osnovu zadatog ID-ja.
             </summary>
             <param name="parcelaID">ID parcele.</param>
             <returns>Vraća specifiranu parcelu.</returns>
         </member>
         <member name="M:DeoParceleService.Data.IParcelaRepository.CreateParcela(DeoParceleService.DTO.ParcelaCreateDTO)">
             <summary>
-            Dodaje novu parcelu u kontekst.
+            Dodaje novu parcelu.
             </summary>
             <param name="parcelaCreateDTO">DTO za kreiranje parcela.</param>
             <returns>Vraća DTO kreirane parcele.</returns>
         </member>
         <member name="M:DeoParceleService.Data.IParcelaRepository.DeleteParcela(System.Guid)">
             <summary>
-            Briše parcelu iz konteksta.
+            Briše parcelu.
             </summary>
             <param name="parcelaID">ID parcele.</param>
         </member>
         <member name="M:DeoParceleService.Data.IParcelaRepository.SaveChanges">
             <summary>
-            Sačuva sve promene u kontekstu.
+            Sačuva sve promene.
             </summary>
             <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>
@@ -446,6 +446,11 @@
             Odvodnjavanje dela parcele.
             </summary>
         </member>
+        <member name="M:DeoParceleService.DTO.DeoParceleCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta deo parcela.
+            </summary>
+        </member>
         <member name="T:DeoParceleService.DTO.DeoParceleDTO">
             <summary>
             Model DTO-a za entitet deo parcele.
@@ -574,6 +579,11 @@
         <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.Odvodnjavanje">
             <summary>
             Odvodnjavanje dela parcele.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.DTO.DeoParceleUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta deo parcela.
             </summary>
         </member>
         <member name="T:DeoParceleService.DTO.FizickoLiceDTO">

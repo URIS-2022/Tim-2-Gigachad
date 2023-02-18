@@ -1,4 +1,5 @@
-﻿using LiceService.Data;
+﻿using Google.Cloud.Diagnostics.AspNetCore3;
+using LiceService.Data;
 using LiceService.Entities;
 using LiceService.ServiceCalls;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -63,6 +64,8 @@ builder.Services.AddSwaggerGen(setup =>
 	var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
 	setup.IncludeXmlComments(xmlCommentsPath);
 });
+
+builder.Services.AddGoogleDiagnosticsForAspNetCore("liceservicelog", "LiceService", "1.0.0");
 
 var app = builder.Build();
 
