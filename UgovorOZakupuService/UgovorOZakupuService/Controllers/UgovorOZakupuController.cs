@@ -22,15 +22,17 @@ namespace UgovorOZakupuService.Controllers
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
         private readonly IDokumentiService dokumentiService;
+        private readonly IKupacService kupacService;
         /// <summary>
         /// Dependency injection za kontroler preko konstruktora.
         /// </summary>
-        public UgovorOZakupuController(IUgovorOZakupuRepository ugovorOZakupuRepository, LinkGenerator linkGenerator, IMapper mapper, IDokumentiService dokumentiService)
+        public UgovorOZakupuController(IUgovorOZakupuRepository ugovorOZakupuRepository, LinkGenerator linkGenerator, IMapper mapper, IDokumentiService dokumentiService, IKupacService kupacService)
         {
             this.ugovorOZakupuRepository = ugovorOZakupuRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
             this.dokumentiService = dokumentiService;
+            this.kupacService = kupacService;   
         }
         /// <summary>
         /// GET za sve ugovore o zakupu
@@ -52,12 +54,18 @@ namespace UgovorOZakupuService.Controllers
                 Guid tempDokumentID = ugovor.DokumentID; ;
                 DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempDokumentID, authorization).Result;
 
-                if (dokument != null)
+               // Guid temnpKupacID = ugovor.KupacID;
+               // KupacDTO? kupac = kupacService.GetKupacByIDAsync(temnpKupacID, authorization).Result;
+
+                if (dokument != null  /*kupac != null*/)
                 {
                     UgovorOZakupuDTO ugovorOZakupuDTO = mapper.Map<UgovorOZakupuDTO>(ugovor);
                     ugovorOZakupuDTO.Dokument = dokument;
+                    //ugovorOZakupuDTO.Kupac = kupac;
                     ugovoriDTO.Add(ugovorOZakupuDTO);
                 }
+                else
+                    continue;
                 
             }
             return Ok(ugovoriDTO);
@@ -150,6 +158,7 @@ namespace UgovorOZakupuService.Controllers
                         UgovorOZakupuDTO ugovor = ugovorOZakupuRepository.CreateUgovorOZakupu(ugovorOZakupuCreateDTO);
                         ugovorOZakupuRepository.SaveChanges();
 
+                        ugovor.Dokument = dokument;
                         string? location = linkGenerator.GetPathByAction("GetUgovorOZakupu", "UgovoroZakupu", new { ugovorOZakupuID = ugovor.UgovorOZakupuID });
 
                         if (location != null)
@@ -178,22 +187,37 @@ namespace UgovorOZakupuService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<UgovorOZakupuDTO> UpdateUgovorOZakupu(UgovorOZakupuUpdateDTO ugovorOZakupuUpdateDTO)
+        public ActionResult<UgovorOZakupuDTO> UpdateUgovorOZakupu(UgovorOZakupuUpdateDTO ugovorOZakupuUpdateDTO, [FromHeader] string authorization)
         {
             try
             {
                 UgovorOZakupuEntity? oldUgovorOZakupu = ugovorOZakupuRepository.GetUgovorOZakupuID(Guid.Parse(ugovorOZakupuUpdateDTO.UgovorOZakupuID));
                 if (oldUgovorOZakupu == null)
                     return NotFound();
-                UgovorOZakupuEntity ugovor = mapper.Map<UgovorOZakupuEntity>(ugovorOZakupuUpdateDTO);
-                mapper.Map(ugovor, oldUgovorOZakupu);
-                ugovorOZakupuRepository.SaveChanges();
-                return Ok(mapper.Map<UgovorOZakupuDTO>(oldUgovorOZakupu));
+
+                Guid tempID = Guid.Parse(ugovorOZakupuUpdateDTO.DokumentID);
+                DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempID, authorization).Result;
+                if (dokument != null)
+                {
+                    UgovorOZakupuEntity ugovor = mapper.Map<UgovorOZakupuEntity>(ugovorOZakupuUpdateDTO);
+                    mapper.Map(ugovor, oldUgovorOZakupu);
+                    ugovorOZakupuRepository.SaveChanges();
+
+                    UgovorOZakupuDTO UGOVORDTO = mapper.Map<UgovorOZakupuDTO>(oldUgovorOZakupu);
+                    UGOVORDTO.Dokument = dokument; 
+                    return Ok(UGOVORDTO);
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji dokument sa ID.");
+                }
             }
             catch (Exception exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
+
+
         }
 
 

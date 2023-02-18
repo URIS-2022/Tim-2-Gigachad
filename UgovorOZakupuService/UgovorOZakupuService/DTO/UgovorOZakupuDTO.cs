@@ -12,8 +12,8 @@ namespace UgovorOZakupuService.DTO
         
         public Guid DeoParceleID { get; set; }
 
-        
-        public Guid KupacID { get; set; }
+
+        public KupacDTO Kupac { get; set; } = null!;
 
         
         public Guid OvlascenoLiceID { get; set; }

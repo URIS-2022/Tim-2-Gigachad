@@ -9,7 +9,7 @@
             Kontroler za entitete eksternih dokumenata.
             </summary>
         </member>
-        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.#ctor(UgovorOZakupuService.Data.IUgovorOZakupuRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,UgovorOZakupuService.ServiceCalls.IDokumentiService)">
+        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.#ctor(UgovorOZakupuService.Data.IUgovorOZakupuRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,UgovorOZakupuService.ServiceCalls.IDokumentiService,UgovorOZakupuService.ServiceCalls.IKupacService)">
             <summary>
             Dependency injection za kontroler preko konstruktora.
             </summary>
@@ -47,12 +47,37 @@
             <response code="201">Vraća kreiran Ugovor O Zakupu.</response>
             <response code="500">Došlo je do greške na serveru prilikom kreiranja ugovora o zakupu.</response>
         </member>
-        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.UpdateUgovorOZakupu(UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO)">
+        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.UpdateUgovorOZakupu(UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO,System.String)">
             <summary>
             Promena ugovora o zakupu
             </summary>
             <param name="ugovorOZakupuUpdateDTO"></param>
             <returns></returns>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.AdresaDTO.Mesto">
+            <summary>
+            Mesto.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.AdresaDTO.Drzava">
+            <summary>
+            Država(E).
+            </summary>
         </member>
         <member name="P:UgovorOZakupuService.DTO.DokumentDTO.DokumentID">
             <summary>
@@ -94,6 +119,21 @@
             Putanj dokumenta
             </summary>
         </member>
+        <member name="P:UgovorOZakupuService.DTO.FizickoLiceDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.FizickoLiceDTO.PunoIme">
+            <summary>
+            Puno ime fizičkog lica.
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.InterniDokumentDTO.InterniDokumentID">
             <summary>
             Interni dokument ID
@@ -102,6 +142,167 @@
         <member name="P:UgovorOZakupuService.DTO.InterniDokumentDTO.PutanjaDokumenta">
             <summary>
             Putanja Dokumenta
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KontaktOsobaDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KontaktOsobaDTO.PunoIme">
+            <summary>
+            Puno ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KontaktOsobaDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KontaktOsobaDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="T:UgovorOZakupuService.DTO.KupacDTO">
+            <summary>
+            DTO za kupca.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KupacDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KupacDTO.Lice">
+            <summary>
+            ID lica kupca.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KupacDTO.OvlascenoLice">
+            <summary>
+            ID ovlascenjog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KupacDTO.Prioritet">
+            <summary>
+            Prioritet kupca.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KupacDTO.ImaZabranu">
+            <summary>
+            Kupac ima/nema zabranu.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KupacDTO.DatumPocetkaZabrane">
+            <summary>
+            Datum pocetka zabrane.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KupacDTO.DatumZavrsetkaZabrane">
+            <summary>
+            Datum zavrsetka zabrane.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.KupacDTO.BrojKupovina">
+            <summary>
+            Broj kupovina kupca.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:UgovorOZakupuService.DTO.LiceDTO.ID" -->
+        <member name="P:UgovorOZakupuService.DTO.LiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LiceDTO.PravnoLice">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LiceDTO.Adresa">
+            <summary>
+            Adresa lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LiceDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LiceDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LiceDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LiceDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LiceDTO.OvlascenoLice">
+            <summary>
+            Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.OvlascenoLiceDTO.ID">
+            <summary>
+            ID ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.OvlascenoLiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.OvlascenoLiceDTO.Adresa">
+            <summary>
+            Adresa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.OvlascenoLiceDTO.Telefon1">
+            <summary>
+            Prvi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.OvlascenoLiceDTO.Telefon2">
+            <summary>
+            Drugi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.OvlascenoLiceDTO.Email">
+            <summary>
+            Email ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.OvlascenoLiceDTO.BrojRacuna">
+            <summary>
+            Broj računa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.PravnoLiceDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.PravnoLiceDTO.KontaktOsoba">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.PravnoLiceDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.PravnoLiceDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
             </summary>
         </member>
         <member name="M:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
@@ -223,6 +424,22 @@
             <param name="dokumentID">ID adrese lica.</param>
             <param name="token">Token za adresu lica mikroservis.</param>
             <returns>Vraća model DTO-a adrese lica.</returns>
+        </member>
+        <member name="M:UgovorOZakupuService.ServiceCalls.IKupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu lica od drugog mikro servisa.
+            </summary>
+            <param name="kupacID">ID adrese lica.</param>
+            <param name="token">Token za adresu lica mikroservis.</param>
+            <returns>Vraća model DTO-a adrese lica.</returns>
+        </member>
+        <member name="M:UgovorOZakupuService.ServiceCalls.KupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu dokumenta od drugog mikro servisa.
+            </summary>
+            <param name="kupacID">ID adrese dokumenta.</param>
+            <param name="token">Token za adresu dokumenta mikroservis.</param>
+            <returns>Vraća model DTO-a adrese dokumenta.</returns>
         </member>
     </members>
 </doc>
