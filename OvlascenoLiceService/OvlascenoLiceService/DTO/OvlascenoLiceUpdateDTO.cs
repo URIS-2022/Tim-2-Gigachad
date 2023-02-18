@@ -61,7 +61,7 @@ namespace OvlascenoLiceService.DTO
         public string BrojRacuna { get; set; } = null!;
 
         /// <summary>
-        /// Validacija za model DTO-a za ažuriranje entiteta ovascenog lica.
+        /// Validacija za model DTO-a za ažuriranje entiteta ovlascenog lica.
         /// </summary>
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
