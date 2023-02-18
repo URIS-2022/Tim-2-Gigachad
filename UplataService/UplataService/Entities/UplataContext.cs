@@ -30,7 +30,7 @@ namespace UplataService.Entities
             builder.Entity<UplataEntity>().HasData(new
             {
                 UplataID = Guid.Parse("460f3547-d626-49d7-92c4-6f96ae3714e0"),
-                JavnoNadmetanjeID = Guid.Parse("03b0680e-35b6-4449-9150-019b817d7cef"),
+                JavnoNadmetanjeID = Guid.Parse("ABEC715B-03E0-4C9A-B97B-327F0AF16823"),
                 KupacID = Guid.Parse("CCC043C6-398C-485D-9840-092C0441EBE8"),
                 BrojRacuna = "005-417672-67",
                 PozivNaBroj = "73609",
@@ -44,7 +44,7 @@ namespace UplataService.Entities
             builder.Entity<UplataEntity>().HasData(new
             {
                 UplataID = Guid.Parse("167ef647-33c2-466c-b777-5271365bffbd"),
-                JavnoNadmetanjeID = Guid.Parse("43d6bc15-a674-4552-abee-f3c3360db11e"),
+                JavnoNadmetanjeID = Guid.Parse("5D62B2C0-D13C-4F74-840F-AD96BF204D69"),
                 KupacID = Guid.Parse("753D20F5-73A3-4E00-A3A2-E1C43D6B0777"),
                 BrojRacuna = "214-826330-03",
                 PozivNaBroj = "18096",

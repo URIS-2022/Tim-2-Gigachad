@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUplataRepository, UplataRepository>();
 builder.Services.AddScoped<IKupacService, KupacService>();
+builder.Services.AddScoped<IJavnoNadmetanjeService, JavnoNadmetanjeService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<UplataContext>(options =>
@@ -37,7 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 builder.Services.AddSwaggerGen(setup =>
 {
-    setup.SwaggerDoc("LiceServiceOpenApiSpecification",
+    setup.SwaggerDoc("UplataServiceOpenApiSpecification",
         new Microsoft.OpenApi.Models.OpenApiInfo()
         {
             Title = "Uplata API",

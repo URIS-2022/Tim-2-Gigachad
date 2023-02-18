@@ -6,103 +6,103 @@
     public class JavnoNadmetanjeDTO
     {
         /// <summary>
-		/// ID adrese javnog nadmetanja.
+		/// ID javnog nadmetanja.
 		/// </summary>
-		public Guid? AdresaNadID { get; set; }
+		public Guid ID { get; set; }
 
         /// <summary>
-		/// ID dela parcele.
+		/// Licitacija javnog nadmetanja.
 		/// </summary>
-		public Guid? DeoParceleID { get; set; }
+		public LicitacijaDTO Licitacija { get; set; } = null!;
 
         /// <summary>
-        /// ID najboljeg kupca.
-        /// </summary>
-        public Guid? NajbKupacID { get; set; }
+		/// Adresa javnog nadmetanja.
+		/// </summary>
+		public AdresaDTO Adresa { get; set; } = null!;
+
+        /// <summary>
+		/// Deo parcele javnog nadmetanja.
+		/// </summary>
+		//public DeoParceleDTO DeoParcele { get; set; } = null!;
+
+        /// <summary>
+		/// Kupac javnog nadmetanja.
+		/// </summary>
+		//public KupacDTO Kupac { get; set; } = null!;
 
         /// <summary>
 		/// Tip nadmetanja.
 		/// </summary>
-		public string? TipNad { get; set; }
-        //Enumerator kako?
+		public string? TipNadmetanja { get; set; }
 
         /// <summary>
-		/// Opstina.
-		/// </summary>
-		public string? Opstina { get; set; }
-        //Enumerator kako
-
-        /// <summary>
-        /// Datum odrzavanja nadmetanja.
+        /// Opstina.
         /// </summary>
-        public DateTime? DatumNad { get; set; }
+        public string? Opstina { get; set; }
 
         /// <summary>
-		/// Vreme pocinjanja.
-		/// </summary>
-		public string? VremePoc { get; set; }
-        //Format time?
-
-        /// <summary>
-		/// Vreme zavrsetka.
-		/// </summary>
-		public string? VremeKraj { get; set; }
-        //Format time?
-
-        /// <summary>
-		/// Period zakupa u mesecima.
-		/// </summary>
-		public int? PeriodZakupaM { get; set; }
-
-        /// <summary>
-        /// Pocetna cena.
+        /// Datum javnog nadmetanja.
         /// </summary>
-        public int? PocetnaCena { get; set; }
+        public DateTime DatumNad { get; set; }
 
         /// <summary>
-		/// Rast cene.
-		/// </summary>
-		public int? VisinaCene { get; set; }
-
-        /// <summary>
-		/// Krajnja cena.
-		/// </summary>
-		public int? IzlicitiranaCena { get; set; }
-
-        /// <summary>
-        /// Najbolja ponuda.
+        /// Vreme pocetka javnog nadmetanja.
         /// </summary>
-        public int? NajboljaPonuda { get; set; }
+        public DateTime VremePoc { get; set; }
 
         /// <summary>
-		/// Broj ucesnika.
-		/// </summary>
-		public int? BrojUcesnika { get; set; }
-
-        /// <summary>
-		/// Broj prijavljenih kupaca.
-		/// </summary>
-		public int? PrijavljeniKupci { get; set; }
-
-        /// <summary>
-        /// Broj licitanata.
+        /// Vreme zavrsetka javnog nadmetanja.
         /// </summary>
-        public int? Licitanti { get; set; }
+        public DateTime VremeKraj { get; set; }
 
         /// <summary>
-		/// Krug licitacije.
-		/// </summary>
-		public int? Krug { get; set; }
-
-        /// <summary>
-		/// Status nadmetanja.
-		/// </summary>
-		public string? StatusNad { get; set; }
-        //Enumeration kako?
-
-        /// <summary>
-        /// Da li je izuzeto.
+        /// Period zakupa meseci javnog nadmetanja.
         /// </summary>
-        public bool? Izuzeto { get; set; }
+        public int PeriodZakupa { get; set; }
+
+        /// <summary>
+        /// Pocetna cena javnog nadmetanja.
+        /// </summary>
+        public int PocetnaCena { get; set; }
+
+        /// <summary>
+        /// Visina cene javnog nadmetanja.
+        /// </summary>
+        public int VisinaCene { get; set; }
+
+        /// <summary>
+		/// Izlicitirana cena javnog nadmetanja.
+		/// </summary>
+        public int IzlicitiranaCena { get; set; }
+
+        /// <summary>
+		/// Broj ucesnika javnog nadmetanja.
+		/// </summary>
+		public int BrojUcesnika { get; set; }
+
+        /// <summary>
+		/// Prijavljeni kupci javnog nadmetanja.
+		/// </summary>
+		public int PrijavljeniKupci { get; set; }
+
+        /// <summary>
+		/// Licitanti javnog nadmetanja.
+		/// </summary>
+        public int Licitanti { get; set; }
+
+        /// <summary>
+		/// Krug koji je po redu javnog nadmetanja.
+		/// </summary>
+        public int Krug { get; set; }
+
+        /// <summary>
+        /// Status javnog nadmetanja. Enumerator
+        /// </summary>
+        public string StatusNadmetanja { get; set; } = null!;
+
+        /// <summary>
+        /// Izuzeto.
+        /// </summary>
+        public bool Izuzeto { get; set; }
     }
 }

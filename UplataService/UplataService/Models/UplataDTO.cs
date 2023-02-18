@@ -17,7 +17,7 @@ namespace UplataService.Models
         /// <summary>
         /// ID javnog nadmetanja.
         /// </summary>
-        public Guid JavnoNadmetanjeID { get; set; } 
+        public JavnoNadmetanjeDTO JavnoNadmetanje { get; set; } 
 
         /// <summary>
         /// ID kupca.
