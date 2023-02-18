@@ -23,16 +23,18 @@ namespace KupacService.Controllers
         private readonly IMapper mapper;
 
         private readonly ILiceService liceService;
+        private readonly IOvlascenoLiceService ovlascenoLiceService;
 
         /// <summary>
         /// Dependency injection za kontroler.
         /// </summary>
-        public KupacController(IKupacRepository kupacRepository, LinkGenerator linkGenerator, IMapper mapper, ILiceService liceService)
+        public KupacController(IKupacRepository kupacRepository, LinkGenerator linkGenerator, IMapper mapper, ILiceService liceService, IOvlascenoLiceService ovlascenoLiceService)
         {
             this.kupacRepository = kupacRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
             this.liceService = liceService;
+            this.ovlascenoLiceService = ovlascenoLiceService;
         }
 
         /// <summary>
@@ -60,10 +62,14 @@ namespace KupacService.Controllers
                 Guid tempLiceID = kupac.LiceID; ;
                 LiceDTO? lice = liceService.GetLiceByIDAsync(tempLiceID, authorization).Result;
 
-                if (lice != null)
+                Guid tempOvlascenoLiceID = kupac.OvlascenoLiceID;
+                OvlascenoLiceDTO? ovlascenoLice = ovlascenoLiceService.GetOvlascenoLiceByIDAsync(tempOvlascenoLiceID, authorization).Result;
+
+                if (lice != null && ovlascenoLice != null)
                 {
                     KupacDTO kupacDTO = mapper.Map<KupacDTO>(kupac);
                     kupacDTO.Lice = lice;
+                    kupacDTO.OvlascenoLice = ovlascenoLice;
                     kupciDTO.Add(kupacDTO);
                 }
                 else
@@ -94,13 +100,21 @@ namespace KupacService.Controllers
             LiceDTO? lice = liceService.GetLiceByIDAsync(tempLiceID, authorization).Result;
             if (lice != null)
             {
-                KupacDTO kupacDTO = mapper.Map<KupacDTO>(kupac);
-                
-                kupacDTO.Lice = lice;
-                return Ok(kupacDTO);
+                Guid tempOvlascenoLiceID = kupac.OvlascenoLiceID;
+                OvlascenoLiceDTO? ovlascenoLice = ovlascenoLiceService.GetOvlascenoLiceByIDAsync(tempOvlascenoLiceID, authorization).Result;
+                if (ovlascenoLice != null) {
+                    
+                    KupacDTO kupacDTO = mapper.Map<KupacDTO>(kupac);
+
+                    kupacDTO.Lice = lice;
+                    kupacDTO.OvlascenoLice = ovlascenoLice;
+                    return Ok(kupacDTO);
+                }
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Ovlasceno lice nije pronađena. ID ovlascenog lica: " + tempOvlascenoLiceID.ToString() + ".");
             }
             else
-                return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena. ID adrese lica: " + tempLiceID.ToString() + ".");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Lice nije pronađeno. ID lica: " + tempLiceID.ToString() + ".");
         }
 
         /// <summary>
@@ -127,15 +141,22 @@ namespace KupacService.Controllers
                     LiceDTO? lice = liceService.GetLiceByIDAsync(tempID, authorization).Result;
                     if (lice != null)
                     {
-                        KupacDTO kupac = kupacRepository.CreateKupac(kupacCreateDTO);
-                        kupacRepository.SaveChanges();
+                        Guid tempOvlascenoLiceID = Guid.Parse(kupacCreateDTO.OvlascenoLiceID);
+                        OvlascenoLiceDTO? ovlascenoLice = ovlascenoLiceService.GetOvlascenoLiceByIDAsync(tempOvlascenoLiceID, authorization).Result;
+                        if (ovlascenoLice != null)
+                        {
+                            KupacDTO kupac = kupacRepository.CreateKupac(kupacCreateDTO);
+                            kupacRepository.SaveChanges();
 
-                        string? location = linkGenerator.GetPathByAction("GetKupac", "Kupac", new { kupacID = kupac.KupacID });
+                            string? location = linkGenerator.GetPathByAction("GetKupac", "Kupac", new { kupacID = kupac.KupacID });
 
-                        if (location != null)
-                            return Created(location, kupac);
+                            if (location != null)
+                                return Created(location, kupac);
+                            else
+                                return Created(string.Empty, kupac);
+                        }
                         else
-                            return Created(string.Empty, kupac);
+                            return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji ovlasceno lice sa zadatim ID-jem.");
                     }
                     else
                         return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji lice sa zadatim ID-jem.");
@@ -177,13 +198,20 @@ namespace KupacService.Controllers
                     LiceDTO? lice = liceService.GetLiceByIDAsync(tempID, authorization).Result;
                     if (lice != null)
                     {
-                        KupacEntity kupac = mapper.Map<KupacEntity>(kupacUpdateDTO);
-                        mapper.Map(kupac, oldKupac);
-                        kupacRepository.SaveChanges();
+                        Guid tempOvlascenoLiceID = Guid.Parse(kupacUpdateDTO.OvlascenoLiceID);
+                        OvlascenoLiceDTO? ovlascenoLice = ovlascenoLiceService.GetOvlascenoLiceByIDAsync(tempOvlascenoLiceID, authorization).Result;
+                        if (ovlascenoLice != null)
+                        {
+                            KupacEntity kupac = mapper.Map<KupacEntity>(kupacUpdateDTO);
+                            mapper.Map(kupac, oldKupac);
+                            kupacRepository.SaveChanges();
 
-                        KupacDTO kupacDTO = mapper.Map<KupacDTO>(oldKupac);
+                            KupacDTO kupacDTO = mapper.Map<KupacDTO>(oldKupac);
 
-                        return Ok(kupacDTO);
+                            return Ok(kupacDTO);
+                        }
+                        else
+                            return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji ovlasceno lice sa zadatim ID-jem.");
                     }
                     else
                         return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji lice sa zadatim ID-jem.");

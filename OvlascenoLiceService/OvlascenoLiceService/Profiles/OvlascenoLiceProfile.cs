@@ -15,24 +15,24 @@ namespace OvlascenoLiceService.Profiles
         public OvlascenoLiceProfile()
         {
             CreateMap<OvlascenoLiceEntity, OvlascenoLiceDTO>();
-            CreateMap<OvlascenoLiceEntity, OvlascenoLiceDTO>()
+            CreateMap<OvlascenoLiceCreateDTO, OvlascenoLiceEntity>()
                 .ForMember(
-                    dest => dest.FizickoLice,
-                    opt => opt.MapFrom(src => src.FizickoLiceID))
+                    dest => dest.FizickoLiceID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.FizickoLiceID)))
                 .ForMember(
-                    dest => dest.Adresa,
-                    opt => opt.MapFrom(src => src.AdresaID));
-            CreateMap<OvlascenoLiceEntity, OvlascenoLiceDTO>()
+                    dest => dest.AdresaID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.AdresaID)));
+            CreateMap<OvlascenoLiceUpdateDTO, OvlascenoLiceEntity>()
                 .ForMember(
                     dest => dest.ID,
-                    opt => opt.MapFrom(src => src.ID))
+                    opt => opt.MapFrom(src => Guid.Parse(src.ID)))
                 .ForMember(
-                    dest => dest.FizickoLice,
-                    opt => opt.MapFrom(src => src.FizickoLiceID))
+                    dest => dest.FizickoLiceID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.FizickoLiceID)))
                 .ForMember(
-                    dest => dest.Adresa,
-                    opt => opt.MapFrom(src => src.AdresaID));
-            CreateMap<OvlascenoLiceEntity, OvlascenoLiceDTO>();
+                    dest => dest.AdresaID,
+                    opt => opt.MapFrom(src => Guid.Parse(src.AdresaID)));
+            CreateMap<OvlascenoLiceEntity, OvlascenoLiceEntity>();
         }
     }
 }

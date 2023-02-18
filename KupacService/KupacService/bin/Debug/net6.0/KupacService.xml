@@ -9,7 +9,7 @@
             Kontroler za entitet kupac.
             </summary>
         </member>
-        <member name="M:KupacService.Controllers.KupacController.#ctor(KupacService.Data.IKupacRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,KupacService.ServiceCalls.ILiceService)">
+        <member name="M:KupacService.Controllers.KupacController.#ctor(KupacService.Data.IKupacRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,KupacService.ServiceCalls.ILiceService,KupacService.ServiceCalls.IOvlascenoLiceService)">
             <summary>
             Dependency injection za kontroler.
             </summary>
@@ -325,6 +325,46 @@
             Da li je lice ovlašćeno lice.
             </summary>
         </member>
+        <member name="T:KupacService.DTO.OvlascenoLiceDTO">
+            <summary>
+            Model DTO-a za entitet lice.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.OvlascenoLiceDTO.ID">
+            <summary>
+            ID ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.OvlascenoLiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.OvlascenoLiceDTO.Adresa">
+            <summary>
+            Adresa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.OvlascenoLiceDTO.Telefon1">
+            <summary>
+            Prvi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.OvlascenoLiceDTO.Telefon2">
+            <summary>
+            Drugi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.OvlascenoLiceDTO.Email">
+            <summary>
+            Email ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:KupacService.DTO.OvlascenoLiceDTO.BrojRacuna">
+            <summary>
+            Broj računa ovlascenog lica.
+            </summary>
+        </member>
         <member name="T:KupacService.DTO.PravnoLiceDTO">
             <summary>
             Model DTO-a za entitet pravno lice.
@@ -505,6 +545,19 @@
             <param name="token">Token za adresu lica mikroservis.</param>
             <returns>Vraća model DTO-a adrese lica.</returns>
         </member>
+        <member name="T:KupacService.ServiceCalls.IOvlascenoLiceService">
+            <summary>
+            Interfejs od servis poziva za adresu lica.
+            </summary>
+        </member>
+        <member name="M:KupacService.ServiceCalls.IOvlascenoLiceService.GetOvlascenoLiceByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu lica od drugog mikro servisa.
+            </summary>
+            <param name="OvlascenoLiceID">ID adrese lica.</param>
+            <param name="token">Token za adresu lica mikroservis.</param>
+            <returns>Vraća model DTO-a adrese lica.</returns>
+        </member>
         <member name="T:KupacService.ServiceCalls.LiceService">
             <summary>
             Servis poziva za adresu lica.
@@ -520,6 +573,24 @@
             Vraća lice od drugog mikro servisa.
             </summary>
             <param name="liceID">ID lica.</param>
+            <param name="token">Token za lice mikroservis.</param>
+            <returns>Vraća model DTO-a lica.</returns>
+        </member>
+        <member name="T:KupacService.ServiceCalls.OvlascenoLiceService">
+            <summary>
+            Servis poziva za adresu lica.
+            </summary>
+        </member>
+        <member name="M:KupacService.ServiceCalls.OvlascenoLiceService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:KupacService.ServiceCalls.OvlascenoLiceService.GetOvlascenoLiceByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća lice od drugog mikro servisa.
+            </summary>
+            <param name="ovlascenoLiceID">ID lica.</param>
             <param name="token">Token za lice mikroservis.</param>
             <returns>Vraća model DTO-a lica.</returns>
         </member>

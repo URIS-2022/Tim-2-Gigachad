@@ -3,10 +3,10 @@
     /// <summary>
     /// Model DTO-a za entitet lice.
     /// </summary>
-    public class LiceDTO
+    public class OvlascenoLiceDTO
     {
         /// <summary>
-        /// ID lica.
+        /// ID ovlascenog lica.
         /// </summary>
         public Guid ID { get; set; }
 
@@ -16,38 +16,30 @@
         public FizickoLiceDTO FizickoLice { get; set; } = null!;
 
         /// <summary>
-        /// ID pravnog lica.
-        /// </summary>
-        public PravnoLiceDTO? PravnoLice { get; set; }
-
-        /// <summary>
-        /// Adresa lica.
+        /// Adresa ovlascenog lica.
         /// </summary>
         public AdresaDTO Adresa { get; set; } = null!;
 
         /// <summary>
-        /// Prvi telefon lica.
+        /// Prvi telefon ovlascenog lica.
         /// </summary>
         public string Telefon1 { get; set; } = null!;
 
         /// <summary>
-        /// Drugi telefon lica.
+        /// Drugi telefon ovlascenog lica.
         /// </summary>
         public string? Telefon2 { get; set; }
 
         /// <summary>
-        /// Email lica.
+        /// Email ovlascenog lica.
         /// </summary>
         public string Email { get; set; } = null!;
 
         /// <summary>
-        /// Broj računa lica.
+        /// Broj računa ovlascenog lica.
         /// </summary>
         public string BrojRacuna { get; set; } = null!;
-
-        /// <summary>
-        /// Da li je lice ovlašćeno lice.
-        /// </summary>
-        public bool OvlascenoLice { get; set; }
     }
 }
+
+

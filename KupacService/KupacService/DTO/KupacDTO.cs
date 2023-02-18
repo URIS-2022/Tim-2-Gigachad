@@ -21,7 +21,7 @@ namespace KupacService.DTO
         /// <summary>
         /// ID ovlascenjog lica.
         /// </summary>
-        public OvalscenoLiceDTO OvlascenoLice { get; set; } = null!;
+        public OvlascenoLiceDTO OvlascenoLice { get; set; } = null!;
 
         /// <summary>
         /// Prioritet kupca.
