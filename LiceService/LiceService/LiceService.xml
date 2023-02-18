@@ -64,7 +64,7 @@
         </member>
         <member name="M:LiceService.Controllers.FizickoLiceController.GetFizickaLicaOptions">
             <summary>
-            Vraća opcije za rad sa fizičkim licima.
+            Vraća opcije za rad sa entitetom fizičko lice.
             </summary>
             <returns>Vraća prazan 200 HTTP kod.</returns>
             <response code="200">Vraća prazan 200 HTTP kod.</response>
@@ -129,7 +129,7 @@
         </member>
         <member name="M:LiceService.Controllers.KontaktOsobaController.GetKontaktOsobeOptions">
             <summary>
-            Vraća opcije za rad sa kontakt osobama.
+            Vraća opcije za rad sa entitetom kontakt osoba.
             </summary>
             <returns>Vraća prazan 200 HTTP kod.</returns>
             <response code="200">Vraća prazan 200 HTTP kod.</response>
@@ -162,6 +162,7 @@
             <returns>Vraća potvrdu o specifiranom licu.</returns>
             <response code="200">Vraća specifirano lice.</response>
             <response code="404">Specifirano lice ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom pronalaženja specifiranog lica.</response>
         </member>
         <member name="M:LiceService.Controllers.LiceController.CreateLice(LiceService.DTO.LiceCreateDTO,System.String)">
             <summary>
@@ -186,7 +187,7 @@
             <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
             <response code="500">Došlo je do greške na serveru prilikom ažuriranja lica.</response>
         </member>
-        <member name="M:LiceService.Controllers.LiceController.DeleteLice(System.Guid,System.String)">
+        <member name="M:LiceService.Controllers.LiceController.DeleteLice(System.Guid)">
             <summary>
             Briše jedno lice na osnovu zadatog ID-ja.
             </summary>
@@ -199,7 +200,7 @@
         </member>
         <member name="M:LiceService.Controllers.LiceController.GetFizickaLicaOptions">
             <summary>
-            Vraća opcije za rad sa licima.
+            Vraća opcije za rad sa entitetom lica.
             </summary>
             <returns>Vraća prazan 200 HTTP kod.</returns>
             <response code="200">Vraća prazan 200 HTTP kod.</response>
@@ -264,7 +265,7 @@
         </member>
         <member name="M:LiceService.Controllers.PravnoLiceController.GetPravnaLicaOptions">
             <summary>
-            Vraća opcije za rad sa pravnim licima.
+            Vraća opcije za rad sa entitetom pravno lice.
             </summary>
             <returns>Vraća prazan 200 HTTP kod.</returns>
             <response code="200">Vraća prazan 200 HTTP kod.</response>
@@ -1194,6 +1195,18 @@
         <member name="M:LiceService.Migrations.InitialMigration2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:LiceService.Migrations.InitialMigratio15">
+            <inheritdoc />
+        </member>
+        <member name="M:LiceService.Migrations.InitialMigratio15.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:LiceService.Migrations.InitialMigratio15.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:LiceService.Migrations.InitialMigratio15.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="T:LiceService.Profiles.FizickoLiceProfile">
             <summary>
             Profil mapera za model entiteta fizičko lice.
@@ -1250,11 +1263,11 @@
             </summary>
             <param name="adresaID">ID adrese.</param>
             <param name="token">Token za AdresaService mikroservis.</param>
-            <returns>Vraća model DTO-a adresu.</returns>
+            <returns>Vraća model DTO-a adrese.</returns>
         </member>
         <member name="T:LiceService.ServiceCalls.IAdresaService">
             <summary>
-            Interfejs od servis poziva za  AdresaService mikroservis.
+            Interfejs od servis poziva za adresu od AdresaService mikroservis.
             </summary>
         </member>
         <member name="M:LiceService.ServiceCalls.IAdresaService.GetAdresaByIDAsync(System.Guid,System.String)">
@@ -1263,7 +1276,7 @@
             </summary>
             <param name="adresaID">ID adrese.</param>
             <param name="token">Token za AdresaService mikroservis.</param>
-            <returns>Vraća model DTO-a adresu.</returns>
+            <returns>Vraća model DTO adrese.</returns>
         </member>
     </members>
 </doc>

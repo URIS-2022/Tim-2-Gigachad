@@ -14,7 +14,7 @@ namespace DeoParceleService.Controllers
 	/// </summary>
 	[Authorize]
 	[ApiController]
-	[Route("api/deoParcele")]
+	[Route("api/deloviParcela")]
 	[Produces("application/json", "application/xml")]
 	public class DeoParceleController : ControllerBase
 	{
@@ -116,7 +116,7 @@ namespace DeoParceleService.Controllers
 						return StatusCode(StatusCodes.Status500InternalServerError, "Kupac parcele nije pronađen. ID kupca parcele: " + kupacParceleID.ToString() + ".");
 				}
 				else
-					return StatusCode(StatusCodes.Status500InternalServerError, "Došlo je do greške na serveru prilikom pronalaženja dela parcele.");
+					return StatusCode(StatusCodes.Status500InternalServerError, "Došlo je do greške na serveru prilikom pronalaženja parcele dela parcele.");
 			}
 			else
 				return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronađen. ID kupca: " + kupacID.ToString() + ".");
@@ -167,7 +167,7 @@ namespace DeoParceleService.Controllers
 							return StatusCode(StatusCodes.Status500InternalServerError, "Kupac parcele nije pronađen. ID kupca parcele: " + kupacParceleID.ToString() + ".");
 					}
 					else
-						return StatusCode(StatusCodes.Status500InternalServerError, "Došlo je do greške na serveru prilikom kreiranja dela parcele.");
+						return StatusCode(StatusCodes.Status500InternalServerError, "Došlo je do greške na serveru prilikom kreiranja dela parcele sa parcela ID-om:" + deoParceleCreateDTO.ParcelaID + ".");
 				}
 				else
 					return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronađen. ID kupca: " + kupacID.ToString() + ".");
@@ -226,7 +226,7 @@ namespace DeoParceleService.Controllers
 							return StatusCode(StatusCodes.Status500InternalServerError, "Kupac parcele nije pronađen. ID kupca parcele: " + kupacParceleID.ToString() + ".");
 					}
 					else
-						return StatusCode(StatusCodes.Status500InternalServerError, "Došlo je do greške na serveru prilikom kreiranja dela parcele.");
+						return StatusCode(StatusCodes.Status500InternalServerError, "Došlo je do greške na serveru prilikom kreiranja dela parcele sa parcela ID-om:" + deoParceleUpdateDTO.ParcelaID + ".");
 				}
 				else
 					return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronađen. ID kupca: " + kupacID.ToString() + ".");
@@ -245,7 +245,7 @@ namespace DeoParceleService.Controllers
 		/// <response code="204">Specifirani deo parcele je uspešno obrisan.</response>
 		/// <response code="404">Specifirani deo parcele ne postoji i nije obrisan.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog dela parcele.</response>
-		[HttpDelete("{parcelaID}")]
+		[HttpDelete("{deoParceleID}")]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]

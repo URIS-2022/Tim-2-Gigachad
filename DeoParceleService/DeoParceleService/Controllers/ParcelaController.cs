@@ -184,7 +184,7 @@ namespace DeoParceleService.Controllers
 						return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronađen. ID kupca: " + kupacID.ToString() + ".");
 				}
 				else
-					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG parcele.");
+					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadata oznaka parcele.");
 			}
 			catch (Exception exception)
 			{

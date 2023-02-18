@@ -161,7 +161,7 @@ namespace LiceService.Entities
 				ID = Guid.Parse("41d2c8bc-0c8c-4fb2-8cf6-2918c33eac9c"),
 				FizickoLiceID = Guid.Parse("56ea3569-1897-4349-b79e-fccb5568231a"),
 				PravnoLiceID = Guid.Parse("5b4c99ef-49ae-4843-821b-488e968ca945"),
-				AdresaID = Guid.Parse("acba6d99-36a6-4688-af14-6b2bba85dcf1"),
+				AdresaID = Guid.Parse("accad5a2-e5bc-4ff5-a5b7-fc38ab8a47fe"),
 				Telefon1 = "5528150968",
 				Telefon2 = string.Empty,
 				Email = "email5@net.org",
