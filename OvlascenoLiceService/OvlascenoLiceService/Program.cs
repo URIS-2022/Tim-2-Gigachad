@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;
+using Google.Cloud.Diagnostics.AspNetCore3;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,6 +62,8 @@ builder.Services.AddSwaggerGen(setup =>
     var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
     setup.IncludeXmlComments(xmlCommentsPath);
 });
+
+builder.Services.AddGoogleDiagnosticsForAspNetCore("ovlascenoliceservice", "OvlascenoLiceService", "1.0.0");
 
 var app = builder.Build();
 

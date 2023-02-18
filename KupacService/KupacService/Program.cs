@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;
+using Google.Cloud.Diagnostics.AspNetCore3;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -64,6 +65,7 @@ builder.Services.AddSwaggerGen(setup =>
     setup.IncludeXmlComments(xmlCommentsPath);
 });
 
+builder.Services.AddGoogleDiagnosticsForAspNetCore("kupacservicelog", "KupacService", "1.0.0");
 
 var app = builder.Build();
 
