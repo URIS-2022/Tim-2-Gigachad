@@ -22,9 +22,9 @@ namespace DeoParceleService.Data
 		}
 
 		/// <summary>
-		/// Vraća listu dela parcele iz konteksta.
+		/// Vraća listu delova parcela iz konteksta.
 		/// </summary>
-		/// <returns>Vraća listu dela parcele.</returns>
+		/// <returns>Vraća listu delova parcela.</returns>
 		public List<DeoParceleEntity> GetDeloviParcela()
 		{
 			return context.DeloviParcela.ToList();

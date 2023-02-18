@@ -9,33 +9,33 @@ namespace DeoParceleService.Data
 	public interface IParcelaRepository
 	{
 		/// <summary>
-		/// Vraća listu parcela iz konteksta.
+		/// Vraća listu parcela.
 		/// </summary>
 		/// <returns>Vraća listu parcela.</returns>
 		List<ParcelaEntity> GetParcele();
 
 		/// <summary>
-		/// Vraća jednu parcelu iz konteksta na osnovu zadatog ID-ja.
+		/// Vraća jednu parcelu na osnovu zadatog ID-ja.
 		/// </summary>
 		/// <param name="parcelaID">ID parcele.</param>
 		/// <returns>Vraća specifiranu parcelu.</returns>
 		ParcelaEntity? GetParcelaByID(Guid parcelaID);
 
 		/// <summary>
-		/// Dodaje novu parcelu u kontekst.
+		/// Dodaje novu parcelu.
 		/// </summary>
 		/// <param name="parcelaCreateDTO">DTO za kreiranje parcela.</param>
 		/// <returns>Vraća DTO kreirane parcele.</returns>
 		ParcelaDTO CreateParcela(ParcelaCreateDTO parcelaCreateDTO);
 
 		/// <summary>
-		/// Briše parcelu iz konteksta.
+		/// Briše parcelu.
 		/// </summary>
 		/// <param name="parcelaID">ID parcele.</param>
 		void DeleteParcela(Guid parcelaID);
 
 		/// <summary>
-		/// Sačuva sve promene u kontekstu.
+		/// Sačuva sve promene.
 		/// </summary>
 		/// <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
 		bool SaveChanges();

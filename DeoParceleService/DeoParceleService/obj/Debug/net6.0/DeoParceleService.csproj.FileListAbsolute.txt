@@ -90,3 +90,4 @@ C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\DeoParceleService\DeoParceleServi
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\DeoParceleService\DeoParceleService\obj\Debug\net6.0\DeoParceleService.pdb
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\DeoParceleService\DeoParceleService\obj\Debug\net6.0\DeoParceleService.genruntimeconfig.cache
 C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\DeoParceleService\DeoParceleService\obj\Debug\net6.0\ref\DeoParceleService.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\DeoParceleService\DeoParceleService\bin\Debug\net6.0\Postman\DeoParceleService.postman_collection.json

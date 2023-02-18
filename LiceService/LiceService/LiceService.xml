@@ -236,7 +236,7 @@
             <param name="authorization">Autorizovan token.</param>
             <returns>Vraća potvrdu o ažuriranom licu.</returns>
             <remarks>
-            Primer zahteva za ažuriranje novog lica. \
+            Primer zahteva za ažuriranje postojećeg lica. \
             PUT /api/lica \
             { \
             	"id": "f127642e-4d73-42f1-979d-6a506aea9bdc", \
@@ -405,33 +405,33 @@
         </member>
         <member name="M:LiceService.Data.IFizickoLiceRepository.GetFizickaLica">
             <summary>
-            Vraća listu fizičkih lica iz konteksta.
+            Vraća listu fizičkih lica.
             </summary>
             <returns>Vraća listu fizičkih lica.</returns>
         </member>
         <member name="M:LiceService.Data.IFizickoLiceRepository.GetFizickoLiceByID(System.Guid)">
             <summary>
-            Vraća jedno fizičko lice iz konteksta na osnovu zadatog ID-ja.
+            Vraća jedno fizičko lice na osnovu zadatog ID-ja.
             </summary>
             <param name="fizickoLiceID">ID fizičkog lica.</param>
             <returns>Vraća specifirano fizičko lice.</returns>
         </member>
         <member name="M:LiceService.Data.IFizickoLiceRepository.CreateFizickoLice(LiceService.DTO.FizickoLiceCreateDTO)">
             <summary>
-            Dodaje novo fizičko lice u kontekst.
+            Dodaje novo fizičko lice.
             </summary>
             <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
             <returns>Vraća DTO kreiranog fizičkog lica.</returns>
         </member>
         <member name="M:LiceService.Data.IFizickoLiceRepository.DeleteFizickoLice(System.Guid)">
             <summary>
-            Briše fizičko lice iz konteksta.
+            Briše fizičko lice.
             </summary>
             <param name="fizickoLiceID">ID fizičkog lica.</param>
         </member>
         <member name="M:LiceService.Data.IFizickoLiceRepository.SaveChanges">
             <summary>
-            Sačuva sve promene u kontekstu.
+            Sačuva sve promene.
             </summary>
             <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>
@@ -442,33 +442,33 @@
         </member>
         <member name="M:LiceService.Data.IKontaktOsobaRepository.GetKontaktOsobe">
             <summary>
-            Vraća listu kontakt osoba iz konteksta.
+            Vraća listu kontakt osoba.
             </summary>
             <returns>Vraća listu kontakt osoba.</returns>
         </member>
         <member name="M:LiceService.Data.IKontaktOsobaRepository.GetKontaktOsobaByID(System.Guid)">
             <summary>
-            Vraća jednu kontakt osobu iz konteksta na osnovu zadatog ID-ja.
+            Vraća jednu kontakt osobu na osnovu zadatog ID-ja.
             </summary>
             <param name="kontaktOsobaID">ID kontakt osobe.</param>
             <returns>Vraća specifiranu kontakt osobu.</returns>
         </member>
         <member name="M:LiceService.Data.IKontaktOsobaRepository.CreateKontaktOsoba(LiceService.DTO.KontaktOsobaCreateDTO)">
             <summary>
-            Dodaje novu kontakt osobu u kontekst.
+            Dodaje novu kontakt osobu.
             </summary>
             <param name="kontaktOsobaCreateDTO">DTO za kreiranje lica.</param>
             <returns>Vraća DTO kreiranog lica.</returns>
         </member>
         <member name="M:LiceService.Data.IKontaktOsobaRepository.DeleteKontaktOsoba(System.Guid)">
             <summary>
-            Briše kontakt osobu iz konteksta.
+            Briše kontakt osobu.
             </summary>
             <param name="kontaktOsobaID">ID kontakt osobe.</param>
         </member>
         <member name="M:LiceService.Data.IKontaktOsobaRepository.SaveChanges">
             <summary>
-            Sačuva sve promene u kontekstu.
+            Sačuva sve promene.
             </summary>
             <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>
@@ -479,33 +479,33 @@
         </member>
         <member name="M:LiceService.Data.ILiceRepository.GetLica">
             <summary>
-            Vraća listu lica iz konteksta.
+            Vraća listu lica.
             </summary>
             <returns>Vraća listu lica.</returns>
         </member>
         <member name="M:LiceService.Data.ILiceRepository.GetLiceByID(System.Guid)">
             <summary>
-            Vraća jedno lice iz konteksta na osnovu zadatog ID-ja.
+            Vraća jedno lice na osnovu zadatog ID-ja.
             </summary>
             <param name="liceID">ID lica.</param>
             <returns>Vraća specifirano lice.</returns>
         </member>
         <member name="M:LiceService.Data.ILiceRepository.CreateLice(LiceService.DTO.LiceCreateDTO)">
             <summary>
-            Dodaje novo lice u kontekst.
+            Dodaje novo lice.
             </summary>
             <param name="liceCreateDTO">DTO za kreiranje lica.</param>
             <returns>Vraća DTO kreiranog lica.</returns>
         </member>
         <member name="M:LiceService.Data.ILiceRepository.DeleteLice(System.Guid)">
             <summary>
-            Briše lice iz konteksta.
+            Briše lice.
             </summary>
             <param name="liceID">ID lica.</param>
         </member>
         <member name="M:LiceService.Data.ILiceRepository.SaveChanges">
             <summary>
-            Sačuva sve promene u kontekstu.
+            Sačuva sve promene.
             </summary>
             <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>
@@ -516,33 +516,33 @@
         </member>
         <member name="M:LiceService.Data.IPravnoLiceRepository.GetPravnaLica">
             <summary>
-            Vraća listu pravnih lica iz konteksta.
+            Vraća listu pravnih lica.
             </summary>
             <returns>Vraća listu pravnih lica.</returns>
         </member>
         <member name="M:LiceService.Data.IPravnoLiceRepository.GetPravnoLiceByID(System.Guid)">
             <summary>
-            Vraća jedno pravno lice iz konteksta na osnovu zadatog ID-ja.
+            Vraća jedno pravno lice na osnovu zadatog ID-ja.
             </summary>
             <param name="pravnoLiceID">ID pravnog lica.</param>
             <returns>Vraća specifirano pravno lice.</returns>
         </member>
         <member name="M:LiceService.Data.IPravnoLiceRepository.CreatePravnoLice(LiceService.DTO.PravnoLiceCreateDTO)">
             <summary>
-            Dodaje novo pravno lice u kontekst.
+            Dodaje novo pravno lice.
             </summary>
             <param name="pravnoLiceCreateDTO">DTO za kreiranje pravnog lica.</param>
             <returns>Vraća DTO kreiranog pravnog lica.</returns>
         </member>
         <member name="M:LiceService.Data.IPravnoLiceRepository.DeletePravnoLice(System.Guid)">
             <summary>
-            Briše pravno lice iz konteksta.
+            Briše pravno lice.
             </summary>
             <param name="pravnoLiceID">ID pravnog lica.</param>
         </member>
         <member name="M:LiceService.Data.IPravnoLiceRepository.SaveChanges">
             <summary>
-            Sačuva sve promene u kontekstu.
+            Sačuva sve promene.
             </summary>
             <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
         </member>

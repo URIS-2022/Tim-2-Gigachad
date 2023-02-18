@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static DeoParceleService.Entities.EntitiesEnums;
 
 namespace DeoParceleService.DTO
 {
 	/// <summary>
 	/// Model DTO-a za ažuriranje entiteta deo parcela.
 	/// </summary>
-	//: IValidatableObject
-	public class DeoParceleUpdateDTO
+	public class DeoParceleUpdateDTO : IValidatableObject
 	{
 		/// <summary>
 		/// ID dela parcele.
@@ -93,7 +93,7 @@ namespace DeoParceleService.DTO
 		[Required(ErrorMessage = "Deo parcele mora da ima odvodnjavanje.")]
 		public bool Odvodnjavanje { get; set; } = false;
 
-		/*/// <summary>
+		/// <summary>
 		/// Validacija za model DTO-a za ažuriranje entiteta deo parcela.
 		/// </summary>
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
@@ -112,7 +112,7 @@ namespace DeoParceleService.DTO
 				yield return new ValidationResult("Kultura mora da bude: NJIVE, VRTOVI, VOCNJACI, VINOGRADI, LIVADE, PASNJACI, SUME, MOCVARE.", new[] { "DeoParceleUpdateDTO" });
 
 			if (Enum.TryParse(Klasa.ToUpper(), out KlasaDelaParcele _Klasa))
-				Klasa = Klasa.ToString();
+				Klasa = _Klasa.ToString();
 			else
 				yield return new ValidationResult("Klasa mora da bude: I, II, III, IV, V, VI, VII, VIII.", new[] { "DeoParceleUpdateDTO" });
 
@@ -125,6 +125,6 @@ namespace DeoParceleService.DTO
 				OblikSvojine = _OblikSvojine.ToString();
 			else
 				yield return new ValidationResult("Oblik svojine mora da bude: PRIVATNA_SVOJINA, DRZAVNA_SVOJINA, DRUSTVENA_SVOJINA, ZADRUZNA_SVOJINA, MESOVITA_SVOJINA, OSTALE_SVOJINE.", new[] { "DeoParceleUpdateDTO" });
-		}*/
+		}
 	}
 }

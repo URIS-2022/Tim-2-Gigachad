@@ -9,33 +9,33 @@ namespace LiceService.Data
 	public interface IKontaktOsobaRepository
 	{
 		/// <summary>
-		/// Vraća listu kontakt osoba iz konteksta.
+		/// Vraća listu kontakt osoba.
 		/// </summary>
 		/// <returns>Vraća listu kontakt osoba.</returns>
 		List<KontaktOsobaEntity> GetKontaktOsobe();
 
 		/// <summary>
-		/// Vraća jednu kontakt osobu iz konteksta na osnovu zadatog ID-ja.
+		/// Vraća jednu kontakt osobu na osnovu zadatog ID-ja.
 		/// </summary>
 		/// <param name="kontaktOsobaID">ID kontakt osobe.</param>
 		/// <returns>Vraća specifiranu kontakt osobu.</returns>
 		KontaktOsobaEntity? GetKontaktOsobaByID(Guid kontaktOsobaID);
 
 		/// <summary>
-		/// Dodaje novu kontakt osobu u kontekst.
+		/// Dodaje novu kontakt osobu.
 		/// </summary>
 		/// <param name="kontaktOsobaCreateDTO">DTO za kreiranje lica.</param>
 		/// <returns>Vraća DTO kreiranog lica.</returns>
 		KontaktOsobaDTO CreateKontaktOsoba(KontaktOsobaCreateDTO kontaktOsobaCreateDTO);
 
 		/// <summary>
-		/// Briše kontakt osobu iz konteksta.
+		/// Briše kontakt osobu.
 		/// </summary>
 		/// <param name="kontaktOsobaID">ID kontakt osobe.</param>
 		void DeleteKontaktOsoba(Guid kontaktOsobaID);
 
 		/// <summary>
-		/// Sačuva sve promene u kontekstu.
+		/// Sačuva sve promene.
 		/// </summary>
 		/// <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
 		bool SaveChanges();
