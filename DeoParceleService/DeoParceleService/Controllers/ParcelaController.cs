@@ -2,6 +2,7 @@
 using DeoParceleService.Data;
 using DeoParceleService.DTO;
 using DeoParceleService.Entities;
+using DeoParceleService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,57 +20,81 @@ namespace DeoParceleService.Controllers
 		private readonly IParcelaRepository parcelaRepository;
 		private readonly LinkGenerator linkGenerator;
 		private readonly IMapper mapper;
+		private readonly IKupacService kupacService;
 
 		/// <summary>
 		/// Dependency injection za kontroler.
 		/// </summary>
-		public ParcelaController(IParcelaRepository parcelaRepository, LinkGenerator linkGenerator, IMapper mapper)
+		public ParcelaController(IParcelaRepository parcelaRepository, LinkGenerator linkGenerator, IMapper mapper, IKupacService kupacService)
 		{
 			this.parcelaRepository = parcelaRepository;
 			this.linkGenerator = linkGenerator;
 			this.mapper = mapper;
+			this.kupacService = kupacService;
 		}
 
 		/// <summary>
 		/// Vraća listu svih parcela.
 		/// </summary>
 		/// <returns>Vraća potvrdu o listi postojećih parcela.</returns>
+		/// <param name="authorization">Autorizovan token.</param>
 		/// <response code="200">Vraća listu parcela.</response>
 		/// <response code="204">Ne postoje parcele.</response>
 		//[HttpHead]
 		[HttpGet]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
-		public ActionResult<List<ParcelaDTO>> GetParcele()
+		public ActionResult<List<ParcelaDTO>> GetParcele([FromHeader] string authorization)
 		{
 			List<ParcelaEntity> parcele = parcelaRepository.GetParcele();
 			if (parcele == null || parcele.Count == 0)
 				return NoContent();
-			return Ok(mapper.Map<List<ParcelaDTO>>(parcele));
+
+			List<ParcelaDTO> parceleDTO = new();
+			foreach (ParcelaEntity parcela in parcele)
+			{
+				ParcelaDTO parcelaDTO = mapper.Map<ParcelaDTO>(parcela);
+				KupacDTO? kupacDTO = kupacService.GetKupacByIDAsync(parcela.KupacID, authorization).Result;
+				if (kupacDTO != null)
+				{
+					parcelaDTO.Kupac = kupacDTO;
+					parceleDTO.Add(parcelaDTO);
+				}
+			}
+			return Ok(parceleDTO);
 		}
 
 		/// <summary>
 		/// Vraća jednu parcelu na osnovu zadatog ID-ja.
 		/// </summary>
 		/// <param name="parcelaID">ID parcele.</param>
+		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o specifiranoj parceli.</returns>
 		/// <response code="200">Vraća specifiranu parcelu.</response>
 		/// <response code="404">Specifirana parcela ne postoji.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom pronalaženja specifirane parcele.</response>
 		[HttpGet("{parcelaID}")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
-		public ActionResult<ParcelaDTO> GetParcela(Guid parcelaID)
+		public ActionResult<ParcelaDTO> GetParcela(Guid parcelaID, [FromHeader] string authorization)
 		{
 			ParcelaEntity? parcela = parcelaRepository.GetParcelaByID(parcelaID);
 			if (parcela == null)
 				return NotFound();
-			return Ok(mapper.Map<ParcelaDTO>(parcela));
+
+			ParcelaDTO parcelaDTO = mapper.Map<ParcelaDTO>(parcela);
+			KupacDTO? kupacDTO = kupacService.GetKupacByIDAsync(parcela.KupacID, authorization).Result;
+			if (kupacDTO != null)
+				parcelaDTO.Kupac = kupacDTO;
+
+			return Ok(parcelaDTO);
 		}
 
 		/// <summary>
 		/// Kreira novu parcelu.
 		/// </summary>
 		/// <param name="parcelaCreateDTO">DTO za kreiranje parcele.</param>
+		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o kreiranoj parceli.</returns>
 		/// <response code="201">Vraća kreiranu parcelu.</response>
 		/// <response code="422">Došlo je do greške, već postoji parcela na serveru sa istom oznakom.</response>
@@ -78,22 +103,32 @@ namespace DeoParceleService.Controllers
 		[Consumes("application/json")]
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public ActionResult<ParcelaCreateDTO> CreateParcela([FromBody] ParcelaCreateDTO parcelaCreateDTO)
+		public ActionResult<ParcelaCreateDTO> CreateParcela([FromBody] ParcelaCreateDTO parcelaCreateDTO, [FromHeader] string authorization)
 		{
 			try
 			{
 				List<ParcelaEntity> parcele = parcelaRepository.GetParcele();
 				if (parcele.Find(e => e.Oznaka == parcelaCreateDTO.Oznaka) == null)
 				{
-					ParcelaDTO parcelaDTO = parcelaRepository.CreateParcela(parcelaCreateDTO);
-					parcelaRepository.SaveChanges();
+					Guid kupacID = Guid.Parse(parcelaCreateDTO.KupacID);
+					KupacDTO? kupacDTO = kupacService.GetKupacByIDAsync(kupacID, authorization).Result;
+					if (kupacDTO != null)
+					{
+						ParcelaDTO parcelaDTO = parcelaRepository.CreateParcela(parcelaCreateDTO);
+						parcelaRepository.SaveChanges();
 
-					string? location = linkGenerator.GetPathByAction("GetParcela", "Parcela", new { parcelaID = parcelaDTO.ID });
+						if (kupacDTO != null)
+							parcelaDTO.Kupac = kupacDTO;
 
-					if (location != null)
-						return Created(location, parcelaDTO);
+						string? location = linkGenerator.GetPathByAction("GetParcela", "Parcela", new { parcelaID = parcelaDTO.ID });
+
+						if (location != null)
+							return Created(location, parcelaDTO);
+						else
+							return Created(string.Empty, parcelaDTO);
+					}
 					else
-						return Created(string.Empty, parcelaDTO);
+						return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronađen. ID kupca: " + kupacID.ToString() + ".");
 				}
 				else
 					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadata oznaka parcele.");
@@ -108,6 +143,7 @@ namespace DeoParceleService.Controllers
 		/// Ažurira jednu parcelu.
 		/// </summary>
 		/// <param name="parcelaUpdateDTO">DTO za ažuriranje parcele.</param>
+		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o ažuriranoj parceli.</returns>
 		/// <response code="200">Vraća ažuriranu parcelu.</response>
 		/// <response code="404">Specifirana parcela ne postoji.</response>
@@ -118,7 +154,7 @@ namespace DeoParceleService.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public ActionResult<ParcelaDTO> UpdateParcela(ParcelaUpdateDTO parcelaUpdateDTO)
+		public ActionResult<ParcelaDTO> UpdateParcela(ParcelaUpdateDTO parcelaUpdateDTO, [FromHeader] string authorization)
 		{
 			try
 			{
@@ -131,10 +167,21 @@ namespace DeoParceleService.Controllers
 					parcele.Remove(tempParcela);
 				if (parcele.Find(e => e.Oznaka == parcelaUpdateDTO.Oznaka) == null)
 				{
-					ParcelaEntity parcela = mapper.Map<ParcelaEntity>(parcelaUpdateDTO);
-					mapper.Map(parcela, oldParcela);
-					parcelaRepository.SaveChanges();
-					return Ok(mapper.Map<ParcelaDTO>(oldParcela));
+					Guid kupacID = Guid.Parse(parcelaUpdateDTO.KupacID);
+					KupacDTO? kupacDTO = kupacService.GetKupacByIDAsync(kupacID, authorization).Result;
+					if (kupacDTO != null)
+					{
+						ParcelaEntity parcela = mapper.Map<ParcelaEntity>(parcelaUpdateDTO);
+						mapper.Map(parcela, oldParcela);
+						parcelaRepository.SaveChanges();
+
+						ParcelaDTO parcelaDTO = mapper.Map<ParcelaDTO>(oldParcela);
+						parcelaDTO.Kupac = kupacDTO;
+
+						return Ok(parcelaDTO);
+					}
+					else
+						return StatusCode(StatusCodes.Status500InternalServerError, "Kupac nije pronađen. ID kupca: " + kupacID.ToString() + ".");
 				}
 				else
 					return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati JMBG parcele.");

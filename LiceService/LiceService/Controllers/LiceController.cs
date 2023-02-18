@@ -89,6 +89,7 @@ namespace LiceService.Controllers
 		/// <returns>Vraća potvrdu o specifiranom licu.</returns>
 		/// <response code="200">Vraća specifirano lice.</response>
 		/// <response code="404">Specifirano lice ne postoji.</response>
+		/// <response code="500">Došlo je do greške na serveru prilikom pronalaženja specifiranog lica.</response>
 		[HttpGet("{liceID}")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -118,7 +119,7 @@ namespace LiceService.Controllers
 				return Ok(liceDTO);
 			}
 			else
-				return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena. ID adrese lica: " + adresaID.ToString() + ".");
+				return StatusCode(StatusCodes.Status500InternalServerError, "Adresa nije pronađena. ID adrese: " + adresaID.ToString() + ".");
 		}
 
 		/// <summary>
@@ -154,6 +155,7 @@ namespace LiceService.Controllers
 								{
 									LiceDTO liceDTO = liceRepository.CreateLice(liceCreateDTO);
 									liceRepository.SaveChanges();
+
 									liceDTO.FizickoLice = mapper.Map<FizickoLiceDTO>(fizickoLiceRepository.GetFizickoLiceByID(Guid.Parse(liceCreateDTO.FizickoLiceID)));
 									if (Guid.TryParse(liceCreateDTO.PravnoLiceID, out Guid pravnoLiceID))
 									{
@@ -177,7 +179,7 @@ namespace LiceService.Controllers
 										return Created(string.Empty, liceDTO);
 								}
 								else
-									return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena. ID adrese lica: " + adresaID.ToString() + ".");
+									return StatusCode(StatusCodes.Status500InternalServerError, "Adresa nije pronađena. ID adrese: " + adresaID.ToString() + ".");
 							}
 							else
 								return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati broj računa lica.");
@@ -193,6 +195,7 @@ namespace LiceService.Controllers
 								{
 									LiceDTO liceDTO = liceRepository.CreateLice(liceCreateDTO);
 									liceRepository.SaveChanges();
+
 									liceDTO.FizickoLice = mapper.Map<FizickoLiceDTO>(fizickoLiceRepository.GetFizickoLiceByID(Guid.Parse(liceCreateDTO.FizickoLiceID)));
 									if (Guid.TryParse(liceCreateDTO.PravnoLiceID, out Guid pravnoLiceID))
 									{
@@ -214,7 +217,7 @@ namespace LiceService.Controllers
 										return Created(string.Empty, liceDTO);
 								}
 								else
-									return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena. ID adrese lica: " + adresaID.ToString() + ".");
+									return StatusCode(StatusCodes.Status500InternalServerError, "Adresa nije pronađena. ID adrese: " + adresaID.ToString() + ".");
 							}
 							else
 								return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati broj računa lica.");
@@ -279,6 +282,7 @@ namespace LiceService.Controllers
 									mapper.Map(lice, oldLice);
 									liceRepository.SaveChanges();
 									LiceDTO liceDTO = mapper.Map<LiceDTO>(oldLice);
+
 									liceDTO.FizickoLice = mapper.Map<FizickoLiceDTO>(fizickoLiceRepository.GetFizickoLiceByID(Guid.Parse(liceUpdateDTO.FizickoLiceID)));
 									if (Guid.TryParse(liceUpdateDTO.PravnoLiceID, out Guid pravnoLiceID))
 									{
@@ -290,11 +294,12 @@ namespace LiceService.Controllers
 											liceDTO.PravnoLice.KontaktOsoba = kontaktOsobaDTO;
 										}
 									}
+
 									liceDTO.Adresa = adresaDTO;
 									return Ok(liceDTO);
 								}
 								else
-									return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena. ID adrese lica: " + adresaID.ToString() + ".");
+									return StatusCode(StatusCodes.Status500InternalServerError, "Adresa nije pronađena. ID adrese: " + adresaID.ToString() + ".");
 							}
 							else
 								return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati broj računa lica.");
@@ -312,6 +317,7 @@ namespace LiceService.Controllers
 									mapper.Map(lice, oldLice);
 									liceRepository.SaveChanges();
 									LiceDTO liceDTO = mapper.Map<LiceDTO>(oldLice);
+
 									liceDTO.FizickoLice = mapper.Map<FizickoLiceDTO>(fizickoLiceRepository.GetFizickoLiceByID(Guid.Parse(liceUpdateDTO.FizickoLiceID)));
 									if (Guid.TryParse(liceUpdateDTO.PravnoLiceID, out Guid pravnoLiceID))
 									{
@@ -323,11 +329,12 @@ namespace LiceService.Controllers
 											liceDTO.PravnoLice.KontaktOsoba = kontaktOsobaDTO;
 										}
 									}
+
 									liceDTO.Adresa = adresaDTO;
 									return Ok(liceDTO);
 								}
 								else
-									return StatusCode(StatusCodes.Status500InternalServerError, "Adresa lica nije pronađena. ID adrese lica: " + adresaID.ToString() + ".");
+									return StatusCode(StatusCodes.Status500InternalServerError, "Adresa nije pronađena. ID adrese: " + adresaID.ToString() + ".");
 							}
 							else
 								return StatusCode(StatusCodes.Status422UnprocessableEntity, "Već postoji zadati broj računa lica.");
@@ -360,7 +367,7 @@ namespace LiceService.Controllers
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public IActionResult DeleteLice(Guid liceID, [FromHeader] string authorization)
+		public IActionResult DeleteLice(Guid liceID)
 		{
 			try
 			{

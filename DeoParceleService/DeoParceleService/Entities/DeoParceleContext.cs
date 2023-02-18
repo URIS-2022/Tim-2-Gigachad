@@ -50,14 +50,14 @@ namespace DeoParceleService.Entities
 				ParcelaID = Guid.Parse("06f51688-c60a-4dbf-8955-f1713fa47e28"),
 				KupacID = Guid.Parse("753d20f5-73a3-4e00-a3a2-e1c43d6b0777"),
 				RedniBroj = "55907",
-				Povrsina = ,
-				BrojNekretnina = ,
-				Obradivost = "",
-				Kultura = "",
-				Klasa = "",
-				ZasticenaZona = "",
-				OblikSvojine = "",
-				Odvodnjavanje = 
+				Povrsina = 805,
+				BrojNekretnina = 10,
+				Obradivost = "OBRADIVO",
+				Kultura = "NJIVE",
+				Klasa = "I",
+				ZasticenaZona = "I",
+				OblikSvojine = "PRIVATNA_SVOJINA",
+				Odvodnjavanje = true
 			});
 			builder.Entity<DeoParceleEntity>().HasData(new
 			{
@@ -65,14 +65,14 @@ namespace DeoParceleService.Entities
 				ParcelaID = Guid.Parse("06f51688-c60a-4dbf-8955-f1713fa47e28"),
 				KupacID = Guid.Parse("753d20f5-73a3-4e00-a3a2-e1c43d6b0777"),
 				RedniBroj = "82075",
-				Povrsina = ,
-				BrojNekretnina = ,
-				Obradivost = "",
-				Kultura = "",
-				Klasa = "",
-				ZasticenaZona = "",
-				OblikSvojine = "",
-				Odvodnjavanje =
+				Povrsina = 923,
+				BrojNekretnina = 15,
+				Obradivost = "OBRADIVO",
+				Kultura = "NJIVE",
+				Klasa = "I",
+				ZasticenaZona = "I",
+				OblikSvojine = "PRIVATNA_SVOJINA",
+				Odvodnjavanje = true
 			});
 			builder.Entity<DeoParceleEntity>().HasData(new
 			{
@@ -80,14 +80,14 @@ namespace DeoParceleService.Entities
 				ParcelaID = Guid.Parse("06f51688-c60a-4dbf-8955-f1713fa47e28"),
 				KupacID = Guid.Parse("4d1c0702-aeb4-4a4f-bdb8-26e1cc53b2eb"),
 				RedniBroj = "32477",
-				Povrsina = ,
-				BrojNekretnina = ,
-				Obradivost = "",
-				Kultura = "",
-				Klasa = "",
-				ZasticenaZona = "",
-				OblikSvojine = "",
-				Odvodnjavanje =
+				Povrsina = 975,
+				BrojNekretnina = 13,
+				Obradivost = "OBRADIVO",
+				Kultura = "NJIVE",
+				Klasa = "I",
+				ZasticenaZona = "I",
+				OblikSvojine = "MESOVITA_SVOJINA",
+				Odvodnjavanje = true
 			});
 			builder.Entity<DeoParceleEntity>().HasData(new
 			{
@@ -95,14 +95,14 @@ namespace DeoParceleService.Entities
 				ParcelaID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
 				KupacID = Guid.Parse("753d20f5-73a3-4e00-a3a2-e1c43d6b0777"),
 				RedniBroj = "78398",
-				Povrsina = ,
-				BrojNekretnina = ,
-				Obradivost = "",
-				Kultura = "",
-				Klasa = "",
-				ZasticenaZona = "",
-				OblikSvojine = "",
-				Odvodnjavanje =
+				Povrsina = 440,
+				BrojNekretnina = 27,
+				Obradivost = "OBRADIVO",
+				Kultura = "VOCNJACI",
+				Klasa = "II",
+				ZasticenaZona = "I",
+				OblikSvojine = "PRIVATNA_SVOJINA",
+				Odvodnjavanje = true
 			});
 			builder.Entity<DeoParceleEntity>().HasData(new
 			{
@@ -110,14 +110,14 @@ namespace DeoParceleService.Entities
 				ParcelaID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
 				KupacID = Guid.Parse("4d1c0702-aeb4-4a4f-bdb8-26e1cc53b2eb"),
 				RedniBroj = "35683",
-				Povrsina = ,
-				BrojNekretnina = ,
-				Obradivost = "",
-				Kultura = "",
-				Klasa = "",
-				ZasticenaZona = "",
-				OblikSvojine = "",
-				Odvodnjavanje =
+				Povrsina = 564,
+				BrojNekretnina = 26,
+				Obradivost = "OBRADIVO",
+				Kultura = "VOCNJACI",
+				Klasa = "II",
+				ZasticenaZona = "I",
+				OblikSvojine = "MESOVITA_SVOJINA",
+				Odvodnjavanje = true
 			});
 			builder.Entity<DeoParceleEntity>().HasData(new
 			{
@@ -125,14 +125,14 @@ namespace DeoParceleService.Entities
 				ParcelaID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
 				KupacID = Guid.Parse("93d92981-a754-41d8-8d1f-b5462a9e0386"),
 				RedniBroj = "86657",
-				Povrsina = ,
-				BrojNekretnina = ,
-				Obradivost = "",
-				Kultura = "",
-				Klasa = "",
-				ZasticenaZona = "",
-				OblikSvojine = "",
-				Odvodnjavanje =
+				Povrsina = 685,
+				BrojNekretnina = 21,
+				Obradivost = "OSTALO",
+				Kultura = "MOCVARE",
+				Klasa = "VIII",
+				ZasticenaZona = "IV",
+				OblikSvojine = "DRUSTVENA_SVOJINA",
+				Odvodnjavanje = false
 			});
 			builder.Entity<DeoParceleEntity>().HasData(new
 			{
@@ -140,14 +140,14 @@ namespace DeoParceleService.Entities
 				ParcelaID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
 				KupacID = Guid.Parse("93d92981-a754-41d8-8d1f-b5462a9e0386"),
 				RedniBroj = "85120",
-				Povrsina = ,
-				BrojNekretnina = ,
-				Obradivost = "",
-				Kultura = "",
-				Klasa = "",
-				ZasticenaZona = "",
-				OblikSvojine = "",
-				Odvodnjavanje =
+				Povrsina = 488,
+				BrojNekretnina = 29,
+				Obradivost = "OBRADIVO",
+				Kultura = "VINOGRADI",
+				Klasa = "II",
+				ZasticenaZona = "I",
+				OblikSvojine = "DRZAVNA_SVOJINA",
+				Odvodnjavanje = true
 			});
 			builder.Entity<DeoParceleEntity>().HasData(new
 			{
@@ -155,14 +155,14 @@ namespace DeoParceleService.Entities
 				ParcelaID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
 				KupacID = Guid.Parse("ccc043c6-398c-485d-9840-092c0441ebe8"),
 				RedniBroj = "53891",
-				Povrsina = ,
-				BrojNekretnina = ,
-				Obradivost = "",
-				Kultura = "",
-				Klasa = "",
-				ZasticenaZona = "",
-				OblikSvojine = "",
-				Odvodnjavanje =
+				Povrsina = 528,
+				BrojNekretnina = 24,
+				Obradivost = "OSTALO",
+				Kultura = "MOCVARE",
+				Klasa = "VIII",
+				ZasticenaZona = "IV",
+				OblikSvojine = "ZADRUZNA_SVOJINA",
+				Odvodnjavanje = false
 			});
 		}
 	}

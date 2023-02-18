@@ -41,7 +41,7 @@ namespace DeoParceleService.ServiceCalls
 			else
 				kupac = null;
 
-			if (kupac != null && kupac.ID != Guid.Empty)
+			if (kupac != null && kupac.KupacID != Guid.Empty)
 				return kupac;
 			else
 				return null;

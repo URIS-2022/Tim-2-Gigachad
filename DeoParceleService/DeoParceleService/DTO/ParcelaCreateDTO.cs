@@ -12,7 +12,9 @@ namespace DeoParceleService.DTO
 		/// ID kupca.
 		/// </summary>
 		[Required(ErrorMessage = "Parcele mora da ima kupca.")]
-		public Guid KupacID { get; set; } = Guid.Empty!;
+		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+		public string KupacID { get; set; } = null!;
 
 		/// <summary>
 		/// Oznaka parcele.

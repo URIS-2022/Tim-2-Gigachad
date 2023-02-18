@@ -28,7 +28,8 @@ namespace DeoParceleService.DTO
 		/// Redni broj dela parcele.
 		/// </summary>
 		[Required(ErrorMessage = "Deo parcele mora da ima redni broj.")]
-		[MaxLength(5, ErrorMessage = "Redni broj dela parcele ne sme da bude preko 10 karaktera.")]
+		[MinLength(5, ErrorMessage = "Redni broj dela parcele mora da ima 5 karaktera.")]
+		[MaxLength(5, ErrorMessage = "Redni broj dela parcele mora da ima 5 karaktera.")]
 		public string RedniBroj { get; set; } = null!;
 
 		/// <summary>
@@ -89,6 +90,9 @@ namespace DeoParceleService.DTO
 		/// </summary>
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
 		{
+			if (!int.TryParse(RedniBroj, out _))
+				yield return new ValidationResult("Redni broj dela parcele mora da se sastoji samo od numeričkih karaktera.", new[] { "DeoParceleCreateDTO" });
+
 			if (Enum.TryParse(Obradivost.ToUpper(), out ObradivostDelaParcele _Obradivost))
 				Obradivost = _Obradivost.ToString();
 			else
