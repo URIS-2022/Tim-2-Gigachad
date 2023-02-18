@@ -3,19 +3,11 @@
 namespace DeoParceleService.DTO
 {
 	/// <summary>
-	/// Model DTO-a za ažuriranje entiteta deo parcela.
+	/// Model DTO-a za kreiranje entiteta deo parcela.
 	/// </summary>
 	//: IValidatableObject
-	public class DeoParceleUpdateDTO
+	public class DeoParceleCreateDTO
 	{
-		/// <summary>
-		/// ID dela parcele.
-		/// </summary>
-		[Required(ErrorMessage = "Deo parcele mora da ima ID.")]
-		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-		public string ID { get; set; } = null!;
-
 		/// <summary>
 		/// ID parcele.
 		/// </summary>
@@ -43,7 +35,7 @@ namespace DeoParceleService.DTO
 		/// Površina dela parcele.
 		/// </summary>
 		[Required(ErrorMessage = "Deo parcele mora da ima površinu.")]
-		public decimal Povrsina { get; set; } = 0!;
+		public int Povrsina { get; set; } = 0!;
 
 		/// <summary>
 		/// Broj nekretnina dela parcele.
@@ -100,27 +92,27 @@ namespace DeoParceleService.DTO
 			if (Enum.TryParse(Obradivost.ToUpper(), out ObradivostDelaParcele _Obradivost))
 				Obradivost = _Obradivost.ToString();
 			else
-				yield return new ValidationResult("Obradivost mora da bude: OBRADIVO, OSTALO.", new[] { "DeoParceleUpdateDTO" });
+				yield return new ValidationResult("Obradivost mora da bude: OBRADIVO, OSTALO.", new[] { "DeoParceleCreateDTO" });
 
 			if (Enum.TryParse(Kultura.ToUpper(), out KulturaDelaParcele _Kultura))
 				Kultura = _Kultura.ToString();
 			else
-				yield return new ValidationResult("Kultura mora da bude: NJIVE, VRTOVI, VOCNJACI, VINOGRADI, LIVADE, PASNJACI, SUME, MOCVARE.", new[] { "DeoParceleUpdateDTO" });
+				yield return new ValidationResult("Kultura mora da bude: NJIVE, VRTOVI, VOCNJACI, VINOGRADI, LIVADE, PASNJACI, SUME, MOCVARE.", new[] { "DeoParceleCreateDTO" });
 
 			if (Enum.TryParse(Klasa.ToUpper(), out KlasaDelaParcele _Klasa))
 				Klasa = Klasa.ToString();
 			else
-				yield return new ValidationResult("Klasa mora da bude: I, II, III, IV, V, VI, VII, VIII.", new[] { "DeoParceleUpdateDTO" });
+				yield return new ValidationResult("Klasa mora da bude: I, II, III, IV, V, VI, VII, VIII.", new[] { "DeoParceleCreateDTO" });
 
 			if (Enum.TryParse(ZasticenaZona.ToUpper(), out ZasticenaZonaDelaParcele _ZasticenaZona))
 				ZasticenaZona = _ZasticenaZona.ToString();
 			else
-				yield return new ValidationResult("Zaštićena zona mora da bude: I, II, III, IV.", new[] { "DeoParceleUpdateDTO" });
+				yield return new ValidationResult("Zaštićena zona mora da bude: I, II, III, IV.", new[] { "DeoParceleCreateDTO" });
 
 			if (Enum.TryParse(OblikSvojine.ToUpper(), out OblikSvojineDelaParcele _OblikSvojine))
 				OblikSvojine = _OblikSvojine.ToString();
 			else
-				yield return new ValidationResult("Oblik svojine mora da bude: PRIVATNA_SVOJINA, DRZAVNA_SVOJINA, DRUSTVENA_SVOJINA, ZADRUZNA_SVOJINA, MESOVITA_SVOJINA, OSTALE_SVOJINE.", new[] { "DeoParceleUpdateDTO" });
+				yield return new ValidationResult("Oblik svojine mora da bude: PRIVATNA_SVOJINA, DRZAVNA_SVOJINA, DRUSTVENA_SVOJINA, ZADRUZNA_SVOJINA, MESOVITA_SVOJINA, OSTALE_SVOJINE.", new[] { "DeoParceleCreateDTO" });
 		}*/
 	}
 }

@@ -18,7 +18,7 @@
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		public PravnoLiceDTO? PravnoLice { get; set; }
+		public PravnoLiceDTO? PravnoLice { get; set; } = null;
 
 		/// <summary>
 		/// Adresa lica.
@@ -33,7 +33,7 @@
 		/// <summary>
 		/// Drugi telefon lica.
 		/// </summary>
-		public string? Telefon2 { get; set; }
+		public string? Telefon2 { get; set; } = null;
 
 		/// <summary>
 		/// Email lica.

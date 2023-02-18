@@ -11,9 +11,14 @@
 		public Guid ID { get; set; } = Guid.Empty!;
 
 		/// <summary>
+		/// Oznaka parcele.
+		/// </summary>
+		public string Oznaka { get; set; } = null!;
+
+		/// <summary>
 		/// Ukupna površina parcele.
 		/// </summary>
-		public decimal UkupnaPovrsina { get; set; } = 0!;
+		public int UkupnaPovrsina { get; set; } = 0!;
 
 		/// <summary>
 		/// Katastarska opština parcele.

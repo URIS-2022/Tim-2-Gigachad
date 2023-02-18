@@ -17,10 +17,17 @@ namespace DeoParceleService.DTO
 		public string ID { get; set; } = null!;
 
 		/// <summary>
+		/// Oznaka parcele.
+		/// </summary>
+		[Required(ErrorMessage = "Parcela mora da ima oznaku.")]
+		[MaxLength(10, ErrorMessage = "Oznaka parcele ne sme da bude preko 10 karaktera.")]
+		public string Oznaka { get; set; } = null!;
+
+		/// <summary>
 		/// Ukupna površina parcele.
 		/// </summary>
 		[Required(ErrorMessage = "Parcela mora da ima ukupnu površinu.")]
-		public decimal UkupnaPovrsina { get; set; } = 0!;
+		public int UkupnaPovrsina { get; set; } = 0!;
 
 		/// <summary>
 		/// Katastarska opština parcele.

@@ -29,7 +29,7 @@ namespace LiceService.Entities
 		/// <summary>
 		/// ID pravnog lica.
 		/// </summary>
-		public Guid? PravnoLiceID { get; set; }
+		public Guid? PravnoLiceID { get; set; } = null;
 
 		/// <summary>
 		/// ID adrese lica.
@@ -50,7 +50,7 @@ namespace LiceService.Entities
 		/// </summary>
 		[MinLength(9, ErrorMessage = "Drugi telefon lica mora da bude manji od 9 karaktera.")]
 		[MaxLength(10, ErrorMessage = "Drugi telefon lica ne sme da bude preko 10 karaktera.")]
-		public string? Telefon2 { get; set; }
+		public string? Telefon2 { get; set; } = null;
 
 		/// <summary>
 		/// Email lica.

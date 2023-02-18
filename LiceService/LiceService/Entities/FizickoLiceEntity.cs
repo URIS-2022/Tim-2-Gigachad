@@ -38,6 +38,6 @@ namespace LiceService.Entities
 		/// <summary>
 		/// Lica fizičkih lica.
 		/// </summary>
-		public List<LiceEntity>? Lica { get; set; }
+		public List<LiceEntity>? Lica { get; set; } = null;
 	}
 }

@@ -27,7 +27,7 @@ namespace LiceService.ServiceCalls
 		public async Task<AdresaDTO?> GetAdresaByIDAsync(Guid adresaLicaID, string? token)
 		{
 			using HttpClient httpClient = new();
-			Uri url = new ($"{configuration["Services:AdresaService"]}api/adrese/{adresaLicaID}");
+			Uri url = new($"{configuration["Services:AdresaService"]}api/adrese/{adresaLicaID}");
 			if (token != string.Empty)
 				httpClient.DefaultRequestHeaders.Add("Authorization", token);
 

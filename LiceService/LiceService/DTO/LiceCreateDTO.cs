@@ -20,7 +20,7 @@ namespace LiceService.DTO
 		/// </summary>
 		[MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu da bi bio prazan: 00000000-0000-0000-0000-000000000000.")]
 		[MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-		public string? PravnoLiceID { get; set; }
+		public string? PravnoLiceID { get; set; } = null;
 
 		/// <summary>
 		/// ID adrese lica.
@@ -43,7 +43,7 @@ namespace LiceService.DTO
 		/// </summary>
 		[MinLength(9, ErrorMessage = "Drugi telefon lica mora da bude manji od 9 karaktera.")]
 		[MaxLength(10, ErrorMessage = "Drugi telefon lica ne sme da bude preko 10 karaktera.")]
-		public string? Telefon2 { get; set; }
+		public string? Telefon2 { get; set; } = null;
 
 		/// <summary>
 		/// Email lica.

@@ -45,6 +45,6 @@ namespace LiceService.Entities
 		/// <summary>
 		/// Lica fizičkih lica.
 		/// </summary>
-		public List<PravnoLiceEntity>? PravnaLica { get; set; }
+		public List<PravnoLiceEntity>? PravnaLica { get; set; } = null;
 	}
 }

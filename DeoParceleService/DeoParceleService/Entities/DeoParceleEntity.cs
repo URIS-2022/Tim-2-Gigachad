@@ -33,10 +33,17 @@ namespace DeoParceleService.Entities
 		public Guid KupacID { get; set; } = Guid.Empty!;
 
 		/// <summary>
+		/// Redni broj dela parcele.
+		/// </summary>
+		[Required(ErrorMessage = "Deo parcele mora da ima redni broj.")]
+		[MaxLength(10, ErrorMessage = "Redni broj dela parcele ne sme da bude preko 10 karaktera.")]
+		public string RedniBroj { get; set; } = null!;
+
+		/// <summary>
 		/// Površina dela parcele.
 		/// </summary>
 		[Required(ErrorMessage = "Deo parcele mora da ima površinu.")]
-		public decimal Povrsina { get; set; } = 0!;
+		public int Povrsina { get; set; } = 0!;
 
 		/// <summary>
 		/// Broj nekretnina dela parcele.

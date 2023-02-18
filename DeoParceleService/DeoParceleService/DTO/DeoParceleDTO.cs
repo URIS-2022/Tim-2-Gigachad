@@ -1,11 +1,9 @@
-﻿using DeoParceleService.Entities;
-
-namespace DeoParceleService.DTO
+﻿namespace DeoParceleService.DTO
 {
 	/// <summary>
 	/// Model DTO-a za entitet deo parcele.
 	/// </summary>
-	public class DeoParcelaDTO
+	public class DeoParceleDTO
 	{
 		/// <summary>
 		/// ID dela parcele.
@@ -15,22 +13,22 @@ namespace DeoParceleService.DTO
 		/// <summary>
 		/// ID parcele.
 		/// </summary>
-		public Guid ParcelaID { get; set; } = Guid.Empty!;
-
-		/// <summary>
-		/// Parcela.
-		/// </summary>
-		public ParcelaEntity Parcela { get; set; } = null!;
+		public ParcelaDTO Parcela { get; set; } = null!;
 
 		/// <summary>
 		/// ID kupca.
 		/// </summary>
-		public Guid KupacID { get; set; } = Guid.Empty!;
+		public KupacDTO Kupac { get; set; } = null!;
+
+		/// <summary>
+		/// Redni broj dela parcele.
+		/// </summary>
+		public string RedniBroj { get; set; } = null!;
 
 		/// <summary>
 		/// Površina dela parcele.
 		/// </summary>
-		public decimal Povrsina { get; set; } = 0!;
+		public int Povrsina { get; set; } = 0!;
 
 		/// <summary>
 		/// Broj nekretnina dela parcele.

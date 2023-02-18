@@ -1,4 +1,4 @@
-﻿namespace LiceService.DTO
+﻿namespace DeoParceleService.DTO
 {
 	/// <summary>
 	/// Model DTO-a za entitet lice.
