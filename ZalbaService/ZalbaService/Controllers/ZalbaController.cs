@@ -39,7 +39,7 @@ namespace ZalbaService.Controllers
         /// <returns>Vraća potvrdu o listi postojećih žalbi.</returns>
 		/// <response code="200">Vraća listu žalbi.</response>
 		/// <response code="204">Ne postoje žalbe.</response>
-        //[HttpHead]
+        [HttpHead]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -66,10 +66,6 @@ namespace ZalbaService.Controllers
                     continue;
             }
             return Ok(zalbeDTO);
-            /*var zalbe = zalbaRepository.GetZalbe();
-            if (zalbe == null || zalbe.Count == 0)
-                return NoContent();
-            return Ok(mapper.Map<List<ZalbaDTO>>(zalbe));*/
         }
 
         /// <summary>
@@ -97,14 +93,11 @@ namespace ZalbaService.Controllers
             {
                 ZalbaDTO zalbaDTO = mapper.Map<ZalbaDTO>(zalba);
 
+                zalbaDTO.Kupac = kupac;
+
                 return Ok(zalbaDTO);
             }
-                
-            /*
-            var zalba = zalbaRepository.GetZalbaByID(zalbaID);
-            if (zalba == null)
-                return NotFound();
-            return Ok(mapper.Map<ZalbaDTO>(zalba)); */
+
         }
 
         /// <summary>
@@ -112,7 +105,20 @@ namespace ZalbaService.Controllers
         /// </summary>
         /// <param name="zalbaCreateDTO"> DTO za kreiranje žalbe</param>
         /// <returns>Potvrdu o kreiranoj žalbi.</returns>
-        /// /// <response code="201">Vraća kreiranu žalbu.</response>
+        /// /// <remarks>
+		/// Primer zahteva za kreiranje nove zalbe. \
+		/// POST /api/zalbe \
+		/// { \
+		///		"kupacID": "ccc043c6-398c-485d-9840-092c0441ebe8", \
+        ///     "tipZalbe": "ZALBA_NA_ODLUKU_O_DAVANJU_NA_KORISCENJE", \
+        ///     "datumPodnosenja": "2022-11-11T00:00:00", \
+        ///     "razlog": "razlog1", \
+        ///     "obrazlozenje": "obrazlozenje1", \
+        ///     "statusZalbe": "Odbijena", \
+        ///     "radnjaZalbe": "JN_IDE_U_DRUGI_KRUG_SA_NOVIM_USLOVIMA" \
+		/// }
+		/// </remarks>
+        /// <response code="201">Vraća kreiranu žalbu.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja žalbe.</response>
         [HttpPost]
         [Consumes("application/json")]
@@ -132,6 +138,8 @@ namespace ZalbaService.Controllers
                     ZalbaDTO zalbaDTO = zalbaRepository.CreateZalba(zalbaCreateDTO);
                     zalbaRepository.SaveChanges();
 
+                    zalbaDTO.Kupac = kupac;
+
                     string? location = linkGenerator.GetPathByAction("GetZalbaByID", "Zalba", new { zalbaID = zalbaDTO.ZalbaID });
 
                     if (location != null)
@@ -139,16 +147,6 @@ namespace ZalbaService.Controllers
                     else
                         return Created(string.Empty, zalbaDTO);
                 }
-
-                /*  ZalbaDTO zalba = zalbaRepository.CreateZalba(zalbaCreateDTO);
-                zalbaRepository.SaveChanges();
-
-                string? location = linkGenerator.GetPathByAction("GetZalba", "Zalba", new { zalbaID = zalba.ZalbaID });
-
-                if (location != null)
-                    return Created(location, zalba);
-                else
-                    return Created("", zalba);  */
             }
             catch (Exception exception)
             {
@@ -194,6 +192,19 @@ namespace ZalbaService.Controllers
         /// </summary>
         /// <param name="zalbaUpdateDTO">DTO za ažuriranje žalbe.</param>
         /// <returns>Potvrdu o ažuriranoj žalbi.</returns>
+        /// /// <remarks>
+		/// Primer zahteva za ažuriranje postojećeg fizičkog lica. \
+		/// PUT /api/fizickaLica \
+		/// { \
+		///		"kupacID": "ccc043c6-398c-485d-9840-092c0441ebe8", \
+        ///     "tipZalbe": "ZALBA_NA_ODLUKU_O_DAVANJU_NA_KORISCENJE", \
+        ///     "datumPodnosenja": "2022-11-11T00:00:00", \
+        ///     "razlog": "razlog1", \
+        ///     "obrazlozenje": "obrazlozenje1", \
+        ///     "statusZalbe": "OTVORENA", \
+        ///     "radnjaZalbe": "JN_IDE_U_DRUGI_KRUG_SA_NOVIM_USLOVIMA" \
+		///}
+		/// </remarks>
 		/// <response code="200">Vraća ažuriranu žalbu.</response>
 		/// <response code="404">Specifirana žalba ne postoji.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja žalbe.</response>
@@ -226,13 +237,7 @@ namespace ZalbaService.Controllers
 
                     return Ok(zalbaDTO);
                 }
-                /*ZalbaEntity? oldZalba = zalbaRepository.GetZalbaByID(zalbaUpdateDTO.ZalbaID);
-                if (oldZalba == null)
-                    return NotFound();
-                ZalbaEntity zalba = mapper.Map<ZalbaEntity>(zalbaUpdateDTO);
-                mapper.Map(zalba, oldZalba);
-                zalbaRepository.SaveChanges();
-                return Ok(mapper.Map<ZalbaDTO>(oldZalba)); */
+
             }
             catch (Exception exception)
             {

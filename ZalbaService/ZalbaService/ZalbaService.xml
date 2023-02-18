@@ -37,7 +37,20 @@
             </summary>
             <param name="zalbaCreateDTO"> DTO za kreiranje žalbe</param>
             <returns>Potvrdu o kreiranoj žalbi.</returns>
-            /// <response code="201">Vraća kreiranu žalbu.</response>
+            /// <remarks>
+            Primer zahteva za kreiranje nove zalbe. \
+            POST /api/zalbe \
+            { \
+            	"kupacID": "ccc043c6-398c-485d-9840-092c0441ebe8", \
+                "tipZalbe": "ZALBA_NA_ODLUKU_O_DAVANJU_NA_KORISCENJE", \
+                "datumPodnosenja": "2022-11-11T00:00:00", \
+                "razlog": "razlog1", \
+                "obrazlozenje": "obrazlozenje1", \
+                "statusZalbe": "Odbijena", \
+                "radnjaZalbe": "JN_IDE_U_DRUGI_KRUG_SA_NOVIM_USLOVIMA" \
+            }
+            </remarks>
+            <response code="201">Vraća kreiranu žalbu.</response>
             <response code="500">Došlo je do greške na serveru prilikom kreiranja žalbe.</response>
         </member>
         <member name="M:ZalbaService.Controllers.ZalbaController.DeleteZalba(System.Guid,System.String)">
@@ -51,14 +64,27 @@
             <response code="500">Došlo je do greške na serveru prilikom brisanja specifirane žalbe.</response>
         </member>
         <member name="M:ZalbaService.Controllers.ZalbaController.UpdateZalba(ZalbaService.Models.ZalbaUpdateDTO,System.String)">
-            <summary>
-            Ažurira jednu žalbu.
-            </summary>
-            <param name="zalbaUpdateDTO">DTO za ažuriranje žalbe.</param>
-            <returns>Potvrdu o ažuriranoj žalbi.</returns>
-            <response code="200">Vraća ažuriranu žalbu.</response>
-            <response code="404">Specifirana žalba ne postoji.</response>
-            <response code="500">Došlo je do greške na serveru prilikom ažuriranja žalbe.</response>
+             <summary>
+             Ažurira jednu žalbu.
+             </summary>
+             <param name="zalbaUpdateDTO">DTO za ažuriranje žalbe.</param>
+             <returns>Potvrdu o ažuriranoj žalbi.</returns>
+             /// <remarks>
+             Primer zahteva za ažuriranje postojećeg fizičkog lica. \
+             PUT /api/fizickaLica \
+             { \
+            		"kupacID": "ccc043c6-398c-485d-9840-092c0441ebe8", \
+                 "tipZalbe": "ZALBA_NA_ODLUKU_O_DAVANJU_NA_KORISCENJE", \
+                 "datumPodnosenja": "2022-11-11T00:00:00", \
+                 "razlog": "razlog1", \
+                 "obrazlozenje": "obrazlozenje1", \
+                 "statusZalbe": "OTVORENA", \
+                 "radnjaZalbe": "JN_IDE_U_DRUGI_KRUG_SA_NOVIM_USLOVIMA" \
+            }
+             </remarks>
+             <response code="200">Vraća ažuriranu žalbu.</response>
+             <response code="404">Specifirana žalba ne postoji.</response>
+             <response code="500">Došlo je do greške na serveru prilikom ažuriranja žalbe.</response>
         </member>
         <member name="M:ZalbaService.Controllers.ZalbaController.GetZalbeOptions">
             <summary>

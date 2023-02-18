@@ -42,7 +42,7 @@ namespace KomisijaService.Controllers
 		/// <response code="200">Vraća listu komisija.</response>
 		/// <response code="204">Ne postoje komisija.</response>
         
-        //[HttpHead]
+        [HttpHead]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -257,7 +257,19 @@ namespace KomisijaService.Controllers
         /// </summary>
         /// <param name="komisijaCreateDTO"> DTO za kreiranje komisije</param>
         /// <returns>Potvrdu o kreiranoj komisiji.</returns>
-        /// /// <response code="201">Vraća kreiranu komisiju.</response>
+        /// <remarks>
+		/// Primer zahteva za kreiranje novog fizičkog lica. \
+		/// POST /api/komisije \
+		/// { \
+		///		"clan1ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+		///		"clan2ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+		///		"clan3ID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+        ///		"clan4ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+        ///		"clan5ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+        ///		"predsednikID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+		/// }
+		/// </remarks>
+        /// <response code="201">Vraća kreiranu komisiju.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja komisije.</response>
         [HttpPost]
         [Consumes("application/json")]
@@ -386,9 +398,20 @@ namespace KomisijaService.Controllers
         /// </summary>
         /// <param name="komisijaUpdateDTO">DTO za ažuriranje komisije.</param>
         /// <returns>Potvrdu o ažuriranoj komisiji.</returns>
-		/// <response code="200">Vraća ažuriranu komisiju.</response>
-		/// <response code="404">Specifirana komisija ne postoji.</response>
-		/// <response code="500">Došlo je do greške na serveru prilikom ažuriranja komisije.</response>
+        /// <remarks>
+        /// Primer zahteva za kreiranje novog fizičkog lica. \
+        /// PUT /api/komisije \
+        /// { \
+        ///		"clan1ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+        ///		"clan2ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+        ///		"clan3ID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+        ///		"clan4ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+        ///		"clan5ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+        ///		"predsednikID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+        /// }
+        /// </remarks>		/// <response code="200">Vraća ažuriranu komisiju.</response>
+        /// <response code="404">Specifirana komisija ne postoji.</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja komisije.</response>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -37,7 +37,19 @@
             </summary>
             <param name="komisijaCreateDTO"> DTO za kreiranje komisije</param>
             <returns>Potvrdu o kreiranoj komisiji.</returns>
-            /// <response code="201">Vraća kreiranu komisiju.</response>
+            <remarks>
+            Primer zahteva za kreiranje novog fizičkog lica. \
+            POST /api/komisije \
+            { \
+            	"clan1ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+            	"clan2ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+            	"clan3ID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+            	"clan4ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+            	"clan5ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+            	"predsednikID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+            }
+            </remarks>
+            <response code="201">Vraća kreiranu komisiju.</response>
             <response code="500">Došlo je do greške na serveru prilikom kreiranja komisije.</response>
         </member>
         <member name="M:KomisijaService.Controllers.KomisijaController.UpdateKomisija(KomisijaService.Models.KomisijaUpdateDTO,System.String)">
@@ -46,9 +58,31 @@
             </summary>
             <param name="komisijaUpdateDTO">DTO za ažuriranje komisije.</param>
             <returns>Potvrdu o ažuriranoj komisiji.</returns>
-            <response code="200">Vraća ažuriranu komisiju.</response>
+            <remarks>
+            Primer zahteva za kreiranje novog fizičkog lica. \
+            PUT /api/komisije \
+            { \
+            	"clan1ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+            	"clan2ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+            	"clan3ID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+            	"clan4ID": "334f5277-a71c-4be8-b5da-5c9148b228f7", \
+            	"clan5ID": "16e85d49-9cdd-41a6-85bc-180932f68999", \
+            	"predsednikID": "92e0d8e9-b221-42a6-9bb8-a80974aee937", \
+            }
+            </remarks>		/// <response code="200">Vraća ažuriranu komisiju.</response>
             <response code="404">Specifirana komisija ne postoji.</response>
             <response code="500">Došlo je do greške na serveru prilikom ažuriranja komisije.</response>
+        </member>
+        <member name="M:KomisijaService.Controllers.KomisijaController.DeleteKomisija(System.Guid,System.String)">
+            <summary>
+            Briše jednu komisiju na osnovu zadatog ID-ja.
+            </summary>
+            <param name="komisijaID">ID komisije.</param>
+            <param name="authorization">Autorizovani token.</param>
+            <returns>Vraća potvrdu o brisanju komisije.</returns>
+            /// <response code="204">Specifirana komisija je uspešno obrisana.</response>
+            <response code="404">Specifirana komisija ne postoji i nije obrisana.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifirane komisije.</response>
         </member>
         <member name="M:KomisijaService.Controllers.KomisijaController.GetKomisijeOptions">
             <summary>
