@@ -41,5 +41,3 @@
         public string BrojRacuna { get; set; } = null!;
     }
 }
-
-

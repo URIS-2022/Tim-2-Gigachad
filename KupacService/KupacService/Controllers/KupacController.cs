@@ -6,6 +6,7 @@ using KupacService.DTO;
 using Microsoft.AspNetCore.Authorization;
 using KupacService.ServiceCalls;
 using System.Net;
+using System.Xml.Linq;
 
 namespace KupacService.Controllers
 {
@@ -143,10 +144,14 @@ namespace KupacService.Controllers
                     {
                         Guid tempOvlascenoLiceID = Guid.Parse(kupacCreateDTO.OvlascenoLiceID);
                         OvlascenoLiceDTO? ovlascenoLice = ovlascenoLiceService.GetOvlascenoLiceByIDAsync(tempOvlascenoLiceID, authorization).Result;
+                       
                         if (ovlascenoLice != null)
                         {
                             KupacDTO kupac = kupacRepository.CreateKupac(kupacCreateDTO);
                             kupacRepository.SaveChanges();
+
+                            kupac.Lice = lice;
+                            kupac.OvlascenoLice = ovlascenoLice;
 
                             string? location = linkGenerator.GetPathByAction("GetKupac", "Kupac", new { kupacID = kupac.KupacID });
 
@@ -173,7 +178,7 @@ namespace KupacService.Controllers
         /// <summary>
         /// Briše jednog kupca na osnovu zadatog ID-ja.
         /// </summary>
-        /// <param name="kupacUpdateDTO">ID fizičkog lica.</param>
+        /// <param name="kupacID">ID fizičkog lica.</param>
         /// <param name="authorization">Autorizovan token.</param>
         /// <returns>Potvrdu o brisanju kupca.</returns>
         /// <response code="204">Kupac uspešno obrisan.</response>
@@ -183,7 +188,41 @@ namespace KupacService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<KupacCreateDTO> UpdateKupac([FromBody] KupacUpdateDTO kupacUpdateDTO, [FromHeader] string authorization)
+        public IActionResult DeleteKupac(Guid kupacID, [FromHeader] string authorization)
+        {
+            try
+            {
+                KupacEntity? kupac = kupacRepository.GetKupacByID(kupacID);
+
+                if (kupac == null)
+                    return NotFound();
+
+                kupacRepository.DeleteKupac(kupacID);
+                kupacRepository.SaveChanges();
+
+                return NoContent();
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+            }
+        }
+
+        /// <summary>
+        /// Ažurira jednog kupca.
+        /// </summary>
+        /// <param name="kupacUpdateDTO">DTO za ažuriranje kupca.</param>
+        /// <param name="authorization">Autorizovan token.</param>
+        /// <returns>Potvrdu o ažuriranom kupcu.</returns>
+        /// <response code="200">Vraća ažuriranog kupca.</response>
+        /// <response code="404">Specifirani kupac ne postoji.</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja kupca.</response>
+        [HttpPut]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<KupacEntity> UpdateKupac(KupacUpdateDTO kupacUpdateDTO, [FromHeader] string authorization)
         {
             try
             {
@@ -191,7 +230,12 @@ namespace KupacService.Controllers
                 if (oldKupac == null)
                     return NotFound();
 
+
                 List<KupacEntity> kupci = kupacRepository.GetKupci();
+                KupacEntity? tempKupac = kupci.Find(e => e.KupacID == Guid.Parse(kupacUpdateDTO.KupacID));
+                if (tempKupac != null)
+                    kupci.Remove(tempKupac);
+
                 if (kupci.Find(e => e.LiceID == Guid.Parse(kupacUpdateDTO.LiceID)) == null)
                 {
                     Guid tempID = Guid.Parse(kupacUpdateDTO.LiceID);
@@ -208,7 +252,9 @@ namespace KupacService.Controllers
 
                             KupacDTO kupacDTO = mapper.Map<KupacDTO>(oldKupac);
 
-                            return Ok(kupacDTO);
+                            kupac.LiceID = tempID;
+                            kupac.OvlascenoLiceID = tempOvlascenoLiceID;
+                            return Ok(kupac);
                         }
                         else
                             return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji ovlasceno lice sa zadatim ID-jem.");
@@ -225,48 +271,6 @@ namespace KupacService.Controllers
             }
         }
 
-        /// <summary>
-        /// Ažurira jednog kupca.
-        /// </summary>
-        /// <param name="kupacUpdateDTO">DTO za ažuriranje kupca.</param>
-        /// <returns>Potvrdu o ažuriranom kupcu.</returns>
-        /// <response code="200">Vraća ažuriranog kupca.</response>
-        /// <response code="404">Specifirani kupac ne postoji.</response>
-        /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja kupca.</response>
-        [HttpPut]
-        [Consumes("application/json")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<KupacEntity> UpdateFizickoLice(KupacUpdateDTO kupacUpdateDTO)
-        {
-            try
-            {
-                KupacEntity? oldKupac = kupacRepository.GetKupacByID(Guid.Parse(kupacUpdateDTO.KupacID));
-                if (oldKupac == null)
-                    return NotFound();
-                KupacEntity kupac = mapper.Map<KupacEntity>(kupacUpdateDTO);
-                mapper.Map(kupac, oldKupac);
-                kupacRepository.SaveChanges();
-                return Ok(mapper.Map<KupacEntity>(oldKupac));
-            }
-            catch (Exception exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
-            }
-        }
-
-        /// <summary>
-        /// Vraća opcije za rad sa licima.
-        /// </summary>
-        /// <returns>Vraća prazan 200 HTTP kod.</returns>
-        /// <response code="200">Vraća prazan 200 HTTP kod.</response>
-        [HttpOptions]
-        [AllowAnonymous]
-        public IActionResult GetKupciOptions()
-        {
-            Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
-            return Ok();
-        }
     }
+
 }

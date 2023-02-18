@@ -13,7 +13,7 @@ namespace OvlascenoLiceService.Controllers
     /// </summary>
     [Authorize]
     [ApiController]
-    [Route("api/ovlascenaLica")]
+    [Route("api/ses")]
     [Produces("application/json", "application/xml")]
     public class OvlascenoLiceController : ControllerBase
     {

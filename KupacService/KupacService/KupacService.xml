@@ -46,33 +46,27 @@
             <response code="404">Došlo je do greške na serveru prilikom kreiranja kupca.</response>
             <response code="500">Došlo je do greške na serveru prilikom kreiranja lica.</response>
         </member>
-        <member name="M:KupacService.Controllers.KupacController.UpdateKupac(KupacService.Entities.KupacUpdateDTO,System.String)">
+        <member name="M:KupacService.Controllers.KupacController.DeleteKupac(System.Guid,System.String)">
             <summary>
             Briše jednog kupca na osnovu zadatog ID-ja.
             </summary>
-            <param name="kupacUpdateDTO">ID fizičkog lica.</param>
+            <param name="kupacID">ID fizičkog lica.</param>
             <param name="authorization">Autorizovan token.</param>
             <returns>Potvrdu o brisanju kupca.</returns>
             <response code="204">Kupac uspešno obrisan.</response>
             <response code="404">Specifirani kupac ne postoji i nije obrisan.</response>
             <response code="500">Došlo je do greške na serveru prilikom brisanja kupca.</response>
         </member>
-        <member name="M:KupacService.Controllers.KupacController.UpdateFizickoLice(KupacService.Entities.KupacUpdateDTO)">
+        <member name="M:KupacService.Controllers.KupacController.UpdateKupac(KupacService.Entities.KupacUpdateDTO,System.String)">
             <summary>
             Ažurira jednog kupca.
             </summary>
             <param name="kupacUpdateDTO">DTO za ažuriranje kupca.</param>
+            <param name="authorization">Autorizovan token.</param>
             <returns>Potvrdu o ažuriranom kupcu.</returns>
             <response code="200">Vraća ažuriranog kupca.</response>
             <response code="404">Specifirani kupac ne postoji.</response>
             <response code="500">Došlo je do greške na serveru prilikom ažuriranja kupca.</response>
-        </member>
-        <member name="M:KupacService.Controllers.KupacController.GetKupciOptions">
-            <summary>
-            Vraća opcije za rad sa licima.
-            </summary>
-            <returns>Vraća prazan 200 HTTP kod.</returns>
-            <response code="200">Vraća prazan 200 HTTP kod.</response>
         </member>
         <member name="T:KupacService.Data.KupacRepository">
             <summary>

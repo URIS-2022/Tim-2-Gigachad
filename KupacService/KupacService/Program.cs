@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IKupacRepository, KupacRepository>();
 builder.Services.AddScoped<ILiceService, LiceService>();
+builder.Services.AddScoped<IOvlascenoLiceService, OvlascenoLiceService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<KupacContext>(options =>

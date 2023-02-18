@@ -71,8 +71,8 @@ namespace KupacService.Entities
             if (BrojKupovina < 0)
                 yield return new ValidationResult("Kupac ne može da ima manje od 0 kupovina.", new[] { "KupacCreateDTO" });
 
-            if (DateTime.Compare(DatumPocetkaZabrane.Value, DateTime.Now) > 0)
-                yield return new ValidationResult("Korisnik ne može da ima noviji datum pocetka od trenutnog datuma.", new[] { "KupacCreateDTO" });
+            //if (DateTime.Compare(DatumPocetkaZabrane.Value, DateTime.Now) > 0)
+            //    yield return new ValidationResult("Korisnik ne može da ima noviji datum pocetka od trenutnog datuma.", new[] { "KupacCreateDTO" });
 
             if (DatumPocetkaZabrane == null && DatumZavrsetkaZabrane != null)
                 yield return new ValidationResult("Kupac ne može da ima datum pocetka zabrane a nema datum zavrsetka zabrane.", new[] { "KupacCreateDTO" });
