@@ -52,6 +52,6 @@ namespace KupacService.Entities
         /// Broj kupovina kupca.
         /// </summary>
         [Required(ErrorMessage = "Kupac mora da ima podatke podatke o broju kupovina.")]
-        public int BrojKupovina { get; set; } ;
+        public int BrojKupovina { get; set; } 
     }
 }
