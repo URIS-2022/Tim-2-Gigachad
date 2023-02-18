@@ -1,3 +1,4 @@
+using Google.Cloud.Diagnostics.AspNetCore3;
 using JavnoNadmetanjeService.Data;
 using JavnoNadmetanjeService.Entities;
 using JavnoNadmetanjeService.ServiceCalls;
@@ -64,6 +65,8 @@ builder.Services.AddSwaggerGen(setup =>
     var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
     setup.IncludeXmlComments(xmlCommentsPath);
 });
+
+builder.Services.AddGoogleDiagnosticsForAspNetCore("javnonadmetanjeservicelog", "JavnoNadmetanjeService", "1.0.0");
 
 var app = builder.Build();
 

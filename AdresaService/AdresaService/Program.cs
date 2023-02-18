@@ -1,5 +1,6 @@
 using AdresaService.Data;
 using AdresaService.Entities;
+using Google.Cloud.Diagnostics.AspNetCore3;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -59,6 +60,7 @@ builder.Services.AddSwaggerGen(setup =>
     setup.IncludeXmlComments(xmlCommentsPath);
 });
 
+builder.Services.AddGoogleDiagnosticsForAspNetCore("adresaservicelog", "AdresaService", "1.0.0");
 
 var app = builder.Build();
 
