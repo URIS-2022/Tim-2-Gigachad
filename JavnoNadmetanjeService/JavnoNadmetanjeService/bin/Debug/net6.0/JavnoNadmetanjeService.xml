@@ -1270,28 +1270,16 @@
             Javna nadmetanja licitacije.
             </summary>
         </member>
-        <member name="T:JavnoNadmetanjeService.Migrations.InitialUpload">
+        <member name="T:JavnoNadmetanjeService.Migrations.InitialMigration">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.InitialUpload.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.InitialUpload.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.InitialUpload.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:JavnoNadmetanjeService.Migrations.AllMigration">
-            <inheritdoc />
-        </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.AllMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.AllMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:JavnoNadmetanjeService.Migrations.AllMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:JavnoNadmetanjeService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="T:JavnoNadmetanjeService.Profiles.JavnoNadmetanjeProfile">

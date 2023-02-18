@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JavnoNadmetanjeService.Migrations
 {
     [DbContext(typeof(JavnoNadmetanjeContext))]
-    [Migration("20230218124601_InitialUpload")]
-    partial class InitialUpload
+    [Migration("20230218182901_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,9 @@ namespace JavnoNadmetanjeService.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("DeoParceleID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("IzlicitiranaCena")
                         .HasColumnType("int");
 
@@ -49,6 +52,9 @@ namespace JavnoNadmetanjeService.Migrations
 
                     b.Property<int>("Krug")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("KupacID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("LicitacijaID")
                         .HasColumnType("uniqueidentifier");
@@ -104,9 +110,11 @@ namespace JavnoNadmetanjeService.Migrations
                             AdresaID = new Guid("3aa0344b-57b5-450a-b83a-18c4555be65c"),
                             BrojUcesnika = 95,
                             DatumNad = new DateTime(2022, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeoParceleID = new Guid("edf1f7ca-3b73-4cb8-8cfd-4bd615dd6ada"),
                             IzlicitiranaCena = 150000000,
                             Izuzeto = true,
                             Krug = 7,
+                            KupacID = new Guid("ccc043c6-398c-485d-9840-092c0441ebe8"),
                             LicitacijaID = new Guid("1ecaca89-af8e-47d5-8a33-5f4ec2fcb04e"),
                             Licitanti = 32,
                             Opstina = "BIKOVO",
@@ -116,18 +124,20 @@ namespace JavnoNadmetanjeService.Migrations
                             StatusNadmetanja = "PRVI_KRUG",
                             TipNadmetanja = "JAVNA_LICITACIJA",
                             VisinaCene = 92076,
-                            VremeKraj = new DateTime(2022, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            VremePoc = new DateTime(2022, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            VremeKraj = new DateTime(2022, 8, 4, 10, 30, 0, 0, DateTimeKind.Unspecified),
+                            VremePoc = new DateTime(2022, 8, 4, 8, 45, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ID = new Guid("5d62b2c0-d13c-4f74-840f-ad96bf204d69"),
                             AdresaID = new Guid("6f79d49c-1c14-49b7-94c3-19a81c7f97a0"),
                             BrojUcesnika = 95,
-                            DatumNad = new DateTime(2017, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DatumNad = new DateTime(2019, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeoParceleID = new Guid("3846acaf-3d0e-439a-bf27-85344934f2ca"),
                             IzlicitiranaCena = 34000000,
                             Izuzeto = false,
                             Krug = 5,
+                            KupacID = new Guid("93d92981-a754-41d8-8d1f-b5462a9e0386"),
                             LicitacijaID = new Guid("01724de1-1281-4206-a9ee-a153ba559304"),
                             Licitanti = 39,
                             Opstina = "ZEDNIK",
@@ -137,18 +147,20 @@ namespace JavnoNadmetanjeService.Migrations
                             StatusNadmetanja = "DRUGI_KRUG_STARI",
                             TipNadmetanja = "OTVARANJE_ZATVORENIH_PONUDA",
                             VisinaCene = 45698,
-                            VremeKraj = new DateTime(2019, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            VremePoc = new DateTime(2018, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            VremeKraj = new DateTime(2019, 5, 25, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            VremePoc = new DateTime(2019, 5, 25, 10, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ID = new Guid("abec715b-03e0-4c9a-b97b-327f0af16823"),
                             AdresaID = new Guid("878100df-6973-4292-acb1-0c25b7ac2260"),
                             BrojUcesnika = 18,
-                            DatumNad = new DateTime(2012, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DatumNad = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeoParceleID = new Guid("dacea418-fdcc-4289-8a94-df82a7056c18"),
                             IzlicitiranaCena = 4900000,
                             Izuzeto = true,
                             Krug = 3,
+                            KupacID = new Guid("4d1c0702-aeb4-4a4f-bdb8-26e1cc53b2eb"),
                             LicitacijaID = new Guid("77eb8e4b-ede1-4825-8da2-72d14c2d7259"),
                             Licitanti = 48,
                             Opstina = "DONJI_GRAD",
@@ -158,8 +170,8 @@ namespace JavnoNadmetanjeService.Migrations
                             StatusNadmetanja = "DRUGI_KRUG_NOVI",
                             TipNadmetanja = "JAVNA_LICITACIJA",
                             VisinaCene = 55942,
-                            VremeKraj = new DateTime(2015, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            VremePoc = new DateTime(2015, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            VremeKraj = new DateTime(2023, 1, 16, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            VremePoc = new DateTime(2023, 1, 16, 7, 30, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
