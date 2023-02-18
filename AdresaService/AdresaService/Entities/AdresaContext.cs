@@ -58,6 +58,60 @@ namespace AdresaService.Entities
                 PostanskiBroj = 22000,
                 Drzava = "Srbija"
             });
+            builder.Entity<AdresaEntity>().HasData(new
+            {
+                ID = Guid.Parse("cbc77973-6f66-47b5-8b00-bdd9a2ab3650"),
+                Ulica = "Brace Kovac",
+                Broj = 16,
+                Mesto = "Beograd",
+                PostanskiBroj = 101801,
+                Drzava = "Srbija"
+            });
+            builder.Entity<AdresaEntity>().HasData(new
+            {
+                ID = Guid.Parse("e27e0caf-7d2b-4857-99de-71b63b503ae0"),
+                Ulica = "Cerska",
+                Broj = 45,
+                Mesto = "Beograd",
+                PostanskiBroj = 101801,
+                Drzava = "Srbija"
+            });
+            builder.Entity<AdresaEntity>().HasData(new
+            {
+                ID = Guid.Parse("d84c6e01-ea38-4d2d-b6d3-ca8eb0766c1e"),
+                Ulica = "Dalmatinska",
+                Broj = 48,
+                Mesto = "Beograd",
+                PostanskiBroj = 116468,
+                Drzava = "Srbija"
+            }); 
+            builder.Entity<AdresaEntity>().HasData(new
+            {
+                ID = Guid.Parse("f94d04c3-0af9-4753-a40a-59ddd3b1fe2d"),
+                Ulica = "Murmanska",
+                Broj = 24,
+                Mesto = "Beograd",
+                PostanskiBroj = 114412,
+                Drzava = "Srbija"
+            });
+            builder.Entity<AdresaEntity>().HasData(new
+            {
+                ID = Guid.Parse("7fe60739-ee19-42cb-bb3c-4016f2214a47"),
+                Ulica = "Stojana Protica",
+                Broj = 12,
+                Mesto = "Beograd",
+                PostanskiBroj = 116468,
+                Drzava = "Srbija"
+            });
+            builder.Entity<AdresaEntity>().HasData(new
+            {
+                ID = Guid.Parse("febe5ad4-c954-4244-bdf5-54d351e36653"),
+                Ulica = "Varvarinska",
+                Broj = 32,
+                Mesto = "Beograd",
+                PostanskiBroj = 112810,
+                Drzava = "Srbija"
+            });
         }
     }
 }

@@ -15,9 +15,41 @@ namespace JavnoNadmetanjeService.DTO
         public Guid ID { get; set; }
 
         /// <summary>
-		/// Tip javnog nadmetanja. Enumerator.
+        /// ID licitacije.
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima ID licitacije.")]
+        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        public string LicitacijaID { get; set; } = null!;
+
+        /// <summary>
+        /// ID adrese javnog nadmetanja.
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima ID adrese javnog nadmetanja.")]
+        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        public string AdresaID { get; set; } = null!;
+
+        /// <summary>
+		/// ID dela parcele.
 		/// </summary>
-		[Required(ErrorMessage = "Javno nadmetanje mora da ima tip.")]
+		[Required(ErrorMessage = "Javno nadmetanje mora da ima ID dela parcele.")]
+        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        public string DeoParceleID { get; set; } = null!;
+
+        /// <summary>
+		/// ID kupca.
+		/// </summary>
+		[Required(ErrorMessage = "Javno nadmetanje mora da ima ID kupca.")]
+        [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
+        public string KupacID { get; set; } = null!;
+
+        /// <summary>
+        /// Tip javnog nadmetanja. Enumerator.
+        /// </summary>
+        [Required(ErrorMessage = "Javno nadmetanje mora da ima tip.")]
         [MaxLength(30, ErrorMessage = "Tip javno nadmetanje ne sme da bude preko 30 karaktera.")]
         public string TipNadmetanja { get; set; } = null!;
 

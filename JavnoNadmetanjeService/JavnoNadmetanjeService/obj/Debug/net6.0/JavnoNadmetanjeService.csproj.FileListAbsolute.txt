@@ -89,3 +89,4 @@ C:\Users\ofidi\Documents\Tim-2-Gigachad\JavnoNadmetanjeService\JavnoNadmetanjeSe
 C:\Users\ofidi\Documents\Tim-2-Gigachad\JavnoNadmetanjeService\JavnoNadmetanjeService\obj\Debug\net6.0\JavnoNadmetanjeService.pdb
 C:\Users\ofidi\Documents\Tim-2-Gigachad\JavnoNadmetanjeService\JavnoNadmetanjeService\obj\Debug\net6.0\JavnoNadmetanjeService.genruntimeconfig.cache
 C:\Users\ofidi\Documents\Tim-2-Gigachad\JavnoNadmetanjeService\JavnoNadmetanjeService\obj\Debug\net6.0\ref\JavnoNadmetanjeService.dll
+C:\Users\ofidi\Documents\Tim-2-Gigachad\JavnoNadmetanjeService\JavnoNadmetanjeService\bin\Debug\net6.0\Newtonsoft.Json.dll

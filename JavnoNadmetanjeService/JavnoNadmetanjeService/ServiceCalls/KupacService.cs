@@ -4,44 +4,44 @@ using Newtonsoft.Json;
 namespace JavnoNadmetanjeService.ServiceCalls
 {
     /// <summary>
-	/// Servis poziva za adresu lica.
+	/// Servis poziva za najboljeg kupca javnog nadmetanja.
 	/// </summary>
-    public class AdresaService : IAdresaService
+    public class KupacService : IKupacService
     {
         private readonly IConfiguration configuration;
 
         /// <summary>
         /// Dependency injection za konfiguraciju konekcije.
         /// </summary>
-        public AdresaService(IConfiguration configuration)
+        public KupacService(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
 
         /// <summary>
-        /// Vraća adresu lica od drugog mikro servisa.
+        /// Vraća kupca javnog nadmetanja od drugog mikro servisa.
         /// </summary>
-        /// <param name="adresaLicaID">ID adrese lica.</param>
-        /// <param name="token">Token za adresu lica mikroservis.</param>
-        /// <returns>Vraća model DTO-a adrese lica.</returns>
-        public async Task<AdresaDTO?> GetAdresaByIDAsync(Guid adresaLicaID, string? token)
+        /// <param name="najboljiKupacID">ID kupca javnog nadmetanja.</param>
+        /// <param name="token">Token za kupca javnog nadmetanja mikroservis.</param>
+        /// <returns>Vraća model DTO-a kupca javnog nadmetanja.</returns>
+        public async Task<KupacDTO?> GetKupacByIDAsync(Guid najboljiKupacID, string? token)
         {
             using HttpClient httpClient = new();
-            Uri url = new($"{configuration["Services:AdresaService"]}api/adrese/{adresaLicaID}");
+            Uri url = new($"{configuration["Services:KupacService"]}api/adrese/{najboljiKupacID}");
             if (token != string.Empty)
                 httpClient.DefaultRequestHeaders.Add("Authorization", token);
 
             HttpResponseMessage response = httpClient.GetAsync(url).Result;
-            AdresaDTO? adresa;
+            KupacDTO? kupac;
             if (response.IsSuccessStatusCode)
             {
                 string responseContent = await response.Content.ReadAsStringAsync();
-                adresa = JsonConvert.DeserializeObject<AdresaDTO?>(responseContent);
+                kupac = JsonConvert.DeserializeObject<KupacDTO?>(responseContent);
             }
             else
-                adresa = null;
-            if (adresa != null && adresa.ID != Guid.Empty)
-                return adresa;
+                kupac = null;
+            if (kupac != null && kupac.KupacID != Guid.Empty)
+                return kupac;
             else
                 return null;
         }

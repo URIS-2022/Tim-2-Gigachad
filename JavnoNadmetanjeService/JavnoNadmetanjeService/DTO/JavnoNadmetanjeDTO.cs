@@ -13,6 +13,26 @@ namespace JavnoNadmetanjeService.DTO
 		public Guid ID { get; set; }
 
         /// <summary>
+		/// Licitacija javnog nadmetanja.
+		/// </summary>
+		public LicitacijaDTO Licitacija { get; set; } = null!;
+
+        /// <summary>
+		/// Adresa javnog nadmetanja.
+		/// </summary>
+		public AdresaDTO Adresa { get; set; } = null!;
+
+        /// <summary>
+		/// Deo parcele javnog nadmetanja.
+		/// </summary>
+		//public DeoParceleDTO DeoParcele { get; set; } = null!;
+
+        /// <summary>
+		/// Kupac javnog nadmetanja.
+		/// </summary>
+		//public KupacDTO Kupac { get; set; } = null!;
+
+        /// <summary>
 		/// Tip nadmetanja.
 		/// </summary>
 		public string? TipNadmetanja { get; set; }
@@ -85,6 +105,6 @@ namespace JavnoNadmetanjeService.DTO
         /// <summary>
         /// Izuzeto.
         /// </summary>
-        public bool? Izuzeto { get; set; }
+        public bool Izuzeto { get; set; }
     }
 }

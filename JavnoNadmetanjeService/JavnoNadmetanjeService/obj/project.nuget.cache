@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uAJ9kjWmCiYV9iJrWGEuUad19tv90SyOpsIktykPOXqALFQR7mYCqRwNvOY91yy7S7+Y1Ql+HPbGLqOmHrPXvA==",
+  "dgSpecHash": "WfsAqM8l6UPXSfcy1SlsIhGLm+C6Mk1DsADrdclgy+xN32iwe4klxV3SgGZiUGwjnB3H59FngHTYlQm33AKc0g==",
   "success": true,
   "projectFilePath": "C:\\Users\\ofidi\\Documents\\Tim-2-Gigachad\\JavnoNadmetanjeService\\JavnoNadmetanjeService\\JavnoNadmetanjeService.csproj",
   "expectedPackageFiles": [
@@ -47,6 +47,7 @@
     "C:\\Users\\ofidi\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\ofidi\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\ofidi\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\ofidi\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\ofidi\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\ofidi\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\ofidi\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

@@ -4,44 +4,44 @@ using Newtonsoft.Json;
 namespace JavnoNadmetanjeService.ServiceCalls
 {
     /// <summary>
-	/// Servis poziva za adresu lica.
+	/// Servis poziva za deo parcele.
 	/// </summary>
-    public class AdresaService : IAdresaService
+    public class DeoParceleService : IDeoParceleService
     {
         private readonly IConfiguration configuration;
 
         /// <summary>
         /// Dependency injection za konfiguraciju konekcije.
         /// </summary>
-        public AdresaService(IConfiguration configuration)
+        public DeoParceleService(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
 
         /// <summary>
-        /// Vraća adresu lica od drugog mikro servisa.
+        /// Vraća deo parcele od drugog mikro servisa.
         /// </summary>
-        /// <param name="adresaLicaID">ID adrese lica.</param>
-        /// <param name="token">Token za adresu lica mikroservis.</param>
-        /// <returns>Vraća model DTO-a adrese lica.</returns>
-        public async Task<AdresaDTO?> GetAdresaByIDAsync(Guid adresaLicaID, string? token)
+        /// <param name="deoParceleID">ID dela parcele.</param>
+        /// <param name="token">Token za deo parcele mikroservis.</param>
+        /// <returns>Vraća model DTO-a dela parcele.</returns>
+        public async Task<DeoParceleDTO?> GetDeoParceleByIDAsync(Guid deoParceleID, string? token)
         {
             using HttpClient httpClient = new();
-            Uri url = new($"{configuration["Services:AdresaService"]}api/adrese/{adresaLicaID}");
+            Uri url = new($"{configuration["Services:DeoParceleService"]}api/adrese/{deoParceleID}");
             if (token != string.Empty)
                 httpClient.DefaultRequestHeaders.Add("Authorization", token);
 
             HttpResponseMessage response = httpClient.GetAsync(url).Result;
-            AdresaDTO? adresa;
+            DeoParceleDTO? deoParcele;
             if (response.IsSuccessStatusCode)
             {
                 string responseContent = await response.Content.ReadAsStringAsync();
-                adresa = JsonConvert.DeserializeObject<AdresaDTO?>(responseContent);
+                deoParcele = JsonConvert.DeserializeObject<DeoParceleDTO?>(responseContent);
             }
             else
-                adresa = null;
-            if (adresa != null && adresa.ID != Guid.Empty)
-                return adresa;
+                deoParcele = null;
+            if (deoParcele != null && deoParcele.ID != Guid.Empty)
+                return deoParcele;
             else
                 return null;
         }

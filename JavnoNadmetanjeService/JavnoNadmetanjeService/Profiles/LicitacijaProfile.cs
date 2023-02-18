@@ -14,7 +14,7 @@ namespace JavnoNadmetanjeService.Profiles
 		/// </summary>
 		public LicitacijaProfile()
         {
-            CreateMap<LicitacijaDTO, LicitacijaEntity>();
+            CreateMap<LicitacijaEntity, LicitacijaDTO>();
             CreateMap<LicitacijaUpdateDTO, LicitacijaEntity>();
             CreateMap<LicitacijaEntity, LicitacijaEntity>();
         }
