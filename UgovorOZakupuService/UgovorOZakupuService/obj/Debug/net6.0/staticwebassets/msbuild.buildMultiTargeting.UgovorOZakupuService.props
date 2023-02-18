@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\UgovorOZakupuService.props" />
+</Project>
