@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace KupacService.ServiceCalls
 {
     /// <summary>
-    /// Servis poziva za adresu lica.
+    /// Servis poziva za ovlasceno lice.
     /// </summary>
     public class OvlascenoLiceService : IOvlascenoLiceService
     {
@@ -19,11 +19,11 @@ namespace KupacService.ServiceCalls
         }
 
         /// <summary>
-        /// Vraća lice od drugog mikro servisa.
+        /// Vraća ovlasceno lice od drugog mikroservisa.
         /// </summary>
-        /// <param name="ovlascenoLiceID">ID lica.</param>
-        /// <param name="token">Token za lice mikroservis.</param>
-        /// <returns>Vraća model DTO-a lica.</returns>
+        /// <param name="ovlascenoLiceID">ID ovlascenog lica.</param>
+        /// <param name="token">Token za ovlasceno lice mikroservis.</param>
+        /// <returns>Vraća model DTO-a ovlsacenog lica.</returns>
         public async Task<OvlascenoLiceDTO?> GetOvlascenoLiceByIDAsync(Guid ovlascenoLiceID, string? token)
         {
             using HttpClient httpClient = new();

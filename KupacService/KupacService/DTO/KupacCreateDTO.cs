@@ -9,7 +9,7 @@ namespace KupacService.DTO
     public class KupacCreateDTO : IValidatableObject
     {
         /// <summary>
-        /// ID lica.
+        /// ID kupca.
         /// </summary>
         [Required(ErrorMessage = "LiceID je obavezno polje.")]
         [MinLength(36, ErrorMessage = "Guid mora da ima minimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
@@ -33,7 +33,7 @@ namespace KupacService.DTO
         public string Prioritet { get; set; } = string.Empty!;
 
         /// <summary>
-        /// Lice ima/nema zabranu.
+        /// Kupac ima/nema zabranu.
         /// </summary>
         [Required(ErrorMessage = "Kupac mora da ima podatke podatke o zabrani.")]
         public bool ImaZabranu { get; set; } = false!;
@@ -62,8 +62,9 @@ namespace KupacService.DTO
             if (BrojKupovina < 0)
                 yield return new ValidationResult("Kupac ne može da ima manje od 0 kupovina.", new[] { "KupacCreateDTO" });
 
-            if (DateTime.Compare(DatumPocetkaZabrane.Value, DateTime.Now) > 0)
-                yield return new ValidationResult("Korisnik ne može da ima noviji datum pocetka od trenutnog datuma.", new[] { "KupacCreateDTO" });
+            if (DatumPocetkaZabrane != null && DatumZavrsetkaZabrane != null)
+                if (DateTime.Compare(DatumPocetkaZabrane.Value, DateTime.Now) > 0)
+                    yield return new ValidationResult("Korisnik ne može da ima noviji datum pocetka od trenutnog datuma.", new[] { "KupacCreateDTO" });
 
             if (DatumPocetkaZabrane == null && DatumZavrsetkaZabrane != null)
                 yield return new ValidationResult("Kupac ne može da ima datum pocetka zabrane a nema datum zavrsetka zabrane.", new[] { "KupacCreateDTO" });

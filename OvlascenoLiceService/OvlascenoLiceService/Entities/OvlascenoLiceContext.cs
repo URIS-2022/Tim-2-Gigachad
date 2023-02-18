@@ -23,7 +23,7 @@ namespace OvlascenoLiceService.Entities
         public DbSet<OvlascenoLiceEntity> OvlascenaLica { get; set; }
 
         /// <summary>
-        /// Popunjava bazu sa inicijalnim podacima.
+        /// Popunjava bazu inicijalnim podacima.
         /// </summary>
         protected override void OnModelCreating(ModelBuilder builder)
         {

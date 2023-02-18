@@ -21,6 +21,10 @@ namespace KupacService.Data
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Vraća listu kupaca iz konteksta.
+        /// </summary>
+        /// <returns>Vraća listu kupaca.</returns>
         public List<KupacEntity> GetKupci()
         {
             return context.Kupci.ToList();
@@ -60,9 +64,9 @@ namespace KupacService.Data
             return context.Kupci.FirstOrDefault(e => e.KupacID == kupacID);
         }
 
-        public void UpdateKupac(KupacEntity kupac)
-        {
-        }
+        //public void UpdateKupac(KupacEntity kupac)
+        //{
+        //}
 
         /// <summary>
 		/// U kontekstu sačuva sve promene i onda vraća boolean na osnovu da li je sačuvano ili ne.

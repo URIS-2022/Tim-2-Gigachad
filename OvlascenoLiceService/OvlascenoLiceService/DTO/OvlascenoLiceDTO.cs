@@ -1,7 +1,7 @@
 ﻿namespace OvlascenoLiceService.DTO
 {
     /// <summary>
-    /// Model DTO-a za entitet lice.
+    /// Model DTO-a za entitet ovlasceno lice.
     /// </summary>
     public class OvlascenoLiceDTO
     {

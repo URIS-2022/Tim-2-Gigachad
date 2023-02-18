@@ -30,13 +30,13 @@ namespace KupacService.Entities
 
         [Required(ErrorMessage = "Kupac mora da ima validan prioritet.")]
         [MaxLength(100, ErrorMessage = "Prioritet ne sme da bude preko 50 karaktera.")]
-        public string Prioritet { get; set; } = null!;
+        public string Prioritet { get; set; } = null!; 
 
         /// <summary>
         /// Lice ima/nema zabranu.
         /// </summary>
         [Required(ErrorMessage = "Kupac mora da ima podatke podatke o zabrani.")]
-        public bool ImaZabranu { get; set; } = false!;
+        public bool ImaZabranu { get; set; } 
 
         /// <summary>
         /// Datum pocetka zabrane.
@@ -52,6 +52,6 @@ namespace KupacService.Entities
         /// Broj kupovina kupca.
         /// </summary>
         [Required(ErrorMessage = "Kupac mora da ima podatke podatke o broju kupovina.")]
-        public int BrojKupovina { get; set; } = 0!;
+        public int BrojKupovina { get; set; } ;
     }
 }

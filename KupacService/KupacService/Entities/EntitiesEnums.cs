@@ -6,27 +6,27 @@
     public static class EntitiesEnums
     {
         /// <summary>
-        /// Enumerator za tipa korisnika.
+        /// Enumerator za tip prioriteta kupca.
         /// </summary>
         public enum Prioritet
         {
             /// <summary>
-            /// Administrator.
+            /// VLASNIK SISTEMA ZA NAVODNJAVANJE.
             /// </summary>
             VLASNIKSISTEMAZANAVODNJAVANJE,
 
             /// <summary>
-            /// Komisija.
+            /// VLASNIK ZEMLJISTA KOJE SE GRANICI SA ZEMLJISTEM KOJE SE DAJE U ZAKUP
             /// </summary>
             VLASNIKZEMLJISTAKOJESEGRANICISAZEMLJISTEMKOJESEDAJEUZAKUP,
 
             /// <summary>
-            /// Operater.
+            /// POLJOPRIVREDNIK KOJI JE UPISAN U REGISTAR
             /// </summary>
             POLJOPRIVREDNIKKOJIJEUPISANUREGISTAR,
 
             /// <summary>
-            /// Licitant.
+            /// VLASNIK ZEMLJISTA KOJE JE NAJBLIZE ZEMLJISTU KOJE SE DAJE U ZAKUP
             /// </summary>
             VLASNIKZEMLJISTAKOJEJENAJBLIZEZEMLJISTUKOJESEDAJEUZAKUP
         }

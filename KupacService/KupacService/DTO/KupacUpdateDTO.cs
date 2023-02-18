@@ -15,7 +15,7 @@ namespace KupacService.Entities
         [Required (ErrorMessage = "Kupac mora da ima ID.")]
         [MinLength(36, ErrorMessage = "Guid mora da ima minimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
         [MaxLength(36, ErrorMessage = "Guid mora da ima maksimalno 36 karaktera u formatu xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")]
-        public string KupacID { get; set; } = string.Empty!;
+        public string KupacID { get; set; } = null!;
 
         /// <summary>
         /// ID lica.
@@ -39,13 +39,13 @@ namespace KupacService.Entities
 
         [Required(ErrorMessage = "Kupac mora da ima validan prioritet")]
         [MaxLength(50, ErrorMessage = "Prioritet moze da ima maksimalno 50 karaktera")]
-        public string Prioritet { get; set; } = string.Empty!;
+        public string Prioritet { get; set; } = null!;
 
         /// <summary>
         /// Lice ima/nema zabranu.
         /// </summary>
         [Required(ErrorMessage = "Mora da postoji informacija o zabrani za kupca")]
-        public bool ImaZabranu { get; set; } = false!;
+        public bool ImaZabranu { get; set; } 
 
         /// <summary>
         /// Datum pocetka zabrane.
@@ -61,7 +61,7 @@ namespace KupacService.Entities
         /// Broj kupovina kupca.
         /// </summary>
         [Required(ErrorMessage = "Kupac mora da ima podatke o broju kupovina")]
-        public int BrojKupovina { get; set; } = 0;
+        public int BrojKupovina { get; set; }
 
         /// <summary>
         /// Validacija za model DTO-a za kreiranje kupca.
@@ -71,8 +71,9 @@ namespace KupacService.Entities
             if (BrojKupovina < 0)
                 yield return new ValidationResult("Kupac ne može da ima manje od 0 kupovina.", new[] { "KupacCreateDTO" });
 
-            //if (DateTime.Compare(DatumPocetkaZabrane.Value, DateTime.Now) > 0)
-            //    yield return new ValidationResult("Korisnik ne može da ima noviji datum pocetka od trenutnog datuma.", new[] { "KupacCreateDTO" });
+            if(DatumPocetkaZabrane != null && DatumZavrsetkaZabrane != null)
+                if (DateTime.Compare(DatumPocetkaZabrane.Value, DateTime.Now) > 0)
+                yield return new ValidationResult("Korisnik ne može da ima noviji datum pocetka od trenutnog datuma.", new[] { "KupacCreateDTO" });
 
             if (DatumPocetkaZabrane == null && DatumZavrsetkaZabrane != null)
                 yield return new ValidationResult("Kupac ne može da ima datum pocetka zabrane a nema datum zavrsetka zabrane.", new[] { "KupacCreateDTO" });

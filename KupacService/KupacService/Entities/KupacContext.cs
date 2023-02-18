@@ -4,24 +4,23 @@ using System.Reflection.Emit;
 
 namespace KupacService.Entities
 {
+    /// <summary>
+    /// DbContext za KupacService mikroservis.
+    /// </summary>
     public class KupacContext : DbContext
     {
-        //private readonly IConfiguration configuration;
-
-        public KupacContext(DbContextOptions options, IConfiguration configuration) : base(options)
-        {
-
-        }
-
-        public DbSet<KupacEntity> Kupci { get; set; }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(configuration.GetConnectionString("KupacDB"));
-        //}
+        /// <summary>
+        /// Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+        /// </summary>
+        public KupacContext(DbContextOptions options, IConfiguration configuration) : base(options) {}
 
         /// <summary>
-        /// Popunjava bazu sa nekim inicijalnim podacima.
+        /// DbSet za entitet kupac.
+        /// </summary>
+        public DbSet<KupacEntity> Kupci { get; set; }
+
+        /// <summary>
+        /// Popunjava bazu nekim inicijalnim podacima.
         /// </summary>
         protected override void OnModelCreating(ModelBuilder builder)
         {

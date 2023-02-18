@@ -3,16 +3,16 @@
 namespace KupacService.ServiceCalls
 {
     /// <summary>
-    /// Interfejs od servis poziva za adresu lica.
+    /// Interfejs servis poziva za ovlasceno lice.
     /// </summary>
     public interface IOvlascenoLiceService
     {
         /// <summary>
-        /// Vraća adresu lica od drugog mikro servisa.
+        /// Vraća lice drugog mikroservisa.
         /// </summary>
-        /// <param name="OvlascenoLiceID">ID adrese lica.</param>
-        /// <param name="token">Token za adresu lica mikroservis.</param>
-        /// <returns>Vraća model DTO-a adrese lica.</returns>
+        /// <param name="OvlascenoLiceID">ID ovlascenog lica.</param>
+        /// <param name="token">Token ovlascenog lica mikroservisa.</param>
+        /// <returns>Vraća model DTO-a ovlascenog lica.</returns>
         Task<OvlascenoLiceDTO?> GetOvlascenoLiceByIDAsync(Guid OvlascenoLiceID, string token);
     }
 }

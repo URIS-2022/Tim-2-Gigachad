@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 namespace OvlascenoLiceService.Entities
 {
     /// <summary>
-    /// Model realnog entiteta lice.
+    /// Model realnog entiteta ovlasceno lice.
     /// </summary>
     public class OvlascenoLiceEntity
     {
         /// <summary>
-        /// ID lica.
+        /// ID ovlascenog lica.
         /// </summary>
         [Key]
         public Guid ID { get; set; }
@@ -27,13 +27,13 @@ namespace OvlascenoLiceService.Entities
         public FizickoLiceEntity FizickoLice { get; set; } = null!;
 
         /// <summary>
-        /// ID adrese lica.
+        /// ID adrese ovlascenog lica.
         /// </summary>
         [Required(ErrorMessage = "Lice mora da ima adresu lica.")]
         public Guid AdresaID { get; set; }
 
         /// <summary>
-        /// Prvi telefon lica.
+        /// Prvi telefon ovlascenog lica.
         /// </summary>
         [Required(ErrorMessage = "Lice mora da ima telefon jedan.")]
         [MinLength(9, ErrorMessage = "Prvi telefon lica mora da bude manji od 9 karaktera.")]
@@ -41,21 +41,21 @@ namespace OvlascenoLiceService.Entities
         public string Telefon1 { get; set; } = null!;
 
         /// <summary>
-        /// Drugi telefon lica.
+        /// Drugi telefon ovlascenog lica.
         /// </summary>
         [MinLength(9, ErrorMessage = "Drugi telefon lica mora da bude manji od 9 karaktera.")]
         [MaxLength(10, ErrorMessage = "Drugi telefon lica ne sme da bude preko 10 karaktera.")]
         public string? Telefon2 { get; set; }
 
         /// <summary>
-        /// Email lica.
+        /// Email ovlascenog lica.
         /// </summary>
         [Required(ErrorMessage = "Lice mora da ima email.")]
         [MaxLength(50, ErrorMessage = "Email lica ne sme da bude preko 50 karaktera.")]
         public string Email { get; set; } = null!;
 
         /// <summary>
-        /// Broj računa lica.
+        /// Broj računa ovlascenog lica.
         /// </summary>
         [Required(ErrorMessage = "Lice mora da ima broj računa.")]
         [MaxLength(20, ErrorMessage = "Email lica ne sme da bude preko 20 karaktera.")]

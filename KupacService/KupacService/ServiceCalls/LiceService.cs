@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace KupacService.ServiceCalls
 {
     /// <summary>
-    /// Servis poziva za adresu lica.
+    /// Servis poziva lice.
     /// </summary>
     public class LiceService : ILiceService
     {
@@ -20,7 +20,7 @@ namespace KupacService.ServiceCalls
         }
 
         /// <summary>
-        /// Vraća lice od drugog mikro servisa.
+        /// Vraća lice od drugog mikroservisa.
         /// </summary>
         /// <param name="liceID">ID lica.</param>
         /// <param name="token">Token za lice mikroservis.</param>

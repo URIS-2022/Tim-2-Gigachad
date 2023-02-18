@@ -44,8 +44,8 @@ namespace KupacService.Controllers
         /// <returns>Vraća potvrdu o listi postojećih kupaca.</returns>
         /// <param name="authorization">Autorizovan token.</param>
         /// <response code="200">Vraća listu kupaca.</response>
-        /// <response code="204">Ne postoje kupaca.</response>
-        /// <response code="500">Adresa lica nije pronađena.</response>
+        /// <response code="204">Ne postoje kupaci.</response>
+        /// <response code="500">Kupac nije pronađen.</response>
         [HttpGet]
         //[HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -252,9 +252,9 @@ namespace KupacService.Controllers
 
                             KupacDTO kupacDTO = mapper.Map<KupacDTO>(oldKupac);
 
-                            kupac.LiceID = tempID;
-                            kupac.OvlascenoLiceID = tempOvlascenoLiceID;
-                            return Ok(kupac);
+                            kupacDTO.Lice= lice;
+                            kupacDTO.OvlascenoLice = ovlascenoLice;
+                            return Ok(kupacDTO);
                         }
                         else
                             return StatusCode(StatusCodes.Status422UnprocessableEntity, "Ne postoji ovlasceno lice sa zadatim ID-jem.");
@@ -269,6 +269,19 @@ namespace KupacService.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
             }
+        }
+
+        /// <summary>
+        /// Vraća opcije za rad sa kupcima.
+        /// </summary>
+        /// <returns>Vraća prazan 200 HTTP kod.</returns>
+        /// <response code="200">Vraća prazan 200 HTTP kod.</response>
+        [HttpOptions]
+        [AllowAnonymous]
+        public IActionResult GetKupciOptions()
+        {
+            Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
+            return Ok();
         }
 
     }

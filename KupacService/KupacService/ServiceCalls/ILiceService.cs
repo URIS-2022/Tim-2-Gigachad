@@ -3,16 +3,16 @@
 namespace KupacService.ServiceCalls
 {
     /// <summary>
-    /// Interfejs od servis poziva za adresu lica.
+    /// Interfejs servis poziva za lica.
     /// </summary>
     public interface ILiceService
     {
         /// <summary>
-        /// Vraća adresu lica od drugog mikro servisa.
+        /// Vraća adresu lica drugog mikroservisa.
         /// </summary>
-        /// <param name="LiceID">ID adrese lica.</param>
-        /// <param name="token">Token za adresu lica mikroservis.</param>
-        /// <returns>Vraća model DTO-a adrese lica.</returns>
+        /// <param name="LiceID">ID lica.</param>
+        /// <param name="token">Token za lice mikroservis.</param>
+        /// <returns>Vraća model DTO-a lica.</returns>
         Task<LiceDTO?> GetLiceByIDAsync(Guid LiceID, string token);
     }
 }

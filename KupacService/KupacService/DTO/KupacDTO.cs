@@ -4,17 +4,17 @@ using System.ComponentModel.DataAnnotations;
 namespace KupacService.DTO
 {
     /// <summary>
-    /// DTO za fizičko lice.
+    /// DTO za kupca.
     /// </summary>
     public class KupacDTO
     {
         /// <summary>
-        /// ID fizičkog lica.
+        /// ID kupca.
         /// </summary>
         public Guid KupacID { get; set; }
 
         /// <summary>
-        /// JMBG fizičkog lica.
+        /// ID lica kupca.
         /// </summary>
         public LiceDTO Lice { get; set; } = null!;
 
@@ -26,12 +26,12 @@ namespace KupacService.DTO
         /// <summary>
         /// Prioritet kupca.
         /// </summary>
-        public string? Prioritet{ get; set; }
+        public string? Prioritet { get; set; } = null!;
 
         /// <summary>
         /// Kupac ima/nema zabranu.
         /// </summary>
-        public bool? ImaZabranu { get; set; }
+        public bool ImaZabranu { get; set; }
 
         /// <summary>
         /// Datum pocetka zabrane.
@@ -46,6 +46,6 @@ namespace KupacService.DTO
         /// <summary>
         /// Broj kupovina kupca.
         /// </summary>
-        public int? BrojKupovina { get; set; }
+        public int BrojKupovina { get; set; }
     }
 }

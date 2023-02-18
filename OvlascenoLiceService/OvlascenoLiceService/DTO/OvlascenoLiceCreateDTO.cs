@@ -3,7 +3,7 @@
 namespace OvlascenoLiceService.DTO
 {
     /// <summary>
-    /// Model DTO-a za kreiranje entiteta lice.
+    /// Model DTO-a za kreiranje entiteta ovlasceno lice.
     /// </summary>
     public class OvlascenoLiceCreateDTO : IValidatableObject
     {
@@ -53,7 +53,7 @@ namespace OvlascenoLiceService.DTO
         public string BrojRacuna { get; set; } = null!;
 
         /// <summary>
-        /// Validacija za model DTO-a za kreiranje entiteta lice.
+        /// Validacija za model DTO-a za kreiranje entiteta ovlasceno lice.
         /// </summary>
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
