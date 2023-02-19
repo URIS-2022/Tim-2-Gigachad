@@ -385,7 +385,6 @@ namespace LiceService.Controllers
 		/// Briše jedno lice na osnovu zadatog ID-ja.
 		/// </summary>
 		/// <param name="liceID">ID lica.</param>
-		/// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Vraća potvrdu o brisanju lica.</returns>
 		/// <response code="204">Specifirano lice je uspešno obrisano.</response>
 		/// <response code="404">Specifirano lice ne postoji i nije obrisano.</response>

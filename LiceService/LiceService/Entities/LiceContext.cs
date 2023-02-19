@@ -35,37 +35,37 @@ namespace LiceService.Entities
 		/// <summary>
 		/// Popunjava bazu sa inicijalnim podacima.
 		/// </summary>
-		protected override void OnModelCreating(ModelBuilder builder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			builder.Entity<FizickoLiceEntity>().HasData(new
+			modelBuilder.Entity<FizickoLiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("32b7d397-b9d1-472d-bb40-542c68305098"),
 				JMBG = "4058851174218",
 				Ime = "Slavomir",
 				Prezime = "Slavic"
 			});
-			builder.Entity<FizickoLiceEntity>().HasData(new
+			modelBuilder.Entity<FizickoLiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("3a054c77-1bf4-4853-8937-8e36502a6848"),
 				JMBG = "0786741214886",
 				Ime = "Radomir",
 				Prezime = "Radic"
 			});
-			builder.Entity<FizickoLiceEntity>().HasData(new
+			modelBuilder.Entity<FizickoLiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("ef4cf6d4-48f9-4508-a91f-330261325403"),
 				JMBG = "0925639560129",
 				Ime = "Miladin",
 				Prezime = "Milic"
 			});
-			builder.Entity<FizickoLiceEntity>().HasData(new
+			modelBuilder.Entity<FizickoLiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("08c019fa-a583-4ae2-bcd0-c1b56600b22c"),
 				JMBG = "9195579483423",
 				Ime = "Milasin",
 				Prezime = "Misic"
 			});
-			builder.Entity<FizickoLiceEntity>().HasData(new
+			modelBuilder.Entity<FizickoLiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("56ea3569-1897-4349-b79e-fccb5568231a"),
 				JMBG = "6675836696997",
@@ -73,7 +73,7 @@ namespace LiceService.Entities
 				Prezime = "Rakic"
 			});
 
-			builder.Entity<KontaktOsobaEntity>().HasData(new
+			modelBuilder.Entity<KontaktOsobaEntity>().HasData(new
 			{
 				ID = Guid.Parse("1c188a84-dd2d-4ee2-beb9-b7d7fbc6a812"),
 				Ime = "Svetlana",
@@ -81,7 +81,7 @@ namespace LiceService.Entities
 				Telefon = "9954225285",
 				Funkcija = "Tehnicka Podrska"
 			});
-			builder.Entity<KontaktOsobaEntity>().HasData(new
+			modelBuilder.Entity<KontaktOsobaEntity>().HasData(new
 			{
 				ID = Guid.Parse("5a2f51f9-3f5d-420f-9e98-510a3a5296a1"),
 				Ime = "Dusanka",
@@ -90,21 +90,21 @@ namespace LiceService.Entities
 				Funkcija = "Advokat"
 			});
 
-			builder.Entity<PravnoLiceEntity>().HasData(new
+			modelBuilder.Entity<PravnoLiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("006d992e-2109-4334-beff-3f5229129d14"),
 				KontaktOsobaID = Guid.Parse("1c188a84-dd2d-4ee2-beb9-b7d7fbc6a812"),
 				Naziv = "ZLO DOO",
 				MaticniBroj = "17818420"
 			});
-			builder.Entity<PravnoLiceEntity>().HasData(new
+			modelBuilder.Entity<PravnoLiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("9c236b62-afcf-4902-aba8-c159536883fb"),
 				KontaktOsobaID = Guid.Parse("1c188a84-dd2d-4ee2-beb9-b7d7fbc6a812"),
 				Naziv = "RAJ DOO",
 				MaticniBroj = "52581514"
 			});
-			builder.Entity<PravnoLiceEntity>().HasData(new
+			modelBuilder.Entity<PravnoLiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("5b4c99ef-49ae-4843-821b-488e968ca945"),
 				KontaktOsobaID = Guid.Parse("5a2f51f9-3f5d-420f-9e98-510a3a5296a1"),
@@ -112,7 +112,7 @@ namespace LiceService.Entities
 				MaticniBroj = "88703765"
 			});
 
-			builder.Entity<LiceEntity>().HasData(new
+			modelBuilder.Entity<LiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("334f5277-a71c-4be8-b5da-5c9148b228f7"),
 				FizickoLiceID = Guid.Parse("32b7d397-b9d1-472d-bb40-542c68305098"),
@@ -123,7 +123,7 @@ namespace LiceService.Entities
 				Email = "email1@net.org",
 				BrojRacuna = "343658891760636"
 			});
-			builder.Entity<LiceEntity>().HasData(new
+			modelBuilder.Entity<LiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("92e0d8e9-b221-42a6-9bb8-a80974aee937"),
 				FizickoLiceID = Guid.Parse("3a054c77-1bf4-4853-8937-8e36502a6848"),
@@ -134,7 +134,7 @@ namespace LiceService.Entities
 				Email = "email2@net.org",
 				BrojRacuna = "788066876873835"
 			});
-			builder.Entity<LiceEntity>().HasData(new
+			modelBuilder.Entity<LiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("f127642e-4d73-42f1-979d-6a506aea9bdc"),
 				FizickoLiceID = Guid.Parse("ef4cf6d4-48f9-4508-a91f-330261325403"),
@@ -145,7 +145,7 @@ namespace LiceService.Entities
 				Email = "email3@net.org",
 				BrojRacuna = "801272932440773"
 			});
-			builder.Entity<LiceEntity>().HasData(new
+			modelBuilder.Entity<LiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("16e85d49-9cdd-41a6-85bc-180932f68999"),
 				FizickoLiceID = Guid.Parse("08c019fa-a583-4ae2-bcd0-c1b56600b22c"),
@@ -156,7 +156,7 @@ namespace LiceService.Entities
 				Email = "email4@net.org",
 				BrojRacuna = "854823918379735"
 			});
-			builder.Entity<LiceEntity>().HasData(new
+			modelBuilder.Entity<LiceEntity>().HasData(new
 			{
 				ID = Guid.Parse("41d2c8bc-0c8c-4fb2-8cf6-2918c33eac9c"),
 				FizickoLiceID = Guid.Parse("56ea3569-1897-4349-b79e-fccb5568231a"),

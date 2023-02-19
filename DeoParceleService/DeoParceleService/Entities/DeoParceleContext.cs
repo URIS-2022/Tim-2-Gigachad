@@ -25,9 +25,9 @@ namespace DeoParceleService.Entities
 		/// <summary>
 		/// Popunjava bazu sa inicijalnim podacima.
 		/// </summary>
-		protected override void OnModelCreating(ModelBuilder builder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			builder.Entity<ParcelaEntity>().HasData(new
+			modelBuilder.Entity<ParcelaEntity>().HasData(new
 			{
 				ID = Guid.Parse("06f51688-c60a-4dbf-8955-f1713fa47e28"),
 				KupacID = Guid.Parse("f9e22f42-cd14-4e3b-bbb7-eee4fe30a60a"),
@@ -35,7 +35,7 @@ namespace DeoParceleService.Entities
 				UkupnaPovrsina = 4774,
 				KatastarskaOpstina = "STARI_GRAD"
 			});
-			builder.Entity<ParcelaEntity>().HasData(new
+			modelBuilder.Entity<ParcelaEntity>().HasData(new
 			{
 				ID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
 				KupacID = Guid.Parse("f9e22f42-cd14-4e3b-bbb7-eee4fe30a60a"),
@@ -44,7 +44,7 @@ namespace DeoParceleService.Entities
 				KatastarskaOpstina = "NOVI_GRAD"
 			});
 
-			builder.Entity<DeoParceleEntity>().HasData(new
+			modelBuilder.Entity<DeoParceleEntity>().HasData(new
 			{
 				ID = Guid.Parse("edf1f7ca-3b73-4cb8-8cfd-4bd615dd6ada"),
 				ParcelaID = Guid.Parse("06f51688-c60a-4dbf-8955-f1713fa47e28"),
@@ -59,7 +59,7 @@ namespace DeoParceleService.Entities
 				OblikSvojine = "PRIVATNA_SVOJINA",
 				Odvodnjavanje = true
 			});
-			builder.Entity<DeoParceleEntity>().HasData(new
+			modelBuilder.Entity<DeoParceleEntity>().HasData(new
 			{
 				ID = Guid.Parse("3846acaf-3d0e-439a-bf27-85344934f2ca"),
 				ParcelaID = Guid.Parse("06f51688-c60a-4dbf-8955-f1713fa47e28"),
@@ -74,7 +74,7 @@ namespace DeoParceleService.Entities
 				OblikSvojine = "PRIVATNA_SVOJINA",
 				Odvodnjavanje = true
 			});
-			builder.Entity<DeoParceleEntity>().HasData(new
+			modelBuilder.Entity<DeoParceleEntity>().HasData(new
 			{
 				ID = Guid.Parse("dacea418-fdcc-4289-8a94-df82a7056c18"),
 				ParcelaID = Guid.Parse("06f51688-c60a-4dbf-8955-f1713fa47e28"),
@@ -89,7 +89,7 @@ namespace DeoParceleService.Entities
 				OblikSvojine = "MESOVITA_SVOJINA",
 				Odvodnjavanje = true
 			});
-			builder.Entity<DeoParceleEntity>().HasData(new
+			modelBuilder.Entity<DeoParceleEntity>().HasData(new
 			{
 				ID = Guid.Parse("6c5fe5f2-5389-4022-ae48-6e905cca6c60"),
 				ParcelaID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
@@ -104,7 +104,7 @@ namespace DeoParceleService.Entities
 				OblikSvojine = "PRIVATNA_SVOJINA",
 				Odvodnjavanje = true
 			});
-			builder.Entity<DeoParceleEntity>().HasData(new
+			modelBuilder.Entity<DeoParceleEntity>().HasData(new
 			{
 				ID = Guid.Parse("5eb8c5d9-131f-4bba-a31b-b669bca69be3"),
 				ParcelaID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
@@ -119,7 +119,7 @@ namespace DeoParceleService.Entities
 				OblikSvojine = "MESOVITA_SVOJINA",
 				Odvodnjavanje = true
 			});
-			builder.Entity<DeoParceleEntity>().HasData(new
+			modelBuilder.Entity<DeoParceleEntity>().HasData(new
 			{
 				ID = Guid.Parse("1c91f161-f4c2-4c58-ba74-ab143b0679ff"),
 				ParcelaID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
@@ -134,7 +134,7 @@ namespace DeoParceleService.Entities
 				OblikSvojine = "DRUSTVENA_SVOJINA",
 				Odvodnjavanje = false
 			});
-			builder.Entity<DeoParceleEntity>().HasData(new
+			modelBuilder.Entity<DeoParceleEntity>().HasData(new
 			{
 				ID = Guid.Parse("55fd9408-bf63-4113-89c7-8fa72bd1ed5e"),
 				ParcelaID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
@@ -149,7 +149,7 @@ namespace DeoParceleService.Entities
 				OblikSvojine = "DRZAVNA_SVOJINA",
 				Odvodnjavanje = true
 			});
-			builder.Entity<DeoParceleEntity>().HasData(new
+			modelBuilder.Entity<DeoParceleEntity>().HasData(new
 			{
 				ID = Guid.Parse("aaa2b53b-278d-4ceb-9992-f57bb8818773"),
 				ParcelaID = Guid.Parse("08c765d1-2a28-4a70-8ebb-b1cbcdb03a3e"),
