@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "9a7b36e8-4a46-4b79-8909-8c6aa58ee2e7",
+		"name": "KupacCRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetToken",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"naziv\": \"it23-2019\",\r\n    \"lozinka\": \"it23-2019\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15001/api/korisnici/autentifikacija",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15001",
+					"path": [
+						"api",
+						"korisnici",
+						"autentifikacija"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KupacGetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15007/api/kupci",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15007",
+					"path": [
+						"api",
+						"kupci"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KupacGetByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15007/api/kupci/df2d74ef-65b6-4409-b1c3-5851f7089e0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15007",
+					"path": [
+						"api",
+						"kupci",
+						"df2d74ef-65b6-4409-b1c3-5851f7089e0d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KupacUpdate",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"kupacID\": \"df2d74ef-65b6-4409-b1c3-5851f7089e0d\",\r\n    \"liceID\": \"F127642E-4D73-42F1-979D-6A506AEA9BDC\",\r\n    \"ovlascenoLiceID\": \"904BD8B6-E268-4CA8-89FB-EF2750A74E19\",\r\n    \"prioritet\": \"VLASNIKSISTEMAZANAVODNJAVANJE\",\r\n    \"imaZabranu\": true,\r\n    \"datumPocetkaZabrane\": \"2010-10-10T00:00:00\",\r\n    \"datumZavrsetkaZabrane\": \"2018-10-10T00:00:00\",\r\n    \"brojKupovina\": 50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15007/api/kupci",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15007",
+					"path": [
+						"api",
+						"kupci"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KupacDelete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15007/api/kupci/df2d74ef-65b6-4409-b1c3-5851f7089e0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15007",
+					"path": [
+						"api",
+						"kupci",
+						"df2d74ef-65b6-4409-b1c3-5851f7089e0d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KupacCreate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"liceID\": \"f127642e-4d73-42f1-979d-6a506aea9bdc\",\r\n    \"ovlascenoLiceID\": \"904BD8B6-E268-4CA8-89FB-EF2750A74E19\",\r\n    \"prioritet\": \"VLASNIKSISTEMAZANAVODNJAVANJE\",\r\n    \"imaZabranu\": true,\r\n    \"datumPocetkaZabrane\": \"2013-11-10T00:00:00\",\r\n    \"datumZavrsetkaZabrane\": \"2020-10-10T00:00:00\",\r\n    \"brojKupovina\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15007/api/kupci",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15007",
+					"path": [
+						"api",
+						"kupci"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetKupciOptions",
+			"request": {
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15007/api/kupci",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15007",
+					"path": [
+						"api",
+						"kupci"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY3MzYwODUsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.CrHpD9ao6zrO9JXNmEhIYHKwKXZbfrD5ukHqY4MRBpg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

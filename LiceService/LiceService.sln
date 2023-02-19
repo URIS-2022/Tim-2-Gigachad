@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiceService", "LiceService\LiceService.csproj", "{7DE82C8B-1512-419B-A0B2-40CD8DEA65DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DE82C8B-1512-419B-A0B2-40CD8DEA65DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DE82C8B-1512-419B-A0B2-40CD8DEA65DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DE82C8B-1512-419B-A0B2-40CD8DEA65DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DE82C8B-1512-419B-A0B2-40CD8DEA65DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68D3C6E1-6FE3-4C0E-BBAA-38A604AA832F}
+	EndGlobalSection
+EndGlobal
