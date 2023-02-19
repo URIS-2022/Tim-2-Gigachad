@@ -64,10 +64,6 @@ namespace KupacService.Data
             return context.Kupci.FirstOrDefault(e => e.KupacID == kupacID);
         }
 
-        //public void UpdateKupac(KupacEntity kupac)
-        //{
-        //}
-
         /// <summary>
 		/// U kontekstu sačuva sve promene i onda vraća boolean na osnovu da li je sačuvano ili ne.
 		/// </summary>

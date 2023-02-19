@@ -60,7 +60,7 @@ namespace KupacService.Controllers
             List<KupacDTO> kupciDTO = new();
             foreach (KupacEntity kupac in kupci)
             {
-                Guid tempLiceID = kupac.LiceID; ;
+                Guid tempLiceID = kupac.LiceID; 
                 LiceDTO? lice = liceService.GetLiceByIDAsync(tempLiceID, authorization).Result;
 
                 Guid tempOvlascenoLiceID = kupac.OvlascenoLiceID;
@@ -97,7 +97,7 @@ namespace KupacService.Controllers
             if (kupac == null)
                 return NotFound();
 
-            Guid tempLiceID = kupac.LiceID; ;
+            Guid tempLiceID = kupac.LiceID; 
             LiceDTO? lice = liceService.GetLiceByIDAsync(tempLiceID, authorization).Result;
             if (lice != null)
             {

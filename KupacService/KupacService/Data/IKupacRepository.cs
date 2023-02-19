@@ -19,7 +19,7 @@ namespace KupacService.Data
         /// </summary>
         /// <param name="kupacID">ID lica kupca.</param>
         /// <returns>Vraća specifiranog kupca.</returns>
-        KupacEntity GetKupacByID(Guid kupacID);
+        KupacEntity? GetKupacByID(Guid kupacID);
 
         /// <summary>
         /// Dodaje novog kupca u kontekst.
@@ -27,8 +27,6 @@ namespace KupacService.Data
         /// <param name="kupacCreateDTO">DTO za kreiranje kupca.</param>
         /// <returns>Vraća DTO kreiranog kupca.</returns>
         KupacDTO CreateKupac(KupacCreateDTO kupacCreateDTO);
-
-        //void UpdateKupac(KupacEntity kupac);
 
         /// <summary>
         /// Briše kupca iz konteksta.

@@ -62,9 +62,8 @@ namespace KupacService.DTO
             if (BrojKupovina < 0)
                 yield return new ValidationResult("Kupac ne može da ima manje od 0 kupovina.", new[] { "KupacCreateDTO" });
 
-            if (DatumPocetkaZabrane != null && DatumZavrsetkaZabrane != null)
-                if (DateTime.Compare(DatumPocetkaZabrane.Value, DateTime.Now) > 0)
-                    yield return new ValidationResult("Korisnik ne može da ima noviji datum pocetka od trenutnog datuma.", new[] { "KupacCreateDTO" });
+            if (DatumPocetkaZabrane != null && DatumZavrsetkaZabrane != null && DateTime.Compare(DatumPocetkaZabrane.Value, DateTime.Now) > 0)
+                yield return new ValidationResult("Korisnik ne može da ima noviji datum pocetka od trenutnog datuma.", new[] { "KupacCreateDTO" });
 
             if (DatumPocetkaZabrane == null && DatumZavrsetkaZabrane != null)
                 yield return new ValidationResult("Kupac ne može da ima datum pocetka zabrane a nema datum zavrsetka zabrane.", new[] { "KupacCreateDTO" });
@@ -72,16 +71,13 @@ namespace KupacService.DTO
             if (DatumPocetkaZabrane != null && DatumZavrsetkaZabrane == null)
                 yield return new ValidationResult("Kupac ne može da nema datum pocetka zabrane a ima datum zavrsetka zabrane.", new[] { "KupacCreateDTO" });
 
-            if (DatumPocetkaZabrane != null && DatumZavrsetkaZabrane != null)
-                if (DateTime.Compare(DatumPocetkaZabrane.Value, DatumZavrsetkaZabrane.Value) >= 0)
-                    yield return new ValidationResult("Korisnik ne može da ima isti ili noviji datum pocetka od datuma zavrsetka zabrane.", new[] { "KupacCreateDTO" });
+            if (DatumPocetkaZabrane != null && DatumZavrsetkaZabrane != null && DateTime.Compare(DatumPocetkaZabrane.Value, DatumZavrsetkaZabrane.Value) >= 0)
+                yield return new ValidationResult("Korisnik ne može da ima isti ili noviji datum pocetka od datuma zavrsetka zabrane.", new[] { "KupacCreateDTO" });
 
-            if (ImaZabranu == true)
-                if (DatumPocetkaZabrane == null || DatumZavrsetkaZabrane == null)
-                    yield return new ValidationResult("Ako kuapc ima zabranu mora da ima i datum pocetka i datum zavrsetka zabrane.");
-            if (ImaZabranu == false)
-                if (DatumPocetkaZabrane != null || DatumZavrsetkaZabrane != null)
-                    yield return new ValidationResult("Ako kuapc nema zabranu ne sme da ima ni datum pocetka niti datum zavrsetka zabrane.");
+            if (ImaZabranu && (DatumPocetkaZabrane == null || DatumZavrsetkaZabrane == null))
+                yield return new ValidationResult("Ako kuapc ima zabranu mora da ima i datum pocetka i datum zavrsetka zabrane.");
+            if (!ImaZabranu && (DatumPocetkaZabrane != null || DatumZavrsetkaZabrane != null))
+                yield return new ValidationResult("Ako kuapc nema zabranu ne sme da ima ni datum pocetka niti datum zavrsetka zabrane.");
 
             if (Enum.TryParse(Prioritet.ToUpper(), out Prioritet tempPrioritet))
                 Prioritet = tempPrioritet.ToString();

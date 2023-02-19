@@ -49,14 +49,14 @@ builder.Services.AddSwaggerGen(setup =>
             {
                 Name = "Vasilije Mucibabic",
                 Email = "mucibabic.it23.2019@uns.ac.rs",
-                Url = new Uri("http://www.ftn.uns.ac.rs/")
+                Url = new Uri(builder.Configuration["Services:FTN"])
             },
             License = new Microsoft.OpenApi.Models.OpenApiLicense
             {
                 Name = "FTN licence",
-                Url = new Uri("http://www.ftn.uns.ac.rs/")
+                Url = new Uri(builder.Configuration["Services:FTN"])
             },
-            TermsOfService = new Uri("http://www.ftn.uns.ac.rs/")
+            TermsOfService = new Uri(builder.Configuration["Services:FTN"])
         });
     var xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
