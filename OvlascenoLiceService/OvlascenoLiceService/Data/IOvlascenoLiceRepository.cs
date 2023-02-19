@@ -19,7 +19,7 @@ namespace OvlascenoLiceService.Data
         /// </summary>
         /// <param name="ovlascenoLiceID">ID ovlascenog lica.</param>
         /// <returns>Vraća specifirano ovlasceno lice.</returns>
-        OvlascenoLiceEntity? GetOvlascenoLiceByID(Guid ovlacenoLiceID);
+        OvlascenoLiceEntity? GetOvlascenoLiceByID(Guid ovlascenoLiceID);
 
         /// <summary>
         /// Dodaje novo ovlasceno lice u kontekst.

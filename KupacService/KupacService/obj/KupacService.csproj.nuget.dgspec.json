@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\KupacService\\KupacService\\KupacService.csproj": {}
+    "C:\\Users\\Vaso\\Desktop\\faks\\VII_semestar\\URIS\\microservices_project\\KupacService\\KupacService\\KupacService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\KupacService\\KupacService\\KupacService.csproj": {
+    "C:\\Users\\Vaso\\Desktop\\faks\\VII_semestar\\URIS\\microservices_project\\KupacService\\KupacService\\KupacService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\KupacService\\KupacService\\KupacService.csproj",
+        "projectUniqueName": "C:\\Users\\Vaso\\Desktop\\faks\\VII_semestar\\URIS\\microservices_project\\KupacService\\KupacService\\KupacService.csproj",
         "projectName": "KupacService",
-        "projectPath": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\KupacService\\KupacService\\KupacService.csproj",
-        "packagesPath": "C:\\Users\\ptrra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\KupacService\\KupacService\\obj\\",
+        "projectPath": "C:\\Users\\Vaso\\Desktop\\faks\\VII_semestar\\URIS\\microservices_project\\KupacService\\KupacService\\KupacService.csproj",
+        "packagesPath": "C:\\Users\\Vaso\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vaso\\Desktop\\faks\\VII_semestar\\URIS\\microservices_project\\KupacService\\KupacService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ptrra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vaso\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

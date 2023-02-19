@@ -25,37 +25,37 @@ namespace OvlascenoLiceService.Entities
         /// <summary>
         /// Popunjava bazu inicijalnim podacima.
         /// </summary>
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.Entity<FizickoLiceEntity>().HasData(new
+            modelBuilder.Entity<FizickoLiceEntity>().HasData(new
             {
                 ID = Guid.Parse("8cc7d67a-61ed-4795-ad0a-fa882eda0a2b"),
                 JMBG = "4058851174218",
                 Ime = "Slavomirko",
                 Prezime = "Slavimirkovic"
             });
-            builder.Entity<FizickoLiceEntity>().HasData(new
+            modelBuilder.Entity<FizickoLiceEntity>().HasData(new
             {
                 ID = Guid.Parse("af948f2a-745b-45bc-abc1-1f4da1727af4"),
                 JMBG = "0786741214886",
                 Ime = "Radomirko",
                 Prezime = "Radimirkovic"
             });
-            builder.Entity<FizickoLiceEntity>().HasData(new
+            modelBuilder.Entity<FizickoLiceEntity>().HasData(new
             {
                 ID = Guid.Parse("194e73cb-831e-40da-9ec8-0751c04a6b28"),
                 JMBG = "0925639560129",
                 Ime = "Miladinko",
                 Prezime = "Miladinkovic"
             });
-            builder.Entity<FizickoLiceEntity>().HasData(new
+            modelBuilder.Entity<FizickoLiceEntity>().HasData(new
             {
                 ID = Guid.Parse("673eb87d-4a9f-4838-a542-3d4cef1b9495"),
                 JMBG = "9195579483423",
                 Ime = "Milasinko",
                 Prezime = "Milasnkovic"
             });
-            builder.Entity<FizickoLiceEntity>().HasData(new
+            modelBuilder.Entity<FizickoLiceEntity>().HasData(new
             {
                 ID = Guid.Parse("4c504a89-419a-4f6f-8aae-31e0d3823e39"),
                 JMBG = "6675836696997",
@@ -63,7 +63,7 @@ namespace OvlascenoLiceService.Entities
                 Prezime = "Radasinkovic"
             });
 
-            builder.Entity<OvlascenoLiceEntity>().HasData(new
+            modelBuilder.Entity<OvlascenoLiceEntity>().HasData(new
             {
                 ID = Guid.Parse("7b50cce0-050d-4833-bbc7-6b910bb6da89"),
                 FizickoLiceID = Guid.Parse("af948f2a-745b-45bc-abc1-1f4da1727af4"),
@@ -74,7 +74,7 @@ namespace OvlascenoLiceService.Entities
                 Email = "email1@net.org",
                 BrojRacuna = "343658891760636"
             });
-            builder.Entity<OvlascenoLiceEntity>().HasData(new
+            modelBuilder.Entity<OvlascenoLiceEntity>().HasData(new
             {
                 ID = Guid.Parse("1e24bea9-7df2-4d14-b224-c76fd77536dd"),
                 FizickoLiceID = Guid.Parse("af948f2a-745b-45bc-abc1-1f4da1727af4"),
@@ -84,7 +84,7 @@ namespace OvlascenoLiceService.Entities
                 Email = "email2@net.org",
                 BrojRacuna = "788066876873835"
             });
-            builder.Entity<OvlascenoLiceEntity>().HasData(new
+            modelBuilder.Entity<OvlascenoLiceEntity>().HasData(new
             {
                 ID = Guid.Parse("145c1e74-7eb5-4eaa-bf6a-bb84921c871e"),
                 FizickoLiceID = Guid.Parse("673eb87d-4a9f-4838-a542-3d4cef1b9495"),
@@ -94,7 +94,7 @@ namespace OvlascenoLiceService.Entities
                 Email = "email3@net.org",
                 BrojRacuna = "801272932440773"
             });
-            builder.Entity<OvlascenoLiceEntity>().HasData(new
+            modelBuilder.Entity<OvlascenoLiceEntity>().HasData(new
             {
                 ID = Guid.Parse("904bd8b6-e268-4ca8-89fb-ef2750a74e19"),
                 FizickoLiceID = Guid.Parse("673eb87d-4a9f-4838-a542-3d4cef1b9495"),
@@ -104,7 +104,7 @@ namespace OvlascenoLiceService.Entities
                 Email = "email4@net.org",
                 BrojRacuna = "854823918379735"
             });
-            builder.Entity<OvlascenoLiceEntity>().HasData(new
+            modelBuilder.Entity<OvlascenoLiceEntity>().HasData(new
             {
                 ID = Guid.Parse("faea6877-c81e-4829-987e-ea68d5aea752"),
                 FizickoLiceID = Guid.Parse("4c504a89-419a-4f6f-8aae-31e0d3823e39"),
