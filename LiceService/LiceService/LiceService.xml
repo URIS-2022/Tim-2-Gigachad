@@ -1,0 +1,1344 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LiceService</name>
+    </assembly>
+    <members>
+        <member name="T:LiceService.Controllers.FizickoLiceController">
+            <summary>
+            Kontroler za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.#ctor(LiceService.Data.IFizickoLiceRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.GetFizickaLica">
+            <summary>
+            Vraća listu svih fizičkih lica.
+            </summary>
+            <returns>Vraća potvrdu o listi postojećih fizičkih lica.</returns>
+            <response code="200">Vraća listu fizičkih lica.</response>
+            <response code="204">Ne postoje fizička lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.GetFizickoLice(System.Guid)">
+            <summary>
+            Vraća jedno fizičko lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+            <returns>Vraća potvrdu o specifiranom fizičkom licu.</returns>
+            <response code="200">Vraća specifirano fizičko lice.</response>
+            <response code="404">Specifirano fizičko lice ne postoji.</response>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.CreateFizickoLice(LiceService.DTO.FizickoLiceCreateDTO)">
+            <summary>
+            Kreira novo fizičko lice.
+            </summary>
+            <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
+            <returns>Vraća potvrdu o kreiranom fizičkom licu.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog fizičkog lica. \
+            POST /api/fizickaLica \
+            { \
+            	"jmbg": "1234567891234", \
+            	"ime": "Petar", \
+            	"prezime": "Rakić" \
+            }
+            </remarks>
+            <response code="201">Vraća kreirano fizičko lice.</response>
+            <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja fizičkog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.UpdateFizickoLice(LiceService.DTO.FizickoLiceUpdateDTO)">
+             <summary>
+             Ažurira jedno fizičko lice.
+             </summary>
+             <param name="fizickoLiceUpdateDTO">DTO za ažuriranje fizičkog lica.</param>
+             <returns>Vraća potvrdu o ažuriranom fizičkom licu.</returns>
+             <remarks>
+             Primer zahteva za ažuriranje postojećeg fizičkog lica. \
+             PUT /api/fizickaLica \
+             { \
+            		"id": "ef4cf6d4-48f9-4508-a91f-330261325403", \
+            		"jmbg": "1234567891234", \
+            		"ime": "Petar", \
+            		"prezime": "Rakić" \
+            }
+             </remarks>
+             <response code="200">Vraća ažurirano fizičko lice.</response>
+             <response code="404">Specifirano fizičko lice ne postoji.</response>
+             <response code="422">Došlo je do greške, već postoji fizičko lice na serveru sa istim JMBG-om.</response>
+             <response code="500">Došlo je do greške na serveru prilikom ažuriranja fizičkog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.DeleteFizickoLice(System.Guid)">
+            <summary>
+            Briše jedno fizičko lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+            <returns>Vraća potvrdu o brisanju fizičkog lica.</returns>
+            <response code="204">Specifirano fizičko lice je uspešno obrisano.</response>
+            <response code="404">Specifirano fizičko lice ne postoji i nije obrisano.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog fizičkog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.FizickoLiceController.GetFizickaLicaOptions">
+            <summary>
+            Vraća opcije za rad sa entitetom fizičko lice.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:LiceService.Controllers.KontaktOsobaController">
+            <summary>
+            Kontroler za entitet kontakt osobu.
+            </summary>
+        </member>
+        <member name="M:LiceService.Controllers.KontaktOsobaController.#ctor(LiceService.Data.IKontaktOsobaRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:LiceService.Controllers.KontaktOsobaController.GetKontaktOsobe">
+            <summary>
+            Vraća listu svih kontakt osoba.
+            </summary>
+            <returns>Vraća potvrdu o listi postojećih kontakt osoba.</returns>
+            <response code="200">Vraća listu kontakt osoba.</response>
+            <response code="204">Ne postoje kontakt osobe.</response>
+        </member>
+        <member name="M:LiceService.Controllers.KontaktOsobaController.GetKontaktOsoba(System.Guid)">
+            <summary>
+            Vraća jednu kontakt osobu na osnovu zadatog ID-ja.
+            </summary>
+            <param name="kontaktOsobaID">ID kontakt osobe.</param>
+            <returns>Vraća potvrdu o specifiranoj kontakt osobi.</returns>
+            <response code="200">Vraća specifiranu kontakt osobu.</response>
+            <response code="404">Specifirana kontakt osoba ne postoji.</response>
+        </member>
+        <member name="M:LiceService.Controllers.KontaktOsobaController.CreateKontaktOsoba(LiceService.DTO.KontaktOsobaCreateDTO)">
+            <summary>
+            Kreira novu kontakt osobu.
+            </summary>
+            <param name="kontaktOsobaCreateDTO">DTO za kreiranje kontakt osobe.</param>
+            <returns>Potvrdu o kreiranoj kontakt osobi.</returns>
+            <remarks>
+            Primer zahteva za kreiranje nove kontakt osobe. \
+            POST /api/kontaktOsobe \
+            { \
+            	"ime": "Petar", \
+            	"prezime": "Rakić", \
+            	"telefon": "1234567891", \
+            	"funkcija": "programer" \
+            }
+            </remarks>
+            <response code="201">Vraća kreiranu kontakt osobu.</response>
+            <response code="422">Došlo je do greške, već postoji kontakt osoba na serveru sa istim telefonom.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja kontakt osobe.</response>
+        </member>
+        <member name="M:LiceService.Controllers.KontaktOsobaController.UpdateKontaktOsoba(LiceService.DTO.KontaktOsobaUpdateDTO)">
+            <summary>
+            Ažurira jednu kontakt osobu.
+            </summary>
+            <param name="kontaktOsobaUpdateDTO">DTO za ažuriranje kontakt osobe.</param>
+            <returns>Potvrdu o ažuriranoj kontakt osobi.</returns>
+            <remarks>
+            Primer zahteva za ažuriranje postojeće kontakt osobe. \
+            PUT /api/kontaktOsobe \
+            { \
+            	"id": "5a2f51f9-3f5d-420f-9e98-510a3a5296a1", \
+            	"ime": "Petar", \
+            	"prezime": "Rakić", \
+            	"telefon": "1234567891", \
+            	"funkcija": "programer" \
+            }
+            </remarks>
+            <response code="200">Vraća ažuriranu kontakt osobu.</response>
+            <response code="404">Specifirana kontakt osoba ne postoji.</response>
+            <response code="422">Došlo je do greške, već postoji kontakt osoba na serveru sa istim telefonom.</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja kontakt osobe.</response>
+        </member>
+        <member name="M:LiceService.Controllers.KontaktOsobaController.DeleteKontaktOsoba(System.Guid)">
+            <summary>
+            Briše jednu kontakt osobu na osnovu zadatog ID-ja.
+            </summary>
+            <param name="kontaktOsobaID">ID kontakt osobe.</param>
+            <returns>Vraća potvrdu o brisanju kontakt osobe.</returns>
+            <response code="204">Specifirana kontakt osoba je uspešno obrisana.</response>
+            <response code="404">Specifirana kontakt osoba ne postoji i nije obrisana.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifirane kontakt osobe.</response>
+        </member>
+        <member name="M:LiceService.Controllers.KontaktOsobaController.GetKontaktOsobeOptions">
+            <summary>
+            Vraća opcije za rad sa entitetom kontakt osoba.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:LiceService.Controllers.LiceController">
+            <summary>
+            Kontroler za entitet lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Controllers.LiceController.#ctor(LiceService.Data.ILiceRepository,LiceService.Data.IFizickoLiceRepository,LiceService.Data.IPravnoLiceRepository,LiceService.Data.IKontaktOsobaRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,LiceService.ServiceCalls.IAdresaService)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:LiceService.Controllers.LiceController.GetLica(System.String)">
+            <summary>
+            Vraća listu svih lica.
+            </summary>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o listi postojećih lica.</returns>
+            <response code="200">Vraća listu lica.</response>
+            <response code="204">Ne postoje lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.LiceController.GetLice(System.Guid,System.String)">
+            <summary>
+            Vraća jedno lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="liceID">ID lica.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o specifiranom licu.</returns>
+            <response code="200">Vraća specifirano lice.</response>
+            <response code="404">Specifirano lice ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom pronalaženja specifiranog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.LiceController.CreateLice(LiceService.DTO.LiceCreateDTO,System.String)">
+            <summary>
+            Kreira novo lice.
+            </summary>
+            <param name="liceCreateDTO">DTO za kreiranje lica.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o kreiranom licu.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog lica. \
+            POST /api/lica \
+            { \
+            	"fizickoLiceID": "ef4cf6d4-48f9-4508-a91f-330261325403", \
+            	"pravnoLiceID": "006d992e-2109-4334-beff-3f5229129d14", \
+            	"adresaID": "ACCAD5A2-E5BC-4FF5-A5B7-FC38AB8A47FE", \
+            	"telefon1": "1234567891", \
+            	"telefon2": "1234567891", \
+            	"email": "rakic.it19.2019@uns.ac.rs", \
+            	"brojRacuna": "12345678911234567891" \
+            }
+            </remarks>
+            <response code="201">Vraća kreirano lice.</response>
+            <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.LiceController.UpdateLice(LiceService.DTO.LiceUpdateDTO,System.String)">
+            <summary>
+            Ažurira jedno lice.
+            </summary>
+            <param name="liceUpdateDTO">DTO za ažuriranje lica.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o ažuriranom licu.</returns>
+            <remarks>
+            Primer zahteva za ažuriranje postojećeg lica. \
+            PUT /api/lica \
+            { \
+            	"id": "f127642e-4d73-42f1-979d-6a506aea9bdc", \
+            	"fizickoLiceID": "ef4cf6d4-48f9-4508-a91f-330261325403", \
+            	"pravnoLiceID": "006d992e-2109-4334-beff-3f5229129d14", \
+            	"adresaID": "ACCAD5A2-E5BC-4FF5-A5B7-FC38AB8A47FE", \
+            	"telefon1": "1234567891", \
+            	"telefon2": "1234567891", \
+            	"email": "rakic.it19.2019@uns.ac.rs", \
+            	"brojRacuna": "12345678911234567891" \
+            }
+            </remarks>
+            <response code="200">Vraća ažurirano lice.</response>
+            <response code="404">Specifirano lice ne postoji.</response>
+            <response code="422">Došlo je do greške, već postoji prvi telefon ili drugi telefon ili broj računa na serveru sa istim vrednostima.</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.LiceController.DeleteLice(System.Guid)">
+            <summary>
+            Briše jedno lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="liceID">ID lica.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o brisanju lica.</returns>
+            <response code="204">Specifirano lice je uspešno obrisano.</response>
+            <response code="404">Specifirano lice ne postoji i nije obrisano.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.LiceController.GetLicaOptions">
+            <summary>
+            Vraća opcije za rad sa entitetom lica.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:LiceService.Controllers.PravnoLiceController">
+            <summary>
+            Kontroler za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Controllers.PravnoLiceController.#ctor(LiceService.Data.IPravnoLiceRepository,LiceService.Data.IKontaktOsobaRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:LiceService.Controllers.PravnoLiceController.GetPravnaLica">
+            <summary>
+            Vraća listu svih pravnih lica.
+            </summary>
+            <returns>Vraća potvrdu o listi postojećih pravnih lica.</returns>
+            <response code="200">Vraća listu pravnih lica.</response>
+            <response code="204">Ne postoje pravna lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.PravnoLiceController.GetPravnoLice(System.Guid)">
+            <summary>
+            Vraća jedno pravno lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="pravnoLiceID">ID pravnog lica.</param>
+            <returns>Vraća potvrdu o specifiranom fizičkom licu.</returns>
+            <response code="200">Vraća specifirano pravno lice.</response>
+            <response code="404">Specifirano pravno lice ne postoji.</response>
+        </member>
+        <member name="M:LiceService.Controllers.PravnoLiceController.CreatePravnoLice(LiceService.DTO.PravnoLiceCreateDTO)">
+            <summary>
+            Kreira novo pravno lice.
+            </summary>
+            <param name="pravnoLiceCreateDTO">DTO za kreiranje pravnog lica.</param>
+            <returns>Vraća potvrdu o kreiranom fizičkom licu.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog pravnog lica. \
+            POST /api/pravnaLica \
+            { \
+            	"kontaktOsobaID": "5a2f51f9-3f5d-420f-9e98-510a3a5296a1", \
+            	"naziv": "KOMPANIJA DOO", \
+            	"maticniBroj": "12345678" \
+            }
+            </remarks>
+            <response code="201">Vraća kreirano pravno lice.</response>
+            <response code="422">Došlo je do greške, već postoji pravno lice na serveru sa istim matičnim brojem.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja pravnog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.PravnoLiceController.UpdatePravnoLice(LiceService.DTO.PravnoLiceUpdateDTO)">
+            <summary>
+            Ažurira jedno pravno lice.
+            </summary>
+            <param name="pravnoLiceUpdateDTO">DTO za ažuriranje pravnog lica.</param>
+            <returns>Vraća potvrdu o ažuriranom fizičkom licu.</returns>
+            <remarks>
+            Primer zahteva za ažuriranje postojećeg pravnog lica. \
+            PUT /api/pravnaLica \
+            { \
+            	"id": "006d992e-2109-4334-beff-3f5229129d14", \
+            	"kontaktOsobaID": "5a2f51f9-3f5d-420f-9e98-510a3a5296a1", \
+            	"naziv": "KOMPANIJA DOO", \
+            	"maticniBroj": "12345678" \
+            }
+            </remarks>
+            <response code="200">Vraća ažurirano pravno lice.</response>
+            <response code="404">Specifirano pravno lice ne postoji.</response>
+            <response code="422">Došlo je do greške, već postoji pravno lice na serveru sa istim matičnim brojem.</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja pravnog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.PravnoLiceController.DeletePravnoLice(System.Guid)">
+            <summary>
+            Briše jedno pravno lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="pravnoLiceID">ID pravnog lica.</param>
+            <returns>Vraća potvrdu o brisanju pravnog lica.</returns>
+            <response code="204">Specifirano pravno lice je uspešno obrisano.</response>
+            <response code="404">Specifirano pravno lice ne postoji i nije obrisano.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog pravnog lica.</response>
+        </member>
+        <member name="M:LiceService.Controllers.PravnoLiceController.GetPravnaLicaOptions">
+            <summary>
+            Vraća opcije za rad sa entitetom pravno lice.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:LiceService.Data.FizickoLiceRepository">
+            <summary>
+            Repozitorijum za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.FizickoLiceRepository.#ctor(LiceService.Entities.LiceContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.FizickoLiceRepository.GetFizickaLica">
+            <summary>
+            Vraća listu fizičkih lica iz konteksta.
+            </summary>
+            <returns>Vraća listu fizičkih lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.FizickoLiceRepository.GetFizickoLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno fizičko lice iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+            <returns>Vraća specifirano fizičko lice.</returns>
+        </member>
+        <member name="M:LiceService.Data.FizickoLiceRepository.CreateFizickoLice(LiceService.DTO.FizickoLiceCreateDTO)">
+            <summary>
+            Dodaje novo fizičko lice u kontekst.
+            </summary>
+            <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
+            <returns>Vraća DTO kreiranog fizičkog lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.FizickoLiceRepository.DeleteFizickoLice(System.Guid)">
+            <summary>
+            Briše fizičko lice iz konteksta.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+        </member>
+        <member name="M:LiceService.Data.FizickoLiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:LiceService.Data.IFizickoLiceRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.IFizickoLiceRepository.GetFizickaLica">
+            <summary>
+            Vraća listu fizičkih lica.
+            </summary>
+            <returns>Vraća listu fizičkih lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.IFizickoLiceRepository.GetFizickoLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno fizičko lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+            <returns>Vraća specifirano fizičko lice.</returns>
+        </member>
+        <member name="M:LiceService.Data.IFizickoLiceRepository.CreateFizickoLice(LiceService.DTO.FizickoLiceCreateDTO)">
+            <summary>
+            Dodaje novo fizičko lice.
+            </summary>
+            <param name="fizickoLiceCreateDTO">DTO za kreiranje fizičkog lica.</param>
+            <returns>Vraća DTO kreiranog fizičkog lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.IFizickoLiceRepository.DeleteFizickoLice(System.Guid)">
+            <summary>
+            Briše fizičko lice.
+            </summary>
+            <param name="fizickoLiceID">ID fizičkog lica.</param>
+        </member>
+        <member name="M:LiceService.Data.IFizickoLiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:LiceService.Data.IKontaktOsobaRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.IKontaktOsobaRepository.GetKontaktOsobe">
+            <summary>
+            Vraća listu kontakt osoba.
+            </summary>
+            <returns>Vraća listu kontakt osoba.</returns>
+        </member>
+        <member name="M:LiceService.Data.IKontaktOsobaRepository.GetKontaktOsobaByID(System.Guid)">
+            <summary>
+            Vraća jednu kontakt osobu na osnovu zadatog ID-ja.
+            </summary>
+            <param name="kontaktOsobaID">ID kontakt osobe.</param>
+            <returns>Vraća specifiranu kontakt osobu.</returns>
+        </member>
+        <member name="M:LiceService.Data.IKontaktOsobaRepository.CreateKontaktOsoba(LiceService.DTO.KontaktOsobaCreateDTO)">
+            <summary>
+            Dodaje novu kontakt osobu.
+            </summary>
+            <param name="kontaktOsobaCreateDTO">DTO za kreiranje lica.</param>
+            <returns>Vraća DTO kreiranog lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.IKontaktOsobaRepository.DeleteKontaktOsoba(System.Guid)">
+            <summary>
+            Briše kontakt osobu.
+            </summary>
+            <param name="kontaktOsobaID">ID kontakt osobe.</param>
+        </member>
+        <member name="M:LiceService.Data.IKontaktOsobaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:LiceService.Data.ILiceRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.ILiceRepository.GetLica">
+            <summary>
+            Vraća listu lica.
+            </summary>
+            <returns>Vraća listu lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.ILiceRepository.GetLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="liceID">ID lica.</param>
+            <returns>Vraća specifirano lice.</returns>
+        </member>
+        <member name="M:LiceService.Data.ILiceRepository.CreateLice(LiceService.DTO.LiceCreateDTO)">
+            <summary>
+            Dodaje novo lice.
+            </summary>
+            <param name="liceCreateDTO">DTO za kreiranje lica.</param>
+            <returns>Vraća DTO kreiranog lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.ILiceRepository.DeleteLice(System.Guid)">
+            <summary>
+            Briše lice.
+            </summary>
+            <param name="liceID">ID lica.</param>
+        </member>
+        <member name="M:LiceService.Data.ILiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:LiceService.Data.IPravnoLiceRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.IPravnoLiceRepository.GetPravnaLica">
+            <summary>
+            Vraća listu pravnih lica.
+            </summary>
+            <returns>Vraća listu pravnih lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.IPravnoLiceRepository.GetPravnoLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno pravno lice na osnovu zadatog ID-ja.
+            </summary>
+            <param name="pravnoLiceID">ID pravnog lica.</param>
+            <returns>Vraća specifirano pravno lice.</returns>
+        </member>
+        <member name="M:LiceService.Data.IPravnoLiceRepository.CreatePravnoLice(LiceService.DTO.PravnoLiceCreateDTO)">
+            <summary>
+            Dodaje novo pravno lice.
+            </summary>
+            <param name="pravnoLiceCreateDTO">DTO za kreiranje pravnog lica.</param>
+            <returns>Vraća DTO kreiranog pravnog lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.IPravnoLiceRepository.DeletePravnoLice(System.Guid)">
+            <summary>
+            Briše pravno lice.
+            </summary>
+            <param name="pravnoLiceID">ID pravnog lica.</param>
+        </member>
+        <member name="M:LiceService.Data.IPravnoLiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:LiceService.Data.KontaktOsobaRepository">
+            <summary>
+            Repozitorijum za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.KontaktOsobaRepository.#ctor(LiceService.Entities.LiceContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.KontaktOsobaRepository.GetKontaktOsobe">
+            <summary>
+            Vraća listu kontakt osoba iz konteksta.
+            </summary>
+            <returns>Vraća listu kontakt osoba.</returns>
+        </member>
+        <member name="M:LiceService.Data.KontaktOsobaRepository.GetKontaktOsobaByID(System.Guid)">
+            <summary>
+            Vraća jednu kontakt osobu iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="kontaktOsobaID">ID kontakt osobe.</param>
+            <returns>Vraća specifiranu kontakt osobu.</returns>
+        </member>
+        <member name="M:LiceService.Data.KontaktOsobaRepository.CreateKontaktOsoba(LiceService.DTO.KontaktOsobaCreateDTO)">
+            <summary>
+            Dodaje novu kontakt osobu u kontekst.
+            </summary>
+            <param name="kontaktOsobaCreateDTO">DTO za kreiranje kontakt osobe.</param>
+            <returns>Vraća DTO kreirane kontakt osobe.</returns>
+        </member>
+        <member name="M:LiceService.Data.KontaktOsobaRepository.DeleteKontaktOsoba(System.Guid)">
+            <summary>
+            Briše kontakt osobu iz konteksta.
+            </summary>
+            <param name="kontaktOsobaID">ID kontakt osobe.</param>
+        </member>
+        <member name="M:LiceService.Data.KontaktOsobaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:LiceService.Data.LiceRepository">
+            <summary>
+            Repozitorijum za entitet lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.LiceRepository.#ctor(LiceService.Entities.LiceContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.LiceRepository.GetLica">
+            <summary>
+            Vraća listu lica iz konteksta.
+            </summary>
+            <returns>Vraća listu lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.LiceRepository.GetLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno lice iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="liceID">ID lica.</param>
+            <returns>Vraća specifirano lice.</returns>
+        </member>
+        <member name="M:LiceService.Data.LiceRepository.CreateLice(LiceService.DTO.LiceCreateDTO)">
+            <summary>
+            Dodaje novo lice u kontekst.
+            </summary>
+            <param name="liceCreateDTO">DTO za kreiranje lica.</param>
+            <returns>Vraća DTO kreiranog lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.LiceRepository.DeleteLice(System.Guid)">
+            <summary>
+            Briše lice iz konteksta.
+            </summary>
+            <param name="liceID">ID lica.</param>
+        </member>
+        <member name="M:LiceService.Data.LiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:LiceService.Data.PravnoLiceRepository">
+            <summary>
+            Repozitorijum za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.PravnoLiceRepository.#ctor(LiceService.Entities.LiceContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:LiceService.Data.PravnoLiceRepository.GetPravnaLica">
+            <summary>
+            Vraća listu pravnih lica iz konteksta.
+            </summary>
+            <returns>Vraća listu pravnih lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.PravnoLiceRepository.GetPravnoLiceByID(System.Guid)">
+            <summary>
+            Vraća jedno pravno lice iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="pravnoLiceID">ID pravnog lica.</param>
+            <returns>Vraća specifirano pravno lice.</returns>
+        </member>
+        <member name="M:LiceService.Data.PravnoLiceRepository.CreatePravnoLice(LiceService.DTO.PravnoLiceCreateDTO)">
+            <summary>
+            Dodaje novo pravno lice u kontekst.
+            </summary>
+            <param name="pravnoLiceCreateDTO">DTO za kreiranje pravnog lica.</param>
+            <returns>Vraća DTO kreiranog pravnog lica.</returns>
+        </member>
+        <member name="M:LiceService.Data.PravnoLiceRepository.DeletePravnoLice(System.Guid)">
+            <summary>
+            Briše pravno lice iz konteksta.
+            </summary>
+            <param name="pravnoLiceID">ID pravnog lica.</param>
+        </member>
+        <member name="M:LiceService.Data.PravnoLiceRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:LiceService.DTO.AdresaDTO">
+            <summary>
+            Model DTO-a za entitet adresa lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.AdresaDTO.Mesto">
+            <summary>
+            Mesto adrese.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.AdresaDTO.Drzava">
+            <summary>
+            Država adrese.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.FizickoLiceCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceCreateDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceCreateDTO.Ime">
+            <summary>
+            Ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceCreateDTO.Prezime">
+            <summary>
+            Prezime fizičkog lica.
+            </summary>
+        </member>
+        <member name="M:LiceService.DTO.FizickoLiceCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.FizickoLiceDTO">
+            <summary>
+            Model DTO-a za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceDTO.PunoIme">
+            <summary>
+            Puno ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.FizickoLiceUpdateDTO">
+            <summary>
+            Model DTO-a za ažuriranje entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceUpdateDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceUpdateDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceUpdateDTO.Ime">
+            <summary>
+            Ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.FizickoLiceUpdateDTO.Prezime">
+            <summary>
+            Prezime fizičkog lica.
+            </summary>
+        </member>
+        <member name="M:LiceService.DTO.FizickoLiceUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.KontaktOsobaCreateDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaCreateDTO.Ime">
+            <summary>
+            Ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaCreateDTO.Prezime">
+            <summary>
+            Prezime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaCreateDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaCreateDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="M:LiceService.DTO.KontaktOsobaCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje entiteta kontakt osoba.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.KontaktOsobaDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaDTO.PunoIme">
+            <summary>
+            Puno ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.KontaktOsobaUpdateDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaUpdateDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaUpdateDTO.Ime">
+            <summary>
+            Ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaUpdateDTO.Prezime">
+            <summary>
+            Prezime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaUpdateDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.KontaktOsobaUpdateDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="M:LiceService.DTO.KontaktOsobaUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta kontakt osoba.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.LiceCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje entiteta lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceCreateDTO.FizickoLiceID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceCreateDTO.PravnoLiceID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceCreateDTO.AdresaID">
+            <summary>
+            ID adrese lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceCreateDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceCreateDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceCreateDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceCreateDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="M:LiceService.DTO.LiceCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje entiteta lice.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.LiceDTO">
+            <summary>
+            Model DTO-a za entitet lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceDTO.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceDTO.PravnoLice">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceDTO.Adresa">
+            <summary>
+            Adresa lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.LiceUpdateDTO">
+            <summary>
+            Model DTO-a za ažuriranje entiteta lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceUpdateDTO.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceUpdateDTO.FizickoLiceID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceUpdateDTO.PravnoLiceID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceUpdateDTO.AdresaID">
+            <summary>
+            ID adrese lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceUpdateDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceUpdateDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceUpdateDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.LiceUpdateDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="M:LiceService.DTO.LiceUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta lice.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.PravnoLiceCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje entiteta pravno lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceCreateDTO.KontaktOsobaID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceCreateDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceCreateDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.PravnoLiceDTO">
+            <summary>
+            Model DTO-a za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceDTO.KontaktOsoba">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.DTO.PravnoLiceUpdateDTO">
+            <summary>
+            Model DTO-a za ažuriranje entiteta pravno lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceUpdateDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceUpdateDTO.KontaktOsobaID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceUpdateDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.DTO.PravnoLiceUpdateDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.Entities.FizickoLiceEntity">
+            <summary>
+            Model realnog entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceEntity.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceEntity.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceEntity.Ime">
+            <summary>
+            Ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceEntity.Prezime">
+            <summary>
+            Prezime fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.FizickoLiceEntity.Lica">
+            <summary>
+            Lica fizičkih lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.Entities.KontaktOsobaEntity">
+            <summary>
+            Model realnog entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Ime">
+            <summary>
+            Ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Prezime">
+            <summary>
+            Prezime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.KontaktOsobaEntity.PravnaLica">
+            <summary>
+            Lica fizičkih lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.Entities.LiceContext">
+            <summary>
+            DbContext za LiceService mikroservis.
+            </summary>
+        </member>
+        <member name="M:LiceService.Entities.LiceContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceContext.FizickaLica">
+            <summary>
+            DbSet za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceContext.KontaktOsobe">
+            <summary>
+            DbSet za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceContext.PravnaLica">
+            <summary>
+            DbSet za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceContext.Lica">
+            <summary>
+            DbSet za entitet lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Entities.LiceContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:LiceService.Entities.LiceEntity">
+            <summary>
+            Model realnog entiteta lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.FizickoLiceID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.FizickoLice">
+            <summary>
+            Fizičko lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.PravnoLiceID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.AdresaID">
+            <summary>
+            ID adrese lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.LiceEntity.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.Entities.PravnoLiceEntity">
+            <summary>
+            Model realnog entiteta pravno lice.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.KontaktOsobaID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.KontaktOsoba">
+            <summary>
+            Kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:LiceService.Entities.PravnoLiceEntity.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:LiceService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:LiceService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:LiceService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:LiceService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:LiceService.Profiles.FizickoLiceProfile">
+            <summary>
+            Profil mapera za model entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Profiles.FizickoLiceProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta fizičko lice.
+            </summary>
+        </member>
+        <member name="T:LiceService.Profiles.KontaktOsobaProfile">
+            <summary>
+            Profil mapera za model entiteta kontakt osoba.
+            </summary>
+        </member>
+        <member name="M:LiceService.Profiles.KontaktOsobaProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta kontakt osoba.
+            </summary>
+        </member>
+        <member name="T:LiceService.Profiles.LiceProfile">
+            <summary>
+            Profil mapera za model entiteta lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Profiles.LiceProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta lice.
+            </summary>
+        </member>
+        <member name="T:LiceService.Profiles.PravnoLiceProfile">
+            <summary>
+            Profil mapera za model entiteta pravno lice.
+            </summary>
+        </member>
+        <member name="M:LiceService.Profiles.PravnoLiceProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta pravno lice.
+            </summary>
+        </member>
+        <member name="T:LiceService.ServiceCalls.AdresaService">
+            <summary>
+            Servis poziva za adresu od AdresaService mikroservis.
+            </summary>
+        </member>
+        <member name="M:LiceService.ServiceCalls.AdresaService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:LiceService.ServiceCalls.AdresaService.GetAdresaByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu od AdresaService mikroservis.
+            </summary>
+            <param name="adresaID">ID adrese.</param>
+            <param name="token">Token za AdresaService mikroservis.</param>
+            <returns>Vraća model DTO-a adrese.</returns>
+        </member>
+        <member name="T:LiceService.ServiceCalls.IAdresaService">
+            <summary>
+            Interfejs od servis poziva za adresu od AdresaService mikroservis.
+            </summary>
+        </member>
+        <member name="M:LiceService.ServiceCalls.IAdresaService.GetAdresaByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu od AdresaService mikroservis.
+            </summary>
+            <param name="adresaID">ID adrese.</param>
+            <param name="token">Token za AdresaService mikroservis.</param>
+            <returns>Vraća model DTO adrese.</returns>
+        </member>
+    </members>
+</doc>

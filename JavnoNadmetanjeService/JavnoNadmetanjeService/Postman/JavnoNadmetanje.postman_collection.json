@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "156e1160-f267-4cb3-85ee-6c4afe9b05d6",
+		"name": "JavnoNadmetanje",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21483793"
+	},
+	"item": [
+		{
+			"name": "Licitcije",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15011/api/licitacije",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15011",
+					"path": [
+						"api",
+						"licitacije"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JavnoNadmetanje",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc0MDY3MDcsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.PCWhMNVv7UyzycdVf2vgpX-7pu8DDzBLr4XNCdrn200",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15011/api/javnaNadmetanja",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15011",
+					"path": [
+						"api",
+						"javnaNadmetanja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LicitacijaByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15011/api/licitacije/ec85a362-c67a-4fe7-95bf-59429263231c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15011",
+					"path": [
+						"api",
+						"licitacije",
+						"ec85a362-c67a-4fe7-95bf-59429263231c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JavnoNadmetanjeByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15011/api/javnaNadmetanja/5D62B2C0-D13C-4F74-840F-AD96BF204D69",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15011",
+					"path": [
+						"api",
+						"javnaNadmetanja",
+						"5D62B2C0-D13C-4F74-840F-AD96BF204D69"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateLicitacija",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"ec85a362-c67a-4fe7-95bf-59429263231c\",\r\n    \"datumLicitacije\": \"2022-02-02T00:00:00\",\r\n    \"rok\": \"2023-02-18T00:00:00\",\r\n    \"ogrnMaxPovrs\": \"707\",\r\n    \"korakCene\": 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15011/api/licitacije",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15011",
+					"path": [
+						"api",
+						"licitacije"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteLicitacijaByID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15011/api/licitacije/ec85a362-c67a-4fe7-95bf-59429263231c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15011",
+					"path": [
+						"api",
+						"licitacije",
+						"ec85a362-c67a-4fe7-95bf-59429263231c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteJavnoNadmetanjeByID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15011/api/javnaNadmetanja/02994fa5-b1aa-40c9-80cb-582a3549f0c1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15011",
+					"path": [
+						"api",
+						"javnaNadmetanja",
+						"02994fa5-b1aa-40c9-80cb-582a3549f0c1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateJavnoNadmetanje",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licitacijaID\": \"01724de1-1281-4206-a9ee-a153ba559304\",\r\n    \"adresaID\": \"6f79d49c-1c14-49b7-94c3-19a81c7f97a0\",\r\n    \"deoParceleID\": \"3846acaf-3d0e-439a-bf27-85344934f2ca\",\r\n    \"kupacID\": \"93d92981-a754-41d8-8d1f-b5462a9e0386\",\r\n    \"tipNadmetanja\": \"OTVARANJE_ZATVORENIH_PONUDA\",\r\n    \"opstina\": \"ZEDNIK\",\r\n    \"datumNad\": \"2019-05-25T00:00:00\",\r\n    \"vremePoc\": \"2019-05-25T10:00:00\",\r\n    \"vremeKraj\": \"2019-05-25T12:30:00\",\r\n    \"periodZakupa\": 28,\r\n    \"pocetnaCena\": 400,\r\n    \"visinaCene\": 4000000,\r\n    \"izlicitiranaCena\": 34000,\r\n    \"brojUcesnika\": 95,\r\n    \"prijavljeniKupci\": 52,\r\n    \"licitanti\": 39,\r\n    \"krug\": 5,\r\n    \"statusNadmetanja\": \"DRUGI_KRUG_STARI\",\r\n    \"izuzeto\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15011/api/javnaNadmetanja",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15011",
+					"path": [
+						"api",
+						"javnaNadmetanja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateJavnoNadmetanje",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"02994fa5-b1aa-40c9-80cb-582a3549f0c1\",\r\n    \"licitacijaID\": \"01724de1-1281-4206-a9ee-a153ba559304\",\r\n    \"adresaID\":  \"6f79d49c-1c14-49b7-94c3-19a81c7f97a0\",\r\n    \"deoParceleID\":  \"3846acaf-3d0e-439a-bf27-85344934f2ca\",\r\n    \"kupacID\": \"93d92981-a754-41d8-8d1f-b5462a9e0386\",\r\n    \"tipNadmetanja\": \"OTVARANJE_ZATVORENIH_PONUDA\",\r\n    \"opstina\": \"ZEDNIK\",\r\n    \"datumNad\": \"2019-05-25T00:00:00\",\r\n    \"vremePoc\": \"2019-05-25T10:00:00\",\r\n    \"vremeKraj\": \"2019-05-25T12:30:00\",\r\n    \"periodZakupa\": 28,\r\n    \"pocetnaCena\": 700,\r\n    \"visinaCene\": 7000000,\r\n    \"izlicitiranaCena\": 74000,\r\n    \"brojUcesnika\": 95,\r\n    \"prijavljeniKupci\": 52,\r\n    \"licitanti\": 39,\r\n    \"krug\": 5,\r\n    \"statusNadmetanja\": \"DRUGI_KRUG_STARI\",\r\n    \"izuzeto\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15011/api/javnaNadmetanja",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15011",
+					"path": [
+						"api",
+						"javnaNadmetanja"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateLicitacija",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"ec85a362-c67a-4fe7-95bf-59429263231c\",\r\n    \"datumLicitacije\": \"2022-02-02T00:00:00\",\r\n    \"rok\": \"2023-02-18T00:00:00\",\r\n    \"ogrnMaxPovrs\": \"777\",\r\n    \"korakCene\": 70\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15011/api/licitacije",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15011",
+					"path": [
+						"api",
+						"licitacije"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc0MDY3MDcsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.PCWhMNVv7UyzycdVf2vgpX-7pu8DDzBLr4XNCdrn200",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

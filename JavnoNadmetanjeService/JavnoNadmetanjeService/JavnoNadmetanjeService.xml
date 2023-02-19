@@ -1,0 +1,1478 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JavnoNadmetanjeService</name>
+    </assembly>
+    <members>
+        <member name="T:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController">
+            <summary>
+            Kontroler za javna nadmetanja.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.#ctor(JavnoNadmetanjeService.Data.IJavnoNadmetanjeRepository,JavnoNadmetanjeService.ServiceCalls.IAdresaService,JavnoNadmetanjeService.ServiceCalls.IDeoParceleService,JavnoNadmetanjeService.ServiceCalls.IKupacService,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,LicitacijaService.Data.ILicitacijaRepository)">
+            <summary>
+            Dependency injection za JavnoNadmetanje kontroler.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.GetJavnaNadmetanja(System.String)">
+            <summary>
+            Vraca listu svih javnih nadmetanja.
+            </summary>
+            <returns>Vraca potvrdu o listi postojećih javnih nadmetanja.</returns>
+            <param name="authorization">Autorizovan token.</param>
+            <response code="200">Vraca listu javnih nadmetanja.</response>
+            <response code="204">Ne postoje javna nadmetanja.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.GetJavnoNadmetanje(System.Guid,System.String)">
+            <summary>
+            Vraca jedno javno nadmetanje na osnovu zadatog ID-ja.
+            </summary>
+            <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraca potvrdu o specifiranom javnom nadmetanju.</returns>
+            <response code="200">Vraca specifirano javno nadmetanje.</response>
+            <response code="404">Specifirano javno nadmetanje ne postoji.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.CreateJavnoNadmetanje(JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO,System.String)">
+            <summary>
+            Kreira novo javno nadmetanje.
+            </summary>
+            <param name="javnoNadmetanjeCreateDTO">DTO za kreiranje javnog nadmetanja.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraca potvrdu o kreiranom javnom nadmetanju.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog javnog nadmetanja. \
+            POST /api/javnaNadmetanja \
+            { \
+                "id": "02994fa5-b1aa-40c9-80cb-582a3549f0c1", \
+                "licitacijaID": "01724de1-1281-4206-a9ee-a153ba559304", \
+                "adresaID":  "6f79d49c-1c14-49b7-94c3-19a81c7f97a0", \
+                "deoParceleID":  "3846acaf-3d0e-439a-bf27-85344934f2ca", \
+                "kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+                "tipNadmetanja": "OTVARANJE_ZATVORENIH_PONUDA", \
+                "opstina": "ZEDNIK", \
+                "datumNad": "2019-05-25T00:00:00", \
+                "vremePoc": "2019-05-25T10:00:00", \
+                "vremeKraj": "2019-05-25T12:30:00", \
+                "periodZakupa": 28, \
+                "pocetnaCena": 100, \
+                "visinaCene": 1000000, \
+                "izlicitiranaCena": 14000, \
+                "brojUcesnika": 95, \
+                "prijavljeniKupci": 52, \
+                "licitanti": 39, \
+                "krug": 5, \
+                "statusNadmetanja": "DRUGI_KRUG_STARI", \
+                "izuzeto": false \
+            }
+            </remarks>
+            <response code="201">Vraća kreirano javno nadmetanje.</response>
+            <response code="422">Došlo je do greške, već postoji atribut na serveru sa istim vrednostima.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja javnog nadmetanja.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.UpdateJavnoNadmetanje(JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO,System.String)">
+            <summary>
+            Azurira jedno javno nadmetanje.
+            </summary>
+            <param name="javnoNadmetanjeUpdateDTO">DTO za azuriranje javnog nadmetanja.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraca potvrdu o azuriranom javnom nadmetanju.</returns>
+            <remarks>
+            Primer zahteva za azuriranje postojeceg javnog nadmetanja. \
+            PUT /api/javnaNadmetanja \
+            { \
+                "id": "02994fa5-b1aa-40c9-80cb-582a3549f0c1", \
+                "licitacijaID": "01724de1-1281-4206-a9ee-a153ba559304", \
+                "adresaID":  "6f79d49c-1c14-49b7-94c3-19a81c7f97a0", \
+                "deoParceleID":  "3846acaf-3d0e-439a-bf27-85344934f2ca", \
+                "kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+                "tipNadmetanja": "OTVARANJE_ZATVORENIH_PONUDA", \
+                "opstina": "ZEDNIK", \
+                "datumNad": "2019-05-25T00:00:00", \
+                "vremePoc": "2019-05-25T10:00:00", \
+                "vremeKraj": "2019-05-25T12:30:00", \
+                "periodZakupa": 28, \
+                "pocetnaCena": 700, \
+                "visinaCene": 7000000, \
+                "izlicitiranaCena": 74000, \
+                "brojUcesnika": 95, \
+                "prijavljeniKupci": 52, \
+                "licitanti": 39, \
+                "krug": 5, \
+                "statusNadmetanja": "DRUGI_KRUG_STARI", \
+                "izuzeto": false \
+            }
+            </remarks>
+            <response code="200">Vraca azurirano javno nadmetanje.</response>
+            <response code="404">Specifirano javno nadmetanje ne postoji.</response>
+            <response code="422">Doslo je do greške, već postoji atribut sa istim vrednostima.</response>
+            <response code="500">Doslo je do greške na serveru prilikom ažuriranja javnog nadmetanja.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.DeleteJavnoNadmetanje(System.Guid,System.String)">
+            <summary>
+            Briše jedno javno nadmetanje na osnovu zadatog ID-ja.
+            </summary>
+            <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o brisanju javnog nadmetanja.</returns>
+            <response code="204">Specifirano javno nadmetanje je uspešno obrisano.</response>
+            <response code="404">Specifirano javno nadmetanje ne postoji.</response>
+            <response code="500">Došlo je do greske na serveru prilikom brisanja specifiranog javnog nadmetanja.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.JavnoNadmetanjeController.GetFizickaLicaOptions">
+            <summary>
+            Vraca opcije za rad sa javnim nadmetanjima.
+            </summary>
+            <returns>Vraca prazan 200 HTTP kod.</returns>
+            <response code="200">Vraca prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Controllers.LicitacijaController">
+            <summary>
+            Kontroler za entitet licitacija.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.LicitacijaController.#ctor(LicitacijaService.Data.ILicitacijaRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za Licitacija kontroler.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.LicitacijaController.GetLicitacije">
+            <summary>
+            Vraća listu svih licitacija.
+            </summary>
+            <returns>Vraca potvrdu o listi postojecih licitacija.</returns>
+            <response code="200">Vraca listu licitacija.</response>
+            <response code="204">Ne postoje licitacija.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.LicitacijaController.GetLicitacija(System.Guid)">
+            <summary>
+            Vraca jednu licitaciju na osnovu zadatog ID-ja.
+            </summary>
+            <param name="licitacijaID">ID licitacije.</param>
+            <returns>Vraca potvrdu o specifiranoj licitaciji.</returns>
+            <response code="200">Vraca specifiranu licitaciju.</response>
+            <response code="404">Specifirana licitacija ne postoji.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.LicitacijaController.CreateLicitacija(JavnoNadmetanjeService.DTO.LicitacijaCreateDTO)">
+            <summary>
+            Kreira novo licitaciju.
+            </summary>
+            <param name="licitacijaCreateDTO">DTO za kreiranje licitacije.</param>
+            <returns>Vraca potvrdu o kreiranoj licitaciji.</returns>
+            <remarks>
+            Primer zahteva za kreiranje nove licitacije. \
+            POST /api/licitacije \
+            { \
+            	"datumLicitacije": "1999-02-26T00:00:00", \
+            	"rok": "2023-02-18T00:00:00", \
+            	"ogrnMaxPovrs": "13", \
+            	"korakCene": "15" \
+            }
+            </remarks>
+            <response code="201">Vraca kreiranu licitaciju.</response>
+            <response code="500">Doslo je do greske na serveru prilikom kreiranja licitacije.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.LicitacijaController.UpdateLicitacija(JavnoNadmetanjeService.DTO.LicitacijaUpdateDTO)">
+            <summary>
+            Azurira jednu licitaciju.
+            </summary>
+            <param name="LicitacijaUpdateDTO">DTO za azuriranje licitacije.</param>
+            <returns>Vraca potvrdu o azuriranoj licitaciji.</returns>
+            <remarks>
+            Primer zahteva za azuriranje postojece licitacije. \
+            PUT /api/licitacije \
+            { \
+            	"id": "",
+                "datumLicitacije": "1999-02-27T00:00:00", \
+            	"rok": "2023-02-17T00:00:00", \
+            	"ogrnMaxPovrs": "77", \
+            	"korakCene": "25" \
+            }
+            </remarks>
+            <response code="200">Vraca azuriranu licitaciju.</response>
+            <response code="404">Specifirana licitacija ne postoji.</response>
+            <response code="500">Doslo je do greske na serveru prilikom azuriranja licitacije.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.LicitacijaController.DeleteLicitacija(System.Guid)">
+            <summary>
+            Brise jednu licitaciju na osnovu zadatog ID-ja.
+            </summary>
+            <param name="licitacijaID">ID licitacije.</param>
+            <returns>Vraca potvrdu o brisanju licitacije.</returns>
+            <response code="204">Specifirana licitacija je uspesno obrisana.</response>
+            <response code="404">Specifirana licitacija ne postoji.</response>
+            <response code="500">Doslo je do greske na serveru prilikom brisanja specifiranoe licitacije.</response>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Controllers.LicitacijaController.GetAdreseOptions">
+            <summary>
+            Vraca opcije za rad sa licitacijama.
+            </summary>
+            <returns>Vraca prazan 200 HTTP kod.</returns>
+            <response code="200">Vraca prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Data.IJavnoNadmetanjeRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet javno-nadmetanje.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.IJavnoNadmetanjeRepository.GetJavnaNadmetanja">
+            <summary>
+            Vraća listu javnih nadmetanja.
+            </summary>
+            <returns>Vraća listu korisnika.</returns>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.IJavnoNadmetanjeRepository.GetJavnoNadmetanjeByID(System.Guid)">
+            <summary>
+            Vraća jedno javno nadmetanje na osnovu zadatog ID-ja.
+            </summary>
+            <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
+            <returns>Vraća specifiranog javno nadmetanje.</returns>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.IJavnoNadmetanjeRepository.CreateJavnoNadmetanje(JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO)">
+            <summary>
+            Dodaje novo javno nadmetanje.
+            </summary>
+            <param name="javnoNadmetanjeCreateDTO">DTO za kreiranje javnog nadmetanja.</param>
+            <returns>Vraća DTO kreiranog javnog nadmetanja.</returns>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.IJavnoNadmetanjeRepository.DeleteJavnoNadmetanje(System.Guid)">
+            <summary>
+            Brise javno nadmetanje.
+            </summary>
+            <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.IJavnoNadmetanjeRepository.SaveChanges">
+            <summary>
+            Sacuva sve promene.
+            </summary>
+            <returns>Vraca boolean o potvrdi sacuvanih promena.</returns>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Data.JavnoNadmetanjeRepository">
+             <summary>
+             Repozitorijum za entitet javno nadmetanje.
+             </summary>
+            
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.JavnoNadmetanjeRepository.#ctor(JavnoNadmetanjeService.Entities.JavnoNadmetanjeContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.JavnoNadmetanjeRepository.GetJavnaNadmetanja">
+            <summary>
+            Vraća listu javnih nadmetanja iz konteksta.
+            </summary>
+            <returns>Vraća listu javnih nadmetanja.</returns>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.JavnoNadmetanjeRepository.GetJavnoNadmetanjeByID(System.Guid)">
+            <summary>
+            Vraća jedno javno nadmetanje iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
+            <returns>Vraća specifiranog javno nadmetanje.</returns>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.JavnoNadmetanjeRepository.CreateJavnoNadmetanje(JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO)">
+            <summary>
+            Dodaje novo javno nadmetanje u kontekst.
+            </summary>
+            <param name="javnoNadmetanjeCreateDTO">DTO za kreiranje javnog nadmetanja.</param>
+            <returns>Vraća DTO kreiranog javnog nadmetanja.</returns>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.JavnoNadmetanjeRepository.DeleteJavnoNadmetanje(System.Guid)">
+            <summary>
+            Briše javno nadmetanje iz konteksta.
+            </summary>
+            <param name="javnoNadmetanjeID">ID javnog nadmetanja.</param>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Data.JavnoNadmetanjeRepository.SaveChanges">
+            <summary>
+            Cuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sacuvanih promena.</returns>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.AdresaDTO">
+            <summary>
+            Model DTO-a za entitet adresa lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.AdresaDTO.Mesto">
+            <summary>
+            Mesto adrese.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.AdresaDTO.Drzava">
+            <summary>
+            Država adrese.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.DeoParceleDTO">
+            <summary>
+            Model DTO-a za entitet deo parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.ID">
+            <summary>
+            ID dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.ParcelaID">
+            <summary>
+            ID parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.Povrsina">
+            <summary>
+            Površina dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.BrojNekretnina">
+            <summary>
+            Broj nekretnina dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.Obradivost">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.Kultura">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.Klasa">
+            <summary>
+            Klasa dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.ZasticenaZona">
+            <summary>
+            Zaštićena zona dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.OblikSvojine">
+            <summary>
+            Oblik svojine dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.DeoParceleDTO.Odvodnjavanje">
+            <summary>
+            Odvodnjavanje dela parcele.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.FizickoLiceDTO">
+            <summary>
+            Model DTO-a za entitet fizicko lice.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.FizickoLiceDTO.ID">
+            <summary>
+            ID fizickog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizickog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.FizickoLiceDTO.PunoIme">
+            <summary>
+            Puno ime fizickog lica.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje javno nadmetanje entiteta.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.LicitacijaID">
+            <summary>
+            ID licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.AdresaID">
+            <summary>
+            ID adrese javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.DeoParceleID">
+            <summary>
+            ID dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.TipNadmetanja">
+            <summary>
+            Tip javnog nadmetanja. Enumerator.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.Opstina">
+            <summary>
+            Opstina javnog nadmetanja. Enumerator.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.DatumNad">
+            <summary>
+            Datum javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.VremePoc">
+            <summary>
+            Vreme pocetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.VremeKraj">
+            <summary>
+            Vreme zavrsetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.PeriodZakupa">
+            <summary>
+            Period zakupa M javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.PocetnaCena">
+            <summary>
+            Pocetna cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.VisinaCene">
+            <summary>
+            Visina cene javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.IzlicitiranaCena">
+            <summary>
+            Izlicitirana cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.BrojUcesnika">
+            <summary>
+            Broj ucesnika javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.PrijavljeniKupci">
+            <summary>
+            Prijavljeni kupci javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.Licitanti">
+            <summary>
+            Licitanti javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.Krug">
+            <summary>
+            Krug koji je po redu javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.StatusNadmetanja">
+            <summary>
+            Status javnog nadmetanja. Enumerator
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.Izuzeto">
+            <summary>
+            Izuzeto.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.DTO.JavnoNadmetanjeCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO">
+            <summary>
+            Model DTO-a za javno nadmetanje entitet.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.ID">
+            <summary>
+            ID javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.Licitacija">
+            <summary>
+            Licitacija javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.Adresa">
+            <summary>
+            Adresa javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.DeoParcele">
+            <summary>
+            Deo parcele javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.Kupac">
+            <summary>
+            Kupac javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.TipNadmetanja">
+            <summary>
+            Tip nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.Opstina">
+            <summary>
+            Opstina.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.DatumNad">
+            <summary>
+            Datum javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.VremePoc">
+            <summary>
+            Vreme pocetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.VremeKraj">
+            <summary>
+            Vreme zavrsetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.PeriodZakupa">
+            <summary>
+            Period zakupa meseci javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.PocetnaCena">
+            <summary>
+            Pocetna cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.VisinaCene">
+            <summary>
+            Visina cene javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.IzlicitiranaCena">
+            <summary>
+            Izlicitirana cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.BrojUcesnika">
+            <summary>
+            Broj ucesnika javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.PrijavljeniKupci">
+            <summary>
+            Prijavljeni kupci javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.Licitanti">
+            <summary>
+            Licitanti javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.Krug">
+            <summary>
+            Krug koji je po redu javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.StatusNadmetanja">
+            <summary>
+            Status javnog nadmetanja. Enumerator
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeDTO.Izuzeto">
+            <summary>
+            Izuzeto.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO">
+            <summary>
+            Model DTO-a za azuriranje javno nadmetanje entiteta.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.ID">
+            <summary>
+            ID javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.LicitacijaID">
+            <summary>
+            ID licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.AdresaID">
+            <summary>
+            ID adrese javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.DeoParceleID">
+            <summary>
+            ID dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.TipNadmetanja">
+            <summary>
+            Tip javnog nadmetanja. Enumerator.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.Opstina">
+            <summary>
+            Opstina javnog nadmetanja. Enumerator.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.DatumNad">
+            <summary>
+            Datum javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.VremePoc">
+            <summary>
+            Vreme pocetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.VremeKraj">
+            <summary>
+            Vreme zavrsetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.PeriodZakupa">
+            <summary>
+            Period zakupa M javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.PocetnaCena">
+            <summary>
+            Pocetna cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.VisinaCene">
+            <summary>
+            Visina cene javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.IzlicitiranaCena">
+            <summary>
+            Izlicitirana cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.BrojUcesnika">
+            <summary>
+            Broj ucesnika javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.PrijavljeniKupci">
+            <summary>
+            Prijavljeni kupci javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.Licitanti">
+            <summary>
+            Licitanti javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.Krug">
+            <summary>
+            Krug koji je po redu javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.StatusNadmetanja">
+            <summary>
+            Status javnog nadmetanja. Enumerator
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.Izuzeto">
+            <summary>
+            Izuzeto.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.DTO.JavnoNadmetanjeUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.KontaktOsobaDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KontaktOsobaDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KontaktOsobaDTO.PunoIme">
+            <summary>
+            Puno ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KontaktOsobaDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KontaktOsobaDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.KupacDTO">
+            <summary>
+            DTO za kupca.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KupacDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KupacDTO.Lice">
+            <summary>
+            JMBG fizickog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KupacDTO.OvlascenoLice">
+            <summary>
+            ID ovlascenjog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KupacDTO.Prioritet">
+            <summary>
+            Prioritet kupca.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KupacDTO.ImaZabranu">
+            <summary>
+            Kupac ima/nema zabranu.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KupacDTO.DatumPocetkaZabrane">
+            <summary>
+            Datum pocetka zabrane.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KupacDTO.DatumZavrsetkaZabrane">
+            <summary>
+            Datum zavrsetka zabrane.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.KupacDTO.BrojKupovina">
+            <summary>
+            Broj kupovina kupca.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.LiceDTO">
+            <summary>
+            Model DTO-a za entitet lice.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LiceDTO.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LiceDTO.PravnoLice">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LiceDTO.Adresa">
+            <summary>
+            Adresa lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LiceDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LiceDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LiceDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LiceDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LiceDTO.OvlascenoLice">
+            <summary>
+            Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.LicitacijaCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje licitacija entiteta.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaCreateDTO.DatumLicitacije">
+            <summary>
+            Datum licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaCreateDTO.Rok">
+            <summary>
+            Rok za dostavljanje prijava, datum i sat.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaCreateDTO.OgrnMaxPovrs">
+            <summary>
+            OgrnMaxPovrs licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaCreateDTO.KorakCene">
+            <summary>
+            Korak cene licitacije.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.DTO.LicitacijaCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje licitacije.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.LicitacijaDTO">
+            <summary>
+            Model DTO-a za licitacija entitet.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaDTO.ID">
+            <summary>
+            ID licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaDTO.DatumLicitacije">
+            <summary>
+            Datum licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaDTO.Rok">
+            <summary>
+            Rok za dostavljanje prijava, datum i sat.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaDTO.OgrnMaxPovrs">
+            <summary>
+            OgrnMaxPovrs licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaDTO.KorakCene">
+            <summary>
+            Korak cene licitacije.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.LicitacijaUpdateDTO">
+            <summary>
+            Model DTO-a za azuriranje licitacija entiteta.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaUpdateDTO.ID">
+            <summary>
+            ID licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaUpdateDTO.DatumLicitacije">
+            <summary>
+            Datum licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaUpdateDTO.Rok">
+            <summary>
+            Rok za dostavljanje prijava, datum i sat.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaUpdateDTO.OgrnMaxPovrs">
+            <summary>
+            OgrnMaxPovrs licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.LicitacijaUpdateDTO.KorakCene">
+            <summary>
+            Korak cene licitacije.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.DTO.LicitacijaUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za azuriranje licitacije.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.OvlascenoLiceDTO">
+            <summary>
+            Model DTO-a za entitet ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.OvlascenoLiceDTO.ID">
+            <summary>
+            ID ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.OvlascenoLiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.OvlascenoLiceDTO.Adresa">
+            <summary>
+            Adresa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.OvlascenoLiceDTO.Telefon1">
+            <summary>
+            Prvi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.OvlascenoLiceDTO.Telefon2">
+            <summary>
+            Drugi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.OvlascenoLiceDTO.Email">
+            <summary>
+            Email ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.OvlascenoLiceDTO.BrojRacuna">
+            <summary>
+            Broj računa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.DTO.PravnoLiceDTO">
+            <summary>
+            Model DTO-a za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.PravnoLiceDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.PravnoLiceDTO.KontaktOsoba">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.PravnoLiceDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.DTO.PravnoLiceDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Entities.EntitiesEnums">
+            <summary>
+            Enumeratori za modele entiteta.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Entities.EntitiesEnums.TipNadmetanja">
+            <summary>
+            Enumerator za tip javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.TipNadmetanja.JAVNA_LICITACIJA">
+            <summary>
+            Nadmetanje za prodaju zemljišta.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.TipNadmetanja.OTVARANJE_ZATVORENIH_PONUDA">
+            <summary>
+            Javno otvaranje zatvorenih ponuda
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina">
+            <summary>
+            Enumerator za opstinu javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.CANTAVIR">
+            <summary>
+            Katastarska opstina Cantavir.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.BACKI_VINOGRADI">
+            <summary>
+            Katastarska opstina Backi Vinogradi.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.BIKOVO">
+            <summary>
+            Katastarska opstina Bikovo.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.DJUDJIN">
+            <summary>
+            Katastarska opstina Djudjin.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.ZEDNIK">
+            <summary>
+            Katastarska opstina Zednik.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.TAVANKUT">
+            <summary>
+            Katastarska opstina Tavankut.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.BAJMOK">
+            <summary>
+            Katastarska opstina Bajmok.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.DONJI_GRAD">
+            <summary>
+            Katastarska opstina Donji Grad.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.STARI_GRAD">
+            <summary>
+            Katastarska opstina Stari Grad.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.NOVI_GRAD">
+            <summary>
+            Katastarska opstina Novi Grad.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.Opstina.PALIC">
+            <summary>
+            Katastarska opstina Palic.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Entities.EntitiesEnums.StatusNadmetanja">
+            <summary>
+            Enumerator za status javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.StatusNadmetanja.PRVI_KRUG">
+            <summary>
+            Prvi krug
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.StatusNadmetanja.DRUGI_KRUG_STARI">
+            <summary>
+            Drugi krug sa starim uslovima
+            </summary>
+        </member>
+        <member name="F:JavnoNadmetanjeService.Entities.EntitiesEnums.StatusNadmetanja.DRUGI_KRUG_NOVI">
+            <summary>
+            Drugi krug sa novim uslovima
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Entities.JavnoNadmetanjeContext">
+            <summary>
+            DbContext za JavnoNadmetanjeService mikroservis.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Entities.JavnoNadmetanjeContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeContext.JavnoNadmetanje">
+            <summary>
+            DbSet za entitet javno nadmetanje.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeContext.Licitacija">
+            <summary>
+            DbSet za entitet licitacija.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Entities.JavnoNadmetanjeContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity">
+            <summary>
+            Model entiteta javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.ID">
+            <summary>
+            ID javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.LicitacijaID">
+            <summary>
+            strani kljuc - ID licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.Licitacija">
+            <summary>
+            Licitacija.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.AdresaID">
+            <summary>
+            strani kljuc - ID adrese nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.DeoParceleID">
+            <summary>
+            strani kljuc - ID dela parcele.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.KupacID">
+            <summary>
+            strani kljuc - ID najboljeg kupca.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.TipNadmetanja">
+            <summary>
+            Tip javnog nadmetanja. Enumerator.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.Opstina">
+            <summary>
+            Opstina javnog nadmetanja. Enumerator.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.DatumNad">
+            <summary>
+            Datum javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.VremePoc">
+            <summary>
+            Vreme pocetka javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.VremeKraj">
+            <summary>
+            Vreme kraja javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.PeriodZakupa">
+            <summary>
+            Period zakupa M javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.PocetnaCena">
+            <summary>
+            Pocetna cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.VisinaCene">
+            <summary>
+            Visina cene javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.IzlicitiranaCena">
+            <summary>
+            Izlicitirana cena javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.BrojUcesnika">
+            <summary>
+            Broj ucesnika javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.PrijavljeniKupci">
+            <summary>
+            Prijavljeni kupci javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.Licitanti">
+            <summary>
+            Licitanti javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.Krug">
+            <summary>
+            Krug koji je po redu javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.StatusNadmetanja">
+            <summary>
+            Status javnog nadmetanja. Enumerator
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.JavnoNadmetanjeEntity.Izuzeto">
+            <summary>
+            Izuzeto.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Entities.LicitacijaEntity">
+            <summary>
+            Model entiteta licitacija.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.LicitacijaEntity.ID">
+            <summary>
+            ID licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.LicitacijaEntity.DatumLicitacije">
+            <summary>
+            Datum licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.LicitacijaEntity.Rok">
+            <summary>
+            Rok za dostavljanje prijava, datum i sat.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.LicitacijaEntity.OgrnMaxPovrs">
+            <summary>
+            OgrnMaxPovrs licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.LicitacijaEntity.KorakCene">
+            <summary>
+            Korak cene licitacije.
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanjeService.Entities.LicitacijaEntity.JavnaNadmetanja">
+            <summary>
+            Javna nadmetanja licitacije.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:JavnoNadmetanjeService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:JavnoNadmetanjeService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:JavnoNadmetanjeService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:JavnoNadmetanjeService.Profiles.JavnoNadmetanjeProfile">
+            <summary>
+            Profil mapera za model entiteta javno nadmetanje.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Profiles.JavnoNadmetanjeProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta javno nadmetanje.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.Profiles.LicitacijaProfile">
+            <summary>
+            Profil mapera za model entiteta licitacije.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.Profiles.LicitacijaProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta licitacije.
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanjeService.ServiceCalls.AdresaService">
+            <summary>
+            Servis poziva za adresu lica.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.ServiceCalls.AdresaService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.ServiceCalls.AdresaService.GetAdresaByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu lica od drugog mikro servisa.
+            </summary>
+            <param name="adresaLicaID">ID adrese lica.</param>
+            <param name="token">Token za adresu lica mikroservis.</param>
+            <returns>Vraća model DTO-a adrese lica.</returns>
+        </member>
+        <member name="T:JavnoNadmetanjeService.ServiceCalls.DeoParceleService">
+            <summary>
+            Servis poziva za deo parcele.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.ServiceCalls.DeoParceleService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.ServiceCalls.DeoParceleService.GetDeoParceleByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća deo parcele od drugog mikro servisa.
+            </summary>
+            <param name="deoParceleID">ID dela parcele.</param>
+            <param name="token">Token za deo parcele mikroservis.</param>
+            <returns>Vraća model DTO-a dela parcele.</returns>
+        </member>
+        <member name="T:JavnoNadmetanjeService.ServiceCalls.IAdresaService">
+            <summary>
+            Interfejs od servis poziva za adresu javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.ServiceCalls.IAdresaService.GetAdresaByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu javnog nadmetanja od drugog mikro servisa.
+            </summary>
+            <param name="adresaID">ID adrese javnog nadmetanja.</param>
+            <param name="token">Token za adresu javnog nadmetanja mikroservis.</param>
+            <returns>Vraća model DTO-a adrese javnog nadmetanja.</returns>
+        </member>
+        <member name="T:JavnoNadmetanjeService.ServiceCalls.IDeoParceleService">
+            <summary>
+            Interfejs od servis poziva za deo parcele.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.ServiceCalls.IDeoParceleService.GetDeoParceleByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća deo parcele od drugog mikro servisa.
+            </summary>
+            <param name="deoParceleID">ID dela parcele.</param>
+            <param name="token">Token za deo parcele mikroservis.</param>
+            <returns>Vraća model DTO-a dela parcele.</returns>
+        </member>
+        <member name="T:JavnoNadmetanjeService.ServiceCalls.IKupacService">
+            <summary>
+            Interfejs od servis poziva za kupca javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.ServiceCalls.IKupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća kupca javnog nadmetanja od drugog mikro servisa.
+            </summary>
+            <param name="kupacID">ID kupca javnog nadmetanja.</param>
+            <param name="token">Token za kupca javnog nadmetanja mikroservis.</param>
+            <returns>Vraća model DTO-a kupca javnog nadmetanja.</returns>
+        </member>
+        <member name="T:JavnoNadmetanjeService.ServiceCalls.KupacService">
+            <summary>
+            Servis poziva za najboljeg kupca javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.ServiceCalls.KupacService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:JavnoNadmetanjeService.ServiceCalls.KupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća kupca javnog nadmetanja od drugog mikro servisa.
+            </summary>
+            <param name="najboljiKupacID">ID kupca javnog nadmetanja.</param>
+            <param name="token">Token za kupca javnog nadmetanja mikroservis.</param>
+            <returns>Vraća model DTO-a kupca javnog nadmetanja.</returns>
+        </member>
+        <member name="T:LicitacijaService.Data.ILicitacijaRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet licitacija.
+            </summary>
+        </member>
+        <member name="M:LicitacijaService.Data.ILicitacijaRepository.GetLicitacije">
+            <summary>
+            Vraća listu licitacija.
+            </summary>
+            <returns>Vraća listu licitacija.</returns>
+        </member>
+        <member name="M:LicitacijaService.Data.ILicitacijaRepository.GetLicitacijaByID(System.Guid)">
+            <summary>
+            Vraća jedno licitaciju na osnovu zadatog ID-ja.
+            </summary>
+            <param name="licitacijaID">ID licitacije.</param>
+            <returns>Vraća specifiranu licitaciju.</returns>
+        </member>
+        <member name="M:LicitacijaService.Data.ILicitacijaRepository.CreateLicitacija(JavnoNadmetanjeService.DTO.LicitacijaCreateDTO)">
+            <summary>
+            Dodaje novu licitaciju.
+            </summary>
+            <param name="licitacijaCreateDTO">DTO za kreiranje licitacije.</param>
+            <returns>Vraća DTO kreirane licitacije.</returns>
+        </member>
+        <member name="M:LicitacijaService.Data.ILicitacijaRepository.DeleteLicitacija(System.Guid)">
+            <summary>
+            Brise licitaciju.
+            </summary>
+            <param name="licitacijaID">ID licitacije.</param>
+        </member>
+        <member name="M:LicitacijaService.Data.ILicitacijaRepository.SaveChanges">
+            <summary>
+            Sacuva sve promene.
+            </summary>
+            <returns>Vraca boolean o potvrdi sacuvanih promena.</returns>
+        </member>
+        <member name="T:LicitacijaService.Data.LicitacijaRepository">
+            <summary>
+            Repozitorijum za entitet licitacije.
+            </summary>
+        </member>
+        <member name="M:LicitacijaService.Data.LicitacijaRepository.#ctor(JavnoNadmetanjeService.Entities.JavnoNadmetanjeContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:LicitacijaService.Data.LicitacijaRepository.GetLicitacije">
+            <summary>
+            Vraća listu licitacija iz konteksta.
+            </summary>
+            <returns>Vraća listu licitacija.</returns>
+        </member>
+        <member name="M:LicitacijaService.Data.LicitacijaRepository.GetLicitacijaByID(System.Guid)">
+            <summary>
+            Vraća jednu licitaciju iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="licitacijaID">ID licitacije.</param>
+            <returns>Vraća specifiranu licitaciju.</returns>
+        </member>
+        <member name="M:LicitacijaService.Data.LicitacijaRepository.CreateLicitacija(JavnoNadmetanjeService.DTO.LicitacijaCreateDTO)">
+            <summary>
+            Dodaje novu licitaciju u kontekst, koja kasnije vraća kao DTO objekat.
+            </summary>
+            <param name="licitacijaCreateDTO">DTO za kreiranje licitacije.</param>
+            <returns>Vraća DTO kreirane licitacije.</returns>
+        </member>
+        <member name="M:LicitacijaService.Data.LicitacijaRepository.DeleteLicitacija(System.Guid)">
+            <summary>
+            Briše licitaciju iz konteksta.
+            </summary>
+            <param name="licitacijaID">ID licitacije.</param>
+        </member>
+        <member name="M:LicitacijaService.Data.LicitacijaRepository.SaveChanges">
+            <summary>
+            Cuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sacuvanih promena.</returns>
+        </member>
+    </members>
+</doc>

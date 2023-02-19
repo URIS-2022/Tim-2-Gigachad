@@ -1,0 +1,572 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KorisnikService</name>
+    </assembly>
+    <members>
+        <member name="T:KorisnikService.Controllers.AutentifikacijaController">
+            <summary>
+            Kontroler za autentifikaciju korisnika.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Controllers.AutentifikacijaController.#ctor(KorisnikService.Helpers.IAutentifikacijaHelper)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Controllers.AutentifikacijaController.Authenticate(KorisnikService.DTO.KorisnikAuthenticateDTO)">
+            <summary>
+            Vrši autentifikaciju korisnika.
+            </summary>
+            <param name="korisnik">Model sa podacima na osnovu kojih se vrši autentifikacija.</param>
+            <returns>Vraća potvrdu o autentifikaciji korisnika.</returns>
+            <remarks>
+            Primer zahteva za autentifikaciju korisnika. \
+            POST api/korisnici/autentifikacija \
+            { \
+            	"naziv": "korisnik", \
+            	"lozinka": "lozinka" \
+            }
+            </remarks>
+            <response code="200">Vraća token korisnika.</response>
+            <response code="401">Korisnik nije auterizovan.</response>
+        </member>
+        <member name="T:KorisnikService.Controllers.KorisnikController">
+            <summary>
+            Kontroler za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Controllers.KorisnikController.#ctor(KorisnikService.Data.IKorisnikRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Controllers.KorisnikController.GetKorisnici">
+            <summary>
+            Vraća listu svih korisnika.
+            </summary>
+            <returns>Vraća potvrdu o listi postojećih korisnika.</returns>
+            <response code="200">Vraća listu korisnika.</response>
+            <response code="204">Ne postoje korisnici.</response>
+        </member>
+        <member name="M:KorisnikService.Controllers.KorisnikController.GetKorisnik(System.Guid)">
+            <summary>
+            Vraća jednog korisnika na osnovu zadatog ID-ja.
+            </summary>
+            <param name="korisnikID">ID korisnika.</param>
+            <returns>Vraća potvrdu o specifiranom korisniku.</returns>
+            <response code="200">Vraća specifiranog korisnika.</response>
+            <response code="404">Specifirani korisnik ne postoji.</response>
+        </member>
+        <member name="M:KorisnikService.Controllers.KorisnikController.CreateKorisnik(KorisnikService.DTO.KorisnikCreateDTO)">
+            <summary>
+            Kreira novog korisnika.
+            </summary>
+            <param name="korisnikCreateDTO">DTO za kreiranje korisnika.</param>
+            <returns>Potvrdu o kreiranom korisniku.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog korisnika. \
+            POST /api/korisnici \
+            { \
+            	"naziv": "korisnik", \
+            	"lozinka": "lozinka", \
+            	"ime": "Aleksandar", \
+            	"prezime": "Perić", \
+            	"email": "peric.it30.2019@uns.ac.rs", \
+            	"tip": "ADMIN" \
+            }
+            </remarks>
+            <response code="201">Vraća kreiranog korisnika.</response>
+            <response code="422">Došlo je do greške, već postoji korisnik na serveru sa istim nazivom.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja novog korisnika.</response>
+        </member>
+        <member name="M:KorisnikService.Controllers.KorisnikController.UpdateKorisnik(KorisnikService.DTO.KorisnikUpdateDTO)">
+            <summary>
+            Ažurira jednog korisnika.
+            </summary>
+            <param name="korisnikUpdateDTO">DTO za ažuriranje korisnika.</param>
+            <returns>Potvrdu o ažuriranom korisniku.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog korisnika. \
+            PUT /api/korisnici \
+            { \
+            	"id": "a0f34818-02ca-45fd-ad61-7978aebadd20", \
+            	"naziv": "korisnik", \
+            	"lozinka": "lozinka", \
+            	"ime": "Aleksandar", \
+            	"prezime": "Perić", \
+            	"email": "peric.it30.2019@uns.ac.rs", \
+            	"tip": "ADMIN" \
+            }
+            </remarks>
+            <response code="200">Vraća ažuriranog korisnika.</response>
+            <response code="404">Specifirani korisnik ne postoji.</response>
+            <response code="422">Došlo je do greške, već postoji korisnik na serveru sa istim nazivom.</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja specifiranog korisnika.</response>
+        </member>
+        <member name="M:KorisnikService.Controllers.KorisnikController.DeleteKorisnik(System.Guid)">
+            <summary>
+            Briše jednog korisnika na osnovu zadatog ID-ja.
+            </summary>
+            <param name="korisnikID">ID korisnika.</param>
+            <returns>Potvrdu o brisanju korisnika.</returns>
+            <response code="204">Specifirani korisnik je uspešno obrisano.</response>
+            <response code="404">Specifirani korisnik ne postoji i nije obrisan.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog korisnika.</response>
+        </member>
+        <member name="M:KorisnikService.Controllers.KorisnikController.GetKorisniciOptions">
+            <summary>
+            Vraća opcije za rad sa korisnicima.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:KorisnikService.Data.AutentifikacijaRepository">
+            <summary>
+            Repozitorijum za entitet korisnik.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Data.AutentifikacijaRepository.#ctor(KorisnikService.Entities.KorisnikContext)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Data.AutentifikacijaRepository.KorisnikWithCredentialsExists(System.String,System.String)">
+            <summary>
+            Proverava da li postoji korisnik sa prosleđenim kredencijalima.
+            </summary>
+            <param name="naziv">Korisničko naziv.</param>
+            <param name="lozinka">Korisnička lozinka.</param>
+            <returns>Vraća boolean o potvrdi autentifikacije korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Data.AutentifikacijaRepository.VerifyPassword(System.String,System.String,System.String)">
+            <summary>
+            Proverava validnost prosleđene lozinke sa prosleđenim hašom i soli.
+            </summary>
+            <param name="lozinka">Korisnička lozinka.</param>
+            <param name="hash">Sačuvan haš.</param>
+            <param name="so">Sačuvana so.</param>
+            <returns>Vraća boolean o potvrdi validnosti lozinke.</returns>
+        </member>
+        <member name="T:KorisnikService.Data.IAutentifikacijaRepository">
+            <summary>
+            Interfejs od repozitorijuma za autentifikaciju.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Data.IAutentifikacijaRepository.KorisnikWithCredentialsExists(System.String,System.String)">
+            <summary>
+            Proverava da li postoji korisnik sa prosleđenim kredencijalima.
+            </summary>
+            <param name="naziv">Korisničko ime/naziv.</param>
+            <param name="lozinka">Korisnička lozinka.</param>
+            <returns>Vraća boolean o potvrdi autentifikacije korisnika.</returns>
+        </member>
+        <member name="T:KorisnikService.Data.IKorisnikRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet korisnik.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Data.IKorisnikRepository.GetKorisnici">
+            <summary>
+            Vraća listu korisnika.
+            </summary>
+            <returns>Vraća listu korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Data.IKorisnikRepository.GetKorisnikByID(System.Guid)">
+            <summary>
+            Vraća jednog korisnika na osnovu zadatog ID-ja.
+            </summary>
+            <param name="korisnikID">ID korisnika.</param>
+            <returns>Vraća specifiranog korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Data.IKorisnikRepository.CreateKorisnik(KorisnikService.DTO.KorisnikCreateDTO)">
+            <summary>
+            Dodaje novog korisnika.
+            </summary>
+            <param name="korisnikCreateDTO">DTO za kreiranje korisnika.</param>
+            <returns>Vraća DTO kreiranog korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Data.IKorisnikRepository.UpdateKorisnik(KorisnikService.DTO.KorisnikUpdateDTO)">
+            <summary>
+            Ažurira specifiranog korisnika.
+            </summary>
+            <param name="korisnikUpdateDTO">DTO za ažuriranje korisnika.</param>
+            <returns>Vraća DTO ažuriranog korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Data.IKorisnikRepository.DeleteKorisnik(System.Guid)">
+            <summary>
+            Briše korisnika.
+            </summary>
+            <param name="korisnikID">ID korisnika.</param>
+        </member>
+        <member name="M:KorisnikService.Data.IKorisnikRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:KorisnikService.Data.KorisnikRepository">
+            <summary>
+            Repozitorijum za entitet korisnik.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Data.KorisnikRepository.#ctor(KorisnikService.Entities.KorisnikContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Data.KorisnikRepository.GetKorisnici">
+            <summary>
+            Vraća listu korisnika iz konteksta.
+            </summary>
+            <returns>Vraća listu korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Data.KorisnikRepository.GetKorisnikByID(System.Guid)">
+            <summary>
+            Vraća jednog korisnika iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="korisnikID">ID korisnika.</param>
+            <returns>Vraća specifiranog korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Data.KorisnikRepository.CreateKorisnik(KorisnikService.DTO.KorisnikCreateDTO)">
+            <summary>
+            Dodaje novog korisnika u kontekst.
+            </summary>
+            <param name="korisnikCreateDTO">DTO za kreiranje korisnika.</param>
+            <returns>Vraća DTO kreiranog korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Data.KorisnikRepository.UpdateKorisnik(KorisnikService.DTO.KorisnikUpdateDTO)">
+            <summary>
+            Ažurira specifiranog korisnika.
+            </summary>
+            <param name="korisnikUpdateDTO">DTO za ažuriranje korisnika.</param>
+            <returns>Vraća DTO ažuriranog korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Data.KorisnikRepository.DeleteKorisnik(System.Guid)">
+            <summary>
+            Briše korisnika iz konteksta.
+            </summary>
+            <param name="korisnikID">ID korisnika.</param>
+        </member>
+        <member name="M:KorisnikService.Data.KorisnikRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="M:KorisnikService.Data.KorisnikRepository.HashPassword(System.String)">
+            <summary>
+            Vrši hašovanje lozinke.
+            </summary>
+            <param name="lozinka">Korisnička lozinka.</param>
+            <returns>Vraća generisani haš i so.</returns>
+        </member>
+        <member name="T:KorisnikService.DTO.KorisnikAuthenticateDTO">
+            <summary>
+            Model DTO-a za autentifikaciju korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikAuthenticateDTO.Naziv">
+            <summary>
+            Korisnički naziv.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikAuthenticateDTO.Lozinka">
+            <summary>
+            Korisnička lozinka.
+            </summary>
+        </member>
+        <member name="T:KorisnikService.DTO.KorisnikCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje entiteta korisnik.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikCreateDTO.Naziv">
+            <summary>
+            Korisnički naziv.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikCreateDTO.Lozinka">
+            <summary>
+            Lozinka korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikCreateDTO.Ime">
+            <summary>
+            Ime korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikCreateDTO.Prezime">
+            <summary>
+            Prezime korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikCreateDTO.Email">
+            <summary>
+            Email korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikCreateDTO.Tip">
+            <summary>
+            Tip korisnika.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.DTO.KorisnikCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje korisnika.
+            </summary>
+        </member>
+        <member name="T:KorisnikService.DTO.KorisnikDTO">
+            <summary>
+            Model DTO-a za entitet korisnik.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikDTO.ID">
+            <summary>
+            ID korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikDTO.Naziv">
+            <summary>
+            Korisnički naziv.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikDTO.Lozinka">
+            <summary>
+            Hašovana lozinka korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikDTO.So">
+            <summary>
+            So korisnikove lozinke.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikDTO.PunoIme">
+            <summary>
+            Puno ime korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikDTO.Email">
+            <summary>
+            Email korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikDTO.Tip">
+            <summary>
+            Tip korisnika.
+            </summary>
+        </member>
+        <member name="T:KorisnikService.DTO.KorisnikUpdateDTO">
+            <summary>
+            Model DTO-a za ažuriranje entiteta korisnik.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikUpdateDTO.ID">
+            <summary>
+            ID korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikUpdateDTO.Naziv">
+            <summary>
+            Korisnički naziv.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikUpdateDTO.Lozinka">
+            <summary>
+            Lozinka korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikUpdateDTO.Ime">
+            <summary>
+            Ime korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikUpdateDTO.Prezime">
+            <summary>
+            Prezime korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikUpdateDTO.Email">
+            <summary>
+            Email korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.DTO.KorisnikUpdateDTO.Tip">
+            <summary>
+            Tip korisnika.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.DTO.KorisnikUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta korisnik.
+            </summary>
+        </member>
+        <member name="T:KorisnikService.Entities.EntitiesEnums">
+            <summary>
+            Enumeratori za modele entiteta.
+            </summary>
+        </member>
+        <member name="T:KorisnikService.Entities.EntitiesEnums.TipKorisnika">
+            <summary>
+            Enumerator za tip korisnika.
+            </summary>
+        </member>
+        <member name="F:KorisnikService.Entities.EntitiesEnums.TipKorisnika.ADMIN">
+            <summary>
+            Administrator.
+            </summary>
+        </member>
+        <member name="F:KorisnikService.Entities.EntitiesEnums.TipKorisnika.KOMISIJA">
+            <summary>
+            Komisija.
+            </summary>
+        </member>
+        <member name="F:KorisnikService.Entities.EntitiesEnums.TipKorisnika.OPERATER">
+            <summary>
+            Operater.
+            </summary>
+        </member>
+        <member name="F:KorisnikService.Entities.EntitiesEnums.TipKorisnika.LICITANT">
+            <summary>
+            Licitant.
+            </summary>
+        </member>
+        <member name="T:KorisnikService.Entities.KorisnikContext">
+            <summary>
+            DbContext za LiceService mikroservis.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Entities.KorisnikContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.Entities.KorisnikContext.Korisnici">
+            <summary>
+            DbSet za entitet korisnik.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Entities.KorisnikContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Entities.KorisnikContext.HashPassword(System.String)">
+            <summary>
+            Vrši hašovanje lozinke.
+            </summary>
+            <param name="lozinka">Korisnička lozinka.</param>
+            <returns>Vraća generisani haš i so.</returns>
+        </member>
+        <member name="T:KorisnikService.Entities.KorisnikEntity">
+            <summary>
+            Model entiteta korisnik.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.Entities.KorisnikEntity.ID">
+            <summary>
+            ID korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.Entities.KorisnikEntity.Naziv">
+            <summary>
+            Korisnički naziv.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.Entities.KorisnikEntity.Lozinka">
+            <summary>
+            Hašovana lozinka korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.Entities.KorisnikEntity.So">
+            <summary>
+            So korisnikove lozinke.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.Entities.KorisnikEntity.Ime">
+            <summary>
+            Ime korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.Entities.KorisnikEntity.Prezime">
+            <summary>
+            Prezime korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.Entities.KorisnikEntity.Email">
+            <summary>
+            Email korisnika.
+            </summary>
+        </member>
+        <member name="P:KorisnikService.Entities.KorisnikEntity.Tip">
+            <summary>
+            Tip korisnika.
+            </summary>
+        </member>
+        <member name="T:KorisnikService.Helpers.AutentifikacijaHelper">
+            <summary>
+            Helper za autentifikaciju korisnika.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Helpers.AutentifikacijaHelper.#ctor(KorisnikService.Data.IAutentifikacijaRepository,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za helper.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Helpers.AutentifikacijaHelper.AuthenticateKorisnik(KorisnikService.DTO.KorisnikAuthenticateDTO)">
+            <summary>
+            Vrši autentifikaciju korisnika.
+            </summary>
+            <param name="korisnik">Model sa podacima na osnovu kojih se vrši autentifikacija.</param>
+            <returns>Vraća boolean o potvrdi autentifikacije korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Helpers.AutentifikacijaHelper.GenerateJWT(KorisnikService.DTO.KorisnikAuthenticateDTO)">
+            <summary>
+            Generiše novi token za autentifikovanog korisnika.
+            </summary>
+            <param name="korisnik">Model sa podacima na osnovu kojih se vrši autentifikacija.</param>
+            <returns>Vraća generisani token u obliku stringa.</returns>
+        </member>
+        <member name="T:KorisnikService.Helpers.IAutentifikacijaHelper">
+            <summary>
+            Interfejs od helpera za autentifikaciju korisnika.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Helpers.IAutentifikacijaHelper.AuthenticateKorisnik(KorisnikService.DTO.KorisnikAuthenticateDTO)">
+            <summary>
+            Vrši autentifikaciju korisnika.
+            </summary>
+            <param name="korisnikDTO">Model sa podacima na osnovu kojih se vrši autentifikacija.</param>
+            <returns>Vraća boolean o potvrdi autentifikacije korisnika.</returns>
+        </member>
+        <member name="M:KorisnikService.Helpers.IAutentifikacijaHelper.GenerateJWT(KorisnikService.DTO.KorisnikAuthenticateDTO)">
+            <summary>
+            Generiše novi token za autentifikovanog korisnika.
+            </summary>
+            <param name="korisnikDTO">Model sa podacima na osnovu kojih se vrši autentifikacija.</param>
+            <returns>Vraća generisani token u obliku stringa.</returns>
+        </member>
+        <member name="T:KorisnikService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:KorisnikService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:KorisnikService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:KorisnikService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:KorisnikService.Profiles.KorisnikProfile">
+            <summary>
+            Profil mapera za model entiteta korisnik.
+            </summary>
+        </member>
+        <member name="M:KorisnikService.Profiles.KorisnikProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta korisnik.
+            </summary>
+        </member>
+    </members>
+</doc>

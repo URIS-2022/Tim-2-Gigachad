@@ -1,0 +1,802 @@
+{
+	"info": {
+		"_postman_id": "abf8674c-193a-4e50-bc19-3c45284d00a5",
+		"name": "LiceService",
+		"description": "LiceService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autentifikacija",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"naziv\": \"it19-2019\",\r\n\t\"lozinka\": \"it19-2019\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15001/api/korisnici/autentifikacija",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15001",
+					"path": [
+						"api",
+						"korisnici",
+						"autentifikacija"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptionsFizickaLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/fizickaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"fizickaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFizickaLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/fizickaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"fizickaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFizickoLiceByID",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/fizickaLica/56ea3569-1897-4349-b79e-fccb5568231a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"fizickaLica",
+						"56ea3569-1897-4349-b79e-fccb5568231a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateFizickoLice",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"jmbg\": \"1111111111111\",\r\n\t\"ime\": \"jedan\",\r\n\t\"prezime\": \"dva\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15004/api/fizickaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"fizickaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateFizickoLice",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": \"4f5d8be1-9462-4354-9fae-4ed186cba33e\",\r\n\t\"jmbg\": \"1111111111111\",\r\n\t\"ime\": \"imes\",\r\n\t\"prezime\": \"prezimes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15004/api/fizickaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"fizickaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteFizickoLice",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/fizickaLica/4f5d8be1-9462-4354-9fae-4ed186cba33e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"fizickaLica",
+						"4f5d8be1-9462-4354-9fae-4ed186cba33e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptionsKontaktOsobe",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/kontaktOsobe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"kontaktOsobe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetKontaktOsobe",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/kontaktOsobe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"kontaktOsobe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetKontaktOsobaByID",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/kontaktOsobe/5a2f51f9-3f5d-420f-9e98-510a3a5296a1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"kontaktOsobe",
+						"5a2f51f9-3f5d-420f-9e98-510a3a5296a1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateKontaktOsoba",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"ime\": \"imes\",\r\n\t\"prezime\": \"prezimes\",\r\n\t\"telefon\": \"1111111111\",\r\n\t\"funkcija\": \"administrator\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15004/api/kontaktOsobe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"kontaktOsobe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateKontaktOsoba",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": \"a513b086-141e-4dac-96f8-00b6e3fb8c4a\",\r\n\t\"ime\": \"imes\",\r\n\t\"prezime\": \"prezimes\",\r\n\t\"telefon\": \"9999999999\",\r\n\t\"funkcija\": \"administrator\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15004/api/kontaktOsobe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"kontaktOsobe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteKontaktOsoba",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/kontaktOsobe/a513b086-141e-4dac-96f8-00b6e3fb8c4a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"kontaktOsobe",
+						"a513b086-141e-4dac-96f8-00b6e3fb8c4a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptionsPravnaLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/pravnaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"pravnaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPravnaLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				},
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/pravnaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"pravnaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPravnaLicaByID",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/pravnaLica/5b4c99ef-49ae-4843-821b-488e968ca945",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"pravnaLica",
+						"5b4c99ef-49ae-4843-821b-488e968ca945"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePravnaLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"kontaktOsobaID\": \"1c188a84-dd2d-4ee2-beb9-b7d7fbc6a812\",\r\n\t\"naziv\": \"nazivs\",\r\n\t\"maticniBroj\": \"11111111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15004/api/pravnaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"pravnaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePravnaLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": \"633b5b56-02b8-4bbe-8a7c-7beef1e1299a\",\r\n\t\"kontaktOsobaID\": \"5a2f51f9-3f5d-420f-9e98-510a3a5296a1\",\r\n\t\"naziv\": \"nazivs\",\r\n\t\"maticniBroj\": \"99999999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15004/api/pravnaLica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"pravnaLica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePravnoLice",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/pravnaLica/633b5b56-02b8-4bbe-8a7c-7beef1e1299a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"pravnaLica",
+						"633b5b56-02b8-4bbe-8a7c-7beef1e1299a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OptionsLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/lica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"lica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLica",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/lica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"lica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLiceByID",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/lica/334f5277-a71c-4be8-b5da-5c9148b228f7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"lica",
+						"334f5277-a71c-4be8-b5da-5c9148b228f7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateLice",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"fizickoLiceID\": \"d82fbb07-6eb1-4516-ac48-758ae5ca2a8c\",\r\n\t\"pravnoLiceID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"adresaID\": \"6F79D49C-1C14-49B7-94C3-19A81C7F97A0\",\r\n\t\"telefon1\": \"1111111111\",\r\n\t\"telefon2\": \"9999999999\",\r\n\t\"email\": \"emails\",\r\n\t\"brojRacuna\": \"555555555555555\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15004/api/lica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"lica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateLice",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept-encoding": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": \"47311a9d-1352-4942-a0ee-3db995157818\",\r\n\t\"fizickoLiceID\": \"d82fbb07-6eb1-4516-ac48-758ae5ca2a8c\",\r\n\t\"pravnoLiceID\": \"9C236B62-AFCF-4902-ABA8-C159536883FB\",\r\n\t\"adresaID\": \"6F79D49C-1C14-49B7-94C3-19A81C7F97A0\",\r\n\t\"telefon1\": \"9999999999\",\r\n\t\"telefon2\": \"1111111111\",\r\n\t\"email\": \"emails\",\r\n\t\"brojRacuna\": \"555555555555555\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15004/api/lica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"lica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteLice",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15004/api/lica/e1e173d4-93c6-4a36-8cbc-249e7d65eca0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15004",
+					"path": [
+						"api",
+						"lica",
+						"e1e173d4-93c6-4a36-8cbc-249e7d65eca0"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY3MzM1NjUsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.MFwP_HhwM0HTzc-nYbaSRizUtbVG1CwsLpWiNu-s77I",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
