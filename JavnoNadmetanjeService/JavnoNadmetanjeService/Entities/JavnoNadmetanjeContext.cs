@@ -25,9 +25,9 @@ namespace JavnoNadmetanjeService.Entities
         /// <summary>
         /// Popunjava bazu sa nekim inicijalnim podacima.
         /// </summary>
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.Entity<LicitacijaEntity>().HasData(new
+            modelBuilder.Entity<LicitacijaEntity>().HasData(new
             {
                 ID = Guid.Parse("1ecaca89-af8e-47d5-8a33-5f4ec2fcb04e"),
                 DatumLicitacije = new DateTime(2022, 02, 02),
@@ -35,7 +35,7 @@ namespace JavnoNadmetanjeService.Entities
                 OgrnMaxPovrs = 13,
                 KorakCene = 15
             });
-            builder.Entity<LicitacijaEntity>().HasData(new
+            modelBuilder.Entity<LicitacijaEntity>().HasData(new
             {
                 ID = Guid.Parse("01724de1-1281-4206-a9ee-a153ba559304"),
                 DatumLicitacije = new DateTime(2022, 10, 11),
@@ -43,7 +43,7 @@ namespace JavnoNadmetanjeService.Entities
                 OgrnMaxPovrs = 17,
                 KorakCene = 150
             });
-            builder.Entity<LicitacijaEntity>().HasData(new
+            modelBuilder.Entity<LicitacijaEntity>().HasData(new
             {
                 ID = Guid.Parse("77eb8e4b-ede1-4825-8da2-72d14c2d7259"),
                 DatumLicitacije = new DateTime(2023, 01, 11),
@@ -51,7 +51,7 @@ namespace JavnoNadmetanjeService.Entities
                 OgrnMaxPovrs = 17,
                 KorakCene = 150
             });
-            builder.Entity<JavnoNadmetanjeEntity>().HasData(new
+            modelBuilder.Entity<JavnoNadmetanjeEntity>().HasData(new
             {
                 ID = Guid.Parse("73e131e6-50c4-4ce3-bcb6-b0f9c706f5cb"),
                 LicitacijaID = Guid.Parse("1ecaca89-af8e-47d5-8a33-5f4ec2fcb04e"),
@@ -74,7 +74,7 @@ namespace JavnoNadmetanjeService.Entities
                 StatusNadmetanja = "PRVI_KRUG",
                 Izuzeto = true
             });
-            builder.Entity<JavnoNadmetanjeEntity>().HasData(new
+            modelBuilder.Entity<JavnoNadmetanjeEntity>().HasData(new
             {
                 ID = Guid.Parse("5d62b2c0-d13c-4f74-840f-ad96bf204d69"),
                 LicitacijaID = Guid.Parse("01724de1-1281-4206-a9ee-a153ba559304"),
@@ -97,7 +97,7 @@ namespace JavnoNadmetanjeService.Entities
                 StatusNadmetanja = "DRUGI_KRUG_STARI",
                 Izuzeto = false
             });
-            builder.Entity<JavnoNadmetanjeEntity>().HasData(new
+            modelBuilder.Entity<JavnoNadmetanjeEntity>().HasData(new
             {
                 ID = Guid.Parse("abec715b-03e0-4c9a-b97b-327f0af16823"),
                 LicitacijaID = Guid.Parse("77eb8e4b-ede1-4825-8da2-72d14c2d7259"),

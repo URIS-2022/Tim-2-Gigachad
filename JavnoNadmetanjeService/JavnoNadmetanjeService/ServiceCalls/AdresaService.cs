@@ -21,13 +21,13 @@ namespace JavnoNadmetanjeService.ServiceCalls
         /// <summary>
         /// Vraća adresu lica od drugog mikro servisa.
         /// </summary>
-        /// <param name="adresaLicaID">ID adrese lica.</param>
+        /// <param name="adresaID">ID adrese lica.</param>
         /// <param name="token">Token za adresu lica mikroservis.</param>
         /// <returns>Vraća model DTO-a adrese lica.</returns>
-        public async Task<AdresaDTO?> GetAdresaByIDAsync(Guid adresaLicaID, string? token)
+        public async Task<AdresaDTO?> GetAdresaByIDAsync(Guid adresaID, string? token)
         {
             using HttpClient httpClient = new();
-            Uri url = new($"{configuration["Services:AdresaService"]}api/adrese/{adresaLicaID}");
+            Uri url = new($"{configuration["Services:AdresaService"]}api/adrese/{adresaID}");
             if (token != string.Empty)
                 httpClient.DefaultRequestHeaders.Add("Authorization", token);
 

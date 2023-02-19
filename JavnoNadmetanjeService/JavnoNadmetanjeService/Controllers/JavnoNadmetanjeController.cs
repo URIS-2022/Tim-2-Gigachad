@@ -115,7 +115,7 @@ namespace JavnoNadmetanjeService.Controllers
             if (javnoNadmetanje == null)
                 return NotFound();
 
-            Guid adresaID = javnoNadmetanje.AdresaID; ;
+            Guid adresaID = javnoNadmetanje.AdresaID;
             AdresaDTO? adresa = adresaService.GetAdresaByIDAsync(adresaID, authorization).Result;
 
             Guid deoParceleID = javnoNadmetanje.DeoParceleID;

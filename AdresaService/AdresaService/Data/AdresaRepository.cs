@@ -33,11 +33,11 @@ namespace AdresaService.Data
         /// <summary>
 		/// Vraća jednu adresu iz konteksta na osnovu zadatog ID-ja.
 		/// </summary>
-		/// <param name="adresaID">ID adrese.</param>
+		/// <param name="ID">ID adrese.</param>
 		/// <returns>Vraća specifiranu adresu.</returns>
-		public AdresaEntity? GetAdresaByID(Guid adresaID)
+		public AdresaEntity? GetAdresaByID(Guid ID)
         {
-            return context.Adresa.FirstOrDefault(e => e.ID == adresaID);
+            return context.Adresa.FirstOrDefault(e => e.ID == ID);
         }
 
         /// <summary>

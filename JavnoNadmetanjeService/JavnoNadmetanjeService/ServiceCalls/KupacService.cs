@@ -21,13 +21,13 @@ namespace JavnoNadmetanjeService.ServiceCalls
         /// <summary>
         /// Vraća kupca javnog nadmetanja od drugog mikro servisa.
         /// </summary>
-        /// <param name="najboljiKupacID">ID kupca javnog nadmetanja.</param>
+        /// <param name="kupacID">ID kupca javnog nadmetanja.</param>
         /// <param name="token">Token za kupca javnog nadmetanja mikroservis.</param>
         /// <returns>Vraća model DTO-a kupca javnog nadmetanja.</returns>
-        public async Task<KupacDTO?> GetKupacByIDAsync(Guid najboljiKupacID, string? token)
+        public async Task<KupacDTO?> GetKupacByIDAsync(Guid kupacID, string? token)
         {
             using HttpClient httpClient = new();
-            Uri url = new($"{configuration["Services:KupacService"]}api/kupci/{najboljiKupacID}");
+            Uri url = new($"{configuration["Services:KupacService"]}api/kupci/{kupacID}");
             if (token != string.Empty)
                 httpClient.DefaultRequestHeaders.Add("Authorization", token);
 

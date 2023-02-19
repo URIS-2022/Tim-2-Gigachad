@@ -19,7 +19,7 @@ namespace LicitacijaService.Data
 		/// </summary>
 		/// <param name="licitacijaID">ID licitacije.</param>
 		/// <returns>Vraća specifiranu licitaciju.</returns>
-        LicitacijaEntity GetLicitacijaByID(Guid licitacijaID);
+        LicitacijaEntity? GetLicitacijaByID(Guid licitacijaID);
 
         /// <summary>
 		/// Dodaje novu licitaciju.

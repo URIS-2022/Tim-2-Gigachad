@@ -111,7 +111,7 @@
             <summary>
             Vraća jednu adresu iz konteksta na osnovu zadatog ID-ja.
             </summary>
-            <param name="adresaID">ID adrese.</param>
+            <param name="ID">ID adrese.</param>
             <returns>Vraća specifiranu adresu.</returns>
         </member>
         <member name="M:AdresaService.Data.AdresaRepository.CreateAdresa(AdresaService.DTO.AdresaCreateDTO)">
