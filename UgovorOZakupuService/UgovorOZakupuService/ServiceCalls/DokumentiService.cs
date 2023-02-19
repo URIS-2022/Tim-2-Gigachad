@@ -6,10 +6,15 @@ using UgovorOZakupuService.DTO;
 
 namespace UgovorOZakupuService.ServiceCalls
 {
+    /// <summary>
+    /// Interfejs za dokumentiService
+    /// </summary>
     public class DokumentiService : IDokumentiService
     {
         private readonly IConfiguration configuration;
-
+        /// <summary>
+        /// Dependency injection za konfiguraciju konekcije
+        /// <param name="configuration"></param>
         public DokumentiService(IConfiguration configuration)
         {
             this.configuration = configuration;

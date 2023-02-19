@@ -31,18 +31,13 @@
             <response code="204">Ne postoje kupaca.</response>
             <response code="500">Adresa lica nije pronađena.</response>
         </member>
-        <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.DeleteUgovorOZakupu(System.Guid,System.String)">
-            <summary>
-            Delete za Ugovor o zakupu za zadati ID
-            </summary>
-            <param name="ugovorOZakupuID"></param>
-            <returns></returns>
-        </member>
+        <!-- Badly formed XML comment ignored for member "M:UgovorOZakupuService.Controllers.UgovorOZakupuController.DeleteUgovorOZakupu(System.Guid,System.String)" -->
         <member name="M:UgovorOZakupuService.Controllers.UgovorOZakupuController.CreateUgovorOZakupu(UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO,System.String)">
             <summary>
             Kreira novi ugovor o zakupu.
             </summary>
             <param name="ugovorOZakupuCreateDTO">DTO za ugovora o zakupu.</param>
+            <param name="authorization">DTO za ugovora o zakupu.</param>
             <returns>Potvrdu o kreiranom ugovoru o zakupu.</returns>
             <response code="201">Vraća kreiran Ugovor O Zakupu.</response>
             <response code="500">Došlo je do greške na serveru prilikom kreiranja ugovora o zakupu.</response>
@@ -78,6 +73,92 @@
             <returns>Vraća prazan 200 HTTP kod.</returns>
             <response code="200">Vraća prazan 200 HTTP kod.</response>
         </member>
+        <member name="T:UgovorOZakupuService.Data.IUgovorOZakupuRepository">
+            <summary>
+            Repozitorijum za ugovor o zakupu
+            </summary>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.IUgovorOZakupuRepository.GetUgovorOZakupu">
+            <summary>
+            Vraca sve ugovore
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.IUgovorOZakupuRepository.GetUgovorOZakupuID(System.Guid)">
+            <summary>
+            Vraca ugovor o zakupu po ID
+            </summary>
+            <param name="UgovorOZakupuID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.IUgovorOZakupuRepository.CreateUgovorOZakupu(UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO)">
+            <summary>
+            Kreira novi ugovor o zakupu
+            </summary>
+            <param name="UgovorOZakupuCreateDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.IUgovorOZakupuRepository.DeleteUgovorOZakupu(System.Guid)">
+            <summary>
+            Brise ugovor o zakupu sa zadatim ID
+            </summary>
+            <param name="UgovorOZakupuID"></param>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.IUgovorOZakupuRepository.SaveChanges">
+            <summary>
+            Cuva sve greske
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:UgovorOZakupuService.Data.UgovorOZakupuRepository">
+            <summary>
+            Repozitroijum za Ugovor o zakupu
+            </summary>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.UgovorOZakupuRepository.#ctor(UgovorOZakupuService.Entities.UgovorOZakupuContext,AutoMapper.IMapper)">
+            <summary>
+            Inicira ugovor o zakupu
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.UgovorOZakupuRepository.CreateUgovorOZakupu(UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO)">
+            <summary>
+            kreira novi ugovor o zakupu
+            </summary>
+            <param name="UgovorOZakupuCreateDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.UgovorOZakupuRepository.DeleteUgovorOZakupu(System.Guid)">
+            <summary>
+            menja ugovor o zakupu
+            </summary>
+            <param name="UgovorOZakupuID"></param>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.UgovorOZakupuRepository.GetUgovorOZakupu">
+            <summary>
+            Vraca ugovore o zakupu
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.UgovorOZakupuRepository.GetUgovorOZakupuID(System.Guid)">
+            <summary>
+            Vraca jedan ugovor o zakupu sa ID
+            </summary>
+            <param name="UgovorOZakupuID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UgovorOZakupuService.Data.UgovorOZakupuRepository.SaveChanges">
+            <summary>
+            Cuva promene
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:UgovorOZakupuService.DTO.AdresaDTO">
+            <summary>
+            DTO za adrese
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.AdresaDTO.ID">
             <summary>
             ID adrese.
@@ -101,6 +182,11 @@
         <member name="P:UgovorOZakupuService.DTO.AdresaDTO.Drzava">
             <summary>
             Država(E).
+            </summary>
+        </member>
+        <member name="T:UgovorOZakupuService.DTO.DeoParceleDTO">
+            <summary>
+            DTO za deo parcele
             </summary>
         </member>
         <member name="P:UgovorOZakupuService.DTO.DeoParceleDTO.ID">
@@ -163,6 +249,11 @@
             Odvodnjavanje dela parcele.
             </summary>
         </member>
+        <member name="T:UgovorOZakupuService.DTO.DokumentDTO">
+            <summary>
+            DTO za dokument
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.DokumentDTO.DokumentID">
             <summary>
             ID za dokument
@@ -193,6 +284,11 @@
             Status Dokumenta
             </summary>
         </member>
+        <member name="T:UgovorOZakupuService.DTO.EksterniDokumentDTO">
+            <summary>
+            DTO za eksterni dokument
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.EksterniDokumentDTO.EksterniDokumentID">
             <summary>
             Eksterni dokument ID
@@ -201,6 +297,11 @@
         <member name="P:UgovorOZakupuService.DTO.EksterniDokumentDTO.PutanjaDokumenta">
             <summary>
             Putanj dokumenta
+            </summary>
+        </member>
+        <member name="T:UgovorOZakupuService.DTO.FizickoLiceDTO">
+            <summary>
+            DTO za fizicko lice
             </summary>
         </member>
         <member name="P:UgovorOZakupuService.DTO.FizickoLiceDTO.ID">
@@ -216,6 +317,11 @@
         <member name="P:UgovorOZakupuService.DTO.FizickoLiceDTO.PunoIme">
             <summary>
             Puno ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="T:UgovorOZakupuService.DTO.InterniDokumentDTO">
+            <summary>
+            DTO za interni dokument
             </summary>
         </member>
         <member name="P:UgovorOZakupuService.DTO.InterniDokumentDTO.InterniDokumentID">
@@ -333,6 +439,11 @@
             Izuzeto.
             </summary>
         </member>
+        <member name="T:UgovorOZakupuService.DTO.KontaktOsobaDTO">
+            <summary>
+            DTO za kontakt osobu
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.KontaktOsobaDTO.ID">
             <summary>
             ID kontakt osobe.
@@ -398,7 +509,16 @@
             Broj kupovina kupca.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:UgovorOZakupuService.DTO.LiceDTO.ID" -->
+        <member name="T:UgovorOZakupuService.DTO.LiceDTO">
+            <summary>
+            DTO za lice
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.LiceDTO.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.LiceDTO.FizickoLice">
             <summary>
             ID fizičkog lica.
@@ -469,6 +589,11 @@
             Korak cene licitacije.
             </summary>
         </member>
+        <member name="T:UgovorOZakupuService.DTO.OvlascenoLiceDTO">
+            <summary>
+            DTO za ovlasceno lice
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.OvlascenoLiceDTO.ID">
             <summary>
             ID ovlascenog lica.
@@ -504,6 +629,11 @@
             Broj računa ovlascenog lica.
             </summary>
         </member>
+        <member name="T:UgovorOZakupuService.DTO.ParcelaDTO">
+            <summary>
+            DTO za parcele
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.ParcelaDTO.ID">
             <summary>
             ID parcele.
@@ -529,6 +659,11 @@
             Katastarska opština parcele.
             </summary>
         </member>
+        <member name="T:UgovorOZakupuService.DTO.PravnoLiceDTO">
+            <summary>
+            DTO za pravno lice
+            </summary>
+        </member>
         <member name="P:UgovorOZakupuService.DTO.PravnoLiceDTO.ID">
             <summary>
             ID pravnog lica.
@@ -549,9 +684,139 @@
             Matični broj pravnog lica.
             </summary>
         </member>
+        <member name="T:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO">
+            <summary>
+            Model dto za kreiranje ugovora o zakupu
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.DeoParceleID">
+            <summary>
+            Deo parcele ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.KupacID">
+            <summary>
+            Kupac ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.JavnoNadmetanjeID">
+            <summary>
+            Javno nadmetanje ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.DokumentID">
+            <summary>
+            Dokument ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.DatumUgovora">
+            <summary>
+            Datum ugovora 
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.TrajanjeUgovora">
+            <summary>
+            Trajanje ugovora
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.TipGarancije">
+            <summary>
+            Tip garancije
+            </summary>
+        </member>
         <member name="M:UgovorOZakupuService.DTO.UgovorOZakupuCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
             <summary>
             Validacija za model DTO-a za kreiranje ugovora.
+            </summary>
+        </member>
+        <member name="T:UgovorOZakupuService.DTO.UgovorOZakupuDTO">
+            <summary>
+            Model za DTO ugovora o zakupu
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuDTO.UgovorOZakupuID">
+            <summary>
+            Ugovor o zakup ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuDTO.DeoParcele">
+            <summary>
+            Deo parcele
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuDTO.Kupac">
+            <summary>
+            Kupac
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuDTO.JavnoNadmetanje">
+            <summary>
+            Javno nadmetanje
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuDTO.Dokument">
+            <summary>
+            Dokument
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuDTO.DatumUgovora">
+            <summary>
+            Datum ugovora
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuDTO.TrajanjeUgovora">
+            <summary>
+            Trajanje ugovora
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuDTO.TipGarancije">
+            <summary>
+            Tip garancije
+            </summary>
+        </member>
+        <member name="T:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO">
+            <summary>
+            Model DTO za ugovor o zakupu
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO.UgovorOZakupuID">
+            <summary>
+            Ugovor o zakupu ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO.DeoParceleID">
+            <summary>
+            Deo parcele ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO.KupacID">
+            <summary>
+            Kupac ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO.JavnoNadmetanjeID">
+            <summary>
+            Javno nadmetanje ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO.DokumentID">
+            <summary>
+            Dokument ID
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO.DatumUgovora">
+            <summary>
+            Datum ugovora
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO.TrajanjeUgovora">
+            <summary>
+            Trajanje ugovora
+            </summary>
+        </member>
+        <member name="P:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO.TipGarancije">
+            <summary>
+            Tip garancije
             </summary>
         </member>
         <member name="M:UgovorOZakupuService.DTO.UgovorOZakupuUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
@@ -560,6 +825,16 @@
             </summary>
             <param name="validationContext"></param>
             <returns></returns>
+        </member>
+        <member name="T:UgovorOZakupuService.Entities.EntitesEnums">
+            <summary>
+            Model enumeratora koriscenih u ugovoru
+            </summary>
+        </member>
+        <member name="T:UgovorOZakupuService.Entities.EntitesEnums.TipGarancije">
+            <summary>
+            Enum za tip garancije
+            </summary>
         </member>
         <member name="F:UgovorOZakupuService.Entities.EntitesEnums.TipGarancije.JEMSTVO">
             <summary>
@@ -586,14 +861,30 @@
             Uplata gotovinom
             </summary>
         </member>
+        <member name="T:UgovorOZakupuService.Entities.UgovorOZakupuContext">
+            <summary>
+            DbContext za UgovorOZakupuService mikroservis.
+            </summary>
+        </member>
+        <member name="M:UgovorOZakupuService.Entities.UgovorOZakupuContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuContext.Ugovori">
+            <summary>
+            Db set za ugovo o zakupu
+            </summary>
+        </member>
         <member name="M:UgovorOZakupuService.Entities.UgovorOZakupuContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             Popunjava bazu sa nekim inicijalnim podacima.
             </summary>
         </member>
-        <member name="M:UgovorOZakupuService.Entities.UgovorOZakupuEntity.#ctor">
+        <member name="T:UgovorOZakupuService.Entities.UgovorOZakupuEntity">
             <summary>
-            Model realnog entiteta Ugovora o zakupu
+            Model realnog entiteta ugovora o zakupu
             </summary>
         </member>
         <member name="P:UgovorOZakupuService.Entities.UgovorOZakupuEntity.UgovorOZakupuID">
@@ -647,6 +938,16 @@
         </member>
         <member name="M:UgovorOZakupuService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:UgovorOZakupuService.Profiles.UgovorOZakupuProfile">
+            <summary>
+            Profil mapera za ugovor o zakupu
+            </summary>
+        </member>
+        <member name="M:UgovorOZakupuService.Profiles.UgovorOZakupuProfile.#ctor">
+            <summary>
+            Profil mapera za ugovor o zakupu
+            </summary>
         </member>
         <member name="M:UgovorOZakupuService.ServiceCalls.DeoParceleService.GetDeoParceleByIDAsync(System.Guid,System.String)">
             <summary>

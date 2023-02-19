@@ -1,5 +1,8 @@
 ﻿namespace DokumentiService.DTO
 {
+    /// <summary>
+    /// DTO za dokument
+    /// </summary>
     public class DokumentDTO
     {
         /// <summary>

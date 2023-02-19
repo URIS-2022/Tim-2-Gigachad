@@ -1,5 +1,8 @@
 ﻿namespace UgovorOZakupuService.DTO
 {
+    /// <summary>
+    /// DTO za pravno lice
+    /// </summary>
     public class PravnoLiceDTO
     {
         /// <summary>

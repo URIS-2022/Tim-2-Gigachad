@@ -1,5 +1,8 @@
 ﻿namespace UgovorOZakupuService.DTO
 {
+    /// <summary>
+    /// DTO za parcele
+    /// </summary>
     public class ParcelaDTO
     {
         /// <summary>

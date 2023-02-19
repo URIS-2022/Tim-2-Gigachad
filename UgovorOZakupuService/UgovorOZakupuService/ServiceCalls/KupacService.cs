@@ -3,10 +3,16 @@ using UgovorOZakupuService.DTO;
 
 namespace UgovorOZakupuService.ServiceCalls
 {
+    /// <summary>
+    /// Interfejs za KupacService
+    /// </summary>
     public class KupacService : IKupacService
     {
         private readonly IConfiguration configuration;
-
+        /// <summary>
+        /// Dependency injection za konfiguraciju   
+        /// </summary>
+        /// <param name="configuration"></param>
         public KupacService(IConfiguration configuration)
         {
             this.configuration = configuration;

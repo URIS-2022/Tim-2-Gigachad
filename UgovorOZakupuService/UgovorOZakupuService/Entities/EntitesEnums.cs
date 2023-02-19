@@ -1,7 +1,13 @@
 ﻿namespace UgovorOZakupuService.Entities
 {
+    /// <summary>
+    /// Model enumeratora koriscenih u ugovoru
+    /// </summary>
     public class EntitesEnums
     {
+        /// <summary>
+        /// Enum za tip garancije
+        /// </summary>
         public enum TipGarancije
         {
             /// <summary>

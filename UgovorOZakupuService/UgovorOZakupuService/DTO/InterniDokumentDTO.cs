@@ -1,5 +1,8 @@
 ﻿namespace UgovorOZakupuService.DTO
 {
+    /// <summary>
+    /// DTO za interni dokument
+    /// </summary>
     public class InterniDokumentDTO
     {
         /// <summary>

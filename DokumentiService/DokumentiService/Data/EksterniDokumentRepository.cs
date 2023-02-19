@@ -12,6 +12,12 @@ namespace DokumentiService.Data
         private readonly DokumentContext context;
         private readonly IMapper mapper;
 
+        /// <summary>
+        /// Inicira Repository
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="mapper"></param>
+
         public EksterniDokumentRepository(DokumentContext context, IMapper mapper)
         {
             this.context = context;
