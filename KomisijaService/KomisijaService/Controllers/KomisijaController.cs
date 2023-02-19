@@ -38,10 +38,11 @@ namespace KomisijaService.Controllers
         /// <summary>
         /// Vraća listu svih komisija.
         /// </summary>
+        /// <param name="authorization">Autorizovani token.</param>
         /// <returns>Vraća potvrdu o listi postojećih komisija.</returns>
-		/// <response code="200">Vraća listu komisija.</response>
-		/// <response code="204">Ne postoje komisija.</response>
-        
+        /// <response code="200">Vraća listu komisija.</response>
+        /// <response code="204">Ne postoje komisija.</response>
+
         [HttpHead]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -49,7 +50,7 @@ namespace KomisijaService.Controllers
         public ActionResult<List<KomisijaEntity>> GetKomisije([FromHeader] string authorization)
         {
             List<KomisijaEntity> komisije = komisijaRepository.GetKomisije();
-            if (komisije == null && komisije.Count == 0)
+            if (komisije == null || komisije.Count == 0)
                 return NoContent();
 
             List<KomisijaDTO> komisijeDTO = new();
@@ -150,8 +151,9 @@ namespace KomisijaService.Controllers
         /// Vraća jednu komisiju na osnovu prosleđenog ID-ja.
         /// </summary>
         /// <param name="komisijaID">ID žalbe</param>
+        /// <param name="authorization">Autorizovani token.</param>
         /// <returns>Vraća potvrdu o specifiranoj komisiji.</returns>
-        /// /// <response code="200">Vraća specifiranu komisiju.</response>
+        /// <response code="200">Vraća specifiranu komisiju.</response>
         /// <response code="404">Specifirana komisija ne postoji.</response>
         [HttpGet("{komisijaID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -256,6 +258,7 @@ namespace KomisijaService.Controllers
         /// Kreira novu komisiju.
         /// </summary>
         /// <param name="komisijaCreateDTO"> DTO za kreiranje komisije</param>
+        /// <param name="authorization">Autorizovani token.</param>
         /// <returns>Potvrdu o kreiranoj komisiji.</returns>
         /// <remarks>
 		/// Primer zahteva za kreiranje novog fizičkog lica. \
@@ -397,6 +400,7 @@ namespace KomisijaService.Controllers
         /// Ažurira jednu komisiju.
         /// </summary>
         /// <param name="komisijaUpdateDTO">DTO za ažuriranje komisije.</param>
+        /// <param name="authorization">Autorizovani token.</param>
         /// <returns>Potvrdu o ažuriranoj komisiji.</returns>
         /// <remarks>
         /// Primer zahteva za kreiranje novog fizičkog lica. \

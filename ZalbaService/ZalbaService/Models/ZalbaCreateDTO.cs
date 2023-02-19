@@ -12,55 +12,55 @@ namespace ZalbaService.Models
 		/// ID kupca.
 		/// </summary>
         [Required(ErrorMessage = "Žalba mora da ima kupca koji je podneo.")]
-        public string KupacID { get; set; }
+        public string KupacID { get; set; } = null!;
 
         /// <summary>
 		/// Tip zalbe.
 		/// </summary>
         [Required(ErrorMessage = "Žalba mora da ima tip žalbe.")]
         [MaxLength(50)]
-        public string? TipZalbe { get; set; }
+        public string TipZalbe { get; set; } = null!;
 
         /// <summary>
 		/// Datum podnosenja zalbe.
 		/// </summary>
         [Required(ErrorMessage = "Žalba mora da ima datum podnošenja.")]
-        public DateTime? DatumPodnosenja { get; set; }
+        public DateTime DatumPodnosenja { get; set; }
 
         /// <summary>
 		/// Razlog zalbe.
 		/// </summary>
         [Required(ErrorMessage = "Žalba mora da ima razlog.")]
         [MaxLength(50)]
-        public string? Razlog { get; set; }
+        public string Razlog { get; set; } = null!;
 
         /// <summary>
 		/// Obrazlozenje zalbe.
 		/// </summary>
         [Required(ErrorMessage = "Žalba mora da ima obrazloženje.")]
         [MaxLength(200)]
-        public string? Obrazlozenje { get; set; }
+        public string Obrazlozenje { get; set; } = null!;
 
         /// <summary>
 		/// Status zalbe.
 		/// </summary>
         [Required(ErrorMessage = "Žalba mora da ima status.")]
         [MaxLength(10)]
-        public string? StatusZalbe { get; set; }
+        public string StatusZalbe { get; set; } = null!;
 
         /// <summary>
 		/// Radnja zalbe.
 		/// </summary>
         [Required(ErrorMessage = "Žalba mora da ima radnju.")]
         [MaxLength(50)]
-        public string? RadnjaZalbe { get; set; }
+        public string RadnjaZalbe { get; set; } = null!;
 
         /// <summary>
         /// Validacija za model DTO-a za kreiranje entiteta žalba.
         /// </summary>
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (DateTime.Compare(DatumPodnosenja.Value, DateTime.Now) > 0)
+            if (DateTime.Compare(DatumPodnosenja, DateTime.Now) > 0)
                 yield return new ValidationResult("Zalba ne može da ima noviji datum podnosenja od trenutnog datuma.", new[] { "ZalbaCreateDTO" });
 
             if (Enum.TryParse(StatusZalbe.ToUpper(), out StatusZalbe tempStatus))

@@ -2,6 +2,9 @@
 
 namespace KomisijaService.Models
 {
+    /// <summary>
+    /// DTO za prikaz entiteta komisija
+    /// </summary>
     public class KomisijaDTO
     {
         /// <summary>

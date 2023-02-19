@@ -20,9 +20,9 @@ namespace KomisijaService.Entities
         /// <summary>
 		/// Popunjava bazu sa nekim inicijalnim podacima.
 		/// </summary>
-		protected override void OnModelCreating(ModelBuilder builder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.Entity<KomisijaEntity>().HasData(new
+            modelBuilder.Entity<KomisijaEntity>().HasData(new
             {
                 KomisijaID = Guid.Parse("4739ab8e-3f8a-413c-b65a-cec5254016e4"),
                 Clan1ID = Guid.Parse("16e85d49-9cdd-41a6-85bc-180932f68999"),
