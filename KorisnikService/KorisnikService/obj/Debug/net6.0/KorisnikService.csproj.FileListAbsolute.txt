@@ -1,0 +1,486 @@
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\appsettings.json
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.exe
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.deps.json
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.runtimeconfig.json
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.pdb
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.xml
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Humanizer.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Runtime.Caching.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.AssemblyReference.cache
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.AssemblyInfoInputs.cache
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.AssemblyInfo.cs
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.CoreCompileInputs.cache
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.KorisnikService.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.build.KorisnikService.props
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.KorisnikService.props
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.KorisnikService.props
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\scopedcss\bundle\KorisnikService.styles.css
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.CopyComplete
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\refint\KorisnikService.dll
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.pdb
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.genruntimeconfig.cache
+C:\Users\ptrra\Desktop\KorisnikService\KorisnikService\obj\Debug\net6.0\ref\KorisnikService.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\appsettings.json
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.exe
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.deps.json
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.runtimeconfig.json
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.pdb
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.xml
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Humanizer.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Runtime.Caching.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.AssemblyReference.cache
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.AssemblyInfoInputs.cache
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.AssemblyInfo.cs
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.CoreCompileInputs.cache
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.KorisnikService.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.build.KorisnikService.props
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.KorisnikService.props
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.KorisnikService.props
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\scopedcss\bundle\KorisnikService.styles.css
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.CopyComplete
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\refint\KorisnikService.dll
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.pdb
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.genruntimeconfig.cache
+C:\Users\ptrra\Desktop\ses\KorisnikService\KorisnikService\obj\Debug\net6.0\ref\KorisnikService.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\appsettings.json
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Postman\KorisnikService.postman_collection.json
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.exe
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.deps.json
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.runtimeconfig.json
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.pdb
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.xml
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Humanizer.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Runtime.Caching.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.AssemblyReference.cache
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.AssemblyInfoInputs.cache
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.AssemblyInfo.cs
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.CoreCompileInputs.cache
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\scopedcss\bundle\KorisnikService.styles.css
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.CopyComplete
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\refint\KorisnikService.dll
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.pdb
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.genruntimeconfig.cache
+C:\Users\aleks\Downloads\KorisnikService\KorisnikService\KorisnikService\obj\Debug\net6.0\ref\KorisnikService.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\appsettings.Development.json
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\appsettings.json
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Postman\KorisnikService.postman_collection.json
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.exe
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.deps.json
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.runtimeconfig.json
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.pdb
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.xml
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\AutoMapper.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Azure.Core.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Azure.Identity.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Humanizer.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Mono.TextTemplating.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.CodeDom.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Memory.Data.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Text.Json.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Windows.Extensions.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.AssemblyReference.cache
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.GeneratedMSBuildEditorConfig.editorconfig
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.AssemblyInfoInputs.cache
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.AssemblyInfo.cs
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.CoreCompileInputs.cache
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.MvcApplicationPartsAssemblyInfo.cs
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.MvcApplicationPartsAssemblyInfo.cache
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.build.json
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.development.json
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\scopedcss\bundle\KorisnikService.styles.css
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.CopyComplete
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\refint\KorisnikService.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.pdb
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.genruntimeconfig.cache
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\obj\Debug\net6.0\ref\KorisnikService.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Api.CommonProtos.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Api.Gax.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Api.Gax.Grpc.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Apis.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Apis.Auth.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Apis.Core.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Cloud.Diagnostics.AspNetCore3.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Cloud.Diagnostics.Common.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Cloud.Logging.Type.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Cloud.Logging.V2.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Cloud.Trace.V1.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.LongRunning.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Protobuf.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Grpc.Auth.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Grpc.Core.Api.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Grpc.Net.Client.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Grpc.Net.Common.dll
+D:\Files\Fax\URIS\Timski projekat\KorisnikService\KorisnikService\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\appsettings.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Postman\KorisnikService.postman_collection.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.exe
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.deps.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.runtimeconfig.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.pdb
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\KorisnikService.xml
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Api.CommonProtos.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Api.Gax.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Api.Gax.Grpc.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Apis.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Apis.Auth.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Apis.Core.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Cloud.Diagnostics.AspNetCore3.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Cloud.Diagnostics.Common.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Cloud.Logging.Type.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Cloud.Logging.V2.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Cloud.Trace.V1.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.LongRunning.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Grpc.Auth.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Grpc.Core.Api.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Grpc.Net.Client.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Grpc.Net.Common.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Humanizer.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Runtime.Caching.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.AssemblyReference.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.AssemblyInfoInputs.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.AssemblyInfo.cs
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.CoreCompileInputs.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.KorisnikService.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.build.KorisnikService.props
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.KorisnikService.props
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.KorisnikService.props
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\scopedcss\bundle\KorisnikService.styles.css
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.csproj.CopyComplete
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\refint\KorisnikService.dll
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.pdb
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\KorisnikService.genruntimeconfig.cache
+C:\Users\ptrra\Desktop\main\git\Tim-2-Gigachad\KorisnikService\KorisnikService\obj\Debug\net6.0\ref\KorisnikService.dll

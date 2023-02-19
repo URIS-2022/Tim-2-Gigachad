@@ -1,0 +1,1303 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DeoParceleService</name>
+    </assembly>
+    <members>
+        <member name="T:DeoParceleService.Controllers.DeoParceleController">
+            <summary>
+            Kontroler za entitet deo parcele.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Controllers.DeoParceleController.#ctor(DeoParceleService.Data.IParcelaRepository,DeoParceleService.Data.IDeoParceleRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,DeoParceleService.ServiceCalls.IKupacService)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Controllers.DeoParceleController.GetDeloviParcela(System.String)">
+            <summary>
+            Vraća listu svih delova parcela.
+            </summary>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o listi postojećih delova parcela.</returns>
+            <response code="200">Vraća listu delova parcela.</response>
+            <response code="204">Ne postoje delovi parcela.</response>
+        </member>
+        <member name="M:DeoParceleService.Controllers.DeoParceleController.GetDeoParcele(System.Guid,System.String)">
+            <summary>
+            Vraća jedan deo parcele na osnovu zadatog ID-ja.
+            </summary>
+            <param name="deoParceleID">ID dela parcele.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o specifiranom delu parcele.</returns>
+            <response code="200">Vraća specifirani deo parcele.</response>
+            <response code="404">Specifirani deo parcele ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom pronalaženja specifiranog dela parcele.</response>
+        </member>
+        <member name="M:DeoParceleService.Controllers.DeoParceleController.CreateDeoParcele(DeoParceleService.DTO.DeoParceleCreateDTO,System.String)">
+            <summary>
+            Kreira novi deo parcele.
+            </summary>
+            <param name="deoParceleCreateDTO">DTO za dela parcele.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o kreiranom delu parcele.</returns>
+            <remarks>
+            Primer zahteva za kreiranje novog dela parcele. \
+            POST /api/deloviParcela \
+            { \
+            	"parcelaID": "06f51688-c60a-4dbf-8955-f1713fa47e28", \
+            	"kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+            	"redniBroj": "11111", \
+            	"povrsina": 9999, \
+            	"brojNekretnina": 99, \
+            	"obradivost": "OSTALO", \
+            	"kultura": "VRTOVI", \
+            	"klasa": "V", \
+            	"zasticenaZona": "III", \
+            	"oblikSvojine": "OSTALE_SVOJINE", \
+            	"odvodnjavanje": false, \
+            }
+            </remarks>
+            <response code="201">Vraća kreirani deo parcele.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja dela parcele.</response>
+        </member>
+        <member name="M:DeoParceleService.Controllers.DeoParceleController.UpdateDeoParcele(DeoParceleService.DTO.DeoParceleUpdateDTO,System.String)">
+            <summary>
+            Ažurira jedan deo parcele.
+            </summary>
+            <param name="deoParceleUpdateDTO">DTO za ažuriranje dela parcele.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o ažuriranom delu parcele.</returns>
+            <remarks>
+            Primer zahteva za ažuriranje postojećeg dela parcele. \
+            PUT /api/deloviParcela \
+            { \
+            	"id": "6c5fe5f2-5389-4022-ae48-6e905cca6c60", \
+            	"parcelaID": "06f51688-c60a-4dbf-8955-f1713fa47e28", \
+            	"kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+            	"redniBroj": "11111", \
+            	"povrsina": 9999, \
+            	"brojNekretnina": 99, \
+            	"obradivost": "OSTALO", \
+            	"kultura": "VRTOVI", \
+            	"klasa": "V", \
+            	"zasticenaZona": "III", \
+            	"oblikSvojine": "OSTALE_SVOJINE", \
+            	"odvodnjavanje": false, \
+            }
+            </remarks>
+            <response code="200">Vraća ažurirani deo parcele.</response>
+            <response code="404">Specifirani deo parcele ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja dela parcele.</response>
+        </member>
+        <member name="M:DeoParceleService.Controllers.DeoParceleController.DeleteParcela(System.Guid)">
+            <summary>
+            Briše jedan deo parcele na osnovu zadatog ID-ja.
+            </summary>
+            <param name="deoParceleID">ID dela parcele.</param>
+            <returns>Vraća potvrdu o brisanju dela parcele.</returns>
+            <response code="204">Specifirani deo parcele je uspešno obrisan.</response>
+            <response code="404">Specifirani deo parcele ne postoji i nije obrisan.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifiranog dela parcele.</response>
+        </member>
+        <member name="M:DeoParceleService.Controllers.DeoParceleController.GetDeloviParcelaOptions">
+            <summary>
+            Vraća opcije za rad sa entitetom deo parcele.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:DeoParceleService.Controllers.ParcelaController">
+            <summary>
+            Kontroler za entitet parcela.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Controllers.ParcelaController.#ctor(DeoParceleService.Data.IParcelaRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,DeoParceleService.ServiceCalls.IKupacService)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Controllers.ParcelaController.GetParcele(System.String)">
+            <summary>
+            Vraća listu svih parcela.
+            </summary>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o listi postojećih parcela.</returns>
+            <response code="200">Vraća listu parcela.</response>
+            <response code="204">Ne postoje parcele.</response>
+        </member>
+        <member name="M:DeoParceleService.Controllers.ParcelaController.GetParcela(System.Guid,System.String)">
+            <summary>
+            Vraća jednu parcelu na osnovu zadatog ID-ja.
+            </summary>
+            <param name="parcelaID">ID parcele.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o specifiranoj parceli.</returns>
+            <response code="200">Vraća specifiranu parcelu.</response>
+            <response code="404">Specifirana parcela ne postoji.</response>
+            <response code="500">Došlo je do greške na serveru prilikom pronalaženja specifirane parcele.</response>
+        </member>
+        <member name="M:DeoParceleService.Controllers.ParcelaController.CreateParcela(DeoParceleService.DTO.ParcelaCreateDTO,System.String)">
+            <summary>
+            Kreira novu parcelu.
+            </summary>
+            <param name="parcelaCreateDTO">DTO za kreiranje parcele.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o kreiranoj parceli.</returns>
+            <remarks>
+            Primer zahteva za kreiranje nove parcele. \
+            POST /api/parcele \
+            { \
+            	"kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+            	"oznaka": "NYU9NX5NS9", \
+            	"ukupnaPovrsina": 5555, \
+            	"katastarskaOpstina": "DONJI_GRAD", \
+            }
+            </remarks>
+            <response code="201">Vraća kreiranu parcelu.</response>
+            <response code="422">Došlo je do greške, već postoji parcela na serveru sa istom oznakom.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja parcele.</response>
+        </member>
+        <member name="M:DeoParceleService.Controllers.ParcelaController.UpdateParcela(DeoParceleService.DTO.ParcelaUpdateDTO,System.String)">
+            <summary>
+            Ažurira jednu parcelu.
+            </summary>
+            <param name="parcelaUpdateDTO">DTO za ažuriranje parcele.</param>
+            <param name="authorization">Autorizovan token.</param>
+            <returns>Vraća potvrdu o ažuriranoj parceli.</returns>
+            <remarks>
+            Primer zahteva za ažuriranje postojeće parcele. \
+            PUT /api/parcele \
+            { \
+            	"id": "06f51688-c60a-4dbf-8955-f1713fa47e28", \
+            	"kupacID": "93d92981-a754-41d8-8d1f-b5462a9e0386", \
+            	"oznaka": "NYU9NX5NS9", \
+            	"ukupnaPovrsina": 5555, \
+            	"katastarskaOpstina": "DONJI_GRAD", \
+            }
+            </remarks>
+            <response code="200">Vraća ažuriranu parcelu.</response>
+            <response code="404">Specifirana parcela ne postoji.</response>
+            <response code="422">Došlo je do greške, već postoji parcela na serveru sa istom oznakom.</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja parcele.</response>
+        </member>
+        <member name="M:DeoParceleService.Controllers.ParcelaController.DeleteParcela(System.Guid)">
+            <summary>
+            Briše jednu parcelu na osnovu zadatog ID-ja.
+            </summary>
+            <param name="parcelaID">ID parcele.</param>
+            <returns>Vraća potvrdu o brisanju parcele.</returns>
+            <response code="204">Specifirana parcela je uspešno obrisana.</response>
+            <response code="404">Specifirana parcela ne postoji i nije obrisana.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifirane parcele.</response>
+        </member>
+        <member name="M:DeoParceleService.Controllers.ParcelaController.GetParceleOptions">
+            <summary>
+            Vraća opcije za rad sa entitetom parcela.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:DeoParceleService.Data.DeoParceleRepository">
+            <summary>
+            Repozitorijum za entitet parcela.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Data.DeoParceleRepository.#ctor(DeoParceleService.Entities.DeoParceleContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Data.DeoParceleRepository.GetDeloviParcela">
+            <summary>
+            Vraća listu delova parcela iz konteksta.
+            </summary>
+            <returns>Vraća listu delova parcela.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.DeoParceleRepository.GetDeoParceleByID(System.Guid)">
+            <summary>
+            Vraća jedan deo parcele iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="deoParceleID">ID deo parcele.</param>
+            <returns>Vraća specifirani deo parcele.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.DeoParceleRepository.CreateDeoParcele(DeoParceleService.DTO.DeoParceleCreateDTO)">
+            <summary>
+            Dodaje novi deo parcele u kontekst.
+            </summary>
+            <param name="deoParceleCreateDTO">DTO za kreiranje dela parcele.</param>
+            <returns>Vraća DTO kreirang dela parcele.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.DeoParceleRepository.DeleteDeoParcele(System.Guid)">
+            <summary>
+            Briše deo parcele iz konteksta.
+            </summary>
+            <param name="deoParceleID">ID dela parcele.</param>
+        </member>
+        <member name="M:DeoParceleService.Data.DeoParceleRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:DeoParceleService.Data.IDeoParceleRepository">
+            <summary>
+            Interfejs od repozitorijuma za deo parcele.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Data.IDeoParceleRepository.GetDeloviParcela">
+            <summary>
+            Vraća listu dela parcele.
+            </summary>
+            <returns>Vraća listu dela parcele.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.IDeoParceleRepository.GetDeoParceleByID(System.Guid)">
+            <summary>
+            Vraća jedan deo parcele na osnovu zadatog ID-ja.
+            </summary>
+            <param name="deoParceleID">ID deo parcele.</param>
+            <returns>Vraća specifirani deo parcele.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.IDeoParceleRepository.CreateDeoParcele(DeoParceleService.DTO.DeoParceleCreateDTO)">
+            <summary>
+            Dodaje novi deo parcele.
+            </summary>
+            <param name="deoParceleCreateDTO">DTO za kreiranje dela parcele.</param>
+            <returns>Vraća DTO kreirang dela parcele.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.IDeoParceleRepository.DeleteDeoParcele(System.Guid)">
+            <summary>
+            Briše deo parcele.
+            </summary>
+            <param name="deoParceleID">ID dela parcele.</param>
+        </member>
+        <member name="M:DeoParceleService.Data.IDeoParceleRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:DeoParceleService.Data.IParcelaRepository">
+            <summary>
+            Interfejs od repozitorijuma za parcela.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Data.IParcelaRepository.GetParcele">
+            <summary>
+            Vraća listu parcela.
+            </summary>
+            <returns>Vraća listu parcela.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.IParcelaRepository.GetParcelaByID(System.Guid)">
+            <summary>
+            Vraća jednu parcelu na osnovu zadatog ID-ja.
+            </summary>
+            <param name="parcelaID">ID parcele.</param>
+            <returns>Vraća specifiranu parcelu.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.IParcelaRepository.CreateParcela(DeoParceleService.DTO.ParcelaCreateDTO)">
+            <summary>
+            Dodaje novu parcelu.
+            </summary>
+            <param name="parcelaCreateDTO">DTO za kreiranje parcela.</param>
+            <returns>Vraća DTO kreirane parcele.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.IParcelaRepository.DeleteParcela(System.Guid)">
+            <summary>
+            Briše parcelu.
+            </summary>
+            <param name="parcelaID">ID parcele.</param>
+        </member>
+        <member name="M:DeoParceleService.Data.IParcelaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:DeoParceleService.Data.ParcelaRepository">
+            <summary>
+            Repozitorijum za entitet parcela.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Data.ParcelaRepository.#ctor(DeoParceleService.Entities.DeoParceleContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Data.ParcelaRepository.GetParcele">
+            <summary>
+            Vraća listu parcela iz konteksta.
+            </summary>
+            <returns>Vraća listu parcela.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.ParcelaRepository.GetParcelaByID(System.Guid)">
+            <summary>
+            Vraća jednu parcelu iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="parcelaID">ID parcele.</param>
+            <returns>Vraća specifiranu parcelu.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.ParcelaRepository.CreateParcela(DeoParceleService.DTO.ParcelaCreateDTO)">
+            <summary>
+            Dodaje novu parcelu u kontekst.
+            </summary>
+            <param name="parcelaCreateDTO">DTO za kreiranje parcela.</param>
+            <returns>Vraća DTO kreirane parcele.</returns>
+        </member>
+        <member name="M:DeoParceleService.Data.ParcelaRepository.DeleteParcela(System.Guid)">
+            <summary>
+            Briše parcelu iz konteksta.
+            </summary>
+            <param name="parcelaID">ID parcele.</param>
+        </member>
+        <member name="M:DeoParceleService.Data.ParcelaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:DeoParceleService.DTO.AdresaDTO">
+            <summary>
+            Model DTO-a za entitet adresa lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.AdresaDTO.Mesto">
+            <summary>
+            Mesto adrese.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.AdresaDTO.Drzava">
+            <summary>
+            Država adrese.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.DeoParceleCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje entiteta deo parcela.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.ParcelaID">
+            <summary>
+            ID parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.RedniBroj">
+            <summary>
+            Redni broj dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.Povrsina">
+            <summary>
+            Površina dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.BrojNekretnina">
+            <summary>
+            Broj nekretnina dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.Obradivost">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.Kultura">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.Klasa">
+            <summary>
+            Klasa dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.ZasticenaZona">
+            <summary>
+            Zaštićena zona dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.OblikSvojine">
+            <summary>
+            Oblik svojine dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleCreateDTO.Odvodnjavanje">
+            <summary>
+            Odvodnjavanje dela parcele.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.DTO.DeoParceleCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta deo parcela.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.DeoParceleDTO">
+            <summary>
+            Model DTO-a za entitet deo parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.ID">
+            <summary>
+            ID dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.Parcela">
+            <summary>
+            ID parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.Kupac">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.RedniBroj">
+            <summary>
+            Redni broj dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.Povrsina">
+            <summary>
+            Površina dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.BrojNekretnina">
+            <summary>
+            Broj nekretnina dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.Obradivost">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.Kultura">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.Klasa">
+            <summary>
+            Klasa dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.ZasticenaZona">
+            <summary>
+            Zaštićena zona dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.OblikSvojine">
+            <summary>
+            Oblik svojine dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleDTO.Odvodnjavanje">
+            <summary>
+            Odvodnjavanje dela parcele.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.DeoParceleUpdateDTO">
+            <summary>
+            Model DTO-a za ažuriranje entiteta deo parcela.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.ID">
+            <summary>
+            ID dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.ParcelaID">
+            <summary>
+            ID parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.RedniBroj">
+            <summary>
+            Redni broj dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.Povrsina">
+            <summary>
+            Površina dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.BrojNekretnina">
+            <summary>
+            Broj nekretnina dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.Obradivost">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.Kultura">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.Klasa">
+            <summary>
+            Klasa dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.ZasticenaZona">
+            <summary>
+            Zaštićena zona dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.OblikSvojine">
+            <summary>
+            Oblik svojine dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.DeoParceleUpdateDTO.Odvodnjavanje">
+            <summary>
+            Odvodnjavanje dela parcele.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.DTO.DeoParceleUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta deo parcela.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.FizickoLiceDTO">
+            <summary>
+            Model DTO-a za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.FizickoLiceDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.FizickoLiceDTO.PunoIme">
+            <summary>
+            Puno ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.KontaktOsobaDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KontaktOsobaDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KontaktOsobaDTO.PunoIme">
+            <summary>
+            Puno ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KontaktOsobaDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KontaktOsobaDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.KupacDTO">
+            <summary>
+            Model DTO-a za entitet kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KupacDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KupacDTO.Lice">
+            <summary>
+            Lice kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KupacDTO.OvlascenoLice">
+            <summary>
+            Ovlašćeno lice kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KupacDTO.BrojKupovina">
+            <summary>
+            Broj kupovina kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KupacDTO.Prioritet">
+            <summary>
+            Prioritet kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KupacDTO.DatumPocetkaZabrane">
+            <summary>
+            Datum početka zabrane.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KupacDTO.DatumZavrsetkaZabrane">
+            <summary>
+            Datum završetka zabrane.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.KupacDTO.ImaZabranu">
+            <summary>
+            Kupac ima/nema zabranu.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.LiceDTO">
+            <summary>
+            Model DTO-a za entitet lice.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.LiceDTO.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.LiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.LiceDTO.PravnoLice">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.LiceDTO.Adresa">
+            <summary>
+            Adresa lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.LiceDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.LiceDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.LiceDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.LiceDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.OvlascenoLiceDTO">
+            <summary>
+            Model DTO-a za entitet ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.OvlascenoLiceDTO.ID">
+            <summary>
+            ID ovlašćenog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.OvlascenoLiceDTO.FizickoLice">
+            <summary>
+            Fizičko lice.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.OvlascenoLiceDTO.Adresa">
+            <summary>
+            Adresa ovlašćenog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.OvlascenoLiceDTO.Telefon1">
+            <summary>
+            Prvi telefon ovlašćenog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.OvlascenoLiceDTO.Telefon2">
+            <summary>
+            Drugi telefon ovlašćenog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.OvlascenoLiceDTO.Email">
+            <summary>
+            Email ovlašćenog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.OvlascenoLiceDTO.BrojRacuna">
+            <summary>
+            Broj računa ovlašćenog lica.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.ParcelaCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje entiteta parcela.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaCreateDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaCreateDTO.Oznaka">
+            <summary>
+            Oznaka parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaCreateDTO.UkupnaPovrsina">
+            <summary>
+            Ukupna površina parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaCreateDTO.KatastarskaOpstina">
+            <summary>
+            Katastarska opština parcele.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.DTO.ParcelaCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje entiteta parcela.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.ParcelaDTO">
+            <summary>
+            Model DTO-a za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaDTO.ID">
+            <summary>
+            ID parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaDTO.Kupac">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaDTO.Oznaka">
+            <summary>
+            Oznaka parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaDTO.UkupnaPovrsina">
+            <summary>
+            Ukupna površina parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaDTO.KatastarskaOpstina">
+            <summary>
+            Katastarska opština parcele.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.ParcelaUpdateDTO">
+            <summary>
+            Model DTO-a za ažuriranje entiteta parcela.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaUpdateDTO.ID">
+            <summary>
+            ID parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaUpdateDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaUpdateDTO.Oznaka">
+            <summary>
+            Oznaka parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaUpdateDTO.UkupnaPovrsina">
+            <summary>
+            Ukupna površina parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.ParcelaUpdateDTO.KatastarskaOpstina">
+            <summary>
+            Katastarska opština parcele.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.DTO.ParcelaUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta parcela.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.DTO.PravnoLiceDTO">
+            <summary>
+            Model DTO-a za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.PravnoLiceDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.PravnoLiceDTO.KontaktOsoba">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.PravnoLiceDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.DTO.PravnoLiceDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Entities.DeoParceleContext">
+            <summary>
+            DbContext za DeoParceleService mikroservis.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Entities.DeoParceleContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleContext.Parcele">
+            <summary>
+            DbSet za entitet parcela.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleContext.DeloviParcela">
+            <summary>
+            DbSet za entitet deo parcela.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Entities.DeoParceleContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Entities.DeoParceleEntity">
+            <summary>
+            Model realnog entiteta deo parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.ID">
+            <summary>
+            ID dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.ParcelaID">
+            <summary>
+            ID parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.Parcela">
+            <summary>
+            Parcela.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.RedniBroj">
+            <summary>
+            Redni broj dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.Povrsina">
+            <summary>
+            Površina dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.BrojNekretnina">
+            <summary>
+            Broj nekretnina dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.Obradivost">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.Kultura">
+            <summary>
+            Obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.Klasa">
+            <summary>
+            Klasa dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.ZasticenaZona">
+            <summary>
+            Zaštićena zona dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.OblikSvojine">
+            <summary>
+            Oblik svojine dela parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.DeoParceleEntity.Odvodnjavanje">
+            <summary>
+            Odvodnjavanje dela parcele.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Entities.EntitiesEnums">
+            <summary>
+            Enumeratori za modele entiteta.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele">
+            <summary>
+            Enumerator za katastarsku opštinu.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.CANTAVIR">
+            <summary>
+            Ćantavir.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.BACKI_VINOGRADI">
+            <summary>
+            Bački Vinogradi.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.BIKOVO">
+            <summary>
+            Bikovo.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.DJUDJIN">
+            <summary>
+            Đuđin.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.ZEDNIK">
+            <summary>
+            Žednik.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.TAVANKUT">
+            <summary>
+            Tavankut.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.BAJMOK">
+            <summary>
+            Bajmok.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.DONJI_GRAD">
+            <summary>
+            Donji Grad.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.STARI_GRAD">
+            <summary>
+            Stari Grad.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.NOVI_GRAD">
+            <summary>
+            Novi Grad.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KatastarskaOpstinaParcele.PALIC">
+            <summary>
+            Palić.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Entities.EntitiesEnums.ObradivostDelaParcele">
+            <summary>
+            Enumerator za obradivost dela parcele.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.ObradivostDelaParcele.OBRADIVO">
+            <summary>
+            Obradivo.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.ObradivostDelaParcele.OSTALO">
+            <summary>
+            Ostalo.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Entities.EntitiesEnums.KulturaDelaParcele">
+            <summary>
+            Enumerator za kulturu dela parcele.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KulturaDelaParcele.NJIVE">
+            <summary>
+            Njive.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KulturaDelaParcele.VRTOVI">
+            <summary>
+            Vrtovi.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KulturaDelaParcele.VOCNJACI">
+            <summary>
+            Voćnjaci.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KulturaDelaParcele.VINOGRADI">
+            <summary>
+            Vinogradi.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KulturaDelaParcele.LIVADE">
+            <summary>
+            Livade.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KulturaDelaParcele.PASNJACI">
+            <summary>
+            Pašnjaci.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KulturaDelaParcele.SUME">
+            <summary>
+            Šume.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KulturaDelaParcele.MOCVARE">
+            <summary>
+            Močvare.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Entities.EntitiesEnums.KlasaDelaParcele">
+            <summary>
+            Enumerator za klase dela parcele.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KlasaDelaParcele.I">
+            <summary>
+            I.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KlasaDelaParcele.II">
+            <summary>
+            II.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KlasaDelaParcele.III">
+            <summary>
+            III.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KlasaDelaParcele.IV">
+            <summary>
+            IV.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KlasaDelaParcele.V">
+            <summary>
+            V.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KlasaDelaParcele.VI">
+            <summary>
+            VI.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KlasaDelaParcele.VII">
+            <summary>
+            VII.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.KlasaDelaParcele.VIII">
+            <summary>
+            VIII.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Entities.EntitiesEnums.ZasticenaZonaDelaParcele">
+            <summary>
+            Enumerator za zaštićenu zonu dela parcele.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.ZasticenaZonaDelaParcele.I">
+            <summary>
+            I.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.ZasticenaZonaDelaParcele.II">
+            <summary>
+            II.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.ZasticenaZonaDelaParcele.III">
+            <summary>
+            III.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.ZasticenaZonaDelaParcele.IV">
+            <summary>
+            IV.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Entities.EntitiesEnums.OblikSvojineDelaParcele">
+            <summary>
+            Enumerator za oblik svojine dela parcele.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.OblikSvojineDelaParcele.PRIVATNA_SVOJINA">
+            <summary>
+            Privatna svojina.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.OblikSvojineDelaParcele.DRZAVNA_SVOJINA">
+            <summary>
+            Državna svojina.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.OblikSvojineDelaParcele.DRUSTVENA_SVOJINA">
+            <summary>
+            Društvena svojina.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.OblikSvojineDelaParcele.ZADRUZNA_SVOJINA">
+            <summary>
+            Zadružna svojina.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.OblikSvojineDelaParcele.MESOVITA_SVOJINA">
+            <summary>
+            Mešovita svojina.
+            </summary>
+        </member>
+        <member name="F:DeoParceleService.Entities.EntitiesEnums.OblikSvojineDelaParcele.OSTALE_SVOJINE">
+            <summary>
+            Ostali oblici svojina.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Entities.ParcelaEntity">
+            <summary>
+            Model realnog entiteta parcela.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.ParcelaEntity.ID">
+            <summary>
+            ID parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.ParcelaEntity.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.ParcelaEntity.Oznaka">
+            <summary>
+            Oznaka parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.ParcelaEntity.UkupnaPovrsina">
+            <summary>
+            Ukupna površina parcele.
+            </summary>
+        </member>
+        <member name="P:DeoParceleService.Entities.ParcelaEntity.KatastarskaOpstina">
+            <summary>
+            Katastarska opština parcele.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:DeoParceleService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DeoParceleService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DeoParceleService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:DeoParceleService.Profiles.DeoParceleProfile">
+            <summary>
+            Profil mapera za model entiteta deo parcele.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Profiles.DeoParceleProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta deo parcele.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.Profiles.ParcelaProfile">
+            <summary>
+            Profil mapera za model entiteta parcela.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.Profiles.ParcelaProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta parcela.
+            </summary>
+        </member>
+        <member name="T:DeoParceleService.ServiceCalls.IKupacService">
+            <summary>
+            Interfejs od servis poziva za kupac od KupacService mikroservis.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.ServiceCalls.IKupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu od KupacService mikroservis.
+            </summary>
+            <param name="kupacID">ID kupca.</param>
+            <param name="token">Token za KupacService mikroservis.</param>
+            <returns>Vraća model DTO kupca.</returns>
+        </member>
+        <member name="T:DeoParceleService.ServiceCalls.KupacService">
+            <summary>
+            Interfejs od servis poziva za kupac od KupacService mikroservis.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.ServiceCalls.KupacService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:DeoParceleService.ServiceCalls.KupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća adresu od KupacService mikroservis.
+            </summary>
+            <param name="kupacID">ID kupca.</param>
+            <param name="token">Token za KupacService mikroservis.</param>
+            <returns>Vraća model DTO kupca.</returns>
+        </member>
+    </members>
+</doc>
