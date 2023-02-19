@@ -106,7 +106,7 @@ namespace DokumentiService.Controllers
         /// }
         /// </remarks>
         /// <response code="201">Vraća menjani dokument.</response>
-        /// <response code="500">Došlo je do greške na serveru prilikom menjanja dokumenta response>
+        /// <response code="500">Došlo je do greške na serveru prilikom menjanja dokumenta </response>
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -143,7 +143,7 @@ namespace DokumentiService.Controllers
         /// }
         /// </remarks>
         /// <response code="201">Vraća menjani dokument.</response>
-        /// <response code="500">Došlo je do greške na serveru prilikom menjanja dokumenta response>
+        /// <response code="500">Došlo je do greške na serveru prilikom menjanja dokumenta </response>
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]

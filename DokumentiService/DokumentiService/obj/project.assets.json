@@ -5925,19 +5925,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ptrra\\.nuget\\packages\\": {}
+    "C:\\Users\\Milan f\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\DokumentiService\\DokumentiService\\DokumentiService.csproj",
+      "projectUniqueName": "D:\\GigaChad projekat\\DokumentiService\\DokumentiService\\DokumentiService.csproj",
       "projectName": "DokumentiService",
-      "projectPath": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\DokumentiService\\DokumentiService\\DokumentiService.csproj",
-      "packagesPath": "C:\\Users\\ptrra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\DokumentiService\\DokumentiService\\obj\\",
+      "projectPath": "D:\\GigaChad projekat\\DokumentiService\\DokumentiService\\DokumentiService.csproj",
+      "packagesPath": "C:\\Users\\Milan f\\.nuget\\packages\\",
+      "outputPath": "D:\\GigaChad projekat\\DokumentiService\\DokumentiService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ptrra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Milan f\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6015,7 +6015,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

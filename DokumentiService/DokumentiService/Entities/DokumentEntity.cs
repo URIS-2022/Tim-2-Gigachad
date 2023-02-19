@@ -18,6 +18,9 @@ namespace DokumentiService.Entities
         /// </summary>
         [ForeignKey("EksterniDokument")]
         public Guid EksterniDokumentID { get; set; } = Guid.Empty!;
+        /// <summary>
+        /// eksterni dokument entity
+        /// </summary>
 
         [Required(ErrorMessage = "Dokument mora da bude eksterni")]
         public EksterniDokumentEntity EksterniDokument { get; set; } = null!;
@@ -26,6 +29,9 @@ namespace DokumentiService.Entities
         /// </summary>
         [ForeignKey("InterniDokument")]
         public Guid InterniDokumentID { get; set; } = Guid.Empty!;
+        /// <summary>
+        /// Interni dokument entity
+        /// </summary>
 
         [Required(ErrorMessage = "Dokument mora da bude interni")]
         public InterniDokumentEntity InterniDokument { get; set; } = null!;

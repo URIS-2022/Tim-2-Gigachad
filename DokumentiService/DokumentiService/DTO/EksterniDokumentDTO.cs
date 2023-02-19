@@ -12,7 +12,7 @@
         /// <summary>
         /// Putanj dokumenta
         /// </summary>
-        public string PutanjaDokumenta { get; set; }
+        public string PutanjaDokumenta { get; set; } = null!;
 
     }
 }

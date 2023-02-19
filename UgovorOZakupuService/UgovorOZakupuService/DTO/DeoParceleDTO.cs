@@ -1,5 +1,8 @@
 ﻿namespace UgovorOZakupuService.DTO
 {
+    /// <summary>
+    /// DTO za deo parcele
+    /// </summary>
     public class DeoParceleDTO
     {
         /// <summary>

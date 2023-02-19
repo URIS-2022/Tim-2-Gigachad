@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UgovorOZakupuService.DTO
 {
+    /// <summary>
+    /// DTO za dokument
+    /// </summary>
     public class DokumentDTO
     {
         /// <summary>

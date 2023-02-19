@@ -1,5 +1,8 @@
 ﻿namespace UgovorOZakupuService.DTO
 {
+    /// <summary>
+    /// DTO za ovlasceno lice
+    /// </summary>
     public class OvlascenoLiceDTO
     {
         /// <summary>

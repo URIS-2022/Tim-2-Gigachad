@@ -3,12 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UgovorOZakupuService.Entities
 {
+    /// <summary>
+    /// Model realnog entiteta ugovora o zakupu
+    /// </summary>
     public class UgovorOZakupuEntity
     {
-        /// <summary>
-        /// Model realnog entiteta Ugovora o zakupu
-        /// </summary>
-        public UgovorOZakupuEntity() { }
         /// <summary>
         /// ID ugovora
         /// </summary>
@@ -55,7 +54,7 @@ namespace UgovorOZakupuService.Entities
         /// Tip garancije
         /// </summary>
         [Required(ErrorMessage = "Mora imati tip garancije")]
-        public string TipGarancije { get; set; }
+        public string? TipGarancije { get; set; }
 
     }
 }

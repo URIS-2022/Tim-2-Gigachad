@@ -3,17 +3,27 @@ using UgovorOZakupuService.Entities;
 
 namespace UgovorOZakupuService.Entities
 {
+    /// <summary>
+    /// DbContext za UgovorOZakupuService mikroservis.
+    /// </summary>
     public class UgovorOZakupuContext : DbContext
     {
+        /// <summary>
+        /// Dependency injection za konfiguraciju konekcije i opcije sa bazom
+        /// </summary>
+        /// <param name="options"></param>
         public UgovorOZakupuContext(DbContextOptions options) : base(options) { }
+        /// <summary>
+        /// Db set za ugovo o zakupu
+        /// </summary>
         public DbSet<UgovorOZakupuEntity> Ugovori{ get; set; }
 
         /// <summary>
         /// Popunjava bazu sa nekim inicijalnim podacima.
         /// </summary>
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.Entity<UgovorOZakupuEntity>().HasData(new
+            modelBuilder.Entity<UgovorOZakupuEntity>().HasData(new
             {
                 UgovorOZakupuID = Guid.Parse("dc662e18-1bb0-4f43-bb36-b20eab32a292"),
                 DeoParceleID = Guid.Parse("EDF1F7CA-3B73-4CB8-8CFD-4BD615DD6ADA"),
@@ -24,7 +34,7 @@ namespace UgovorOZakupuService.Entities
                 TrajanjeUgovora = 8,
                 TipGarancije = "JEMSTVO"
             });
-            builder.Entity<UgovorOZakupuEntity>().HasData(new
+            modelBuilder.Entity<UgovorOZakupuEntity>().HasData(new
             {
                 UgovorOZakupuID = Guid.Parse("1a41fbb4-ad86-4eec-be18-3ca94c1682cc"),
                 DeoParceleID = Guid.Parse("3846ACAF-3D0E-439A-BF27-85344934F2CA"),

@@ -20,7 +20,7 @@ namespace DokumentiService.DTO
         [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
         [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
         [ForeignKey("EksterniDokument")]
-        public string EksterniDokumentID { get; set; }
+        public string EksterniDokumentID { get; set; } = null!;
 
         /// <summary>
         /// Interni Dokument ID
@@ -29,21 +29,21 @@ namespace DokumentiService.DTO
         [Required(ErrorMessage = "Lice mora da ima ID internog dokumenta.")]
         [MinLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
         [MaxLength(36, ErrorMessage = "GUID mora biti u ovom formatu (0x): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.")]
-        public string InterniDokumentID { get; set; }
+        public string InterniDokumentID { get; set; } = null!;
         /// <summary>
         /// Datum donosenja dokumenta
         /// </summary>
         [Required]
-        public DateTime? DatumDonosenja { get; set; }
+        public DateTime? DatumDonosenja { get; set; } = null!;
         /// <summary>
         /// Sablon 
         /// </summary>
         [Required]
-        public int? Sablon { get; set; }
+        public int? Sablon { get; set; } = 0!;
         /// <summary>
         /// Status dokumenta
         /// </summary>
         [Required]
-        public int StatusDokumenta { get; set; }
+        public int StatusDokumenta { get; set; } = 0!;
     }
 }

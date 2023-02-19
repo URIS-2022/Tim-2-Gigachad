@@ -55,7 +55,7 @@ namespace UgovorOZakupuService.Controllers
             List<UgovorOZakupuDTO> ugovoriDTO = new();
             foreach (UgovorOZakupuEntity ugovor in ugovoriOZakupu)
             {
-                Guid tempDokumentID = ugovor.DokumentID; ;
+                Guid tempDokumentID = ugovor.DokumentID; 
                 DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempDokumentID, authorization).Result;
 
                 Guid temnpKupacID = ugovor.KupacID;
@@ -103,11 +103,11 @@ namespace UgovorOZakupuService.Controllers
             if (ugovor == null)
                 return NotFound();
 
-            Guid tempDokumentID = ugovor.DokumentID; ;
+            Guid tempDokumentID = ugovor.DokumentID;
             DokumentDTO? dokument = dokumentiService.GetDokumentByIDAsync(tempDokumentID, authorization).Result;
             if (dokument != null)
             {
-                Guid tempKupacID = ugovor.KupacID; ;
+                Guid tempKupacID = ugovor.KupacID;
                 KupacDTO? kupac = kupacService.GetKupacByIDAsync(tempKupacID, authorization).Result;
                 if (kupac != null)
                 {
@@ -145,6 +145,7 @@ namespace UgovorOZakupuService.Controllers
         /// Delete za Ugovor o zakupu za zadati ID
         /// </summary>
         /// <param name="ugovorOZakupuID"></param>
+        /// <param name="authorization> </param>
         /// <returns></returns>
         [HttpDelete("{ugovorOZakupuID}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -175,6 +176,7 @@ namespace UgovorOZakupuService.Controllers
 		/// Kreira novi ugovor o zakupu.
 		/// </summary>
 		/// <param name="ugovorOZakupuCreateDTO">DTO za ugovora o zakupu.</param>
+        /// <param name="authorization">DTO za ugovora o zakupu.</param>
 		/// <returns>Potvrdu o kreiranom ugovoru o zakupu.</returns>
 		/// <response code="201">Vraća kreiran Ugovor O Zakupu.</response>
 		/// <response code="500">Došlo je do greške na serveru prilikom kreiranja ugovora o zakupu.</response>

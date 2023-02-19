@@ -3,10 +3,17 @@ using UgovorOZakupuService.DTO;
 
 namespace UgovorOZakupuService.ServiceCalls
 {
+    /// <summary>
+    /// Interfejs od javnog nadmetanja
+    /// </summary>
     public class JavnoNadmetanjeService : IJavnoNadmetanjeService
     {
         private readonly IConfiguration configuration;
 
+        /// <summary>
+        /// Dependency injection za konfiguraciju konekcije
+        /// </summary>
+        /// <param name="configuration"></param>
         public JavnoNadmetanjeService(IConfiguration configuration)
         {
             this.configuration = configuration;

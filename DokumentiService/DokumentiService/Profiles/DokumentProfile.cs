@@ -4,8 +4,14 @@ using DokumentiService.Entities;
 
 namespace DokumentiService.Profiles
 {
+    /// <summary>
+    /// Profil mapera za model entiteta dokument
+    /// </summary>
     public class DokumentProfile : Profile
     {
+        /// <summary>
+        /// Profil mapera za model entiteta dokument
+        /// </summary>
         public DokumentProfile()
         {
             CreateMap<DokumentEntity, DokumentDTO>();

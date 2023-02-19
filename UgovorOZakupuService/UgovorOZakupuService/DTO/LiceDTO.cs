@@ -1,8 +1,11 @@
 ﻿namespace UgovorOZakupuService.DTO
 {
+    /// <summary>
+    /// DTO za lice
+    /// </summary>
     public class LiceDTO
     {
-        // <summary>
+        /// <summary>
         /// ID lica.
         /// </summary>
         public Guid ID { get; set; }

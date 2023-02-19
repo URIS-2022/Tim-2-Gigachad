@@ -11,7 +11,11 @@ namespace DokumentiService.Data
     {
         private readonly DokumentContext context;
         private readonly IMapper mapper;
-
+        /// <summary>
+        /// Inicira dokument repository
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="mapper"></param>
         public InterniDokumentRepository(DokumentContext context, IMapper mapper)
         {
             this.context = context;
@@ -56,7 +60,7 @@ namespace DokumentiService.Data
         /// </summary>
         /// <param name="InterniDokumentID">ID dokumenta.</param>
         /// <returns>Vraća specificiran interni dokument.</returns>
-        public InterniDokumentEntity GetInterniDokumentID(Guid InterniDokumentID)
+        public InterniDokumentEntity? GetInterniDokumentID(Guid InterniDokumentID)
         {
             return context.InterniDokumenti.FirstOrDefault(e => e.InterniDokumentID == InterniDokumentID);
         }

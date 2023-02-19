@@ -1,5 +1,8 @@
 ﻿namespace UgovorOZakupuService.DTO
 {
+    /// <summary>
+    /// DTO za eksterni dokument
+    /// </summary>
     public class EksterniDokumentDTO
     {
         /// <summary>
@@ -9,6 +12,6 @@
         /// <summary>
         /// Putanj dokumenta
         /// </summary>
-        public string PutanjaDokumenta { get; set; }
+        public string PutanjaDokumenta { get; set; } = null!;
     }
 }

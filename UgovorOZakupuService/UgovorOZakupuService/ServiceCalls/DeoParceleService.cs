@@ -3,10 +3,16 @@ using UgovorOZakupuService.DTO;
 
 namespace UgovorOZakupuService.ServiceCalls
 {
+    /// <summary>
+    /// Interfejs od dela parcele service
+    /// </summary>
     public class DeoParceleService : IDeoParceleService
     {
             private readonly IConfiguration configuration;
-
+            /// <summary>
+            /// Dependency injection za konfiguraciju
+            /// </summary>
+            /// <param name="configuration"></param>
             public DeoParceleService(IConfiguration configuration)
             {
                 this.configuration = configuration;

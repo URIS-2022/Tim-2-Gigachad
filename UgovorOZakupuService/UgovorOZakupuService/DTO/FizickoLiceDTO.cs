@@ -1,5 +1,8 @@
 ﻿namespace UgovorOZakupuService.DTO
 {
+    /// <summary>
+    /// DTO za fizicko lice
+    /// </summary>
     public class FizickoLiceDTO
     {
         /// <summary>

@@ -2,6 +2,9 @@
 
 namespace UgovorOZakupuService.ServiceCalls
 {
+    /// <summary>
+    /// Interfejs od servis poziva za deo parcele od JavnoNadmetanjeService servis
+    /// </summary>
     public interface IJavnoNadmetanjeService
     {
         /// <summary>
