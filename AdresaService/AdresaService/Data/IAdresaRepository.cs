@@ -28,8 +28,6 @@ namespace AdresaService.Data
 		/// <returns>Vraća DTO kreirane adrese.</returns>
         AdresaDTO CreateAdresa(AdresaCreateDTO adresaCreateDTO);
 
-        //void UpdateAdresa(AdresaEntity adresa);
-
         /// <summary>
 		/// Briše adresu iz konteksta.
 		/// </summary>

@@ -5714,19 +5714,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ptrra\\.nuget\\packages\\": {}
+    "C:\\Users\\ofidi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\JavnoNadmetanjeService\\JavnoNadmetanjeService\\JavnoNadmetanjeService.csproj",
+      "projectUniqueName": "C:\\Users\\ofidi\\Documents\\Tim-2-Gigachad\\JavnoNadmetanjeService\\JavnoNadmetanjeService\\JavnoNadmetanjeService.csproj",
       "projectName": "JavnoNadmetanjeService",
-      "projectPath": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\JavnoNadmetanjeService\\JavnoNadmetanjeService\\JavnoNadmetanjeService.csproj",
-      "packagesPath": "C:\\Users\\ptrra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ptrra\\Desktop\\main\\git\\Tim-2-Gigachad\\JavnoNadmetanjeService\\JavnoNadmetanjeService\\obj\\",
+      "projectPath": "C:\\Users\\ofidi\\Documents\\Tim-2-Gigachad\\JavnoNadmetanjeService\\JavnoNadmetanjeService\\JavnoNadmetanjeService.csproj",
+      "packagesPath": "C:\\Users\\ofidi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ofidi\\Documents\\Tim-2-Gigachad\\JavnoNadmetanjeService\\JavnoNadmetanjeService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ptrra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ofidi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5734,7 +5734,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "net6.0": {
@@ -5812,7 +5812,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
