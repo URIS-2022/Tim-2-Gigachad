@@ -127,8 +127,7 @@ namespace DeoParceleService.Controllers
 						ParcelaDTO parcelaDTO = parcelaRepository.CreateParcela(parcelaCreateDTO);
 						parcelaRepository.SaveChanges();
 
-						if (kupacDTO != null)
-							parcelaDTO.Kupac = kupacDTO;
+						parcelaDTO.Kupac = kupacDTO;
 
 						string? location = linkGenerator.GetPathByAction("GetParcela", "Parcela", new { parcelaID = parcelaDTO.ID });
 

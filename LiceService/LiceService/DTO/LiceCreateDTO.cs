@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations;
 
 namespace LiceService.DTO
 {
@@ -64,7 +65,7 @@ namespace LiceService.DTO
 		/// </summary>
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
 		{
-			if (PravnoLiceID == null || PravnoLiceID.Equals(string.Empty))
+			if (PravnoLiceID == null || PravnoLiceID.IsNullOrEmpty())
 				PravnoLiceID = Guid.Empty.ToString();
 
 			if (Guid.TryParse(PravnoLiceID, out _))
