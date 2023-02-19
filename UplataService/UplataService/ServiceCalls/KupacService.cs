@@ -21,13 +21,13 @@ namespace UplataService.ServiceCalls
         /// <summary>
 		/// Vraća kupca od drugog mikro servisa.
 		/// </summary>
-		/// <param name="kupacID">ID Kupca.</param>
+		/// <param name="KupacID">ID Kupca.</param>
 		/// <param name="token">Token za kupac mikroservis.</param>
 		/// <returns>Vraća model DTO-a kupca.</returns>
-        public async Task<KupacDTO?> GetKupacByIDAsync(Guid kupacID, string? token)
+        public async Task<KupacDTO?> GetKupacByIDAsync(Guid KupacID, string? token)
         {
             using HttpClient httpClient = new();
-            Uri url = new($"{configuration["Services:KupacService"]}api/kupci/{kupacID}");
+            Uri url = new($"{configuration["Services:KupacService"]}api/kupci/{KupacID}");
             if (token != string.Empty)
                 httpClient.DefaultRequestHeaders.Add("Authorization", token);
 

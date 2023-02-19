@@ -26,11 +26,11 @@ namespace KorisnikService.Helpers
 		/// <summary>
 		/// Vrši autentifikaciju korisnika.
 		/// </summary>
-		/// <param name="korisnik">Model sa podacima na osnovu kojih se vrši autentifikacija.</param>
+		/// <param name="korisnikDTO">Model sa podacima na osnovu kojih se vrši autentifikacija.</param>
 		/// <returns>Vraća boolean o potvrdi autentifikacije korisnika.</returns>
-		public bool AuthenticateKorisnik(KorisnikAuthenticateDTO korisnik)
+		public bool AuthenticateKorisnik(KorisnikAuthenticateDTO korisnikDTO)
 		{
-			if (korisnik.Naziv != null && korisnik.Lozinka != null && korisnikRepository.KorisnikWithCredentialsExists(korisnik.Naziv, korisnik.Lozinka))
+			if (korisnikDTO.Naziv != null && korisnikDTO.Lozinka != null && korisnikRepository.KorisnikWithCredentialsExists(korisnikDTO.Naziv, korisnikDTO.Lozinka))
 				return true;
 			return false;
 		}
@@ -38,9 +38,9 @@ namespace KorisnikService.Helpers
 		/// <summary>
 		/// Generiše novi token za autentifikovanog korisnika.
 		/// </summary>
-		/// <param name="korisnik">Model sa podacima na osnovu kojih se vrši autentifikacija.</param>
+		/// <param name="korisnikDTO">Model sa podacima na osnovu kojih se vrši autentifikacija.</param>
 		/// <returns>Vraća generisani token u obliku stringa.</returns>
-		public string GenerateJWT(KorisnikAuthenticateDTO korisnik)
+		public string GenerateJWT(KorisnikAuthenticateDTO korisnikDTO)
 		{
 			string? key = configuration["JWT:Key"];
 			if (key != null)

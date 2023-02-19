@@ -16,9 +16,6 @@ namespace UplataService.Profiles
         {
             CreateMap<UplataEntity, UplataDTO>();
             CreateMap<UplataCreateDTO, UplataEntity>();
-            //    .ForMember(
-            //        dest => dest.KupacID,
-            //       opt => opt.MapFrom(src => Guid.Parse(src.KupacID)));
             CreateMap<UplataUpdateDTO, UplataEntity>();
             CreateMap<UplataEntity, UplataEntity>();
         }

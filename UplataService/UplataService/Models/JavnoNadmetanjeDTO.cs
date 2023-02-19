@@ -23,12 +23,12 @@
         /// <summary>
 		/// Deo parcele javnog nadmetanja.
 		/// </summary>
-		//public DeoParceleDTO DeoParcele { get; set; } = null!;
+		/// public DeoParceleDTO DeoParcele { get; set; } = null!;
 
         /// <summary>
 		/// Kupac javnog nadmetanja.
 		/// </summary>
-		//public KupacDTO Kupac { get; set; } = null!;
+		///public KupacDTO Kupac { get; set; } = null!;
 
         /// <summary>
 		/// Tip nadmetanja.

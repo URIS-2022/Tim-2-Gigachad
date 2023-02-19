@@ -7,14 +7,11 @@ namespace UplataService.Entities
 	/// </summary>
     public class UplataContext : DbContext
     {
-        private readonly IConfiguration configuration;
-
         /// <summary>
 		/// Dependency injection za konfiguraciju konekcije i opcije sa bazom.
 		/// </summary>
-        public UplataContext(DbContextOptions options, IConfiguration configuration) : base(options)
+        public UplataContext(DbContextOptions options) : base(options)
         {
-            this.configuration = configuration;
         }
 
         /// <summary>
@@ -25,9 +22,9 @@ namespace UplataService.Entities
         /// <summary>
         /// Popunjava bazu sa nekim inicijalnim podacima.
         /// </summary>
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.Entity<UplataEntity>().HasData(new
+            modelBuilder.Entity<UplataEntity>().HasData(new
             {
                 UplataID = Guid.Parse("460f3547-d626-49d7-92c4-6f96ae3714e0"),
                 JavnoNadmetanjeID = Guid.Parse("ABEC715B-03E0-4C9A-B97B-327F0AF16823"),
@@ -41,7 +38,7 @@ namespace UplataService.Entities
                 //Katastrofa je DateTime za rad
                 KursnaLista = "???????"
             });
-            builder.Entity<UplataEntity>().HasData(new
+            modelBuilder.Entity<UplataEntity>().HasData(new
             {
                 UplataID = Guid.Parse("167ef647-33c2-466c-b777-5271365bffbd"),
                 JavnoNadmetanjeID = Guid.Parse("5D62B2C0-D13C-4F74-840F-AD96BF204D69"),

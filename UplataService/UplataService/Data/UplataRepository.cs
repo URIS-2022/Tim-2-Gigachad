@@ -59,13 +59,9 @@ namespace UplataService.Data
 		/// </summary>
 		/// <param name="UplataID">ID uplate.</param>
 		/// <returns>Vraća specifiranu uplatu.</returns>
-        public UplataEntity GetUplataByID(Guid UplataID)
+        public UplataEntity? GetUplataByID(Guid UplataID)
         {
             return context.Uplate.FirstOrDefault(e => e.UplataID == UplataID);
-        }
-
-        public void UpdateUplata(UplataEntity Uplata)
-        {
         }
 
         /// <summary>

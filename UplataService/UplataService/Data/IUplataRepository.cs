@@ -19,7 +19,7 @@ namespace UplataService.Data
 		/// </summary>
 		/// <param name="UplataID">ID Uplate.</param>
 		/// <returns>Vraća specifirane uplate.</returns>
-        UplataEntity GetUplataByID(Guid UplataID);
+        UplataEntity? GetUplataByID(Guid UplataID);
 
         /// <summary>
 		/// Dodaje novu uplatu.
@@ -27,8 +27,6 @@ namespace UplataService.Data
 		/// <param name="UplataCreateDTO">DTO za kreiranje uplate.</param>
 		/// <returns>Vraća DTO kreirane uplate.</returns>
         UplataDTO CreateUplata(UplataCreateDTO UplataCreateDTO);
-
-        void UpdateUplata(UplataEntity Uplata);
 
         /// <summary>
 		/// Briše uplatu.

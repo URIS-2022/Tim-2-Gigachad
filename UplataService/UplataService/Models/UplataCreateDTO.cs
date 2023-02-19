@@ -58,14 +58,14 @@ namespace UplataService.Models
         /// Datum uplate.
         /// </summary>
         [Required(ErrorMessage = "Uplata mora da ima datum.")]
-        public DateTime? DatumUplate { get; set; }
+        public DateTime DatumUplate { get; set; }
 
         /// <summary>
 		/// Validacija za model DTO-a za kreiranje uplate.
 		/// </summary>
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (DateTime.Compare(DatumUplate.Value, DateTime.Now) > 0)
+            if (DateTime.Compare(DatumUplate, DateTime.Now) > 0)
                 yield return new ValidationResult("Datum uplate ne moze biti noviji od danasnjeg datuma", new[] { "KorisnikCreateDTO" });
         }
     }

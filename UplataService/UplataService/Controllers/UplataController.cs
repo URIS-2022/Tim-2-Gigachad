@@ -207,6 +207,7 @@ namespace UplataService.Controllers
 		/// Ažurira jednu uplatu.
 		/// </summary>
 		/// <param name="uplataUpdateDTO">DTO za ažuriranje uplate.</param>
+        /// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Potvrdu o ažuriranoj uplati.</returns>
         /// <remarks>
 		/// Primer zahteva za apdejt uplate. \
