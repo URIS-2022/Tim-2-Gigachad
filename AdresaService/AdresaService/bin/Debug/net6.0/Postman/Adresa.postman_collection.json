@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "d0dc6ede-869d-4a18-b68c-70068a5b5bea",
+		"name": "Adresa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21483793"
+	},
+	"item": [
+		{
+			"name": "Adrese",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15003/api/adrese",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15003",
+					"path": [
+						"api",
+						"adrese"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AdreseByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15003/api/adrese/3aa0344b-57b5-450a-b83a-18c4555be65c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15003",
+					"path": [
+						"api",
+						"adrese",
+						"3aa0344b-57b5-450a-b83a-18c4555be65c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateAdresa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"abcd6g99-36a6-4688-af14-6b2bba85dcf1\",\r\n    \"ulica\": \"Mise Dimitrijevica\",\r\n    \"broj\": 22,\r\n    \"mesto\": \"Novi Sad\",\r\n    \"postanskiBroj\": 22000,\r\n    \"drzava\": \"Srbija\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15003/api/adrese",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15003",
+					"path": [
+						"api",
+						"adrese"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAdresa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"abcd6g99-36a6-4688-af14-6b2bba85dcf1\",\r\n    \"ulica\": \"Ulica izmenjena\",\r\n    \"broj\": 12,\r\n    \"mesto\": \"Novi Sad\",\r\n    \"postanskiBroj\": 22000,\r\n    \"drzava\": \"Slovenija\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15003/api/adrese",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15003",
+					"path": [
+						"api",
+						"adrese"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAdresaByID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:15003/api/adrese/abcd6g99-36a6-4688-af14-6b2bba85dcf1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15003",
+					"path": [
+						"api",
+						"adrese",
+						"abcd6g99-36a6-4688-af14-6b2bba85dcf1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY2NTI2MTUsImlzcyI6IkZUTklUVVJJUzIwMjIiLCJhdWQiOiJGVE5JVFVSSVMyMDIyIn0.Zs-J-oXAU9vfviNpT42CbcNGCzeNX-RlK1aVjTvROxM",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

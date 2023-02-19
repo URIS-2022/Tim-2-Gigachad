@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "7f8b81b1-40a4-4357-8f6d-94d8f2863274",
+		"name": "autentifikacija",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25524120"
+	},
+	"item": [
+		{
+			"name": "autentifikacija",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"naziv\": \"it20-2019\",\r\n    \"lozinka\": \"it20-2019\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:15001/api/korisnici/autentifikacija",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "15001",
+					"path": [
+						"api",
+						"korisnici",
+						"autentifikacija"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

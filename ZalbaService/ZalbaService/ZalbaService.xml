@@ -1,0 +1,724 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZalbaService</name>
+    </assembly>
+    <members>
+        <member name="T:ZalbaService.Controllers.ZalbaController">
+            <summary>
+            Kontroler za entitet žalba.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.Controllers.ZalbaController.#ctor(ZalbaService.Data.IZalbaRepository,Microsoft.AspNetCore.Routing.LinkGenerator,AutoMapper.IMapper,ZalbaService.ServiceCalls.IKupacService)">
+            <summary>
+            Dependency injection za kontroler.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.Controllers.ZalbaController.GetZalbe(System.String)">
+            <summary>
+            Vraća listu svih žalbi
+            </summary>
+            <returns>Vraća potvrdu o listi postojećih žalbi.</returns>
+            <response code="200">Vraća listu žalbi.</response>
+            <response code="204">Ne postoje žalbe.</response>
+        </member>
+        <member name="M:ZalbaService.Controllers.ZalbaController.GetZalbaByID(System.Guid,System.String)">
+            <summary>
+            Vraća jednu žalbu na osnovu prosleđenog ID-ja.
+            </summary>
+            <param name="zalbaID">ID žalbe</param>
+            <returns>Vraća potvrdu o specifiranoj žalbi.</returns>
+            /// <response code="200">Vraća specifiranu žalbu.</response>
+            <response code="404">Specifirana žalba ne postoji.</response>
+        </member>
+        <member name="M:ZalbaService.Controllers.ZalbaController.CreateZalba(ZalbaService.Models.ZalbaCreateDTO,System.String)">
+            <summary>
+            Kreira novu žalbu.
+            </summary>
+            <param name="zalbaCreateDTO"> DTO za kreiranje žalbe</param>
+            <returns>Potvrdu o kreiranoj žalbi.</returns>
+            /// <remarks>
+            Primer zahteva za kreiranje nove zalbe. \
+            POST /api/zalbe \
+            { \
+            	"kupacID": "ccc043c6-398c-485d-9840-092c0441ebe8", \
+                "tipZalbe": "ZALBA_NA_ODLUKU_O_DAVANJU_NA_KORISCENJE", \
+                "datumPodnosenja": "2022-11-11T00:00:00", \
+                "razlog": "razlog1", \
+                "obrazlozenje": "obrazlozenje1", \
+                "statusZalbe": "Odbijena", \
+                "radnjaZalbe": "JN_IDE_U_DRUGI_KRUG_SA_NOVIM_USLOVIMA" \
+            }
+            </remarks>
+            <response code="201">Vraća kreiranu žalbu.</response>
+            <response code="500">Došlo je do greške na serveru prilikom kreiranja žalbe.</response>
+        </member>
+        <member name="M:ZalbaService.Controllers.ZalbaController.DeleteZalba(System.Guid,System.String)">
+            <summary>
+            Briše jednu žalbu na osnovu zadatog ID-ja.
+            </summary>
+            <param name="zalbaID">ID žalbe.</param>
+            <returns>Potvrdu o brisanju žalbe.</returns>
+            <response code="204">Specifirana žalba je uspešno obrisano.</response>
+            <response code="404">Specifirana žalba ne postoji i nije obrisano.</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja specifirane žalbe.</response>
+        </member>
+        <member name="M:ZalbaService.Controllers.ZalbaController.UpdateZalba(ZalbaService.Models.ZalbaUpdateDTO,System.String)">
+             <summary>
+             Ažurira jednu žalbu.
+             </summary>
+             <param name="zalbaUpdateDTO">DTO za ažuriranje žalbe.</param>
+             <returns>Potvrdu o ažuriranoj žalbi.</returns>
+             /// <remarks>
+             Primer zahteva za ažuriranje postojećeg fizičkog lica. \
+             PUT /api/fizickaLica \
+             { \
+            		"kupacID": "ccc043c6-398c-485d-9840-092c0441ebe8", \
+                 "tipZalbe": "ZALBA_NA_ODLUKU_O_DAVANJU_NA_KORISCENJE", \
+                 "datumPodnosenja": "2022-11-11T00:00:00", \
+                 "razlog": "razlog1", \
+                 "obrazlozenje": "obrazlozenje1", \
+                 "statusZalbe": "OTVORENA", \
+                 "radnjaZalbe": "JN_IDE_U_DRUGI_KRUG_SA_NOVIM_USLOVIMA" \
+            }
+             </remarks>
+             <response code="200">Vraća ažuriranu žalbu.</response>
+             <response code="404">Specifirana žalba ne postoji.</response>
+             <response code="500">Došlo je do greške na serveru prilikom ažuriranja žalbe.</response>
+        </member>
+        <member name="M:ZalbaService.Controllers.ZalbaController.GetZalbeOptions">
+            <summary>
+            Vraća opcije za rad sa žalbama.
+            </summary>
+            <returns>Vraća prazan 200 HTTP kod.</returns>
+            <response code="200">Vraća prazan 200 HTTP kod.</response>
+        </member>
+        <member name="T:ZalbaService.Data.IZalbaRepository">
+            <summary>
+            Interfejs od repozitorijuma za entitet žalba.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.Data.IZalbaRepository.GetZalbe">
+            <summary>
+            Vraća listu žalbi iz konteksta.
+            </summary>
+            <returns>Vraća listu žalbi.</returns>
+        </member>
+        <member name="M:ZalbaService.Data.IZalbaRepository.GetZalbaByID(System.Guid)">
+            <summary>
+            Vraća jednu žalbu iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="zalbaID">ID žalbe.</param>
+            <returns>Vraća specificiranu žalbu.</returns>
+        </member>
+        <member name="M:ZalbaService.Data.IZalbaRepository.CreateZalba(ZalbaService.Models.ZalbaCreateDTO)">
+            <summary>
+            Dodaje novu žalbu u kontekst, koje kasnije vraća kao DTO objekat.
+            </summary>
+            <param name="zalba">DTO za kreiranje žalbe.</param>
+            <returns>Vraća DTO kreirane žalbe.</returns>
+        </member>
+        <member name="M:ZalbaService.Data.IZalbaRepository.DeleteZalba(System.Guid)">
+            <summary>
+            Briše žalbu iz konteksta.
+            </summary>
+            <param name="zalbaID">ID žalbe.</param>
+        </member>
+        <member name="M:ZalbaService.Data.IZalbaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena</returns>
+        </member>
+        <member name="T:ZalbaService.Data.ZalbaRepository">
+            <summary>
+            Repozitorijum za entitet žalba.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.Data.ZalbaRepository.#ctor(ZalbaService.Entities.ZalbaContext,AutoMapper.IMapper)">
+            <summary>
+            Dependency injection za repozitorijum.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.Data.ZalbaRepository.GetZalbe">
+            <summary>
+            Vraća listu žalbi iz konteksta.
+            </summary>
+            <returns>Vraća listu žalbi.</returns>
+        </member>
+        <member name="M:ZalbaService.Data.ZalbaRepository.CreateZalba(ZalbaService.Models.ZalbaCreateDTO)">
+            <summary>
+            Dodaje novu žalbu u kontekst, koje kasnije vraća kao DTO objekat.
+            </summary>
+            <param name="zalbaCreateDTO">DTO za kreiranje žalbe.</param>
+            <returns>Vraća DTO kreirane žalbe.</returns>
+        </member>
+        <member name="M:ZalbaService.Data.ZalbaRepository.DeleteZalba(System.Guid)">
+            <summary>
+            Briše žalbu iz konteksta.
+            </summary>
+            <param name="zalbaID">ID žalbe.</param>
+        </member>
+        <member name="M:ZalbaService.Data.ZalbaRepository.GetZalbaByID(System.Guid)">
+            <summary>
+            Vraća jednu žalbu iz konteksta na osnovu zadatog ID-ja.
+            </summary>
+            <param name="zalbaID">ID žalbe.</param>
+            <returns>Vraća specifiranu žalbu.</returns>
+        </member>
+        <member name="M:ZalbaService.Data.ZalbaRepository.SaveChanges">
+            <summary>
+            Sačuva sve promene u kontekstu.
+            </summary>
+            <returns>Vraća boolean o potvrdi sačuvanih promena.</returns>
+        </member>
+        <member name="T:ZalbaService.Entities.EntitiesEnums">
+            <summary>
+            Enumeratori za modele entiteta.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Entities.EntitiesEnums.StatusZalbe">
+            <summary>
+            Enumerator za status žalbe.
+            </summary>
+        </member>
+        <member name="F:ZalbaService.Entities.EntitiesEnums.StatusZalbe.OTVORENA">
+            <summary>
+            Otvorena.
+            </summary>
+        </member>
+        <member name="F:ZalbaService.Entities.EntitiesEnums.StatusZalbe.USVOJENA">
+            <summary>
+            Usvojena.
+            </summary>
+        </member>
+        <member name="F:ZalbaService.Entities.EntitiesEnums.StatusZalbe.ODBIJENA">
+            <summary>
+            Odbijena.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Entities.EntitiesEnums.TipZalbe">
+            <summary>
+            Enumerator za tip žalbe.
+            </summary>
+        </member>
+        <member name="F:ZalbaService.Entities.EntitiesEnums.TipZalbe.ZALBA_NA_ODLUKU_O_DAVANJU_NA_KORISCENJE">
+            <summary>
+            Žalba na odluku o davanju na korišćenje.
+            </summary>
+        </member>
+        <member name="F:ZalbaService.Entities.EntitiesEnums.TipZalbe.ZALBA_NA_ODLUKU_O_DAVANJU_U_ZAKUP">
+            <summary>
+            Žalba na odluku o davanju u zakup.
+            </summary>
+        </member>
+        <member name="F:ZalbaService.Entities.EntitiesEnums.TipZalbe.ZALBA_NA_TOK_JAVNOG_NADMETANJA">
+            <summary>
+            Žalba na tok javnog nadmetanja.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Entities.EntitiesEnums.RadnjaZalbe">
+            <summary>
+            Enumerator za radnju žalbe.
+            </summary>
+        </member>
+        <member name="F:ZalbaService.Entities.EntitiesEnums.RadnjaZalbe.JN_IDE_U_DRUGI_KRUG_SA_NOVIM_USLOVIMA">
+            <summary>
+            Javno nadmetanje ide u drugi krug sa novim uslovima.
+            </summary>
+        </member>
+        <member name="F:ZalbaService.Entities.EntitiesEnums.RadnjaZalbe.JN_IDE_U_DRUGI_KRUG_SA_STARIM_USLOVIMA">
+            <summary>
+            Javno nadmetanje ide u drugi krug sa starim uslovima.
+            </summary>
+        </member>
+        <member name="F:ZalbaService.Entities.EntitiesEnums.RadnjaZalbe.JN_NE_IDE_U_DRUGI_KRUG">
+            <summary>
+            Javno nadmetanje ne ide u drugi krug.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Entities.ZalbaContext">
+            <summary>
+            DbContext za ZalbaService mikroservis.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.Entities.ZalbaContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije i opcije sa bazom.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaContext.Zalbe">
+            <summary>
+            DbSet za entitet žalba.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.Entities.ZalbaContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Entities.ZalbaEntity">
+            <summary>
+            Model realnog entiteta žalba.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.ZalbaID">
+            <summary>
+            ID zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.TipZalbe">
+            <summary>
+            Tip zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.DatumPodnosenja">
+            <summary>
+            Datum podnosenja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.Razlog">
+            <summary>
+            Razlog zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.Obrazlozenje">
+            <summary>
+            Obrazlozenje zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.StatusZalbe">
+            <summary>
+            Status zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Entities.ZalbaEntity.RadnjaZalbe">
+            <summary>
+            Radnja zalbe.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Migrations.InitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:ZalbaService.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ZalbaService.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ZalbaService.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ZalbaService.Models.AdresaDTO">
+            <summary>
+            Model DTO-a za entitet adresa lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.AdresaDTO.ID">
+            <summary>
+            ID adrese.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.AdresaDTO.UlicaBroj">
+            <summary>
+            Ulica i broj adrese.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.AdresaDTO.Mesto">
+            <summary>
+            Mesto adrese.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.AdresaDTO.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.AdresaDTO.Drzava">
+            <summary>
+            Država adrese.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.FizickoLiceDTO">
+            <summary>
+            Model DTO-a za entitet fizičko lice.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.FizickoLiceDTO.ID">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.FizickoLiceDTO.JMBG">
+            <summary>
+            JMBG fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.FizickoLiceDTO.PunoIme">
+            <summary>
+            Puno ime fizičkog lica.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.KontaktOsobaDTO">
+            <summary>
+            Model DTO-a za entitet kontakt osoba.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KontaktOsobaDTO.ID">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KontaktOsobaDTO.PunoIme">
+            <summary>
+            Puno ime kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KontaktOsobaDTO.Telefon">
+            <summary>
+            Telefon kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KontaktOsobaDTO.Funkcija">
+            <summary>
+            Funkcija kontakt osobe.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.KupacDTO">
+            <summary>
+            DTO za kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.Lice">
+            <summary>
+            ID lica kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.OvlascenoLice">
+            <summary>
+            ID ovlascenjog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.Prioritet">
+            <summary>
+            Prioritet kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.ImaZabranu">
+            <summary>
+            Kupac ima/nema zabranu.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.DatumPocetkaZabrane">
+            <summary>
+            Datum pocetka zabrane.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.DatumZavrsetkaZabrane">
+            <summary>
+            Datum zavrsetka zabrane.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.KupacDTO.BrojKupovina">
+            <summary>
+            Broj kupovina kupca.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.LiceDTO">
+            <summary>
+            Model DTO-a za entitet lice.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.ID">
+            <summary>
+            ID lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.PravnoLice">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.Adresa">
+            <summary>
+            Adresa lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.Telefon1">
+            <summary>
+            Prvi telefon lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.Telefon2">
+            <summary>
+            Drugi telefon lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.Email">
+            <summary>
+            Email lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.BrojRacuna">
+            <summary>
+            Broj računa lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.LiceDTO.OvlascenoLice">
+            <summary>
+            Da li je lice ovlašćeno lice.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.OvlascenoLiceDTO">
+            <summary>
+            Model DTO-a za entitet lice.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.ID">
+            <summary>
+            ID ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.FizickoLice">
+            <summary>
+            ID fizičkog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.Adresa">
+            <summary>
+            Adresa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.Telefon1">
+            <summary>
+            Prvi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.Telefon2">
+            <summary>
+            Drugi telefon ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.Email">
+            <summary>
+            Email ovlascenog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.OvlascenoLiceDTO.BrojRacuna">
+            <summary>
+            Broj računa ovlascenog lica.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.PravnoLiceDTO">
+            <summary>
+            Model DTO-a za entitet pravno lice.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.PravnoLiceDTO.ID">
+            <summary>
+            ID pravnog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.PravnoLiceDTO.KontaktOsoba">
+            <summary>
+            ID kontakt osobe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.PravnoLiceDTO.Naziv">
+            <summary>
+            Naziv pravnog lica.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.PravnoLiceDTO.MaticniBroj">
+            <summary>
+            Matični broj pravnog lica.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.ZalbaCreateDTO">
+            <summary>
+            Model DTO-a za kreiranje entiteta žalba.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.TipZalbe">
+            <summary>
+            Tip zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.DatumPodnosenja">
+            <summary>
+            Datum podnosenja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.Razlog">
+            <summary>
+            Razlog zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.Obrazlozenje">
+            <summary>
+            Obrazlozenje zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.StatusZalbe">
+            <summary>
+            Status zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaCreateDTO.RadnjaZalbe">
+            <summary>
+            Radnja zalbe.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.Models.ZalbaCreateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za kreiranje entiteta žalba.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Models.ZalbaDTO">
+            <summary>
+            Model DTO-a za entitet žalba.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.ZalbaID">
+            <summary>
+            ID zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.Kupac">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.TipZalbe">
+            <summary>
+            Tip zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.DatumPodnosenja">
+            <summary>
+            Datum podnosenja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.Objasnjenje">
+            <summary>
+            Objašnjenje žalbe u vidu razloga i obrazloženja.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.StatusZalbe">
+            <summary>
+            Status zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaDTO.RadnjaZalbe">
+            <summary>
+            Radnja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.ZalbaID">
+            <summary>
+            ID zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.KupacID">
+            <summary>
+            ID kupca.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.TipZalbe">
+            <summary>
+            Tip zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.DatumPodnosenja">
+            <summary>
+            Datum podnosenja zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.Razlog">
+            <summary>
+            Razlog zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.Obrazlozenje">
+            <summary>
+            Obrazlozenje zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.StatusZalbe">
+            <summary>
+            Status zalbe.
+            </summary>
+        </member>
+        <member name="P:ZalbaService.Models.ZalbaUpdateDTO.RadnjaZalbe">
+            <summary>
+            Radnja zalbe.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.Models.ZalbaUpdateDTO.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validacija za model DTO-a za ažuriranje entiteta žalba.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.Profiles.ZalbaProfile">
+            <summary>
+            Profil mapera za model entiteta žalba.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.Profiles.ZalbaProfile.#ctor">
+            <summary>
+            Profil mapera za model entiteta žalba.
+            </summary>
+        </member>
+        <member name="T:ZalbaService.ServiceCalls.IKupacService">
+            <summary>
+            Interfejs od servis poziva za kupca.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.ServiceCalls.IKupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća kupca iz drugog mikroservisa.
+            </summary>
+            <param name="kupacID">ID kupca.</param>
+            <param name="token">Token za kupac mikroservis.</param>
+            <returns>Vraća model DTO-a kupca.</returns>
+        </member>
+        <member name="T:ZalbaService.ServiceCalls.KupacService">
+            <summary>
+            Servis poziva za kupca.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.ServiceCalls.KupacService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Dependency injection za konfiguraciju konekcije.
+            </summary>
+        </member>
+        <member name="M:ZalbaService.ServiceCalls.KupacService.GetKupacByIDAsync(System.Guid,System.String)">
+            <summary>
+            Vraća kupca od drugog mikroservisa.
+            </summary>
+            <param name="kupacID">ID kupca.</param>
+            <param name="token">Token za kupac mikroservis.</param>
+            <returns>Vraća model DTO-a kupca.</returns>
+        </member>
+    </members>
+</doc>
