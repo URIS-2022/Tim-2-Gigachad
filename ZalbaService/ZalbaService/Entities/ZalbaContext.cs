@@ -20,9 +20,9 @@ namespace ZalbaService.Entities
         /// <summary>
 		/// Popunjava bazu sa nekim inicijalnim podacima.
 		/// </summary>
-		protected override void OnModelCreating(ModelBuilder builder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.Entity<ZalbaEntity>().HasData(new
+            modelBuilder.Entity<ZalbaEntity>().HasData(new
             {
                 ZalbaID = Guid.Parse("08635d18-5f72-4050-8e5e-c520562675b1"),
                 KupacID = Guid.Parse("ccc043c6-398c-485d-9840-092c0441ebe8"),
@@ -33,7 +33,7 @@ namespace ZalbaService.Entities
                 StatusZalbe = "USVOJENA",
                 RadnjaZalbe = "JN_IDE_U_DRUGI_KRUG_SA_STARIM_USLOVIMA"
             });
-            builder.Entity<ZalbaEntity>().HasData(new
+            modelBuilder.Entity<ZalbaEntity>().HasData(new
             {
                 ZalbaID = Guid.Parse("9014d78d-7b9b-4f63-b674-d83ed1d5356a"),
                 KupacID = Guid.Parse("93d92981-a754-41d8-8d1f-b5462a9e0386"),

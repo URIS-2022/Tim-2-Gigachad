@@ -2,25 +2,28 @@
 
 namespace KomisijaService.Models
 {
+    /// <summary>
+    /// DTO za azuriranje komisije.
+    /// </summary>
     public class KomisijaUpdateDTO
     {
         /// <summary>
 		/// ID komisije.
 		/// </summary>
         [Required]
-        public string KomisijaID { get; set; }
+        public string KomisijaID { get; set; } = null!;
 
         /// <summary>
 		/// ID 1. clana.
 		/// </summary>
         [Required]
-        public string Clan1ID { get; set; }
+        public string Clan1ID { get; set; } = null!;
 
         /// <summary>
 		/// ID 2. clana.
 		/// </summary>
         [Required]
-        public string Clan2ID { get; set; }
+        public string Clan2ID { get; set; } = null!;
 
         /// <summary>
 		/// ID 3. clana.
@@ -42,6 +45,6 @@ namespace KomisijaService.Models
 		/// ID predsednika.
 		/// </summary>
         [Required]
-        public string PredsednikID { get; set; }
+        public string PredsednikID { get; set; } = null!;
     }
 }

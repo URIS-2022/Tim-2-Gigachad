@@ -8,8 +8,6 @@ namespace ZalbaService.Entities
     /// </summary>
     public class ZalbaEntity
     {
-        public ZalbaEntity() { }
-
         /// <summary>
 		/// ID zalbe.
 		/// </summary>

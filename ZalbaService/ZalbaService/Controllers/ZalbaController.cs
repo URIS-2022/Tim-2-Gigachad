@@ -36,6 +36,7 @@ namespace ZalbaService.Controllers
         /// <summary>
         /// Vraća listu svih žalbi
         /// </summary>
+        /// <param name="authorization">Autorizovan token.</param>
         /// <returns>Vraća potvrdu o listi postojećih žalbi.</returns>
 		/// <response code="200">Vraća listu žalbi.</response>
 		/// <response code="204">Ne postoje žalbe.</response>
@@ -46,7 +47,7 @@ namespace ZalbaService.Controllers
         public ActionResult<List<ZalbaEntity>> GetZalbe([FromHeader] string authorization)
         {
             List<ZalbaEntity> zalbe = zalbaRepository.GetZalbe();
-            if (zalbe == null && zalbe.Count == 0)
+            if (zalbe == null || zalbe.Count == 0)
                 return NoContent();
 
             List<ZalbaDTO> zalbeDTO = new();
@@ -72,8 +73,9 @@ namespace ZalbaService.Controllers
         /// Vraća jednu žalbu na osnovu prosleđenog ID-ja.
         /// </summary>
         /// <param name="zalbaID">ID žalbe</param>
+        /// <param name="authorization">Autorizovan token.</param>
         /// <returns>Vraća potvrdu o specifiranoj žalbi.</returns>
-        /// /// <response code="200">Vraća specifiranu žalbu.</response>
+        /// <response code="200">Vraća specifiranu žalbu.</response>
 		/// <response code="404">Specifirana žalba ne postoji.</response>
         [HttpGet("{zalbaID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -104,6 +106,7 @@ namespace ZalbaService.Controllers
         /// Kreira novu žalbu.
         /// </summary>
         /// <param name="zalbaCreateDTO"> DTO za kreiranje žalbe</param>
+        /// <param name="authorization">Autorizovan token.</param>
         /// <returns>Potvrdu o kreiranoj žalbi.</returns>
         /// /// <remarks>
 		/// Primer zahteva za kreiranje nove zalbe. \
@@ -158,6 +161,7 @@ namespace ZalbaService.Controllers
 		/// Briše jednu žalbu na osnovu zadatog ID-ja.
 		/// </summary>
 		/// <param name="zalbaID">ID žalbe.</param>
+        /// <param name="authorization">Autorizovan token.</param>
 		/// <returns>Potvrdu o brisanju žalbe.</returns>
 		/// <response code="204">Specifirana žalba je uspešno obrisano.</response>
 		/// <response code="404">Specifirana žalba ne postoji i nije obrisano.</response>
@@ -191,6 +195,7 @@ namespace ZalbaService.Controllers
         /// Ažurira jednu žalbu.
         /// </summary>
         /// <param name="zalbaUpdateDTO">DTO za ažuriranje žalbe.</param>
+        /// <param name="authorization">Autorizovan token.</param>
         /// <returns>Potvrdu o ažuriranoj žalbi.</returns>
         /// /// <remarks>
 		/// Primer zahteva za ažuriranje postojećeg fizičkog lica. \
